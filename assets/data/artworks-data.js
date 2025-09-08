@@ -3,7 +3,7 @@
 
 const artworksData = {
   11: {
-    count: 5,
+    count: 3,
     artworks: [
       {
         file: "b01.jpg",
@@ -17,23 +17,10 @@ const artworksData = {
         artist: "امیر رضایی",
         category: "شهری",
       },
-      {
-        file: "b03.jpg",
-        name: "انعکاس",
-        artist: "سارا محمدی",
-        category: "انتزاعی",
-      },
-      { file: "b04.jpg", name: "کهکشان", artist: "رضا حسینی", category: "فضا" },
-      {
-        file: "b05.jpg",
-        name: "پرش",
-        artist: "مینا جعفری",
-        category: "حیات وحش",
-      },
     ],
   },
   43: {
-    count: 5,
+    count: 2,
     artworks: [
       {
         file: "b01.jpg",
@@ -47,28 +34,10 @@ const artworksData = {
         artist: "لیلا رحیمی",
         category: "هنرهای نمایشی",
       },
-      {
-        file: "b03.jpg",
-        name: "فیلسوف",
-        artist: "حسین نظری",
-        category: "پرتره",
-      },
-      {
-        file: "b04.jpg",
-        name: "نگاه",
-        artist: "فاطمه امیری",
-        category: "پرتره",
-      },
-      {
-        file: "b05.jpg",
-        name: "افسانه",
-        artist: "کامران صادقی",
-        category: "اسطوره",
-      },
     ],
   },
   34: {
-    count: 5,
+    count: 3,
     artworks: [
       {
         file: "b01.jpg",
@@ -88,22 +57,10 @@ const artworksData = {
         artist: "زهرا کریمی",
         category: "سفر",
       },
-      {
-        file: "b04.jpg",
-        name: "کلبه جنگلی",
-        artist: "مجید احمدی",
-        category: "طبیعت",
-      },
-      {
-        file: "b05.jpg",
-        name: "صحرای نمک",
-        artist: "نسترن جعفری",
-        category: "طبیعت",
-      },
     ],
   },
   169: {
-    count: 5,
+    count: 3,
     artworks: [
       {
         file: "b01.jpg",
@@ -123,22 +80,10 @@ const artworksData = {
         artist: "سپیده عبدلی",
         category: "شهری",
       },
-      {
-        file: "b04.jpg",
-        name: "خیابان مرکزی",
-        artist: "حمید ناظمی",
-        category: "شهری",
-      },
-      {
-        file: "b05.jpg",
-        name: "نمای شبانه",
-        artist: "پرستو جلالی",
-        category: "شهری",
-      },
     ],
   },
   916: {
-    count: 5,
+    count: 3,
     artworks: [
       {
         file: "b01.jpg",
@@ -156,18 +101,6 @@ const artworksData = {
         file: "b03.jpg",
         name: "معبد باستانی",
         artist: "کامران احمدی",
-        category: "تاریخی",
-      },
-      {
-        file: "b04.jpg",
-        name: "شاهین",
-        artist: "مریم موسوی",
-        category: "حیات وحش",
-      },
-      {
-        file: "b05.jpg",
-        name: "مجسمه آزادی",
-        artist: "امین رضایی",
         category: "تاریخی",
       },
     ],
