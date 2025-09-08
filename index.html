@@ -61,28 +61,17 @@
     <header class="rn-header haeder-default header--sticky">
       <div class="container">
         <div class="header-inner">
-          <div class="header-left">
-            <div class="logo-thumbnail logo-custom-css">
-              <a class="logo-light" href="index.html"
-                ><img src="assets/images/logo/logo-white.png" alt="nft-logo"
-              /></a>
-              <a class="logo-dark" href="index.html"
-                ><img src="assets/images/logo/logo-dark.png" alt="nft-logo"
-              /></a>
-            </div>
-            <div class="mainmenu-wrapper">
-              <nav id="sideNav" class="mainmenu-nav d-none d-xl-block">
-                <!-- Start Mainmanu Nav -->
-                <ul class="mainmenu">
-                  <li ><a href="index.html">صفحه اصلی</a></li>
-                  <li><a href="about.html">درباره</a></li>
-                  <li><a href="blog-single-col.html">وبلاگ تک ستون</a></li>
-                  <li><a href="contact.html">تماس</a></li>
-                </ul>
-                <!-- End Mainmanu Nav -->
-              </nav>
-            </div>
-          </div>
+<!-- mune fetch -->
+<div  class="header-left">
+</div>
+<script>
+  fetch('menu.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementsByClassName('header-left')[0].innerHTML = data;
+    });
+</script>
+<!-- mune fetch End-->
           <div class="header-right">
             <div class="setting-option d-none d-lg-block">
               <form class="search-form-wrapper" action="#">
@@ -258,19 +247,19 @@
                           <div class="icon">
                               <img src="assets/images/icons/rating-2.png" alt="Icons Images">
                           </div>
-                          <span class="subtitle">8000+ مشتری معتمد</span>
+                          <span class="subtitle">دارای ثبت اختراع جهانی</span>
                       </div>
 
                       <div class="banner-badge-top" data-sal-delay="500" data-sal="slide-up" data-sal-duration="500">
                           <div class="icon">
                               <img src="assets/images/icons/trophy.png" alt="Icons Images">
                           </div>
-                          <span class="subtitle">#1 تم جدید برتر</span>
+                          <span class="subtitle">#1 اولین در ایران و جهان </span>
                       </div>
                   </div>
 
-                  <h1 class="title large-height theme-color" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">هنر دیجیتال را کشف کنید و<br> خود را بفروشید NFT های خاص </h1>
-                  <p class="slide-disc" data-sal-delay="300" data-sal="slide-up" data-sal-duration="800">یک واحد غیرقابل تعویض از داده‌های ذخیره شده در زنجیره بلوکی، شکلی از دفتر کل دیجیتال که می تواند فروخته و معامله شود. انواع واحدهای داده NFT.</p>
+                  <h1 class="title large-height theme-color" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">هنر روی دیوار نمی ماند<br> با مهاجرت به دنیای بلاکچین </h1>
+                  <p class="slide-disc" data-sal-delay="300" data-sal="slide-up" data-sal-duration="800">با تبدیل هنر خود به NFT و ارز دیجیتال در والری، هم خود و هم آثار خود را ماندگار کنید و کسب درآمد کنید</p>
                   <div class="button-group">
                       <a class="btn btn-large btn-primary" href="#" data-sal-delay="400" data-sal="slide-up" data-sal-duration="800">شروع به کار</ الف>
                       <a class="btn btn-large btn-primary-alta" href="create.html" data-sal-delay="500" data-sal="slide-up" data-sal-duration="800"> ایجاد</a>
@@ -1045,6 +1034,26 @@
     <!-- Explore Style Carousel End-->
     <!-- ---------------------------------------------------------------------------------------------- -->
     <!-- ---------------------------------------------------------------------------------------------- -->
+    <!-- About Market Place Start -->
+<div class="about-market-area rn-section-gapTop">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="about-wrapper text-center">
+                  <h2>هنرمندان ماندگار</h2>
+                  <p class="discription">
+
+هنر ماندگار است و هنرمند هم با هنر خود. جمعی از هنرمندان سرتاسر دنیا که نام خود را بر لوحه تاریخ نوشتند. دیوارهای جهان محلی شده برای تبلور ایده ها و توانایی ها و خلاقیت ها. گوشه ای از این زیبایی ها را ببینید
+
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- About Market Place End -->
+
+    
     <!-- ---------------------------------------------------------------------------------------------- -->
     <!-- new artists1 area -->
     <div class="controls">
