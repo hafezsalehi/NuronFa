@@ -3,11 +3,11 @@
     position: relative;
     overflow: hidden;
     border-radius: 15px;
-    margin: 40px auto 0 auto;
+    margin: 0 auto;
     flex: 1;
     display: flex;
     flex-direction: column;
-    max-height: calc(200vh);
+    max-height: calc(100vh - 200px);
 }
 
 /* گرید برای عکس‌های هنرمندان */

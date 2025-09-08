@@ -3,7 +3,7 @@
 
 const artworksData = {
   11: {
-    count: 3,
+    count: 5,
     artworks: [
       {
         file: "b01.jpg",
@@ -33,7 +33,7 @@ const artworksData = {
     ],
   },
   43: {
-    count: 2,
+    count: 5,
     artworks: [
       {
         file: "b01.jpg",
@@ -68,7 +68,7 @@ const artworksData = {
     ],
   },
   34: {
-    count: 3,
+    count: 5,
     artworks: [
       {
         file: "b01.jpg",
@@ -103,7 +103,7 @@ const artworksData = {
     ],
   },
   169: {
-    count: 3,
+    count: 5,
     artworks: [
       {
         file: "b01.jpg",
@@ -138,7 +138,7 @@ const artworksData = {
     ],
   },
   916: {
-    count: 3,
+    count: 5,
     artworks: [
       {
         file: "b01.jpg",
