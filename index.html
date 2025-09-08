@@ -1813,73 +1813,116 @@
     <!-- ---------------------------------------------------------------------------------------------- -->
     <!-- ---------------------------------------------------------------------------------------------- -->
     <!-- new artists1 area -->
-    <!-- بخش هنرمندان بازنویسی شده -->
     <section class="artists-section">
       <div class="artists-bg"></div>
-      <div class="container">
-        <div class="artists-header">
-          <h2>هنرمندان در Wallery</h2>
-          <p>
-            محبوب ترین هنرمندان را پیدا کنید و آثار NFT آنها را در Wallery کشف
-            کنید، هنگام مشاهده آثار، مجموعه‌های خود را از آثار منحصر به فرد آنها
-            ایجاد کنید.
-          </p>
-          <div class="buttons">
-            <a href="#" class="btn">کاوش هنرمندان</a>
-            <a href="#" class="btn btn-outline">خرید آثار</a>
+      <div class="artists-overlay"></div>
+
+      <div class="artists-header">
+        <h2>گالری هنرمندان Wallery</h2>
+        <p>
+          کشف کنید و لذت ببرید از آثار منحصر به فرد هنرمندان برجسته. هر ۳ ثانیه،
+          گالری با تصاویر جدیدی به روز می‌شود.
+        </p>
+        <div class="buttons">
+          <a href="#" class="btn">کاوش هنرمندان</a>
+          <a href="#" class="btn btn-outline">خرید آثار</a>
+        </div>
+      </div>
+
+      <div class="artists-grid">
+        <!-- جایگاه‌های با ابعاد مختلف -->
+        <div class="artist-item ratio-11">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
         </div>
-
-        <div class="artists-grid">
-          <div class="artist-item item-1">
-            <img src="./assets/img/b0.jpg" alt="هنرمند 1" />
+        <div class="artist-item ratio-43">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-2">
-            <img src="./assets/img/b1.jpg" alt="هنرمند 2" />
+        </div>
+        <div class="artist-item ratio-34">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-3">
-            <img src="./assets/img/b2.jpg" alt="هنرمند 3" />
+        </div>
+        <div class="artist-item ratio-169">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-4">
-            <img src="./assets/img/b4.jpg" alt="هنرمند 4" />
+        </div>
+        <div class="artist-item ratio-916">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-5">
-            <img src="./assets/img/b5.jpg" alt="هنرمند 5" />
+        </div>
+        <div class="artist-item ratio-11">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-6">
-            <img src="./assets/img/b6.jpg" alt="هنرمند 6" />
+        </div>
+        <div class="artist-item ratio-43">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-7">
-            <img src="./assets/img/b7.jpg" alt="هنرمند 7" />
+        </div>
+        <div class="artist-item ratio-34">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-8">
-            <img src="./assets/img/b8.jpg" alt="هنرمند 8" />
+        </div>
+        <div class="artist-item ratio-169">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-9">
-            <img src="./assets/img/b9.jpg" alt="هنرمند 9" />
+        </div>
+        <div class="artist-item ratio-916">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-10">
-            <img src="./assets/img/b10.jpg" alt="هنرمند 10" />
+        </div>
+        <div class="artist-item ratio-11">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
-          <div class="artist-item item-11">
-            <img src="./assets/img/b11.jpg" alt="هنرمند 11" />
-          </div>
-          <div class="artist-item item-12">
-            <img src="./assets/img/b12.jpg" alt="هنرمند 12" />
+        </div>
+        <div class="artist-item ratio-43">
+          <div class="image-container">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+            </div>
           </div>
         </div>
       </div>
-      <!-- نشانگر چرخش تصاویر -->
-<div class="artist-item item-1">
-    <div class="image-container">
-        <img src="./assets/img/b0.jpg" alt="هنرمند 1" class="current">
-        <img src="./assets/img/b1.jpg" alt="هنرمند 1" class="next">
-    </div>
-    <div class="artist-info">
-        <div class="artist-name">سارا محمدی</div>
-        <div class="artist-category">هنر دیجیتال</div>
-    </div>
-</div>
+
+      <div class="controls">
+        <button class="control-btn" id="pauseBtn">توقف چرخش</button>
+        <button class="control-btn" id="shuffleBtn">چرخش دستی</button>
+        <button class="control-btn" id="layoutBtn">تغییر چینش</button>
+      </div>
+    </section>
     <!-- پایان بخش هنرمندان -->
 
     <!-- new artists1 area  End-->
