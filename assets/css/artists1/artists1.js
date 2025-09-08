@@ -1,57 +1,16 @@
+// script.js
 document.addEventListener("DOMContentLoaded", function () {
-  // پیکربندی ابعاد و پوشه‌ها
-  const ratioConfig = {
-    "ratio-11": {
-      folder: "11",
-      count: 3, // تعداد تصاویر در این پوشه
-    },
-    "ratio-43": {
-      folder: "43",
-      count: 2,
-    },
-    "ratio-34": {
-      folder: "34",
-      count: 3,
-    },
-    "ratio-169": {
-      folder: "169",
-      count: 3,
-    },
-    "ratio-916": {
-      folder: "916",
-      count: 4,
-    },
-  };
-
-  // لیست کلاس‌های نسبت‌های مختلف
-  const ratioClasses = Object.keys(ratioConfig);
-
-  // لیست موقعیت‌های مختلف برای گرید
-  const gridPositions = [
-    { col: "span 2", row: "span 2", cls: "ratio-11" },
-    { col: "span 3", row: "span 4", cls: "ratio-43" },
-    { col: "span 4", row: "span 3", cls: "ratio-34" },
-    { col: "span 4", row: "span 2", cls: "ratio-169" },
-    { col: "span 2", row: "span 4", cls: "ratio-916" },
-    { col: "span 3", row: "span 3", cls: "ratio-11" },
-    { col: "span 2", row: "span 3", cls: "ratio-43" },
-    { col: "span 3", row: "span 2", cls: "ratio-34" },
-    { col: "span 6", row: "span 2", cls: "ratio-169" },
-    { col: "span 2", row: "span 6", cls: "ratio-916" },
-  ];
-
   // ذخیره‌سازی وضعیت چرخش
   let isShuffling = true;
   let shuffleInterval;
-  let layoutInterval;
   let usedImages = {};
 
   // مقداردهی اولیه usedImages
-  Object.keys(ratioConfig).forEach((ratio) => {
+  Object.keys(artworksData).forEach((ratio) => {
     usedImages[ratio] = new Set();
   });
 
-  // تابع برای به هم ریختن آرایه (Fisher-Yates shuffle)
+  // تابع برای به هم ریختن آرایه
   function shuffleArray(array) {
     const newArray = [...array];
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -63,75 +22,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // تابع برای دریافت یک تصویر تصادفی که قبلا استفاده نشده
   function getRandomUnusedImage(ratioClass) {
-    const config = ratioConfig[ratioClass];
-    const folder = config.folder;
-    const count = config.count;
+    const ratioData = artworksData[ratioClass];
+    if (!ratioData || !ratioData.artworks || ratioData.artworks.length === 0)
+      return null;
+
+    const artworks = ratioData.artworks;
 
     // اگر همه تصاویر استفاده شده‌اند، مجموعه را پاک کنید
-    if (usedImages[ratioClass].size >= count) {
+    if (usedImages[ratioClass].size >= artworks.length) {
       usedImages[ratioClass].clear();
     }
 
-    // ایجاد لیست تمام تصاویر ممکن
-    const allImages = Array.from({ length: count }, (_, i) => {
-      const number = (i + 1).toString().padStart(2, "0");
-      return `./assets/img/${folder}/b${number}.jpg`;
-    });
-
     // فیلتر کردن تصاویر استفاده نشده
-    const availableImages = allImages.filter(
-      (img) => !usedImages[ratioClass].has(img)
+    const availableImages = artworks.filter(
+      (artwork) => !usedImages[ratioClass].has(artwork.file)
     );
 
     if (availableImages.length === 0) {
       usedImages[ratioClass].clear();
-      const randomIndex = Math.floor(Math.random() * allImages.length);
-      return allImages[randomIndex];
+      return artworks[Math.floor(Math.random() * artworks.length)];
     }
 
     // انتخاب یک تصویر تصادفی از بین تصاویر استفاده نشده
     const randomIndex = Math.floor(Math.random() * availableImages.length);
-    const selectedImage = availableImages[randomIndex];
+    const selectedArtwork = availableImages[randomIndex];
 
     // اضافه کردن تصویر به مجموعه تصاویر استفاده شده
-    usedImages[ratioClass].add(selectedImage);
+    usedImages[ratioClass].add(selectedArtwork.file);
 
-    return selectedImage;
-  }
-
-  // تابع برای تغییر چینش باکس‌ها
-  function shuffleLayout() {
-    const items = document.querySelectorAll(".artist-item");
-    const artistsGrid = document.querySelector(".artists-grid");
-
-    // ایجاد یک آرایه از موقعیت‌های تصادفی
-    const shuffledPositions = shuffleArray([...gridPositions]).slice(
-      0,
-      items.length
-    );
-
-    // اعمال موقعیت‌های جدید به آیتم‌ها
-    items.forEach((item, index) => {
-      const position = shuffledPositions[index];
-
-      // حذف کلاس‌های نسبت قبلی
-      ratioClasses.forEach((cls) => {
-        item.classList.remove(cls);
-      });
-
-      // اضافه کردن کلاس نسبت جدید
-      item.classList.add(position.cls);
-
-      // اعمال موقعیت جدید در گرید
-      item.style.gridColumn = position.col;
-      item.style.gridRow = position.row;
-    });
-
-    // اعمال چینش جدید به گرید
-    artistsGrid.style.display = "none";
-    setTimeout(() => {
-      artistsGrid.style.display = "grid";
-    }, 50);
+    return selectedArtwork;
   }
 
   // تابع برای چرخش تصاویر
@@ -146,13 +65,21 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       if (!ratioClass) return;
 
+      const ratioFolder = ratioClass.replace("ratio-", "");
       const container = item.querySelector(".image-container");
       const currentImg = container.querySelector(".current");
       const nextImg = container.querySelector(".next");
       const loadingElement = container.querySelector(".loading");
+      let artistInfo = item.querySelector(".artist-info");
 
       // دریافت یک تصویر تصادفی برای این نسبت ابعاد
-      const randomImagePath = getRandomUnusedImage(ratioClass);
+      const artwork = getRandomUnusedImage(ratioFolder);
+      if (!artwork) return;
+
+      const randomImagePath = `./assets/img/${ratioFolder}/${artwork.file}`;
+
+      // جهت انیمیشن (راست یا چپ)
+      const direction = Math.random() > 0.5 ? "right" : "left";
 
       // اگر اولین بار است که تصاویر لود می‌شوند
       if (!currentImg && !nextImg) {
@@ -175,62 +102,84 @@ document.addEventListener("DOMContentLoaded", function () {
         container.appendChild(img2);
 
         // اضافه کردن اطلاعات هنرمند
-        const artistInfo = document.createElement("div");
+        artistInfo = document.createElement("div");
         artistInfo.classList.add("artist-info");
         artistInfo.innerHTML = `
-                    <div class="artist-name">اثر هنری</div>
-                    <div class="artist-category">والری</div>
-                `;
+                  <div class="artist-name">${artwork.name}</div>
+                  <span class="artist-category">${artwork.category}</span>
+                  <span class="artist-artist">اثر: ${artwork.artist}</span>
+              `;
         item.appendChild(artistInfo);
 
         return;
       }
 
       // برای چرخش‌های بعدی
+      // به روزرسانی اطلاعات هنرمند بلافاصله
+      if (artistInfo) {
+        artistInfo.innerHTML = `
+                  <div class="artist-name">${artwork.name}</div>
+                  <span class="artist-category">${artwork.category}</span>
+                  <span class="artist-artist">اثر: ${artwork.artist}</span>
+              `;
+      }
+
       // تنظیم تصویر بعدی
       nextImg.src = randomImagePath;
 
-      // اضافه کردن کلاس برای انتقال
-      setTimeout(() => {
-        currentImg.style.opacity = "0";
-        nextImg.style.opacity = "1";
-      }, 50);
+      // اعمال انیمیشن به قاب
+      if (direction === "right") {
+        item.classList.add("frame-move-right");
+      } else {
+        item.classList.add("frame-move-left");
+      }
 
-      // پس از اتمام انتقال، کلاس‌ها را به روز کنید
+      // اعمال انیمیشن به تصاویر
+      if (direction === "right") {
+        nextImg.classList.add("slide-in-right");
+        currentImg.classList.add("slide-out-left");
+      } else {
+        nextImg.classList.add("slide-in-left");
+        currentImg.classList.add("slide-out-right");
+      }
+
+      // بعد از اتمام انیمیشن، کلاس‌ها را به روز کنید
       setTimeout(() => {
         // تعویض کلاس‌ها
-        currentImg.classList.remove("current");
+        currentImg.classList.remove(
+          "current",
+          "slide-out-left",
+          "slide-out-right"
+        );
         currentImg.classList.add("next");
-        nextImg.classList.remove("next");
+        nextImg.classList.remove("next", "slide-in-left", "slide-in-right");
         nextImg.classList.add("current");
 
-        // بازنشانی استایل‌ها
-        currentImg.style.opacity = "";
-        nextImg.style.opacity = "";
+        // بازنشانی transform
+        currentImg.style.transform = "";
+        nextImg.style.transform = "";
+        item.classList.remove("frame-move-right", "frame-move-left");
+        item.style.transform = "";
       }, 1200);
     });
   }
 
-  // شروع چرخش هر 3 ثانیه
+  // شروع چرخش هر 4 ثانیه
   function startShuffling() {
     if (shuffleInterval) clearInterval(shuffleInterval);
-    shuffleInterval = setInterval(rotateImages, 3000);
-
-    if (layoutInterval) clearInterval(layoutInterval);
-    layoutInterval = setInterval(shuffleLayout, 6000); // تغییر چینش هر 6 ثانیه
-
+    shuffleInterval = setInterval(rotateImages, 4000);
     isShuffling = true;
-    document.getElementById("pauseBtn").textContent = "توقف چرخش";
+    document.getElementById("pauseBtn").innerHTML =
+      '<i class="fas fa-pause"></i> توقف چرخش';
     document.querySelector(".shuffle-indicator").style.display = "flex";
   }
 
   // توقف چرخش
   function stopShuffling() {
     if (shuffleInterval) clearInterval(shuffleInterval);
-    if (layoutInterval) clearInterval(layoutInterval);
-
     isShuffling = false;
-    document.getElementById("pauseBtn").textContent = "شروع چرخش";
+    document.getElementById("pauseBtn").innerHTML =
+      '<i class="fas fa-play"></i> شروع چرخش';
     document.querySelector(".shuffle-indicator").style.display = "none";
   }
 
@@ -244,42 +193,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // چرخش دستی با دکمه
-  document.getElementById("shuffleBtn").addEventListener("click", function () {
-    rotateImages();
-    shuffleLayout();
-  });
-
-  // دکمه تغییر چینش دستی
-  const layoutBtn = document.createElement("button");
-  layoutBtn.classList.add("control-btn");
-  layoutBtn.id = "layoutBtn";
-  layoutBtn.textContent = "تغییر چینش";
-  layoutBtn.addEventListener("click", shuffleLayout);
-  document.querySelector(".controls").appendChild(layoutBtn);
+  document.getElementById("shuffleBtn").addEventListener("click", rotateImages);
 
   // شروع چرخش
   startShuffling();
 
   // همچنین یک بار در ابتدا تصاویر را بچرخان
-  setTimeout(() => {
-    rotateImages();
-    shuffleLayout();
-  }, 100);
-
-  // پیش‌لود تصاویر برای عملکرد بهتر
-  function preloadImages() {
-    Object.keys(ratioConfig).forEach((ratioClass) => {
-      const config = ratioConfig[ratioClass];
-      const folder = config.folder;
-      const count = config.count;
-
-      for (let i = 1; i <= count; i++) {
-        const number = i.toString().padStart(2, "0");
-        const img = new Image();
-        img.src = `./assets/img/${folder}/b${number}.jpg`;
-      }
-    });
-  }
-
-  preloadImages();
+  setTimeout(rotateImages, 100);
 });

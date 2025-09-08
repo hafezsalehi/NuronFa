@@ -1813,22 +1813,17 @@
     <!-- ---------------------------------------------------------------------------------------------- -->
     <!-- ---------------------------------------------------------------------------------------------- -->
     <!-- new artists1 area -->
+    <div class="controls">
+      <button class="control-btn" id="pauseBtn">
+        <i class="fas fa-pause"></i>
+        توقف چرخش
+      </button>
+      <button class="control-btn outline" id="shuffleBtn">
+        <i class="fas fa-random"></i>
+        چرخش دستی
+      </button>
+    </div>
     <section class="artists-section">
-      <div class="artists-bg"></div>
-      <div class="artists-overlay"></div>
-
-      <div class="artists-header">
-        <h2>گالری هنرمندان Wallery</h2>
-        <p>
-          کشف کنید و لذت ببرید از آثار منحصر به فرد هنرمندان برجسته. هر ۳ ثانیه،
-          گالری با تصاویر جدیدی به روز می‌شود.
-        </p>
-        <div class="buttons">
-          <a href="#" class="btn">کاوش هنرمندان</a>
-          <a href="#" class="btn btn-outline">خرید آثار</a>
-        </div>
-      </div>
-
       <div class="artists-grid">
         <!-- جایگاه‌های با ابعاد مختلف -->
         <div class="artist-item ratio-11">
@@ -1901,28 +1896,9 @@
             </div>
           </div>
         </div>
-        <div class="artist-item ratio-11">
-          <div class="image-container">
-            <div class="loading">
-              <div class="loading-spinner"></div>
-            </div>
-          </div>
-        </div>
-        <div class="artist-item ratio-43">
-          <div class="image-container">
-            <div class="loading">
-              <div class="loading-spinner"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="controls">
-        <button class="control-btn" id="pauseBtn">توقف چرخش</button>
-        <button class="control-btn" id="shuffleBtn">چرخش دستی</button>
-        <button class="control-btn" id="layoutBtn">تغییر چینش</button>
       </div>
     </section>
+
     <!-- پایان بخش هنرمندان -->
 
     <!-- new artists1 area  End-->
@@ -4636,6 +4612,6 @@
     <!-- new artists js -->
     <script src="assets/css/artists1/artists1.js"></script>
 
-    <script></script>
+    <script src="./assets/data/artworks-data.js"></script>
   </body>
 </html>
