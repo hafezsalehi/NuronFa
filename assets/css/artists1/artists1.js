@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const artwork = getRandomUnusedImage(ratioFolder);
       if (!artwork) return;
 
-      const randomImagePath = `./assets/img/${ratioFolder}/${artwork.file}`;
+      const randomImagePath = `./images/img/${ratioFolder}/${artwork.file}`;
 
       // جهت انیمیشن (راست یا چپ)
       const direction = Math.random() > 0.5 ? "right" : "left";
