@@ -58,236 +58,121 @@
   <body class="template-color-1 nft-body-connect">
     <!-- start header area -->
 
-    <header class="rn-header haeder-default header--sticky">
-      <div class="container">
-        <div class="header-inner">
-<!-- mune fetch -->
-<div  class="header-left">
-</div>
-<script>
-  fetch('menu.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementsByClassName('header-left')[0].innerHTML = data;
-    });
-</script>
-<!-- mune fetch End-->
-          <div class="header-right">
-            <div class="setting-option d-none d-lg-block">
-              <form class="search-form-wrapper" action="#">
-                <input
-                  type="search"
-                  placeholder="اینجا بگردید"
-                  aria-label="جستجو"
-                />
-                <div class="search-icon">
-                  <button><i class="feather-search"></i></button>
-                </div>
-              </form>
-            </div>
-            <div class="setting-option rn-icon-list d-block d-lg-none">
-              <div class="icon-box search-mobile-icon">
-                <button><i class="feather-search"></i></button>
-              </div>
-              <form
-                id="header-search-1"
-                action="#"
-                method="GET"
-                class="large-mobile-blog-search"
-              >
-                <div class="rn-search-mobile form-group">
-                  <button type="submit" class="search-button">
-                    <i class="feather-search"></i>
-                  </button>
-                  <input type="text" placeholder="جستجو ..." />
-                </div>
-              </form>
-            </div>
+    <!-- Navbar fetch End-->
+    <header class="rn-header haeder-default header--sticky"></header>
 
-            <div
-              class="setting-option header-btn rbt-site-header"
-              id="rbt-site-header"
-            >
-              <div class="icon-box">
-                <a
-                  id="connectbtn"
-                  class="btn btn-primary-alta btn-small"
-                  href="connect.html"
-                  >اتصال به کیف پول</a
-                >
-              </div>
-            </div>
-
-            <div class="setting-option rn-icon-list notification-badge">
-              <div class="icon-box">
-                <a href="activity.html"
-                  ><i class="feather-bell"></i><span class="badge">6</span></a
-                >
-              </div>
-            </div>
-
-            <div class="header_admin" id="header_admin">
-              <div class="setting-option rn-icon-list user-account">
-                <div class="icon-box">
-                  <a href="author.html"
-                    ><img src="assets/images/icons/boy-avater.png" alt="Images"
-                  /></a>
-                  <div class="rn-dropdown">
-                    <div class="rn-inner-top">
-                      <h4 class="title">
-                        <a href="product-details.html">کریستوفر ویلیام</a>
-                      </h4>
-                      <span><a href="#">تنظیم نام نمایش</a></span>
-                    </div>
-                    <div class="rn-product-inner">
-                      <ul class="product-list">
-                        <li class="single-product-list">
-                          <div class="thumbnail">
-                            <a href="product-details.html"
-                              ><img
-                                src="assets/images/portfolio/portfolio-07.jpg"
-                                alt="Nft Product Images"
-                            /></a>
-                          </div>
-                          <div class="content">
-                            <h6 class="title">
-                              <a href="product-details.html">موجودی</a>
-                            </h6>
-                            <span class="price">25 ETH</span>
-                          </div>
-                          <div class="button"></div>
-                        </li>
-                        <li class="single-product-list">
-                          <div class="thumbnail">
-                            <a href="product-details.html"
-                              ><img
-                                src="assets/images/portfolio/portfolio-01.jpg"
-                                alt="Nft Product Images"
-                            /></a>
-                          </div>
-                          <div class="content">
-                            <h6 class="title">
-                              <a href="product-details.html">موجودی</a>
-                            </h6>
-                            <span class="price">25 ETH</span>
-                          </div>
-                          <div class="button"></div>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="add-fund-button mt--20 pb--20">
-                      <a class="btn btn-primary-alta w-100" href="connect.html"
-                        >وجوه بیشتر خود را اضافه کنید</a
-                      >
-                    </div>
-                    <ul class="list-inner">
-                      <li><a href="author.html">نمایه من</a></li>
-                      <li><a href="edit-profile.html">ویرایش نمایه</a></li>
-                      <li><a href="connect.html">مدیریت وجوه</a></li>
-                      <li><a href="login.html">خروج از سیستم</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="setting-option mobile-menu-bar d-block d-xl-none">
-              <div class="hamberger">
-                <button class="hamberger-button">
-                  <i class="feather-menu"></i>
-                </button>
-              </div>
-            </div>
-
-            <div id="my_switcher" class="my_switcher setting-option">
-              <ul>
-                <li>
-                  <a
-                    href="javascript: void(0);"
-                    data-theme="light"
-                    class="setColor light"
-                  >
-                    <img
-                      class="sun-image"
-                      src="assets/images/icons/sun-01.svg"
-                      alt="Sun images"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="javascript: void(0);"
-                    data-theme="dark"
-                    class="setColor dark"
-                  >
-                    <img
-                      class="Victor Image"
-                      src="assets/images/icons/vector.svg"
-                      alt="Vector Images"
-                    />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+    <script>
+      fetch("menu.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementsByClassName("haeder-default")[0].innerHTML = data;
+        });
+    </script>
+    <!-- Navbar fetch End-->
 
     <!-- ENd Header Area -->
 
     <!-- start banner area -->
     <div class="slider-area ptb--60">
       <div class="container-fluid padding-contorler-am-slide">
-          <div class="row d-flex align-items-center">
-              <div class="col-lg-12 col-xl-6 order-2 order-xl-1 padding-contorler-am-slide-right">
-
-                  <div class="banner-top-rating sal-animate">
-                      <div class="banner-badge-top" data-sal-delay="300" data-sal="slide-up" data-sal-duration="500">
-                          <div class="icon">
-                              <img src="assets/images/icons/rating-2.png" alt="Icons Images">
-                          </div>
-                          <span class="subtitle">دارای ثبت اختراع جهانی</span>
-                      </div>
-
-                      <div class="banner-badge-top" data-sal-delay="500" data-sal="slide-up" data-sal-duration="500">
-                          <div class="icon">
-                              <img src="assets/images/icons/trophy.png" alt="Icons Images">
-                          </div>
-                          <span class="subtitle">#1 اولین در ایران و جهان </span>
-                      </div>
-                  </div>
-
-                  <h1 class="title large-height theme-color" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">هنر روی دیوار نمی ماند<br> هنر خود را بلاکچینی کنید </h1>
-                  <p class="slide-disc" data-sal-delay="300" data-sal="slide-up" data-sal-duration="800">با تبدیل هنر خود به NFT و ارز دیجیتال در والری، هم خود و هم آثار خود را ماندگار کنید و کسب درآمد کنید</p>
-                  <div class="button-group">
-                      <a class="btn btn-large btn-primary" href="#" data-sal-delay="400" data-sal="slide-up" data-sal-duration="800">شروع به کار</ الف>
-                      <a class="btn btn-large btn-primary-alta" href="create.html" data-sal-delay="500" data-sal="slide-up" data-sal-duration="800"> ایجاد</a>
-                  </div>
+        <div class="row d-flex align-items-center">
+          <div
+            class="col-lg-12 col-xl-6 order-2 order-xl-1 padding-contorler-am-slide-right"
+          >
+            <div class="banner-top-rating sal-animate">
+              <div
+                class="banner-badge-top"
+                data-sal-delay="300"
+                data-sal="slide-up"
+                data-sal-duration="500"
+              >
+                <div class="icon">
+                  <img
+                    src="assets/images/icons/rating-2.png"
+                    alt="Icons Images"
+                  />
+                </div>
+                <span class="subtitle">همچون ستاره برای همه جهان بدرخشید</span>
               </div>
-              <div class="col-lg-12 col-xl-6 order-1 order-xl-2">
 
-                  <div class="banner-gallery-wrapper">
-                      <div class="banner-gallery-loop">
-                          <div class="banner-gallery banner-gallery-1 mt--90">
-                              <img src="assets/images/banner/banner-01.png" alt="تصاویر بنر">
-                              <img src="assets/images/banner/banner-01.png" alt="تصاویر بنر">
-                          </div>
-                          <div class="banner-gallery banner-gallery-2">
-                              <img src="assets/images/banner/banner-02.png" alt="تصاویر بنر">
-                              <img src="assets/images/banner/banner-02.png" alt="تصاویر بنر">
-                          </div>
-                          <div class="banner-gallery banner-gallery-3 mt--90">
-                              <img src="assets/images/banner/banner-03.png" alt="تصاویر بنر">
-                              <img src="assets/images/banner/banner-03.png" alt="تصاویر بنر">
-                          </div>
-                      </div>
-                  </div>
-
+              <div
+                class="banner-badge-top"
+                data-sal-delay="500"
+                data-sal="slide-up"
+                data-sal-duration="500"
+              >
+                <div class="icon">
+                  <img
+                    src="assets/images/icons/trophy.png"
+                    alt="Icons Images"
+                  />
+                </div>
+                <span class="subtitle">#1 اولین در ایران و جهان </span>
               </div>
+            </div>
+
+            <h1
+              class="title large-height theme-color"
+              data-sal-delay="200"
+              data-sal="slide-up"
+              data-sal-duration="800"
+            >
+              هنر روی دیوار نمی ماند<br />
+              هنر خود را بلاکچینی کنید
+            </h1>
+            <p
+              class="slide-disc"
+              data-sal-delay="300"
+              data-sal="slide-up"
+              data-sal-duration="800"
+            >
+              با تبدیل هنر خود به NFT و ارز دیجیتال در والری، هم خود و هم آثار
+              خود را ماندگار کنید و کسب درآمد کنید
+            </p>
+            <div class="button-group">
+              <!-- <a class="btn btn-large btn-primary" href="#" data-sal-delay="400" data-sal="slide-up" data-sal-duration="800">شروع به کار</ الف>
+                      <a class="btn btn-large btn-primary-alta" href="create.html" data-sal-delay="500" data-sal="slide-up" data-sal-duration="800"> ایجاد</a> -->
+            </div>
           </div>
+          <div class="col-lg-12 col-xl-6 order-1 order-xl-2">
+            <div class="banner-gallery-wrapper">
+              <div class="banner-gallery-loop">
+                <div class="banner-gallery banner-gallery-1 mt--90">
+                  <img
+                    src="assets/images/banner/banner-01.png"
+                    alt="تصاویر بنر"
+                  />
+                  <img
+                    src="assets/images/banner/banner-01.png"
+                    alt="تصاویر بنر"
+                  />
+                </div>
+                <div class="banner-gallery banner-gallery-2">
+                  <img
+                    src="assets/images/banner/banner-02.png"
+                    alt="تصاویر بنر"
+                  />
+                  <img
+                    src="assets/images/banner/banner-02.png"
+                    alt="تصاویر بنر"
+                  />
+                </div>
+                <div class="banner-gallery banner-gallery-3 mt--90">
+                  <img
+                    src="assets/images/banner/banner-03.png"
+                    alt="تصاویر بنر"
+                  />
+                  <img
+                    src="assets/images/banner/banner-03.png"
+                    alt="تصاویر بنر"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
+    </div>
 
     <!-- End banner area -->
 
@@ -1035,25 +920,25 @@
     <!-- ---------------------------------------------------------------------------------------------- -->
     <!-- ---------------------------------------------------------------------------------------------- -->
     <!-- About Market Place Start -->
-<div class="about-market-area rn-section-gapTop">
-  <div class="container">
-      <div class="row">
+    <div class="about-market-area rn-section-gapTop">
+      <div class="container">
+        <div class="row">
           <div class="col-12">
-              <div class="about-wrapper text-center">
-                  <h2>هنرمندان ماندگار</h2>
-                  <p class="discription">
-
-هنر ماندگار است و هنرمند هم با هنر خود. جمعی از هنرمندان سرتاسر دنیا که نام خود را بر لوحه تاریخ نوشتند. دیوارهای جهان محلی شده برای تبلور ایده ها و توانایی ها و خلاقیت ها. گوشه ای از این زیبایی ها را ببینید
-
-                  </p>
-              </div>
+            <div class="about-wrapper text-center">
+              <h2>هنرمندان ماندگار</h2>
+              <p class="discription">
+                هنر ماندگار است و هنرمند هم با هنر خود. جمعی از هنرمندان سرتاسر
+                دنیا که نام خود را بر لوحه تاریخ نوشتند. دیوارهای جهان محلی شده
+                برای تبلور ایده ها و توانایی ها و خلاقیت ها. گوشه ای از این
+                زیبایی ها را ببینید
+              </p>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-</div>
-<!-- About Market Place End -->
+    </div>
+    <!-- About Market Place End -->
 
-    
     <!-- ---------------------------------------------------------------------------------------------- -->
     <!-- new artists1 area -->
     <div class="controls">
