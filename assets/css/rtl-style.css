@@ -12394,9 +12394,11 @@ span.rn-badge-card::before {
     Popup Menu Styles
 --------------------------------*/
 .logo-thumbnail a {
+
     display: block;
 }
 .logo-thumbnail img {
+
     max-height: 35px;
     object-fit: cover;
 }
