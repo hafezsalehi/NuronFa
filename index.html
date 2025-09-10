@@ -56,9 +56,8 @@
 
   <!-- 0 == light, 1 == dark -->
   <body class="template-color-1 nft-body-connect">
-    <!-- start header area -->
+    <!-- start Nav area -->
 
-    <!-- Navbar fetch start-->
     <header class="rn-header haeder-default header--sticky"></header>
 
     <script>
@@ -68,9 +67,23 @@
           document.getElementsByClassName("haeder-default")[0].innerHTML = data;
         });
     </script>
-    <!-- Navbar fetch End-->
 
-    <!-- ENd Header Area -->
+    <!-- ENd Nav Area -->
+
+    <!-- Start obile menu -->
+
+    <div class="popup-mobile-menu"></div>
+
+    <script>
+      fetch("mobilemenu.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementsByClassName("popup-mobile-menu")[0].innerHTML =
+            data;
+        });
+    </script>
+
+    <!-- End mobile menu  -->
 
     <!-- start banner area -->
     <div class="slider-area ptb--60">
@@ -3559,6 +3572,7 @@
     <script src="assets/js/vendor/vanilla.tilt.js"></script>
 
     <!-- main JS -->
+
     <script src="assets/js/main.js"></script>
     <!-- Meta Mask  -->
     <script src="assets/js/vendor/web3.min.js"></script>
