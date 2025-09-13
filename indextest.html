@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اسلایدر ساده و کارآمد</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1a1a1a;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .slider-container {
+        width: 100%;
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+        margin: 40px 0;
+      }
+
+      .slider {
+        display: flex;
+        width: 500%;
+        height: 100%;
+        transition: transform 0.5s ease;
+      }
+
+      .slide {
+        flex: 0 0 20%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s ease;
+      }
+
+      .slide-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .slide-content {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        border-radius: 5px;
+        transform: translateY(100%);
+        transition: transform 0.5s ease;
+      }
+
+      .slide:hover .slide-content {
+        transform: translateY(0);
+      }
+
+      .slide:hover .slide-img {
+        transform: scale(1.05);
+      }
+
+      .slider-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 10px;
+      }
+
+      .slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .slider-dot.active {
+        background: #ff5e14;
+      }
+
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        z-index: 10;
+        transition: background 0.3s ease;
+      }
+
+      .slider-btn:hover {
+        background: rgba(255, 94, 20, 0.8);
+      }
+
+      .prev-btn {
+        right: 15px;
+      }
+
+      .next-btn {
+        left: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="text-align: center; margin: 30px 0">اسلایدر ساده و کارآمد</h1>
+
+      <div class="slider-container">
+        <div class="slider">
+          <div class="slide">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+              class="slide-img"
+              alt="Slide 1"
+            />
+            <div class="slide-content">
+              <h3>عنوان اسلاید 1</h3>
+              <p>توضیحات اسلاید اول</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+              class="slide-img"
+              alt="Slide 2"
+            />
+            <div class="slide-content">
+              <h3>عنوان اسلاید 2</h3>
+              <p>توضیحات اسلاید دوم</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+              class="slide-img"
+              alt="Slide 3"
+            />
+            <div class="slide-content">
+              <h3>عنوان اسلاید 3</h3>
+              <p>توضیحات اسلاید سوم</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+              class="slide-img"
+              alt="Slide 4"
+            />
+            <div class="slide-content">
+              <h3>عنوان اسلاید 4</h3>
+              <p>توضیحات اسلاید چهارم</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="https://images.unsplash.com/photo-1568992688065-536aad8a12f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+              class="slide-img"
+              alt="Slide 5"
+            />
+            <div class="slide-content">
+              <h3>عنوان اسلاید 5</h3>
+              <p>توضیحات اسلاید پنجم</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="slider-btn prev-btn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <button class="slider-btn next-btn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+
+      <div class="slider-nav">
+        <div class="slider-dot active"></div>
+        <div class="slider-dot"></div>
+        <div class="slider-dot"></div>
+        <div class="slider-dot"></div>
+        <div class="slider-dot"></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slider = document.querySelector(".slider");
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".slider-dot");
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+
+        let currentSlide = 0;
+        const slideCount = slides.length;
+
+        // تابع برای به روز رسانی اسلایدر
+        function updateSlider() {
+          slider.style.transform = `translateX(-${currentSlide * 20}%)`;
+
+          // به روز رسانی dots
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentSlide);
+          });
+        }
+
+        // رفتن به اسلاید بعدی
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % slideCount;
+          updateSlider();
+        }
+
+        // رفتن به اسلاید قبلی
+        function prevSlide() {
+          currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+          updateSlider();
+        }
+
+        // کلیک روی دکمه‌ها
+        nextBtn.addEventListener("click", nextSlide);
+        prevBtn.addEventListener("click", prevSlide);
+
+        // کلیک روی dots
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            currentSlide = index;
+            updateSlider();
+          });
+        });
+
+        // اسلاید خودکار
+        let autoSlide = setInterval(nextSlide, 3000);
+
+        // توقف اسلاید خودکار هنگام هاور روی اسلایدر
+        const sliderContainer = document.querySelector(".slider-container");
+        sliderContainer.addEventListener("mouseenter", () => {
+          clearInterval(autoSlide);
+        });
+
+        sliderContainer.addEventListener("mouseleave", () => {
+          autoSlide = setInterval(nextSlide, 3000);
+        });
+      });
+    </script>
+  </body>
+</html>
