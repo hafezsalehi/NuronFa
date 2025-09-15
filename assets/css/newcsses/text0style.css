@@ -1,0 +1,294 @@
+/* common css */
+@font-face {
+    font-family: "Vazir";
+    src: url(../fonts/Vazir-Regular.ttf);
+}
+
+.text0rtl {
+    direction: rtl;
+    background-color: #0c0909;
+    font-size: 14px;
+    color: #202020;
+    width: 100%;
+    position: relative;
+    font-family: "Vazir";
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.main-wrapper {
+    overflow: hidden;
+}
+
+
+
+
+#text0section p {
+    color: #777777;
+    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 15px;
+    transition: all 0.5s ease-in-out;
+}
+
+
+
+
+
+#text0section {
+    padding-top: calc(40px + (100 - 40) * ((100vw - 320px) / (1920 - 320)));
+    padding-bottom: calc(40px + (100 - 40) * ((100vw - 320px) / (1920 - 320)));
+    position: relative;
+    margin: 20px 20px;
+}
+
+/* button styles */
+.text0button1 {
+    background-color: #ffffff;
+    border-radius: 100px;
+    min-width: 160px;
+    height: 50px;
+    text-align: left;
+    padding: 13px 46px 11px 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-size: 200% auto;
+    transition: all 0.5s ease-in-out;
+}
+
+.text0button1:hover {
+    box-shadow: 0 6px 22px 3px rgba(0, 0, 0, 0.12);
+    background-position: right center;
+    transform: translateY(-2px);
+}
+
+.text0button1 .title {
+    font-size: calc(13px + (16 - 13) * ((100vw - 320px) / (1920 - 320)));
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text0button1 .btn-icon {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 100%;
+    text-align: center;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff;
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.text0button1 .btn-icon i {
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.text0button1 .btn-icon i::before {
+    font-size: 10px;
+    padding-left: 2px;
+}
+
+.text0button2 {
+    padding-top: 14px;
+    padding-bottom: 12px;
+}
+
+.text0button2 .title {
+    -webkit-text-fill-color: #ffffff;
+}
+
+/* responsive */
+@media (max-width: 767px) {
+    .text0button1 {
+        min-width: 120px;
+        height: 40px;
+        padding: 10px 43px 9px 12px;
+    }
+
+    .text0button1 .btn-icon {
+        right: 8px;
+    }
+}
+
+/* service section css start */
+.service-wrapper .row {
+    align-items: center;
+}
+
+.service-content-1 .service-title {
+    color: #777777;
+    font-size: calc(14px + (24 - 14) * ((100vw - 320px) / (1920 - 320)));
+    font-weight: 400;
+    position: relative;
+    padding-bottom: calc(12px + (18 - 12) * ((100vw - 320px) / (1920 - 320)));
+    margin-bottom: calc(14px + (22 - 14) * ((100vw - 320px) / (1920 - 320)));
+    text-transform: capitalize;
+}
+
+.service-content-1 .service-title:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: url(../image/service/left-line.png) no-repeat left;
+    height: 6px;
+    width: 56px;
+}
+
+.service-content-1.main-title-wrapper {
+    margin-bottom: 0;
+    padding-right: 50px;
+    text-align: left;
+}
+
+.service-dec {
+    margin-bottom: calc(20px + (40 - 20) * ((100vw - 320px) / (1920 - 320)));
+}
+
+.service-block2 {
+    margin-top: -115px;
+}
+
+.service-block-content {
+    padding-top: calc(25px + (68 - 25) * ((100vw - 320px) / (1920 - 320)));
+}
+
+.service-content {
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    padding: 15px;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+}
+
+.service-content .service-content-dec .service-title {
+    color: #202020;
+    font-size: calc(16px + (24 - 16) * ((100vw - 320px) / (1920 - 320)));
+    font-weight: 600;
+    position: relative;
+    margin-bottom: 5px;
+    transition: all 0.5s ease-in-out;
+}
+
+.service-content .service-content-dec .service-dec-content {
+    margin: 0;
+}
+
+.service-icon {
+    text-align: center;
+    position: relative;
+    padding: 14px 0;
+}
+
+.service-icon span {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.5s ease-in-out;
+}
+
+.service-icon span:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../image/service/img5.png) no-repeat center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transform: scale(0.4);
+    filter: opacity(0);
+    transition: all 0.5s ease-in-out;
+}
+
+.service-icon span i {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 32px;
+    position: relative;
+    z-index: 1;
+    color: #202020;
+    transition: all 0.5s ease-in-out;
+}
+
+.service-content:hover {
+    box-shadow: rgba(39, 79, 117, 0.2) 0 40px 90px -30px;
+    transform: translateY(-10px);
+}
+
+.service-content:hover .service-icon span:after {
+    transform: scale(1);
+}
+
+.service-content:hover .service-icon span i {
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.service-content:hover .service-icon img {
+    box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.35);
+}
+
+.service-block1 .service-content.service-0,
+.service-block2 .service-content.service-0 {
+    margin-bottom: calc(20px + (30 - 20) * ((100vw - 320px) / (1920 - 320)));
+}
+
+/* responsive css */
+@media (max-width: 1199px) {
+    .service-maintitle {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .service-content-1.main-title-wrapper {
+        padding: 0;
+    }
+
+    .slider-outer {
+        padding-top: 25px;
+    }
+
+    .service-title {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 767px) {
+    .service-block2 {
+        margin: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .service-block1 .service-content.service-1 {
+        margin-bottom: calc(20px + (30 - 20) * ((100vw - 320px) / (1920 - 320)));
+    }
+}
+
+/* service section css end */

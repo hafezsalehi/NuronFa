@@ -141,7 +141,8 @@ html {
     font-size: 10px;
     overflow: hidden;
     overflow-y: auto;
-    scroll-behavior: auto !important;
+    scroll-behavior: smooth !important;;
+    /* scroll-behavior: auto !important; */
 }
 
 body {
