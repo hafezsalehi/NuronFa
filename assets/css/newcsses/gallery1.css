@@ -121,12 +121,12 @@
 
 /* افکت hover برای نزدیک شدن عکس‌ها به هم */
 .row-gallery1:hover .service__main__content-gallery1 {
-    transform: scale(0.95);
+    transform: scale(1.02);
     transition: all 0.4s ease;
 }
 
 .row-gallery1:hover .service__main__content-gallery1:hover {
-    transform: scale(1.05);
+    transform: scale(1.5);
     z-index: 10;
 }
 

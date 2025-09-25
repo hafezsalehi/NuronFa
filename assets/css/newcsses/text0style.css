@@ -1,23 +1,27 @@
 /* common css */
 @font-face {
     font-family: "Vazir";
-    src: url(../fonts/Vazir-Regular.ttf);
+    src: url(../../fonts/Vazir-Regular.ttf);
 }
 
 .text0rtl {
-    direction: rtl;
-    background-color: #0c0909;
+    /* direction: rtl; */
+    /* background-color: #0c033f; */
     font-size: 14px;
-    color: #202020;
+    color: #39c534;
     width: 100%;
     position: relative;
     font-family: "Vazir";
     font-weight: 400;
     letter-spacing: 0.5px;
+
+    padding-left: 20px;
+
 }
 
 .main-wrapper {
     overflow: hidden;
+
 }
 
 
@@ -25,11 +29,12 @@
 
 #text0section p {
     color: #777777;
-    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+    font-size: calc(18px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
     font-weight: 500;
     position: relative;
     margin-bottom: 15px;
     transition: all 0.5s ease-in-out;
+
 }
 
 
@@ -40,7 +45,8 @@
     padding-top: calc(40px + (100 - 40) * ((100vw - 320px) / (1920 - 320)));
     padding-bottom: calc(40px + (100 - 40) * ((100vw - 320px) / (1920 - 320)));
     position: relative;
-    margin: 20px 20px;
+    margin: 10px 10px;
+
 }
 
 /* button styles */
@@ -129,19 +135,24 @@
 }
 
 /* service section css start */
-.service-wrapper .row {
+/* .service-wrapper .row    {
     align-items: center;
-}
+} */
 
-.service-content-1 .service-title {
-    color: #777777;
-    font-size: calc(14px + (24 - 14) * ((100vw - 320px) / (1920 - 320)));
-    font-weight: 400;
+
+
+.service-content-1 .sitemain-subtitle {
+    color: #e5e91e;
+    font-size: calc(44px + (24 - 14) * ((100vw - 320px) / (1920 - 320)));
+    /* font-size: 50px; */
     position: relative;
     padding-bottom: calc(12px + (18 - 12) * ((100vw - 320px) / (1920 - 320)));
     margin-bottom: calc(14px + (22 - 14) * ((100vw - 320px) / (1920 - 320)));
     text-transform: capitalize;
+    direction: ltr;
 }
+
+.service-content-1 .sitemain-subtitle {}
 
 .service-content-1 .service-title:after {
     content: '';
@@ -153,14 +164,18 @@
     width: 56px;
 }
 
-.service-content-1.main-title-wrapper {
+.service-content-1 {
     margin-bottom: 0;
-    padding-right: 50px;
+    padding-right: 10px;
     text-align: left;
 }
 
 .service-dec {
     margin-bottom: calc(20px + (40 - 20) * ((100vw - 320px) / (1920 - 320)));
+    margin: 0;
+    direction: rtl !important;
+
+    color: #1cceb6 !important;
 }
 
 .service-block2 {
@@ -175,13 +190,14 @@
     text-align: center;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
-    padding: 15px;
-    border: 1px solid #eeeeee;
-    border-radius: 5px;
+    padding: 5px;
+    border: 2px solid #eeeeee;
+    border-radius: 35px;
 }
 
+
 .service-content .service-content-dec .service-title {
-    color: #202020;
+    color: #2bb92b;
     font-size: calc(16px + (24 - 16) * ((100vw - 320px) / (1920 - 320)));
     font-weight: 600;
     position: relative;
@@ -190,7 +206,8 @@
 }
 
 .service-content .service-content-dec .service-dec-content {
-    margin: 0;
+    margin: 25px 0;
+    color: #ffffff !important;
 }
 
 .service-icon {
@@ -231,26 +248,36 @@
     font-size: 32px;
     position: relative;
     z-index: 1;
-    color: #202020;
+    color: #10b819;
     transition: all 0.5s ease-in-out;
 }
 
 .service-content:hover {
     box-shadow: rgba(39, 79, 117, 0.2) 0 40px 90px -30px;
     transform: translateY(-10px);
+    border: 3px solid #e5e91e;
+    border-radius: 15px;
 }
 
 .service-content:hover .service-icon span:after {
-    transform: scale(1);
+    transform: scale(2);
 }
 
 .service-content:hover .service-icon span i {
     -webkit-background-clip: text;
-    color: transparent;
+    color: yellow;
+    transform: translateY(-10px) !important;
+    transform: scale(1.2);
 }
 
 .service-content:hover .service-icon img {
     box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.35);
+}
+
+.service-content:hover .service-title {
+    transform: scale(1.5);
+    color: yellow;
+    transform: translateY(-5px) !important;
 }
 
 .service-block1 .service-content.service-0,
