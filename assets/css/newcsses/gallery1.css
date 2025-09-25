@@ -1,0 +1,468 @@
+/* استایل‌های اصلی بخش پروژه‌ها - نسخه gallery1 */
+.project__section-gallery1 {
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 70px;
+}
+
+.home__one__section__five-gallery1 {
+    position: relative;
+}
+
+.pb-70-gallery1 {
+    padding-bottom: 70px;
+}
+
+.pb-lg-60-gallery1 {
+    padding-bottom: 60px;
+}
+
+.pt-150-gallery1 {
+    padding-top: 150px;
+}
+
+.pt-lg-60-gallery1 {
+    padding-top: 60px;
+}
+
+.position-relative-gallery1 {
+    position: relative;
+}
+
+/* استایل‌های تایتل و توضیحات */
+.section__title-gallery1 {
+    margin-bottom: 30px;
+}
+
+.section__title__main-gallery1 {
+    font-size: 65px;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: normal;
+    position: relative;
+    margin-bottom: 30px;
+    font-family: iranyekan;
+}
+
+.mb-30-gallery1 {
+    margin-bottom: 30px;
+}
+
+.section__description-gallery1 {
+    font-family: "Supreme", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: capitalize;
+    line-height: normal;
+    margin-bottom: 30px;
+}
+
+/* استایل‌های دکمه */
+.section__btn-gallery1 {
+    text-align: start;
+}
+
+.ht_btn-gallery1 {
+    overflow: hidden;
+    color: white;
+    background: #ff6600;
+    font-size: 16px;
+    font-family: iranyekan;
+    font-weight: 500;
+    line-height: normal;
+    padding: 18px 33px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+}
+
+.ht_btn-gallery1::before {
+    content: "";
+    background: #01050c;
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.ht_btn-gallery1:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.ht_btn-gallery1:hover::before {
+    width: 100%;
+}
+
+/* استایل‌های کارت‌های پروژه */
+.pt-80-gallery1 {
+    padding-top: 80px;
+}
+
+.pt-lg-40-gallery1 {
+    padding-top: 40px;
+}
+
+.service__main__content-gallery1 {
+    position: relative;
+    margin-bottom: 30px;
+    transition: all 0.4s ease;
+    transform: scale(1);
+}
+
+/* افکت hover برای نزدیک شدن عکس‌ها به هم */
+.row-gallery1:hover .service__main__content-gallery1 {
+    transform: scale(0.95);
+    transition: all 0.4s ease;
+}
+
+.row-gallery1:hover .service__main__content-gallery1:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+/* افکت زمانی که ماوس روی سکشن است */
+.service__main__content-gallery1:hover .service__main__content-gallery1:nth-child(1) {
+    transform: translateX(10px) scale(1.1);
+}
+
+.service__main__content-gallery1:hover .service__main__content-gallery1:nth-child(2) {
+    transform: translateX(-5px) scale(1.1);
+}
+
+.service__main__content-gallery1:hover .service__main__content-gallery1:nth-child(3) {
+    transform: translateX(5px) scale(1.1);
+}
+
+.service__main__content-gallery1:hover .service__main__content-gallery1:nth-child(4) {
+    transform: translateX(-10px) scale(1.1);
+}
+
+.service__img-gallery1 {
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.service__img-gallery1 img {
+    max-width: 100%;
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+    transition: all 0.4s ease;
+}
+
+.service__main__content-gallery1:hover .service__img-gallery1 img {
+    transform: scale(1.1);
+}
+
+.service__content-gallery1 {
+    position: absolute;
+    padding: 30px 50px;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 102, 0, 0.8);
+    transition: all 0.5s ease;
+    transform: scale(0);
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.service__main__content-gallery1:hover .service__content-gallery1 {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* استایل‌های آیکون‌ها */
+.service__link-gallery1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.icon__link-gallery1 {
+    display: inline-block;
+}
+
+.icon-gallery1 {
+    text-align: center;
+    line-height: 60px;
+    width: 60px;
+    height: 60px;
+    background: white;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0 5px;
+    transform: scale(1);
+}
+
+.icon-gallery1:hover {
+    background: #fef7f3;
+    transform: scale(1.1);
+}
+
+.mb-20-gallery1 {
+    margin-bottom: 20px;
+}
+
+/* استایل‌های متن */
+.service__text-gallery1 {
+    text-align: center;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.service__main__content-gallery1:hover .service__text-gallery1 {
+    transform: translateY(0);
+}
+
+.service__text-gallery1 a {
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    transform: translateY(0);
+}
+
+.service__text-gallery1 a:hover {
+    color: #fef7f3;
+    transform: translateY(-2px);
+}
+
+.mt-30-gallery1 {
+    margin-top: 30px;
+}
+
+/* استایل‌های شکل‌ها و پس‌زمینه */
+.shapes-gallery1 {
+    position: absolute;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.star__shape__04-gallery1 {
+    top: 8%;
+    left: 5%;
+    animation: scale-up-one-gallery1 3s ease-in-out 0s infinite alternate-reverse both;
+}
+
+.project__one__bg__01-gallery1 {
+    top: -18%;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+}
+
+.w-100-gallery1 {
+    width: 100%;
+}
+
+/* انیمیشن‌ها */
+@keyframes scale-up-one-gallery1 {
+    0% {
+        transform: scale(0) rotateY(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1) rotateY(360deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0) rotateY(0);
+        opacity: 0;
+    }
+}
+
+/* افکت ویژه برای گالری */
+.gallery-hover-effect-gallery1 {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* استایل‌های ریسپانسیو */
+@media (max-width: 1200px) {
+    .section__title__main-gallery1 {
+        font-size: 45px;
+    }
+
+    .pt-150-gallery1 {
+        padding-top: 100px;
+    }
+
+    .pt-80-gallery1 {
+        padding-top: 60px;
+    }
+
+    .service__content-gallery1 {
+        padding: 20px 30px;
+    }
+
+    /* غیرفعال کردن افکت hover در موبایل */
+    .project__section-gallery1:hover .service__main__content-gallery1 {
+        transform: scale(1);
+    }
+
+    .project__section-gallery1:hover .service__main__content-gallery1:hover {
+        transform: scale(1.02);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .section__title__main-gallery1 {
+        font-size: 35px;
+    }
+
+    .service__content-gallery1 {
+        padding: 15px;
+    }
+
+    .service__text-gallery1 a {
+        font-size: 24px;
+    }
+
+    .icon-gallery1 {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    /* غیرفعال کردن کامل افکت hover در موبایل */
+    .project__section-gallery1:hover .service__main__content-gallery1 {
+        transform: none;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .section__title__main-gallery1 {
+        font-size: 28px;
+    }
+
+    .section__description-gallery1 {
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    .ht_btn-gallery1 {
+        padding: 14px 25px;
+        font-size: 14px;
+    }
+
+    .service__img-gallery1 img {
+        height: 300px;
+    }
+}
+
+/* استایل‌های utility */
+.text-start-gallery1 {
+    text-align: right !important;
+}
+
+.text-xl-end-gallery1 {
+    text-align: left !important;
+}
+
+.text-center-gallery1 {
+    text-align: center !important;
+}
+
+.text-lg-end-gallery1 {
+    text-align: left !important;
+}
+
+.mb-lg-30-gallery1 {
+    margin-bottom: 30px;
+}
+
+.mb-40-gallery1 {
+    margin-bottom: 40px;
+}
+
+.align-items-center-gallery1 {
+    align-items: center !important;
+}
+
+.row-gallery1 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    transition: all 0.4s ease;
+}
+
+.col-xl-8-gallery1,
+.col-xl-4-gallery1,
+.col-xl-7-gallery1,
+.col-xl-5-gallery1,
+.col-xl-11-gallery1,
+.col-xl-10-gallery1,
+.col-lg-12-gallery1 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    transition: all 0.4s ease;
+}
+
+@media (min-width: 1200px) {
+    .col-xl-8-gallery1 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+
+    .col-xl-4-gallery1 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+
+    .col-xl-7-gallery1 {
+        flex: 0 0 58.333333%;
+        max-width: 58.333333%;
+    }
+
+    .col-xl-5-gallery1 {
+        flex: 0 0 41.666667%;
+        max-width: 41.666667%;
+    }
+
+    .col-xl-11-gallery1 {
+        flex: 0 0 91.666667%;
+        max-width: 91.666667%;
+    }
+
+    .col-xl-10-gallery1 {
+        flex: 0 0 83.333333%;
+        max-width: 83.333333%;
+    }
+}
+
+.container-gallery1 {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 1400px) {
+    .container-gallery1 {
+        max-width: 1320px;
+    }
+}
