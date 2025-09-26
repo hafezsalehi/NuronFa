@@ -1,0 +1,235 @@
+:root {
+    /* --primary-color: #6a11cb; */
+    /* --secondary-color: #2575fc; */
+    --accent-color: #ff4e50;
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+    --dark-bg: #1a1a2e;
+    --popup-bg: rgba(255, 255, 255, 0.95);
+    --popup-text: #333;
+}
+
+.fractional * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.fractional {
+    /* background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 100%); */
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    /* padding: 2rem; */
+}
+
+.header-frac {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.fractional h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #ff4e50, #f9d423);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.background-frac {
+    position: relative;
+    width: 100%;
+    background-image: url('../../../images/Fractionalslider/wall-frac.webp');
+    /* opacity: .5; */
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background: linear-gradient(135deg, #2c3e50, #4ca1af);  */
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.fractional .subtitle-frac {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.slider-container-frac {
+    position: relative;
+    width: 100%;
+    max-width: 80%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(148, 11, 11, 0.5);
+    margin: 0 auto;
+    /* وسط‌چین کردن */
+    /* opacity: 10; */
+
+
+
+}
+
+.slide-frac {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-frac.active-frac {
+    opacity: 1;
+}
+
+.slide-image-frac {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.grid-overlay-frac {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    transition: grid-template-columns 0.5s ease, grid-template-rows 0.5s ease;
+}
+
+.grid-cell-frac {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: visible;
+}
+
+/* خطوط عمودی */
+.vertical-line-frac {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scaleY(0);
+    transform-origin: top;
+    animation: drawLineVerticalFrac 0.8s ease forwards;
+}
+
+/* خطوط افقی */
+.horizontal-line-frac {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: drawLineHorizontalFrac 0.8s ease forwards;
+}
+
+@keyframes drawLineVerticalFrac {
+    to {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes drawLineHorizontalFrac {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.owner-popup-frac {
+    position: absolute;
+    background: var(--popup-bg);
+    color: var(--popup-text);
+    border-radius: 12px;
+    padding: 2px 5px;
+    width: 100px;
+    text-align: center;
+    z-index: 10;
+    opacity: .1;
+    transform: scale(0.5);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+    /* border: 2px solid rgba(255, 255, 255, 0.7); */
+}
+
+.owner-popup-frac::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--popup-bg);
+}
+
+.owner-popup-frac.show-frac {
+    opacity: .7;
+    transform: scale(.7);
+}
+
+.owner-avatar-frac {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border: 2px solid white;
+}
+
+.owner-name-frac {
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+    color: #0a1016;
+}
+
+.owner-city-frac {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: #7f8c8d;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .slider-container-frac {
+        height: 400px;
+    }
+
+    .fractional h1 {
+        font-size: 2rem;
+    }
+
+    .owner-popup-frac {
+        width: 120px;
+        padding: 10px 12px;
+    }
+}

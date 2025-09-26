@@ -1,0 +1,235 @@
+/* استایل‌های بخش features - شبیه‌سازی سایت qube */
+.features-section-gallery1 {
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+}
+
+.features-bg-gallery1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 120%;
+    background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* افکت پارالکس */
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.features-bg-gallery1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 102, 0, 0.9) 0%, rgba(255, 102, 0, 0.7) 100%);
+    z-index: 2;
+}
+
+.features-content-gallery1 {
+    position: relative;
+    z-index: 3;
+    color: white;
+    padding: 40px;
+}
+
+.section-title-gallery1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-family: 'iranyekan', sans-serif;
+    line-height: 1.3;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.section-desc-gallery1 {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 50px;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.features-list-gallery1 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.feature-item-gallery1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: all 0.3s ease;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.feature-item-gallery1:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.feature-icon-gallery1 {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.feature-item-gallery1:hover .feature-icon-gallery1 {
+    background: white;
+    transform: scale(1.1);
+}
+
+.feature-icon-gallery1 i {
+    font-size: 2rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.feature-item-gallery1:hover .feature-icon-gallery1 i {
+    color: #ff6600;
+}
+
+.feature-text-gallery1 h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: 'iranyekan', sans-serif;
+}
+
+.feature-text-gallery1 p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.features-image-gallery1 {
+    position: relative;
+    z-index: 3;
+    padding: 20px;
+}
+
+.features-image-gallery1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.features-image-gallery1 img:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* افکت‌های اضافی برای زیبایی بیشتر */
+.features-section-gallery1::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: float-gallery1 20s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+@keyframes float-gallery1 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-100px, -100px);
+    }
+}
+
+/* ریسپانسیو */
+@media (max-width: 1200px) {
+    .section-title-gallery1 {
+        font-size: 2.5rem;
+    }
+
+    .features-section-gallery1 {
+        min-height: 700px;
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .features-content-gallery1 {
+        padding: 20px 0;
+    }
+
+    .features-image-gallery1 {
+        margin-top: 50px;
+    }
+
+    .section-title-gallery1 {
+        font-size: 2.2rem;
+    }
+
+    .features-bg-gallery1 {
+        background-attachment: scroll;
+        /* غیرفعال کردن پارالکس در موبایل */
+    }
+}
+
+@media (max-width: 768px) {
+    .features-section-gallery1 {
+        padding: 60px 0;
+        min-height: auto;
+    }
+
+    .section-title-gallery1 {
+        font-size: 1.8rem;
+    }
+
+    .feature-item-gallery1 {
+        padding: 15px;
+    }
+
+    .feature-icon-gallery1 {
+        width: 50px;
+        height: 50px;
+    }
+
+    .feature-icon-gallery1 i {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .features-content-gallery1 {
+        padding: 10px;
+    }
+
+    .section-title-gallery1 {
+        font-size: 1.6rem;
+    }
+
+    .section-desc-gallery1 {
+        font-size: 1rem;
+    }
+}

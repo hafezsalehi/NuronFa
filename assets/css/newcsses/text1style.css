@@ -192,9 +192,10 @@
 .cs_section_heading.cs_style_1.cs_type_1 .cs_section_subtitle,
 .cs_section_heading.cs_style_1.cs_type_2 .cs_section_subtitle {
   display: inline-block;
+  /* margin-bottom: 20px; */
 }
 
-.cs_section_heading.cs_style_1.cs_type_1 .cs_section_subtitle::before,
+/* .cs_section_heading.cs_style_1.cs_type_1 .cs_section_subtitle::before,
 .cs_section_heading.cs_style_1.cs_type_2 .cs_section_subtitle::before {
   content: "\f104";
   font-family: "Font Awesome 6 Free";
@@ -202,9 +203,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   margin-right: 12px;
-}
+} */
 
-.cs_section_heading.cs_style_1.cs_type_1 .cs_section_subtitle::after,
+/* .cs_section_heading.cs_style_1.cs_type_1 .cs_section_subtitle::after,
 .cs_section_heading.cs_style_1.cs_type_2 .cs_section_subtitle::after {
   content: "\f105";
   font-family: "Font Awesome 6 Free";
@@ -212,7 +213,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   margin-left: 12px;
-}
+} */
 
 .cs_section_heading.cs_style_1.cs_type_2 {
   display: -webkit-box;
@@ -390,11 +391,12 @@
   border: 2px solid #fd6219;
   border-radius: 15px;
   font-weight: 500;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   padding: 10px 20px;
   line-height: 1.625em;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  /* display: -webkit-inline-box; */
+  /* display: -ms-inline-flexbox; */
+  /* display: inline-flex; */
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -404,6 +406,9 @@
   gap: 10px;
   background-color: transparent;
   outline: none;
+  color: #2fc921;
+  font-size: 16px;
+
 }
 
 .cs_btn.cs_style_1 span {
@@ -427,11 +432,12 @@
   visibility: hidden;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  color: #fff;
+  color: #2fc921;
 }
 
 .cs_btn.cs_style_1 i {
-  -webkit-transform: rotate(-45deg);
+
+  /* -webkit-transform: rotate(-45deg); */
   transform: rotate(-45deg);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -492,7 +498,7 @@
 }
 
 .cs_height_10 {
-  height: 10px;
+  height: 20px !important;
 }
 
 .cs_height_lg_5 {

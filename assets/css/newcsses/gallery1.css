@@ -1,8 +1,11 @@
 /* استایل‌های اصلی بخش پروژه‌ها - نسخه gallery1 */
 .project__section-gallery1 {
     position: relative;
-    padding-top: 150px;
-    padding-bottom: 70px;
+    /* padding-top: 00px; */
+    /* padding-bottom: 330px; */
+
+    margin: 0;
+    background-color: darkblue;
 }
 
 .home__one__section__five-gallery1 {
@@ -18,11 +21,11 @@
 }
 
 .pt-150-gallery1 {
-    padding-top: 150px;
+    padding-top: 00px;
 }
 
 .pt-lg-60-gallery1 {
-    padding-top: 60px;
+    padding-top: 00px;
 }
 
 .position-relative-gallery1 {
@@ -126,7 +129,7 @@
 }
 
 .row-gallery1:hover .service__main__content-gallery1:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
     z-index: 10;
 }
 

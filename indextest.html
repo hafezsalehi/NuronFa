@@ -3,263 +3,605 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>اسلایدر ساده و کارآمد</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <title>NFT بخش‌بندی شده - نمایش مالکین</title>
     <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      :root {
+        --primary-color: #6a11cb;
+        --secondary-color: #2575fc;
+        --accent-color: #ff4e50;
+        --text-color: #333;
+        --light-bg: #f8f9fa;
+        --dark-bg: #1a1a2e;
+        --popup-bg: rgba(255, 255, 255, 0.95);
+        --popup-text: #333;
+      }
+
+      * {
         margin: 0;
         padding: 0;
-        background-color: #1a1a1a;
-        color: #fff;
-        line-height: 1.6;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      .slider-container {
-        width: 100%;
-        height: 400px;
-        position: relative;
-        overflow: hidden;
-        margin: 40px 0;
-      }
-
-      .slider {
+      body {
+        background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 100%);
+        color: white;
+        min-height: 100vh;
         display: flex;
-        width: 500%;
-        height: 100%;
-        transition: transform 0.5s ease;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
       }
 
-      .slide {
-        flex: 0 0 20%;
-        height: 100%;
+      .header-frac {
+        text-align: center;
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(to right, #ff4e50, #f9d423);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .subtitle-frac {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .slider-container-frac {
         position: relative;
+        width: 90%;
+        max-width: 800px;
+        height: 500px;
         overflow: hidden;
-        transition: all 0.5s ease;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       }
 
-      .slide-img {
+      .slide-frac {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .slide-frac.active-frac {
+        opacity: 1;
+      }
+
+      .slide-image-frac {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s ease;
+        transition: all 0.3s ease;
       }
 
-      .slide-content {
+      .grid-overlay-frac {
         position: absolute;
-        bottom: 20px;
-        right: 20px;
-        left: 20px;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 15px;
-        border-radius: 5px;
-        transform: translateY(100%);
-        transition: transform 0.5s ease;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        transition: grid-template-columns 0.5s ease,
+          grid-template-rows 0.5s ease;
       }
 
-      .slide:hover .slide-content {
-        transform: translateY(0);
+      .grid-cell-frac {
+        position: relative;
+        transition: all 0.3s ease;
+        overflow: visible;
       }
 
-      .slide:hover .slide-img {
-        transform: scale(1.05);
-      }
-
-      .slider-nav {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        gap: 10px;
-      }
-
-      .slider-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
+      /* خطوط عمودی */
+      .vertical-line-frac {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 1px;
         background: rgba(255, 255, 255, 0.3);
-        cursor: pointer;
-        transition: background 0.3s ease;
+        transform: scaleY(0);
+        transform-origin: top;
+        animation: drawLineVerticalFrac 0.8s ease forwards;
       }
 
-      .slider-dot.active {
-        background: #ff5e14;
-      }
-
-      .slider-btn {
+      /* خطوط افقی */
+      .horizontal-line-frac {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 18px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.3);
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: drawLineHorizontalFrac 0.8s ease forwards;
+      }
+
+      @keyframes drawLineVerticalFrac {
+        to {
+          transform: scaleY(1);
+        }
+      }
+
+      @keyframes drawLineHorizontalFrac {
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      .owner-popup-frac {
+        position: absolute;
+        background: var(--popup-bg);
+        color: var(--popup-text);
+        border-radius: 12px;
+        padding: 12px 15px;
+        width: 140px;
+        text-align: center;
         z-index: 10;
-        transition: background 0.3s ease;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        font-weight: 500;
+        border: 2px solid rgba(255, 255, 255, 0.7);
       }
 
-      .slider-btn:hover {
-        background: rgba(255, 94, 20, 0.8);
+      .owner-popup-frac::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid var(--popup-bg);
       }
 
-      .prev-btn {
-        right: 15px;
+      .owner-popup-frac.show-frac {
+        opacity: 1;
+        transform: scale(1);
       }
 
-      .next-btn {
-        left: 15px;
+      .owner-avatar-frac {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: 0 auto 8px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        border: 2px solid white;
+      }
+
+      .owner-name-frac {
+        font-weight: bold;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+        color: #2c3e50;
+      }
+
+      .owner-city-frac {
+        font-size: 0.85rem;
+        opacity: 0.8;
+        color: #7f8c8d;
+      }
+
+      .controls-frac {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn-frac {
+        background: linear-gradient(
+          to right,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-frac:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .info-panel-frac {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        max-width: 800px;
+        backdrop-filter: blur(10px);
+      }
+
+      .info-panel-frac h2 {
+        margin-bottom: 1rem;
+        color: #ffd700;
+      }
+
+      .info-panel-frac p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .slider-container-frac {
+          height: 400px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .owner-popup-frac {
+          width: 120px;
+          padding: 10px 12px;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1 style="text-align: center; margin: 30px 0">اسلایدر ساده و کارآمد</h1>
-
-      <div class="slider-container">
-        <div class="slider">
-          <div class="slide">
-            <img
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-              class="slide-img"
-              alt="Slide 1"
-            />
-            <div class="slide-content">
-              <h3>عنوان اسلاید 1</h3>
-              <p>توضیحات اسلاید اول</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img
-              src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-              class="slide-img"
-              alt="Slide 2"
-            />
-            <div class="slide-content">
-              <h3>عنوان اسلاید 2</h3>
-              <p>توضیحات اسلاید دوم</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img
-              src="https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-              class="slide-img"
-              alt="Slide 3"
-            />
-            <div class="slide-content">
-              <h3>عنوان اسلاید 3</h3>
-              <p>توضیحات اسلاید سوم</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img
-              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-              class="slide-img"
-              alt="Slide 4"
-            />
-            <div class="slide-content">
-              <h3>عنوان اسلاید 4</h3>
-              <p>توضیحات اسلاید چهارم</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img
-              src="https://images.unsplash.com/photo-1568992688065-536aad8a12f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-              class="slide-img"
-              alt="Slide 5"
-            />
-            <div class="slide-content">
-              <h3>عنوان اسلاید 5</h3>
-              <p>توضیحات اسلاید پنجم</p>
-            </div>
-          </div>
-        </div>
-
-        <button class="slider-btn prev-btn">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-        <button class="slider-btn next-btn">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-      </div>
-
-      <div class="slider-nav">
-        <div class="slider-dot active"></div>
-        <div class="slider-dot"></div>
-        <div class="slider-dot"></div>
-        <div class="slider-dot"></div>
-        <div class="slider-dot"></div>
+    <div class="header-frac">
+      <h1>گالری NFT بخش‌بندی شده</h1>
+      <p class="subtitle-frac">
+        هر نقاشی دیواری به بخش‌های کوچک تقسیم شده و هر بخش متعلق به یک مالک است
+      </p>
+    </div>
+    <div class="slider-wrapper-frac">
+      <div class="slider-container-frac">
+        <!-- اسلایدها توسط JavaScript ایجاد خواهند شد -->
       </div>
     </div>
 
+    <div class="controls-frac">
+      <button id="prev-btn-frac" class="btn-frac">عکس قبلی</button>
+      <button id="next-btn-frac" class="btn-frac">عکس بعدی</button>
+      <button id="pause-btn-frac" class="btn-frac">توقف/ادامه</button>
+    </div>
+
+    <div class="info-panel-frac">
+      <h2>چگونه کار می‌کند؟</h2>
+      <p>
+        هر نقاشی دیواری به صورت NFT ایجاد شده و سپس به بخش‌های کوچک (فرکشنال)
+        تقسیم می‌شود. هر بخش می‌تواند توسط افراد مختلف خریداری شود.
+      </p>
+      <p>
+        در این نمایش، شما می‌توانید مالکین بخش‌های مختلف هر اثر را مشاهده کنید.
+        هر 5 ثانیه یک اثر جدید نمایش داده می‌شود که به صورت تصادفی به بخش‌های
+        مختلف تقسیم شده و در 4 تا 8 بخش از آن‌ها اطلاعات مالک نمایش داده می‌شود.
+      </p>
+    </div>
+
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const slider = document.querySelector(".slider");
-        const slides = document.querySelectorAll(".slide");
-        const dots = document.querySelectorAll(".slider-dot");
-        const prevBtn = document.querySelector(".prev-btn");
-        const nextBtn = document.querySelector(".next-btn");
+      // داده‌های نمونه برای 40 مالک
+      const owners = [
+        { name: "علی محمدی", city: "تهران", avatar: "👨" },
+        { name: "فاطمه احمدی", city: "مشهد", avatar: "👩" },
+        { name: "رضا کریمی", city: "اصفهان", avatar: "🧔" },
+        { name: "سارا حسینی", city: "شیراز", avatar: "👧" },
+        { name: "محمد رضایی", city: "تبریز", avatar: "👨‍💼" },
+        { name: "زهرا جعفری", city: "اهواز", avatar: "👩‍⚕️" },
+        { name: "امیر حسنی", city: "کرج", avatar: "👨‍🎓" },
+        { name: "نازنین محمودی", city: "قم", avatar: "👩‍🎨" },
+        { name: "حسین اکبری", city: "رشت", avatar: "👨‍🔧" },
+        { name: "مینا صادقی", city: "ارومیه", avatar: "👩‍🍳" },
+        { name: "کامران نظری", city: "زاهدان", avatar: "👨‍🌾" },
+        { name: "لیلا رحیمی", city: "کرمانشاه", avatar: "👩‍💻" },
+        { name: "پویا امینی", city: "همدان", avatar: "👨‍🎤" },
+        { name: "نرگس قاسمی", city: "یزد", avatar: "👩‍🎓" },
+        { name: "سجاد موسوی", city: "اردبیل", avatar: "👨‍🚀" },
+        { name: "مریم علیزاده", city: "بندرعباس", avatar: "👩‍🚒" },
+        { name: "امید جمالی", city: "کاشان", avatar: "👨‍✈️" },
+        { name: "نگین یوسفی", city: "گرگان", avatar: "👩‍⚖️" },
+        { name: "فرهاد نوروزی", city: "ساری", avatar: "👨‍🔬" },
+        { name: "هستی محمدپور", city: "شاهرود", avatar: "👩‍🏫" },
+        { name: "مهدی سلطانی", city: "بجنورد", avatar: "👨‍💻" },
+        { name: "النا احمدیان", city: "سبزوار", avatar: "👩‍🔧" },
+        { name: "بهرام رضوی", city: "قزوین", avatar: "👨‍🏭" },
+        { name: "پرنیا سلیمانی", city: "خرم‌آباد", avatar: "👩‍🚀" },
+        { name: "کیانوش نجفی", city: "سنندج", avatar: "👨‍🎨" },
+        { name: "آتنا طاهری", city: "یزد", avatar: "👩‍💼" },
+        { name: "مهران عباسی", city: "بوشهر", avatar: "👨‍🚒" },
+        { name: "سپیده مرادی", city: "بیرجند", avatar: "👩‍✈️" },
+        { name: "پارسا کرمانی", city: "کرمان", avatar: "👨‍⚖️" },
+        { name: "نیلوفر صالحی", city: "ایلام", avatar: "👩‍🌾" },
+        { name: "آرش دادگر", city: "یزد", avatar: "👨‍🍳" },
+        { name: "رها فرهادی", city: "سمنان", avatar: "👩‍🔬" },
+        { name: "امیرحسین غفاری", city: "یزد", avatar: "👨‍🏫" },
+        { name: "سپهر امیری", city: "قم", avatar: "👨‍💼" },
+        { name: "نازیا محمودی", city: "مشهد", avatar: "👩‍🎤" },
+        { name: "پیمان صادقیان", city: "اصفهان", avatar: "👨‍🚀" },
+        { name: "مهسا نوری", city: "شیراز", avatar: "👩‍🚒" },
+        { name: "سروش رضایی", city: "تبریز", avatar: "👨‍✈️" },
+        { name: "آیدا محمدی", city: "تهران", avatar: "👩‍⚖️" },
+        { name: "محمدرضا حسینی", city: "کرج", avatar: "👨‍🔬" },
+      ];
 
-        let currentSlide = 0;
-        const slideCount = slides.length;
+      // آدرس تصاویر از مسیر پروژه
+      const images = [
+        "images/Fractionalslider/fr1/1.jpg",
+        "images/Fractionalslider/fr1/2.jpg",
+        "images/Fractionalslider/fr1/3.jpg",
+        "images/Fractionalslider/fr1/4.jpg",
+      ];
 
-        // تابع برای به روز رسانی اسلایدر
-        function updateSlider() {
-          slider.style.transform = `translateX(-${currentSlide * 20}%)`;
+      // تصاویر جایگزین در صورت عدم دسترسی به مسیر پروژه
+      const fallbackImages = [
+        "https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1558637845-c8b7ead71a3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      ];
 
-          // به روز رسانی dots
-          dots.forEach((dot, index) => {
-            dot.classList.toggle("active", index === currentSlide);
-          });
+      const sliderContainer = document.querySelector(".slider-container-frac");
+      let currentSlide = 0;
+      let isPaused = false;
+      let slideInterval;
+
+      // ایجاد اسلایدها
+      function createSlides() {
+        images.forEach((imgSrc, index) => {
+          const slide = document.createElement("div");
+          slide.className = `slide-frac ${index === 0 ? "active-frac" : ""}`;
+
+          const img = document.createElement("img");
+          img.src = imgSrc;
+          img.alt = `NFT Artwork ${index + 1}`;
+          img.className = "slide-image-frac";
+
+          // اگر تصویر لود نشد، از تصویر جایگزین استفاده کن
+          img.onerror = function () {
+            this.src = fallbackImages[index];
+          };
+
+          slide.appendChild(img);
+          sliderContainer.appendChild(slide);
+        });
+      }
+
+      // ایجاد شبکه‌بندی با انیمیشن خطوط
+      function createAnimatedGrid() {
+        const activeSlide = document.querySelector(".slide-frac.active-frac");
+        // حذف شبکه قبلی اگر وجود دارد
+        const existingGrid = activeSlide.querySelector(".grid-overlay-frac");
+        if (existingGrid) {
+          existingGrid.remove();
         }
 
-        // رفتن به اسلاید بعدی
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % slideCount;
-          updateSlider();
+        // ایجاد تعداد خطوط تصادفی بین 5 تا 20
+        const columns = Math.floor(Math.random() * (20 - 5 + 1)) + 5;
+        const rows = Math.floor(Math.random() * (20 - 5 + 1)) + 5;
+        const totalCells = columns * rows;
+
+        const gridOverlay = document.createElement("div");
+        gridOverlay.className = "grid-overlay-frac";
+        gridOverlay.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+        gridOverlay.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+
+        // ایجاد سلول‌های شبکه
+        for (let i = 0; i < totalCells; i++) {
+          const cell = document.createElement("div");
+          cell.className = "grid-cell-frac";
+          cell.dataset.index = i;
+          gridOverlay.appendChild(cell);
         }
 
-        // رفتن به اسلاید قبلی
-        function prevSlide() {
-          currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-          updateSlider();
+        activeSlide.appendChild(gridOverlay);
+
+        // ایجاد خطوط عمودی با انیمیشن
+        for (let i = 1; i < columns; i++) {
+          const line = document.createElement("div");
+          line.className = "vertical-line-frac";
+          line.style.left = `${(i / columns) * 100}%`;
+          line.style.animationDelay = `${i * 0.05}s`;
+          gridOverlay.appendChild(line);
         }
 
-        // کلیک روی دکمه‌ها
-        nextBtn.addEventListener("click", nextSlide);
-        prevBtn.addEventListener("click", prevSlide);
+        // ایجاد خطوط افقی با انیمیشن
+        for (let i = 1; i < rows; i++) {
+          const line = document.createElement("div");
+          line.className = "horizontal-line-frac";
+          line.style.top = `${(i / rows) * 100}%`;
+          line.style.animationDelay = `${(columns + i) * 0.05}s`;
+          gridOverlay.appendChild(line);
+        }
 
-        // کلیک روی dots
-        dots.forEach((dot, index) => {
-          dot.addEventListener("click", () => {
-            currentSlide = index;
-            updateSlider();
-          });
+        // نمایش پاپ‌آپ‌های مالکین پس از کامل شدن انیمیشن خطوط
+        setTimeout(() => {
+          showOwnerPopups(gridOverlay, columns, rows);
+        }, Math.max(columns, rows) * 0.05 * 1000 + 500);
+      }
+
+      // نمایش پاپ‌آپ‌های مالکین
+      function showOwnerPopups(grid, columns, rows) {
+        // انتخاب 4 تا 8 بخش تصادفی برای نمایش پاپ‌آپ
+        const popupCount = Math.floor(Math.random() * 5) + 4; // 4 تا 8
+        const totalCells = columns * rows;
+        const randomCells = [];
+
+        // اطمینان از انتخاب سلول‌های منحصر به فرد
+        while (randomCells.length < popupCount) {
+          const randomIndex = Math.floor(Math.random() * totalCells);
+          if (!randomCells.includes(randomIndex)) {
+            randomCells.push(randomIndex);
+          }
+        }
+
+        console.log(
+          `نمایش ${popupCount} پاپ‌آپ برای ${totalCells} سلول (${columns}x${rows})`
+        );
+
+        let displayedPopups = 0;
+
+        // ایجاد پاپ‌آپ‌ها با تأخیر
+        randomCells.forEach((cellIndex, i) => {
+          setTimeout(() => {
+            const cell = grid.querySelector(
+              `.grid-cell-frac[data-index="${cellIndex}"]`
+            );
+            if (!cell) return;
+
+            const owner = owners[Math.floor(Math.random() * owners.length)];
+
+            const popup = document.createElement("div");
+            popup.className = "owner-popup-frac";
+            popup.innerHTML = `
+                        <div class="owner-avatar-frac">${owner.avatar}</div>
+                        <div class="owner-name-frac">${owner.name}</div>
+                        <div class="owner-city-frac">${owner.city}</div>
+                    `;
+
+            // ابعاد پاپ‌آپ
+            const popupWidth = 140;
+            const popupHeight = 110;
+
+            // محاسبه موقعیت سلول در grid
+            const cellCol = cellIndex % columns;
+            const cellRow = Math.floor(cellIndex / columns);
+
+            // محاسبه موقعیت نسبی درون سلول (درصد)
+            const cellWidthPercent = 100 / columns;
+            const cellHeightPercent = 100 / rows;
+
+            // موقعیت سلول در grid (درصد)
+            const cellLeftPercent = cellCol * cellWidthPercent;
+            const cellTopPercent = cellRow * cellHeightPercent;
+
+            // موقعیت تصادفی درون سلول (درصد)
+            const randomLeftPercent =
+              Math.random() * (cellWidthPercent - 10) + 5; // 5% تا 95% عرض سلول
+            const randomTopPercent =
+              Math.random() * (cellHeightPercent - 10) + 5; // 5% تا 95% ارتفاع سلول
+
+            // موقعیت نهایی پاپ‌آپ (درصد)
+            const popupLeftPercent = cellLeftPercent + randomLeftPercent;
+            const popupTopPercent = cellTopPercent + randomTopPercent;
+
+            // تبدیل درصد به پیکسل
+            const gridWidth = grid.offsetWidth;
+            const gridHeight = grid.offsetHeight;
+
+            let left = (popupLeftPercent / 100) * gridWidth - popupWidth / 2;
+            let top = (popupTopPercent / 100) * gridHeight - popupHeight / 2;
+
+            // اطمینان از قرارگیری پاپ‌آپ درون grid
+            left = Math.max(10, Math.min(left, gridWidth - popupWidth - 10));
+            top = Math.max(10, Math.min(top, gridHeight - popupHeight - 10));
+
+            popup.style.left = `${left}px`;
+            popup.style.top = `${top}px`;
+
+            grid.appendChild(popup); // اضافه کردن پاپ‌آپ به grid به جای cell
+            displayedPopups++;
+
+            // نمایش پاپ‌آپ با انیمیشن
+            setTimeout(() => {
+              popup.classList.add("show-frac");
+            }, 100);
+
+            // مخفی کردن پاپ‌آپ پس از 3 ثانیه
+            setTimeout(() => {
+              popup.classList.remove("show-frac");
+              setTimeout(() => {
+                if (popup.parentNode) {
+                  popup.remove();
+                }
+              }, 300);
+            }, 3000);
+          }, i * 300); // تأخیر بین نمایش پاپ‌آپ‌ها
         });
 
-        // اسلاید خودکار
-        let autoSlide = setInterval(nextSlide, 3000);
+        // گزارش تعداد پاپ‌آپ‌های نمایش داده شده
+        setTimeout(() => {
+          console.log(`تعداد پاپ‌آپ‌های نمایش داده شده: ${displayedPopups}`);
+        }, popupCount * 300 + 500);
+      }
 
-        // توقف اسلاید خودکار هنگام هاور روی اسلایدر
-        const sliderContainer = document.querySelector(".slider-container");
-        sliderContainer.addEventListener("mouseenter", () => {
-          clearInterval(autoSlide);
-        });
+      // تغییر به اسلاید بعدی
+      function nextSlide() {
+        const slides = document.querySelectorAll(".slide-frac");
+        slides[currentSlide].classList.remove("active-frac");
 
-        sliderContainer.addEventListener("mouseleave", () => {
-          autoSlide = setInterval(nextSlide, 3000);
-        });
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active-frac");
+
+        // ایجاد شبکه‌بندی جدید برای اسلاید فعلی
+        setTimeout(createAnimatedGrid, 100);
+      }
+
+      // تغییر به اسلاید قبلی
+      function prevSlide() {
+        const slides = document.querySelectorAll(".slide-frac");
+        slides[currentSlide].classList.remove("active-frac");
+
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        slides[currentSlide].classList.add("active-frac");
+
+        // ایجاد شبکه‌بندی جدید برای اسلاید فعلی
+        setTimeout(createAnimatedGrid, 100);
+      }
+
+      // شروع اسلایدر
+      function startSlider() {
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+
+      // توقف/ادامه اسلایدر
+      function togglePause() {
+        isPaused = !isPaused;
+        const pauseBtn = document.getElementById("pause-btn-frac");
+
+        if (isPaused) {
+          clearInterval(slideInterval);
+          pauseBtn.textContent = "ادامه";
+        } else {
+          startSlider();
+          pauseBtn.textContent = "توقف";
+        }
+      }
+
+      // راه‌اندازی اولیه
+      document.addEventListener("DOMContentLoaded", () => {
+        createSlides();
+        createAnimatedGrid();
+        startSlider();
+
+        // اضافه کردن event listener برای دکمه‌ها
+        document
+          .getElementById("prev-btn-frac")
+          .addEventListener("click", prevSlide);
+        document
+          .getElementById("next-btn-frac")
+          .addEventListener("click", nextSlide);
+        document
+          .getElementById("pause-btn-frac")
+          .addEventListener("click", togglePause);
       });
     </script>
   </body>
