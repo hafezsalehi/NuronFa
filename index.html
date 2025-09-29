@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="assets/css/newcsses/text2style.css" />
     <link rel="stylesheet" href="assets/css/newcsses/text0style.css" />
     <!-- new CSS -->
+    <link rel="stylesheet" href="assets/css/newcsses/typewriter.css" />
+
     <link rel="stylesheet" href="assets/css/newcsses/gallery1.css" />
     <link
       rel="stylesheet"
@@ -220,6 +222,7 @@
 
     <!-- End banner area -->
     <!-- ----------------------------------------------------------------------------------------- -->
+
     <!-- ----------------------------------------------------------------------------------------- -->
     <!-- New Text0 area  -->
 
@@ -320,43 +323,35 @@
     <!-- New Text0 area End  -->
 
     <!-- ----------------------------------------------------------------------------------------- -->
-    <!-- New fractional Start -->
-    <section class="fractional">
-      <div class="header-frac">
-        <h1>گالری NFT بخش‌بندی شده</h1>
-        <p class="subtitle-frac">
-          هر نقاشی دیواری به بخش‌های کوچک تقسیم شده و هر بخش متعلق به یک مالک
-          است
-        </p>
-      </div>
+    <!--typewriter text area Start -->
 
-      <div class="background-frac">
-        <div class="slider-container-frac">
-          <!-- اسلایدها توسط JavaScript ایجاد خواهند شد -->
+    <section class="typing-section-type">
+      <!-- لایه اول - زیرین‌ترین -->
+      <div class="layer-1-type" id="layer1Type"></div>
+
+      <!-- لایه دوم - بک‌گراند PNG -->
+      <div class="layer-2-type"></div>
+
+      <!-- لایه سوم - رویی -->
+      <!-- <div class="layer-3-type" id="layer3Type"></div> -->
+
+      <!-- محتوای اصلی -->
+      <!-- <div class="typing-container-type">
+        <div class="text-widget-type">
+          <div id="typing-text-type"></div>
+        </div>
+      </div> -->
+
+      <div class="typing-container-type">
+        <div class="text-widget-type">
+          <div id="typing-text-type"></div>
         </div>
       </div>
-
-      <!-- <div class="controls-frac">
-      <button id="prev-btn-frac" class="btn-frac">عکس قبلی</button>
-      <button id="next-btn-frac" class="btn-frac">عکس بعدی</button>
-      <button id="pause-btn-frac" class="btn-frac">توقف/ادامه</button>
-    </div> -->
-
-      <!-- <div class="info-panel-frac">
-      <h2>چگونه کار می‌کند؟</h2>
-      <p>
-        هر نقاشی دیواری به صورت NFT ایجاد شده و سپس به بخش‌های کوچک (فرکشنال)
-        تقسیم می‌شود. هر بخش می‌تواند توسط افراد مختلف خریداری شود.
-      </p>
-      <p>
-        در این نمایش، شما می‌توانید مالکین بخش‌های مختلف هر اثر را مشاهده کنید.
-        هر 5 ثانیه یک اثر جدید نمایش داده می‌شود که به صورت تصادفی به بخش‌های
-        مختلف تقسیم شده و در 4 تا 8 بخش از آن‌ها اطلاعات مالک نمایش داده می‌شود.
-      </p> -->
     </section>
 
-    <!-- New fractional Start -->
+    <!--typewriter text area End -->
     <!-- ----------------------------------------------------------------------------------------- -->
+
     <!-- New circle1 area Start -->
     <!-- Start of showcase section ============================================= -->
 
@@ -566,6 +561,44 @@
     <!-- New circle1 area End -->
 
     <!-- ----------------------------------------------------------------------------------------- -->
+    <!-- New fractional Start -->
+    <section class="fractional">
+      <div class="background-frac">
+        <div class="header-frac">
+          <h1>گالری NFT بخش‌بندی شده</h1>
+          <p class="subtitle-frac">
+            هر نقاشی دیواری به بخش‌های کوچک تقسیم شده و هر بخش متعلق به یک مالک
+            است
+          </p>
+        </div>
+        <div class="slider-container-frac">
+          <!-- اسلایدها توسط JavaScript ایجاد خواهند شد -->
+        </div>
+      </div>
+
+      <!-- <div class="controls-frac">
+      <button id="prev-btn-frac" class="btn-frac">عکس قبلی</button>
+      <button id="next-btn-frac" class="btn-frac">عکس بعدی</button>
+      <button id="pause-btn-frac" class="btn-frac">توقف/ادامه</button>
+    </div> -->
+
+      <!-- <div class="info-panel-frac">
+      <h2>چگونه کار می‌کند؟</h2>
+      <p>
+        هر نقاشی دیواری به صورت NFT ایجاد شده و سپس به بخش‌های کوچک (فرکشنال)
+        تقسیم می‌شود. هر بخش می‌تواند توسط افراد مختلف خریداری شود.
+      </p>
+      <p>
+        در این نمایش، شما می‌توانید مالکین بخش‌های مختلف هر اثر را مشاهده کنید.
+        هر 5 ثانیه یک اثر جدید نمایش داده می‌شود که به صورت تصادفی به بخش‌های
+        مختلف تقسیم شده و در 4 تا 8 بخش از آن‌ها اطلاعات مالک نمایش داده می‌شود.
+      </p> -->
+    </section>
+
+    <!-- New fractional End -->
+    <!-- ----------------------------------------------------------------------------------------- -->
+
+    <!-- ----------------------------------------------------------------------------------------- -->
     <!-- New Text1 area  -->
 
     <!-- End Text1 area  -->
@@ -584,13 +617,11 @@
     <!-- gallery1 Start -->
 
     <section
-      class="project__section-gallery1 home__one__section__five-gallery1 position-relative-gallery1 pb-70-gallery1 pb-lg-60-gallery1 pt-150-gallery1 pt-lg-60-gallery1"
+      class="project__section-gallery1 home__one__section__five-gallery1 position-relative-gallery1"
     >
       <div class="project__section__wrapper-gallery1" data-aos="fade-up">
         <div class="container-gallery1">
-          <div
-            class="row-gallery1 align-items-center-gallery1 mb-lg-30-gallery1"
-          >
+          <div class="row-gallery1 align-items-center-gallery1">
             <div class="col-xl-8-gallery1">
               <div class="section__title-gallery1 mb-lg-30-gallery1">
                 <div class="row-gallery1">
@@ -811,7 +842,7 @@
 
     <!-- text2 start -->
 
-    <div class="text2">
+    <!-- <div class="text2">
       <div class="text2container">
         <div class="text2row align-items-center">
           <div class="text2col-lg-6">
@@ -848,10 +879,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- text2 End -->
     <!-- ---------------------------------------------------------------------------------------------- -->
+    <!-- new artists1 area -->
     <!-- About Market Place Start -->
     <div class="about-market-area rn-section-gapTop">
       <div class="container">
@@ -961,144 +993,12 @@
     </section>
 
     <!-- پایان بخش هنرمندان -->
+    <!-- پایان بخش هنرمندان -->
 
     <!-- new artists1 area  End-->
     <!-- ----------------------------------------------------------------------------------------------- -->
     <!-- start service area -->
-    <div class="rn-service-area rn-section-gapTop">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 mb--50">
-            <h3
-              class="title"
-              data-sal-delay="150"
-              data-sal="slide-up"
-              data-sal-duration="800"
-            >
-              NFT های خود را ایجاد و بفروشید
-            </h3>
-          </div>
-        </div>
-        <div class="row g-5">
-          <!-- start single service -->
-          <div class="col-xxl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-            <div
-              data-sal="slide-up"
-              data-sal-delay="150"
-              data-sal-duration="800"
-              class="rn-service-one color-shape-7"
-            >
-              <div class="inner">
-                <div class="icon">
-                  <img src="/images/images/icons/shape-7.png" alt="Shape" />
-                </div>
-                <div class="subtitle">مرحله-01</div>
-                <div class="content">
-                  <h4 class="title">
-                    <a href="#">کیف پول خود را تنظیم کنید</a>
-                  </h4>
-                  <p class="description">
-                    ویژگی‌ها و اجزای قدرتمند، که نورون را متمایز می‌کند، به
-                    راحتی قابل تنظیم و مقیاس پذیر است.
-                  </p>
-                  <a class="read-more-button" href="#"
-                    ><i class="feather-arrow-left"></i
-                  ></a>
-                </div>
-              </div>
-              <a class="over-link" href="#"></a>
-            </div>
-          </div>
-          <!-- End single service -->
-          <!-- start single service -->
-          <div class="col-xxl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-            <div
-              data-sal="slide-up"
-              data-sal-delay="200"
-              data-sal-duration="800"
-              class="rn-service-one color-shape-1"
-            >
-              <div class="inner">
-                <div class="icon">
-                  <img src="/images/images/icons/shape-1.png" alt="Shape" />
-                </div>
-                <div class="subtitle">مرحله-02</div>
-                <div class="content">
-                  <h4 class="title">
-                    <a href="#">مجموعه خود را ایجاد کنید</a>
-                  </h4>
-                  <p class="description">
-                    مجموعه ای عالی از قالب های زیبای وب سایت برای نیاز شما.
-                    بهترین الگوی مناسب را انتخاب کنید.
-                  </p>
-                  <a class="read-more-button" href="#"
-                    ><i class="feather-arrow-left"></i
-                  ></a>
-                </div>
-              </div>
-              <a class="over-link" href="#"></a>
-            </div>
-          </div>
-          <!-- End single service -->
-          <!-- start single service -->
-          <div class="col-xxl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-            <div
-              data-sal="slide-up"
-              data-sal-delay="250"
-              data-sal-duration="800"
-              class="rn-service-one color-shape-5"
-            >
-              <div class="inner">
-                <div class="icon">
-                  <img src="/images/images/icons/shape-5.png" alt="Shape" />
-                </div>
-                <div class="subtitle">مرحله-03</div>
-                <div class="content">
-                  <h4 class="title"><a href="#">NFT خود را اضافه کنید</a></h4>
-                  <p class="description">
-                    ما الگو را کاملاً پاسخگو کرده ایم، بنابراین عالی به نظر می
-                    رسد همه دستگاه ها: دسکتاپ، تبلت و.
-                  </p>
-                  <a class="read-more-button" href="#"
-                    ><i class="feather-arrow-left"></i
-                  ></a>
-                </div>
-              </div>
-              <a class="over-link" href="#"></a>
-            </div>
-          </div>
-          <!-- End single service -->
-          <!-- start single service -->
-          <div class="col-xxl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-            <div
-              data-sal="slide-up"
-              data-sal-delay="300"
-              data-sal-duration="800"
-              class="rn-service-one color-shape-6"
-            >
-              <div class="inner">
-                <div class="icon">
-                  <img src="/images/images/icons/shape-6.png" alt="Shape" />
-                </div>
-                <div class="subtitle">مرحله-04</div>
-                <div class="content">
-                  <h4 class="title"><a href="#">NFT خود را بفروشید</a></h4>
-                  <p class="description">
-                    من خودم را در میان چمن‌های بلند کنار رودخانه پرت می‌کنم
-                    نزدیک NFT های زمین قرار بگیرید.
-                  </p>
-                  <a class="read-more-button" href="#"
-                    ><i class="feather-arrow-left"></i
-                  ></a>
-                </div>
-              </div>
-              <a class="over-link" href="#"></a>
-            </div>
-          </div>
-          <!-- End single service -->
-        </div>
-      </div>
-    </div>
+
     <!-- End service area -->
     <!-- New items Start -->
 
@@ -1271,9 +1171,12 @@
     <script src="assets/js/vendor/nft.js"></script>
 
     <!-- new artists js -->
-    <script src="assets/css/artists1/artists1.js"></script>
+    <script src="assets/js/newJs/typewriter.js"></script>
+
     <script src="assets/js/newJs/circle1-script.js"></script>
     <script src="assets/js/newJs/fractionalscript.js"></script>
+
+    <script src="assets/js/newJs/artists1.js"></script>
 
     <script src="./assets/data/artworks-data.js"></script>
   </body>

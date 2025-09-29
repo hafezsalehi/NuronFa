@@ -65,7 +65,7 @@
 }
 
 .text0button1:hover {
-    box-shadow: 0 6px 22px 3px rgba(92, 35, 35, 0.12) ;
+    box-shadow: 0 6px 22px 3px rgba(92, 35, 35, 0.12);
     background-position: right center;
     transform: translateY(-2px);
 }

@@ -4,8 +4,8 @@
     /* padding-top: 00px; */
     /* padding-bottom: 330px; */
 
-    margin: 0;
-    background-color: darkblue;
+    margin: 10px;
+    /* background-color: rgb(217, 235, 214); */
 }
 
 .home__one__section__five-gallery1 {
@@ -458,10 +458,10 @@
 
 .container-gallery1 {
     width: 100%;
-    padding-right: 15px;
+    /* padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto; */
 }
 
 @media (min-width: 1400px) {

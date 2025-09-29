@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Wallery</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <meta name="theme-style-mode" content="1" />
+    <!-- 0 == light, 1 == dark -->
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/images/favicon.png"
+    />
+    <!-- CSS 
+    ============================================ -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/vendor/slick.css" />
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css" />
+    <link rel="stylesheet" href="assets/css/vendor/nice-select.css" />
+    <link rel="stylesheet" href="assets/css/plugins/feature.css" />
+    <link rel="stylesheet" href="assets/css/plugins/jquery-ui.min.css" />
+    <link rel="stylesheet" href="assets/css/vendor/odometer.css" />
+
+    <!-- Style css -->
+    <link rel="stylesheet" href="assets/fonts/styles-fa-num/iran-yekan.css" />
+    <link rel="stylesheet" href="assets/fonts/styles-fa-num/azarmehr.css" />
+    <link rel="stylesheet" href="assets/css/rtl-style.css" />
+    <style>
+      /* Language Switcher Styles */
+      .language-switcher {
+        position: relative;
+        display: inline-block;
+        margin-left: 15px;
+      }
+
+      .language-btn {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+      }
+
+      .language-btn img {
+        width: 20px;
+        margin-left: 5px;
+      }
+
+      .language-options {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #2a2a2a;
+        border-radius: 4px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        min-width: 120px;
+      }
+
+      .language-options a {
+        display: block;
+        padding: 10px 15px;
+        color: #fff;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+
+      .language-options a:hover {
+        background: #3a3a3a;
+      }
+
+      .language-switcher:hover .language-options {
+        display: block;
+      }
+
+      /* RTL/LTR direction handling */
+      [dir="rtl"] {
+        text-align: right;
+      }
+
+      [dir="ltr"] {
+        text-align: left;
+      }
+
+      /* Bilingual content */
+      .lang-fa {
+        display: block;
+      }
+
+      .lang-en {
+        display: none;
+      }
+
+      body.english .lang-fa {
+        display: none;
+      }
+
+      body.english .lang-en {
+        display: block;
+      }
+
+      body.english {
+        direction: ltr;
+      }
+
+      body.english [dir="rtl"] {
+        direction: ltr;
+      }
+
+      /* Adjustments for English version */
+      body.english .text-right {
+        text-align: left !important;
+      }
+
+      body.english .text-left {
+        text-align: right !important;
+      }
+
+      body.english .mr-3 {
+        margin-right: 0 !important;
+        margin-left: 1rem !important;
+      }
+
+      body.english .ml-3 {
+        margin-left: 0 !important;
+        margin-right: 1rem !important;
+      }
+    </style>
+  </head>
+
+  <body class="template-color-1 nft-body-connect">
+    <!-- Language Switcher -->
+    <div
+      class="language-switcher"
+      style="position: fixed; top: 15px; left: 15px; z-index: 1000"
+    >
+      <button class="language-btn">
+        <span class="lang-fa">فارسی</span>
+        <span class="lang-en">English</span>
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PGxpbmUgeDE9IjEyIiB5MT0iOCIgeDI9IjEyIiB5Mj0iMTYiPjwvbGluZT48bGluZSB4MT0iOCIgeTE9IjEyIiB4Mj0iMTYiIHkyPSIxMiI+PC9saW5lPjwvc3ZnPg=="
+          alt="Language"
+        />
+      </button>
+      <div class="language-options">
+        <a href="#" data-lang="fa">فارسی</a>
+        <a href="#" data-lang="en">English</a>
+      </div>
+    </div>
+
+    <!-- start header area -->
+    <header class="rn-header haeder-default header--sticky">
+      <div class="container">
+        <div class="header-inner">
+          <div class="header-left">
+            <div class="logo-thumbnail logo-custom-css">
+              <a class="logo-light" href="index.html"
+                ><img src="assets/images/logo/logo-white.png" alt="nft-logo"
+              /></a>
+              <a class="logo-dark" href="index.html"
+                ><img src="assets/images/logo/logo-dark.png" alt="nft-logo"
+              /></a>
+            </div>
+            <div class="mainmenu-wrapper">
+              <nav id="sideNav" class="mainmenu-nav d-none d-xl-block">
+                <!-- Start Mainmanu Nav -->
+                <ul class="mainmenu">
+                  <li class="has-droupdown has-menu-child-item">
+                    <a href="index.html">
+                      <span class="lang-fa">صفحه اصلی</span>
+                      <span class="lang-en">Home</span>
+                    </a>
+                    <ul class="submenu">
+                      <li>
+                        <a href="index.html"
+                          ><span class="lang-fa">صفحه اصلی - 01</span
+                          ><span class="lang-en">Home - 01</span>
+                          <i class="feather-home"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="index-two.html"
+                          ><span class="lang-fa">صفحه اصلی - 02</span
+                          ><span class="lang-en">Home - 02</span
+                          ><i class="feather-home"></i
+                        ></a>
+                      </li>
+                      <!-- Other menu items with bilingual text -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="about.html">
+                      <span class="lang-fa">درباره</span>
+                      <span class="lang-en">About</span>
+                    </a>
+                  </li>
+                  <!-- Continue with other menu items... -->
+                </ul>
+                <!-- End Mainmanu Nav -->
+              </nav>
+            </div>
+          </div>
+          <div class="header-right">
+            <!-- Search form -->
+            <div class="setting-option d-none d-lg-block">
+              <form class="search-form-wrapper" action="#">
+                <input
+                  type="search"
+                  placeholder="اینجا بگردید"
+                  aria-label="جستجو"
+                />
+                <div class="search-icon">
+                  <button><i class="feather-search"></i></button>
+                </div>
+              </form>
+            </div>
+            <!-- Other header elements... -->
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- End Header Area -->
+
+    <!-- start banner area -->
+    <div class="slider-one rn-section-gapTop">
+      <div class="container">
+        <div class="row row-reverse-sm align-items-center">
+          <div class="col-lg-5 col-md-6 col-sm-12 mt_sm--50">
+            <h2
+              class="title"
+              data-sal-delay="200"
+              data-sal="slide-up"
+              data-sal-duration="800"
+            >
+              <span class="lang-fa"
+                >هنر دیجیتال را کشف کنید، NFT های خاص خود را جمع آوری و
+                بفروشید.</span
+              >
+              <span class="lang-en"
+                >Discover digital art, collect and sell your unique NFTs.</span
+              >
+            </h2>
+            <p
+              class="slide-disc"
+              data-sal-delay="300"
+              data-sal="slide-up"
+              data-sal-duration="800"
+            >
+              <span class="lang-fa"
+                >با یکی از بزرگترین خرده فروشان جهان شریک شوید تا برند و برند
+                خود را به نمایش بگذارید محصولات.</span
+              >
+              <span class="lang-en"
+                >Partner with one of the world's largest retailers to showcase
+                your brand and products.</span
+              >
+            </p>
+            <div class="button-group">
+              <a
+                class="btn btn-large btn-primary"
+                href="#"
+                data-sal-delay="400"
+                data-sal="slide-up"
+                data-sal-duration="800"
+                ><span class="lang-fa">شروع به کار</span
+                ><span class="lang-en">Get Started</span></a
+              >
+              <a
+                class="btn btn-large btn-primary-alta"
+                href="create.html"
+                data-sal-delay="500"
+                data-sal="slide-up"
+                data-sal-duration="800"
+              >
+                <span class="lang-fa">ایجاد</span
+                ><span class="lang-en">Create</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6 col-sm-12 offset-lg-1">
+            <div class="slider-thumbnail">
+              <img
+                src="assets/images/slider/slider-1.png"
+                alt="Slider Images"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End banner area -->
+
+    <!-- Continue with the rest of the HTML content, adding bilingual spans for all text content -->
+
+    <!-- JS ============================================ -->
+    <script src="assets/js/vendor/jquery.js"></script>
+    <script src="assets/js/vendor/jquery.nice-select.min.js"></script>
+    <script src="assets/js/vendor/jquery-ui.js"></script>
+    <script src="assets/js/vendor/modernizer.min.js"></script>
+    <script src="assets/js/vendor/feather.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/sal.min.js"></script>
+    <script src="assets/js/vendor/particles.js"></script>
+    <script src="assets/js/vendor/jquery.style.swicher.js"></script>
+    <script src="assets/js/vendor/js.cookie.js"></script>
+    <script src="assets/js/vendor/count-down.js"></script>
+    <script src="assets/js/vendor/isotop.js"></script>
+    <script src="assets/js/vendor/imageloaded.js"></script>
+    <script src="assets/js/vendor/backtoTop.js"></script>
+    <script src="assets/js/vendor/odometer.js"></script>
+    <script src="assets/js/vendor/jquery-appear.js"></script>
+    <script src="assets/js/vendor/scrolltrigger.js"></script>
+    <script src="assets/js/vendor/jquery.custom.file-input.js"></script>
+    <script src="assets/js/vendor/savePopup.js"></script>
+    <script src="assets/js/vendor/vanilla.tilt.js"></script>
+
+    <!-- main JS -->
+    <script src="assets/js/main.js"></script>
+    <!-- Meta Mask  -->
+    <script src="assets/js/vendor/web3.min.js"></script>
+    <script src="assets/js/vendor/maralis.js"></script>
+    <script src="assets/js/vendor/nft.js"></script>
+
+    <script>
+      // Language switching functionality
+      $(document).ready(function () {
+        // Check for saved language preference or default to Persian
+        var currentLang = localStorage.getItem("language") || "fa";
+        if (currentLang === "en") {
+          $("body").addClass("english");
+        }
+
+        // Handle language switch
+        $(".language-options a").click(function (e) {
+          e.preventDefault();
+          var lang = $(this).data("lang");
+
+          if (lang === "en") {
+            $("body").addClass("english");
+          } else {
+            $("body").removeClass("english");
+          }
+
+          // Save preference
+          localStorage.setItem("language", lang);
+        });
+      });
+    </script>
+  </body>
+</html>

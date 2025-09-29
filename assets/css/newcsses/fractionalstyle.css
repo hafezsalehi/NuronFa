@@ -18,32 +18,50 @@
 
 .fractional {
     /* background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 100%); */
-    color: white;
-    min-height: 100vh;
+    /* color: rgb(189, 22, 22); */
+    /* min-height: 100vh; */
     display: flex;
     flex-direction: column;
     align-items: center !important;
+    margin: 10px 0 !important;
     /* padding: 2rem; */
 }
 
 .header-frac {
+    align-items: center !important;
+
     text-align: center;
     margin-bottom: 2rem;
     width: 100%;
+    /* background: red; */
 }
 
 .fractional h1 {
-    font-size: 2.5rem;
+
+    margin-top: 20px;
+    font-size: 4.5rem;
     margin-bottom: 0.5rem;
-    background: linear-gradient(to right, #ff4e50, #f9d423);
+    background: linear-gradient(to right, #7f47e7, #0e013d);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    /* color: transparent; */
+    font-family: "Vazir";
+    color: #031330;
+    text-shadow:
+        0 0 10px #644925,
+        0 0 20px #3e0b9b,
+        0 0 30px #e60073,
+        0 0 40px #1b8142,
+        0 0 50px #e60073,
+        0 0 60px #6e750d,
+        0 0 70px #a70e27;
 }
 
 .background-frac {
+
     position: relative;
     width: 100%;
+    height: 100%;
     background-image: url('../../../images/Fractionalslider/wall-frac.webp');
     /* opacity: .5; */
 
@@ -51,15 +69,36 @@
     background-position: center;
     background-repeat: no-repeat;
     /* background: linear-gradient(135deg, #2c3e50, #4ca1af);  */
-    padding: 20px;
-    margin: 20px 0;
+    /* padding: 20px;
+    margin: 20px 0; */
 }
 
-.fractional .subtitle-frac {
-    font-size: 1.2rem;
-    opacity: 0.8;
-    max-width: 600px;
-    margin: 0 auto;
+.subtitle-frac {
+    margin-top: 20px;
+    font-size: 4.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #7f47e7, #0e013d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* color: transparent; */
+    font-family: "Vazir";
+
+
+    font-size: 2.2rem;
+    color: rgb(3, 48, 48);
+    /* opacity: 0.9;
+    max-width: 40%;
+    margin: 20 auto;
+    text-shadow: 
+    0 0 10px #644925,
+    0 0 20px #3e0b9b,
+    0 0 30px #e60073,
+    0 0 40px #1b8142,
+    0 0 50px #e60073,
+    0 0 60px #6e750d,
+    0 0 70px #a70e27;
+    text-align: center; */
+
 }
 
 .slider-container-frac {
@@ -70,7 +109,7 @@
     overflow: hidden;
     border-radius: 5px;
     box-shadow: 0 10px 30px rgba(148, 11, 11, 0.5);
-    margin: 0 auto;
+    margin: 30px auto;
     /* وسط‌چین کردن */
     /* opacity: 10; */
 
@@ -160,7 +199,7 @@
     color: var(--popup-text);
     border-radius: 12px;
     padding: 2px 5px;
-    width: 100px;
+    width: 80px;
     text-align: center;
     z-index: 10;
     opacity: .1;
@@ -168,7 +207,7 @@
     transition: all 0.3s ease;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     font-weight: 500;
-    /* border: 2px solid rgba(255, 255, 255, 0.7); */
+    border: 3px solid rgba(116, 5, 5, 0.7);
 }
 
 .owner-popup-frac::after {
@@ -229,7 +268,12 @@
     }
 
     .owner-popup-frac {
-        width: 120px;
+        /* width: 50px; */
         padding: 10px 12px;
+
+    }
+
+    .owner-popup-frac.show-frac {
+        transform: scale(.4);
     }
 }
