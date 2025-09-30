@@ -146,9 +146,8 @@ function showOwnerPopups(grid, columns, rows) {
     }
   }
 
-  console.log(
-    `نمایش ${popupCount} پاپ‌آپ برای ${totalCells} سلول (${columns}x${rows})`
-  );
+  // console.log(
+  //   `نمایش ${popupCount} پاپ‌آپ برای ${totalCells} سلول (${columns}x${rows})`  );
 
   let displayedPopups = 0;
 
@@ -229,9 +228,9 @@ function showOwnerPopups(grid, columns, rows) {
   });
 
   // گزارش تعداد پاپ‌آپ‌های نمایش داده شده
-  setTimeout(() => {
-    console.log(`تعداد پاپ‌آپ‌های نمایش داده شده: ${displayedPopups}`);
-  }, popupCount * 300 + 500);
+  // setTimeout(() => {
+  //   console.log(`تعداد پاپ‌آپ‌های نمایش داده شده: ${displayedPopups}`);
+  // }, popupCount * 300 + 500);
 }
 
 // تغییر به اسلاید بعدی
@@ -284,9 +283,9 @@ document.addEventListener("DOMContentLoaded", () => {
   startSlider();
 
   // اضافه کردن event listener برای دکمه‌ها
-//   document.getElementById("prev-btn-frac").addEventListener("click", prevSlide);
-//   document.getElementById("next-btn-frac").addEventListener("click", nextSlide);
-//   document
-//     .getElementById("pause-btn-frac")
-//     .addEventListener("click", togglePause);
+  //   document.getElementById("prev-btn-frac").addEventListener("click", prevSlide);
+  //   document.getElementById("next-btn-frac").addEventListener("click", nextSlide);
+  //   document
+  //     .getElementById("pause-btn-frac")
+  //     .addEventListener("click", togglePause);
 });

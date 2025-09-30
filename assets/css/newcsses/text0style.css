@@ -70,6 +70,8 @@
     transform: translateY(-2px);
 }
 
+
+
 .text0button1 .title {
     font-size: calc(13px + (16 - 13) * ((100vw - 320px) / (1920 - 320)));
     font-weight: 500;
@@ -279,7 +281,10 @@
     transform: scale(1.5);
     color: yellow;
     transform: translateY(-5px) !important;
+
 }
+
+
 
 .service-block1 .service-content.service-0,
 .service-block2 .service-content.service-0 {
@@ -320,3 +325,34 @@
 }
 
 /* service section css end */
+
+/* برای موبایل - فعال کردن هاور */
+@media (max-width: 768px) {
+    .service-content.mobile-hover-active {
+        box-shadow: rgba(39, 79, 117, 0.2) 0 40px 90px -30px;
+        transform: translateY(-10px);
+        border: 3px solid #e5e91e;
+        border-radius: 15px;
+    }
+
+    .service-content.mobile-hover-active .service-icon span:after {
+        transform: scale(2);
+        filter: opacity(1);
+    }
+
+    .service-content.mobile-hover-active .service-icon span i {
+        color: yellow;
+        transform: scale(1.2);
+    }
+
+    .service-content.mobile-hover-active .service-title {
+        color: yellow;
+        transform: translateY(-5px);
+    }
+
+    .text0button1.mobile-hover-active {
+        box-shadow: 0 6px 22px 3px rgba(92, 35, 35, 0.12);
+        background-position: right center;
+        transform: translateY(-2px);
+    }
+}

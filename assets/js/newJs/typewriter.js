@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const typingSection = document.querySelector(".typing-section-type");
   const typingText = document.getElementById("typing-text-type");
   const layer1 = document.getElementById("layer1Type");
-  const layer3 = document.getElementById("layer3Type");
+  // const layer3 = document.getElementById("layer3Type");
 
   const text =
     "دنیای اطراف شما بوم نقاشی ماست. ما با قلم موی خلاقیت و رنگ‌های پایدار، دیوارهای بی‌روح را به تابلوهایی زنده تبدیل می‌کنیم. هر خط، هر طرح و هر رنگ، داستانی از زیبایی و نوآوری را روایت می‌کند. فضای زندگی و کار شما شایانه بهترین هاست، پس آن را به دست ما بسپارید.";
@@ -22,44 +22,47 @@ document.addEventListener("DOMContentLoaded", function () {
     "rgba(200, 255, 0, 0.8)",
     "rgba(100, 255, 0, 0.8)",
     "rgba(0, 255, 50, 0.8)",
-    "rgba(0, 255, 150, 0.8)",
+    "rgba(0, 255, 0, 0.8)",
     "rgba(0, 200, 215, 0.8)",
     "rgba(0, 100, 255, 0.8)",
-    "rgba(100, 0, 185, 0.8)",
+    "rgba(100, 100, 185, 0.8)",
     "rgba(150, 255, 50, 0.8)",
     "rgba(50, 255, 150, 0.8)",
     "rgba(50, 200, 255, 0.8)",
-    "rgba(100, 100, 255, 0.8)",
+    "rgba(0, 0, 255, 0.8)",
     "rgba(200, 0, 205, 0.8)",
+    "rgba(50, 200, 50, 0.8)",
+    "rgba(100, 100, 80, 0.8)",
+    "rgba(200, 90, 205, 0.8)",
   ];
 
   // رنگ‌های لایه سوم - شفافیت بسیار کم
-  const layer3Colors = [
-    "rgba(255, 50, 50, 0.15)",
-    "rgba(50, 255, 50, 0.15)",
-    "rgba(50, 50, 255, 0.15)",
-    "rgba(255, 255, 50, 0.15)",
-    "rgba(255, 50, 255, 0.15)",
-    "rgba(50, 255, 255, 0.15)",
-  ];
+  // const layer3Colors = [
+  //   "rgba(255, 50, 50, 0.15)",
+  //   "rgba(50, 255, 50, 0.15)",
+  //   "rgba(50, 50, 255, 0.15)",
+  //   "rgba(255, 255, 50, 0.15)",
+  //   "rgba(255, 50, 255, 0.15)",
+  //   "rgba(50, 255, 255, 0.15)",
+  // ];
 
   // ایجاد دایره‌های لایه اول
   function createLayer1Circles() {
     for (let i = 0; i < 30; i++) {
       setTimeout(() => {
-        createCircle(layer1, layer1Colors, 80, 180);
-      }, i * 10);
+        createCircle(layer1, layer1Colors, 80, 250);
+      }, i * 20);
     }
   }
 
   // ایجاد دایره‌های لایه سوم
-  function createLayer3Circles() {
-    for (let i = 0; i < 30; i++) {
-      setTimeout(() => {
-        createCircle(layer3, layer3Colors, 60, 150);
-      }, i * 50);
-    }
-  }
+  // function createLayer3Circles() {
+  //   for (let i = 0; i < 30; i++) {
+  //     setTimeout(() => {
+  //       createCircle(layer3, layer3Colors, 60, 150);
+  //     }, i * 50);
+  //   }
+  // }
 
   // تابع ایجاد دایره
   function createCircle(container, colors, minSize, maxSize) {
@@ -85,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (circle.parentNode) {
         circle.parentNode.removeChild(circle);
       }
-    }, 8000);
+    }, 6000);
   }
 
   function typeWriter() {
@@ -102,11 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // شروع با تاخیر بیشتر
   setTimeout(() => {
     createLayer1Circles();
-    createLayer3Circles();
 
-    setInterval(createLayer1Circles, 1000);
-    setInterval(createLayer3Circles, 1000);
-  }, 1000);
+    setInterval(createLayer1Circles, 4000);
+  }, 6000);
 
   // شروع تایپ
   setTimeout(typeWriter, 500);

@@ -13,11 +13,11 @@
 }
 
 .pb-70-gallery1 {
-    padding-bottom: 70px;
+    /* padding-bottom: 70px; */
 }
 
 .pb-lg-60-gallery1 {
-    padding-bottom: 60px;
+    /* padding-bottom: 60px; */
 }
 
 .pt-150-gallery1 {
@@ -34,7 +34,7 @@
 
 /* استایل‌های تایتل و توضیحات */
 .section__title-gallery1 {
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .section__title__main-gallery1 {
@@ -43,7 +43,7 @@
     text-transform: capitalize;
     line-height: normal;
     position: relative;
-    margin-bottom: 30px;
+    margin: 20px 30px;
     font-family: iranyekan;
 }
 
@@ -457,6 +457,7 @@
 }
 
 .container-gallery1 {
+    height: 100%;
     width: 100%;
     /* padding-right: 15px;
     padding-left: 15px;
@@ -467,5 +468,173 @@
 @media (min-width: 1400px) {
     .container-gallery1 {
         max-width: 1320px;
+    }
+}
+
+
+
+
+/* mobile-hover.css - نسخه آپدیت شده */
+
+/* برای موبایل */
+@media (max-width: 768px) {
+
+    /* فعال کردن هاور برای کارت‌های سرویس */
+    .service-content.mobile-hover-active {
+        box-shadow: rgba(39, 79, 117, 0.2) 0 40px 90px -30px !important;
+        transform: translateY(-10px) !important;
+        border: 3px solid #e5e91e !important;
+        border-radius: 15px !important;
+    }
+
+    .service-content.mobile-hover-active .service-icon span:after {
+        transform: scale(2) !important;
+        filter: opacity(1) !important;
+    }
+
+    .service-content.mobile-hover-active .service-icon span i {
+        color: yellow !important;
+        transform: scale(1.2) !important;
+    }
+
+    .service-content.mobile-hover-active .service-title {
+        color: yellow !important;
+        transform: translateY(-5px) !important;
+    }
+
+    /* فعال کردن هاور برای دکمه */
+    .text0button1.mobile-hover-active {
+        box-shadow: 0 6px 22px 3px rgba(92, 35, 35, 0.12) !important;
+        background-position: right center !important;
+        transform: translateY(-2px) !important;
+    }
+
+    /* فعال کردن هاور برای سکشن circle1 */
+    .circle1-extra-left-content.mobile-hover-active {
+        transform: translateY(-5px) !important;
+    }
+
+    .circle1-extra-left-content.mobile-hover-active .circle1-features-icon {
+        transform: scale(1.1) !important;
+        box-shadow: 0px 10px 40px -5px rgba(238, 9, 121, 0.8) !important;
+    }
+
+    .circle1-extra-left-content.mobile-hover-active .circle1-features-icon:after {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+    }
+
+    .circle1-extra-left-content.mobile-hover-active .circle1-features-icon i {
+        background: linear-gradient(to right, #fff 0%, #fff 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        transform: scale(1.2) !important;
+    }
+
+    .circle1-extra-left-content.mobile-hover-active .circle1-features-text-title h3 {
+        color: #ee0979 !important;
+        transform: translateX(5px) !important;
+    }
+
+    .circle1-features-icon.mobile-hover-active {
+        transform: scale(1.15) !important;
+        box-shadow: 0px 15px 50px -5px rgba(238, 9, 121, 0.9) !important;
+    }
+
+    .circle1-features-icon.mobile-hover-active:after {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+    }
+
+    .circle1-features-icon.mobile-hover-active i {
+        background: linear-gradient(to right, #fff 0%, #fff 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    /* فعال کردن هاور برای سکشن گالری */
+    .service__main__content-gallery1.mobile-hover-active {
+        transform: scale(1.05) !important;
+        z-index: 10 !important;
+        transition: all 0.4s ease !important;
+    }
+
+    .service__main__content-gallery1.mobile-hover-active .service__img-gallery1 img {
+        transform: scale(1.08) !important;
+        filter: brightness(1.1) !important;
+    }
+
+    .service__main__content-gallery1.mobile-hover-active .service__content-gallery1 {
+        transform: scale(1) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: rgba(255, 102, 0, 0.95) !important;
+    }
+
+    .service__main__content-gallery1.mobile-hover-active .service__text-gallery1 {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+
+    .service__main__content-gallery1.mobile-hover-active .service__text-gallery1 a {
+        transform: translateY(0) !important;
+        color: white !important;
+        font-weight: 600 !important;
+    }
+
+    .service__main__content-gallery1.mobile-hover-active .icon-gallery1 {
+        transform: scale(1.1) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* فعال کردن هاور برای دکمه‌های گالری */
+    .ht_btn-gallery1.mobile-hover-active {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 10px 25px rgba(255, 102, 0, 0.4) !important;
+    }
+
+    .ht_btn-gallery1.mobile-hover-active::before {
+        width: 100% !important;
+    }
+
+    /* افکت‌های ویژه برای گالری در موبایل */
+    .project__section-gallery1 .service__main__content-gallery1.mobile-hover-active:nth-child(1) {
+        transform: translateX(8px) scale(1.05) !important;
+    }
+
+    .project__section-gallery1 .service__main__content-gallery1.mobile-hover-active:nth-child(2) {
+        transform: translateX(-4px) scale(1.05) !important;
+    }
+
+    .project__section-gallery1 .service__main__content-gallery1.mobile-hover-active:nth-child(3) {
+        transform: translateX(4px) scale(1.05) !important;
+    }
+
+    .project__section-gallery1 .service__main__content-gallery1.mobile-hover-active:nth-child(4) {
+        transform: translateX(-8px) scale(1.05) !important;
+    }
+
+    /* دیباگ - می‌تونی حذفش کنی */
+    .mobile-hover-active {
+        position: relative;
+        transition: all 0.3s ease !important;
+    }
+
+    .mobile-hover-active::before {
+        content: "📱";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #007bff;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
     }
 }

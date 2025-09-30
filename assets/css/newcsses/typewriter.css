@@ -14,7 +14,7 @@
 
     position: relative;
     /* overflow: hidden; */
-    background: #110136;
+    background: #ffffff;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -195,7 +195,7 @@
         4px 4px 8px rgba(0, 0, 0, 0.1);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-weight: 900;
+    font-size: clamp(1rem, 7vw, 3.5rem);
     color: rgb(18, 241, 10);
     /* color: rgb(237, 241, 10); */
 

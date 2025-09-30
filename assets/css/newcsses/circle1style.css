@@ -290,3 +290,108 @@
         border-width: 5px;
     }
 }
+
+
+
+/* mobile-hover.css - نسخه آپدیت شده */
+
+/* برای موبایل */
+@media (max-width: 768px) {
+
+    /* فعال کردن هاور برای کارت‌های سرویس */
+    .service-content.mobile-hover-active {
+        box-shadow: rgba(39, 79, 117, 0.2) 0 40px 90px -30px !important;
+        transform: translateY(-10px) !important;
+        border: 3px solid #e5e91e !important;
+        border-radius: 15px !important;
+    }
+
+    .service-content.mobile-hover-active .service-icon span:after {
+        transform: scale(2) !important;
+        filter: opacity(1) !important;
+    }
+
+    .service-content.mobile-hover-active .service-icon span i {
+        color: yellow !important;
+        transform: scale(1.2) !important;
+    }
+
+    .service-content.mobile-hover-active .service-title {
+        color: yellow !important;
+        transform: translateY(-5px) !important;
+    }
+
+    /* فعال کردن هاور برای دکمه */
+    .text0button1.mobile-hover-active {
+        box-shadow: 0 6px 22px 3px rgba(92, 35, 35, 0.12) !important;
+        background-position: right center !important;
+        transform: translateY(-2px) !important;
+    }
+
+    /* فعال کردن هاور برای سکشن circle1 - آیتم‌های ویژگی */
+    .circle1-extra-left-content.mobile-hover-active {
+        transform: translateY(-5px) !important;
+    }
+
+    .circle1-extra-left-content.mobile-hover-active .circle1-features-icon {
+        transform: scale(1.1) !important;
+        box-shadow: 0px 10px 40px -5px rgba(238, 9, 121, 0.8) !important;
+    }
+
+    .circle1-extra-left-content.mobile-hover-active .circle1-features-icon:after {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+    }
+
+    .circle1-extra-left-content.mobile-hover-active .circle1-features-icon i {
+        background: linear-gradient(to right, #fff 0%, #fff 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        transform: scale(1.2) !important;
+    }
+
+    .circle1-extra-left-content.mobile-hover-active .circle1-features-text-title h3 {
+        color: #ee0979 !important;
+        transform: translateX(5px) !important;
+    }
+
+    /* فعال کردن هاور برای آیکن‌های جداگانه */
+    .circle1-features-icon.mobile-hover-active {
+        transform: scale(1.15) !important;
+        box-shadow: 0px 15px 50px -5px rgba(238, 9, 121, 0.9) !important;
+    }
+
+    .circle1-features-icon.mobile-hover-active:after {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+    }
+
+    .circle1-features-icon.mobile-hover-active i {
+        background: linear-gradient(to right, #fff 0%, #fff 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    /* دیباگ - می‌تونی حذفش کنی */
+    .mobile-hover-active {
+        position: relative;
+        transition: all 0.3s ease !important;
+    }
+
+    .mobile-hover-active::before {
+        content: "📱";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #007bff;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+}
