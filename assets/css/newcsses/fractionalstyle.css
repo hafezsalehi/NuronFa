@@ -22,8 +22,8 @@
     /* min-height: 100vh; */
     display: flex;
     flex-direction: column;
-    align-items: center !important;
-    margin: 10px 0 !important;
+    align-items: center;
+    margin: 10px 0;
     /* padding: 2rem; */
 }
 
@@ -31,7 +31,7 @@
     align-items: center !important;
 
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 50px;
     width: 100%;
     /* background: red; */
 }
@@ -48,20 +48,20 @@
     font-family: "Vazir";
     color: #031330;
     text-shadow:
-        0 0 10px #644925,
-        0 0 20px #3e0b9b,
+        0 0 20px #644925,
+        0 0 30px #3e0b9b,
         0 0 30px #e60073,
-        0 0 40px #1b8142,
+        0 0 60px #1b8142,
         0 0 50px #e60073,
-        0 0 60px #6e750d,
-        0 0 70px #a70e27;
+        0 0 80px #6e750d,
+        0 0 100px #a70e27;
 }
 
 .background-frac {
 
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 70%;
     background-image: url('../../../images/Fractionalslider/wall-frac.webp');
     /* opacity: .5; */
 
@@ -75,28 +75,28 @@
 
 .subtitle-frac {
     margin-top: 20px;
-    font-size: 4.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 0.5rem;
-    background: linear-gradient(to right, #7f47e7, #0e013d);
+    /* background: linear-gradient(to right, #7f47e7, #0e013d); */
     -webkit-background-clip: text;
     background-clip: text;
     /* color: transparent; */
     font-family: "Vazir";
 
 
-    font-size: 2.2rem;
-    color: rgb(3, 48, 48);
-    /* opacity: 0.9;
-    max-width: 40%;
-    margin: 20 auto;
-    text-shadow: 
+    color: rgb(1, 48, 48);
+    /* text-shadow: 
     0 0 10px #644925,
     0 0 20px #3e0b9b,
     0 0 30px #e60073,
     0 0 40px #1b8142,
     0 0 50px #e60073,
     0 0 60px #6e750d,
-    0 0 70px #a70e27;
+    0 0 70px #a70e27; */
+    /* opacity: 0.9;
+    max-width: 40%;
+    margin: 20 auto;
+
     text-align: center; */
 
 }
@@ -131,7 +131,7 @@
 }
 
 .slide-frac.active-frac {
-    opacity: 1;
+    opacity: .9;
 }
 
 .slide-image-frac {
@@ -162,8 +162,8 @@
     position: absolute;
     top: 0;
     height: 100%;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.3);
+    width: 1.2px;
+    background: rgba(255, 255, 255, .6);
     transform: scaleY(0);
     transform-origin: top;
     animation: drawLineVerticalFrac 0.8s ease forwards;
@@ -174,8 +174,8 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.3);
+    height: 1.2px;
+    background: rgba(255, 255, 255, .6);
     transform: scaleX(0);
     transform-origin: left;
     animation: drawLineHorizontalFrac 0.8s ease forwards;
@@ -207,7 +207,7 @@
     transition: all 0.3s ease;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     font-weight: 500;
-    border: 3px solid rgba(116, 5, 5, 0.7);
+    border: 3px solid rgba(3, 12, 87, 0.7);
 }
 
 .owner-popup-frac::after {
@@ -224,8 +224,8 @@
 }
 
 .owner-popup-frac.show-frac {
-    opacity: .7;
-    transform: scale(.7);
+    opacity: .8;
+    transform: scale(.8);
 }
 
 .owner-avatar-frac {
@@ -252,7 +252,7 @@
 .owner-city-frac {
     font-size: 0.9rem;
     opacity: 0.8;
-    color: #7f8c8d;
+    color: rgba(3, 6, 24, 0.9);
 }
 
 
@@ -269,7 +269,7 @@
 
     .owner-popup-frac {
         /* width: 50px; */
-        padding: 10px 12px;
+        /* padding: 10px 12px; */
 
     }
 

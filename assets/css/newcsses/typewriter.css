@@ -1,32 +1,30 @@
 @font-face {
     font-family: "Vazir";
-    src: url(../../fonts/Vazir-Regular.ttf);
+    src: url('../../fonts/Vazir-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
-
-
-/* استایل‌های سکشن */
-.typing-section-type {
-    /* min-height: 100vh; */
-    font-family: "Vazir";
-    font-weight: 400;
-    font-size: 40px;
-
-    position: relative;
-    /* overflow: hidden; */
-    background: #ffffff;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    isolation: isolate;
-    /* height: 70%; */
-}
-
+/* Reset و استایل‌های پایه */
 .typing-section-type * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* استایل‌های سکشن */
+.typing-section-type {
+    font-family: "Vazir", sans-serif;
+    font-weight: 400;
+    position: relative;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    isolation: isolate;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
 /* لایه اول - زیرین‌ترین */
@@ -52,14 +50,10 @@
     background-position: center;
     z-index: 2;
     opacity: 1;
-    background-attachment: fixed;
-    /* این خط رو اضافه کن */
-
-
 }
 
 /* لایه سوم - رویی */
-.layer-3-type {
+/* .layer-3-type {
     position: absolute;
     top: 0;
     left: 0;
@@ -67,57 +61,58 @@
     height: 100%;
     z-index: 3;
     overflow: hidden;
-}
+} */
 
 /* استایل کلی دایره‌ها */
 .circle-type {
     position: absolute;
     border-radius: 50%;
-    opacity: .5;
+    opacity: 0.5;
+    animation-fill-mode: both;
 }
 
 /* دایره‌های لایه اول */
 .layer-1-type .circle-type {
     filter: blur(15px);
-    animation: layer1AnimationType 8s infinite ease-in-out;
+    animation: layer1AnimationType 6s ease-in-out forwards;
 }
 
 /* دایره‌های لایه سوم */
-.layer-3-type .circle-type {
+/* .layer-3-type .circle-type {
     filter: blur(20px);
-    animation: layer3AnimationType 6s infinite ease-in-out;
-}
+    animation: layer3AnimationType 6s ease-in-out forwards;
+} */
 
 /* انیمیشن لایه اول */
 @keyframes layer1AnimationType {
     0% {
-        opacity: .2;
-        transform: scale(0.1);
+        opacity: 0.5;
+        transform: scale(0.1) translateY(0);
     }
 
     25% {
         opacity: 0.7;
-        transform: scale(0.8);
+        transform: scale(0.8) translateY(-20px);
     }
 
     50% {
         opacity: 1;
-        transform: scale(1.2);
+        transform: scale(1.2) translateY(-40px);
     }
 
     75% {
         opacity: 0.7;
-        transform: scale(1.5);
+        transform: scale(1.5) translateY(-60px);
     }
 
     100% {
-        opacity: .2;
-        transform: scale(1.8);
+        opacity: .1;
+        transform: scale(1.8) translateY(-80px);
     }
 }
 
 /* انیمیشن لایه سوم */
-@keyframes layer3AnimationType {
+/* @keyframes layer3AnimationType {
     0% {
         opacity: 0;
         transform: translate(0, 0) scale(0.3);
@@ -147,7 +142,7 @@
         opacity: 0;
         transform: translate(90px, -50px) scale(0.4);
     }
-}
+} */
 
 /* کانتینر اصلی */
 .typing-container-type {
@@ -168,80 +163,176 @@
     padding: 3rem;
     box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     max-width: 80%;
     text-align: center;
-    isolation: isolate;
-
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #typing-text-type {
-    font-family: "Vazir";
-
+    font-family: "Vazir", sans-serif;
     min-height: 200px;
-    /* background: linear-gradient(45deg,
-            #FF0000, #FF0066, #FF6600, #FF9900,
-            #FFCC00, #FFFF00, #66FF00, #00FF99,
-            #00FFFF,
-            #FF00CC, #FF0000); */
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    /* background-clip: text; */
-    /* -webkit-text-fill-color: transparent; */
-    /* animation: gradientShiftType 20s ease infinite; */
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-shadow:
-        2px 2px 4px rgba(0, 0, 0, 0.2),
-        4px 4px 8px rgba(0, 0, 0, 0.1);
+        2px 2px 4px rgba(0, 0, 0, 0.3),
+        4px 4px 8px rgba(0, 0, 0, 0.2);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: clamp(1rem, 7vw, 3.5rem);
+    font-size: clamp(3rem, 5vw, 3.5rem);
+    /* font-size: 30px; */
     color: rgb(18, 241, 10);
-    /* color: rgb(237, 241, 10); */
-
-    /* text-shadow: 
-    0 0 10px #644925,
-    0 0 20px #fff,
-    0 0 30px #e60073,
-    0 0 40px #1b8142,
-    0 0 50px #e60073,
-    0 0 60px #6e750d,
-    0 0 70px #a70e27; */
+    line-height: clamp(4.5rem, 5vw, 6rem);
+    ;
+    text-align: center;
 }
 
 .paint-brush-type {
     display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-image: url('brush-icon.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-right: 5px;
-    transform: translateY(5px);
-    animation: brushBounceType 0.5s infinite alternate;
-    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
-}
-
-@keyframes gradientShiftType {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    width: 24px;
+    height: 24px;
+    background:
+        linear-gradient(45deg,
+            rgb(18, 241, 10),
+            rgb(100, 255, 50));
+    border-radius: 50% 50% 50% 0;
+    margin-right: 8px;
+    transform: translateY(4px) rotate(45deg);
+    animation: brushBounceType 0.6s infinite alternate;
+    box-shadow:
+        0 0 10px rgba(18, 241, 10, 0.5),
+        0 0 20px rgba(18, 241, 10, 0.3);
 }
 
 @keyframes brushBounceType {
     0% {
-        transform: translateY(5px) rotate(5deg);
+        transform: translateY(4px) rotate(45deg) scale(1);
+        opacity: 1;
     }
 
     100% {
-        transform: translateY(8px) rotate(-5deg);
+        transform: translateY(8px) rotate(45deg) scale(1.1);
+        opacity: 0.8;
     }
+}
+
+/* استایل‌های ریسپانسیو */
+@media (max-width: 1200px) {
+    .text-widget-type {
+        max-width: 85%;
+        padding: 2.5rem;
+    }
+
+    #typing-text-type {
+        /* font-size: clamp(1.3rem, 3.5vw, 2.2rem); */
+    }
+}
+
+@media (max-width: 768px) {
+    .typing-container-type {
+        padding: 1rem;
+    }
+
+    .text-widget-type {
+        max-width: 95%;
+        padding: 2rem;
+        border-radius: 15px;
+    }
+
+    #typing-text-type {
+        /* font-size: clamp(1.1rem, 4vw, 1.8rem); */
+        min-height: 150px;
+    }
+
+    .paint-brush-type {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* کاهش افکت‌ها در موبایل برای عملکرد بهتر */
+    .layer-1-type .circle-type {
+        filter: blur(10px);
+        animation-duration: 4s;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-widget-type {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    #typing-text-type {
+        /* font-size: clamp(1rem, 4.5vw, 1.5rem); */
+        min-height: 120px;
+    }
+
+    .paint-brush-type {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* بهینه‌سازی‌های عملکرد */
+.typing-section-type {
+    contain: layout paint style;
+    transform: translateZ(0);
+}
+
+.layer-1-type,
+.layer-3-type {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.circle-type {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* حالت کاهش حرکت */
+@media (prefers-reduced-motion: reduce) {
+
+    .circle-type,
+    .paint-brush-type {
+        animation: none !important;
+    }
+
+    .layer-1-type .circle-type,
+    .layer-3-type .circle-type {
+        animation: fadeInOut 3s ease-in-out forwards !important;
+    }
+
+    @keyframes fadeInOut {
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
+/* دیباگ و عیب‌یابی */
+.debug .circle-type {
+    border: 1px solid red;
+}
+
+.debug .layer-1-type {
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.debug .layer-2-type {
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.debug .layer-3-type {
+    background: rgba(0, 0, 255, 0.1);
 }

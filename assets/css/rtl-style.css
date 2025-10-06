@@ -183,7 +183,7 @@ body::before {
     position: absolute;
     right: 0;
     top: 0;
-    background-image: url("../images/bg/noise.gif");
+    /* background-image: url("../../images/images/bg/noise.gif"); */
     z-index: -1;
     background-color: rebeccapurple;
     opacity: 0.05;
@@ -3651,6 +3651,9 @@ ol ul {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .ptb_md--0 {
         padding: 0 !important;
+    }
+    .ptb--60 {
+        padding: 20px 0 !important;
     }
 
     .pl_md--0 {
@@ -16739,7 +16742,7 @@ figcaption {
 }
 
 .title.large-height {
-    line-height: 70px;
+    line-height: 50px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -16778,7 +16781,7 @@ figcaption {
 
 @media only screen and (max-width: 767px) {
     .banner-top-rating .banner-badge-top {
-        margin-top: 30px;
+        margin-top: 15px;
     }
 }
 

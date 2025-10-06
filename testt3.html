@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>طرح سه‌بخشی با انیمیشن شش‌ضلعی</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+        padding: 20px;
+        overflow-x: hidden;
+      }
+
+      .main-container-co {
+        display: flex;
+        width: 100%;
+        max-width: 1400px;
+        gap: 25px;
+        margin-top: 20px;
+      }
+
+      /* استایل‌های باکس اول (مستطیل‌های انیمیشنی) */
+      .box-1-co {
+        flex: 3;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        min-height: 650px;
+      }
+
+      .cards-container-co {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-co {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 15px;
+        transition: all 0.5s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transform-origin: center;
+        position: relative;
+        overflow: hidden;
+        flex: 1;
+      }
+
+      .card-co:last-child {
+        margin-bottom: 0;
+      }
+
+      /* رنگ‌های مختلف برای کارت‌ها */
+      .card-co:nth-child(1) {
+        background: linear-gradient(
+          135deg,
+          rgba(52, 152, 219, 0.25),
+          rgba(41, 128, 185, 0.15)
+        );
+        border: 1px solid rgba(52, 152, 219, 0.4);
+      }
+
+      .card-co:nth-child(2) {
+        background: linear-gradient(
+          135deg,
+          rgba(46, 204, 113, 0.25),
+          rgba(39, 174, 96, 0.15)
+        );
+        border: 1px solid rgba(46, 204, 113, 0.4);
+      }
+
+      .card-co:nth-child(3) {
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.25),
+          rgba(192, 57, 43, 0.15)
+        );
+        border: 1px solid rgba(231, 76, 60, 0.4);
+      }
+
+      .card-co:nth-child(4) {
+        background: linear-gradient(
+          135deg,
+          rgba(155, 89, 182, 0.25),
+          rgba(142, 68, 173, 0.15)
+        );
+        border: 1px solid rgba(155, 89, 182, 0.4);
+      }
+
+      .card-co:nth-child(5) {
+        background: linear-gradient(
+          135deg,
+          rgba(241, 196, 15, 0.25),
+          rgba(243, 156, 18, 0.15)
+        );
+        border: 1px solid rgba(241, 196, 15, 0.4);
+      }
+
+      .card-co:nth-child(6) {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 188, 156, 0.25),
+          rgba(22, 160, 133, 0.15)
+        );
+        border: 1px solid rgba(26, 188, 156, 0.4);
+      }
+
+      .card-title-co {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        transition: all 0.5s ease;
+      }
+
+      .card-subtitle-co {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+        margin-bottom: 10px;
+        opacity: 0.9;
+        font-weight: 500;
+        transition: all 0.5s ease;
+      }
+
+      .card-content-co {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+        opacity: 0.8;
+        transition: all 0.5s ease;
+      }
+
+      /* انیمیشن زوم برای کارت فعال */
+      .card-co.active-co {
+        animation: zoomPulseCo 4s ease-in-out;
+        transform: scale(1.05);
+        z-index: 10;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        background: rgba(255, 255, 255, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .card-co.active-co .card-title-co {
+        color: #fff;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        transform: scale(1.05);
+      }
+
+      .card-co.active-co .card-subtitle-co {
+        opacity: 1;
+        color: rgba(255, 255, 255, 0.95);
+        transform: scale(1.02);
+      }
+
+      .card-co.active-co .card-content-co {
+        opacity: 1;
+        color: rgba(255, 255, 255, 0.95);
+        transform: scale(1.02);
+      }
+
+      @keyframes zoomPulseCo {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        20% {
+          transform: scale(1.08);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+        40% {
+          transform: scale(1.05);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        80% {
+          transform: scale(1.05);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      /* نشانگر پیشرفت انیمیشن */
+      .progress-bar-co {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+        width: 0%;
+        transition: width 4s linear;
+      }
+
+      .card-co.active-co .progress-bar-co {
+        width: 100%;
+      }
+
+      /* استایل برای قاب اصلی */
+      .container-title-co {
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      /* بخش انیمیشن شش‌ضلعی */
+      .animation-section-co {
+        flex: 5;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 650px;
+      }
+
+      .box-2-co {
+        flex: 4;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 650px;
+      }
+
+      .container-co {
+        /* position: relative;
+        width: 95%;
+        height: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center; */
+
+        position: relative;
+  width: 90vmin; /* اضافه کردن */
+  height: 90vmin; /* اضافه کردن */
+  min-height: 200px; /* اضافه کردن */
+  min-width: 200px; /* اضافه کردن */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+      }
+
+      .orbit-co {
+        position: absolute;
+        width: 55%;
+        height: 55%;
+        border-radius: 50%;
+        animation: rotateCo 40s linear infinite;
+      }
+
+      .hexagon-wrapper-co {
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        animation: rotateReverseCo 40s linear infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .small-hexagon-co {
+        width: 75px;
+        height: 75px;
+        /* clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            z-index: 3;
+            flex-shrink: 0; */
+
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.1)
+        );
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+          inset 0 0 20px rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        z-index: 3;
+        flex-shrink: 0;
+      }
+
+      .text-square-co {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 12px;
+        font-size: 12px;
+        text-align: center;
+        line-height: 1.3;
+        opacity: 0.9;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+        width: 140px;
+        min-height: 50px;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      /* موقعیت‌دهی و جهت‌دهی مربع‌های متن */
+      .hexagon-1-co,
+      .hexagon-2-co,
+      .hexagon-3-co,
+      .hexagon-4-co,
+      .hexagon-5-co,
+      .hexagon-6-co {
+        flex-direction: row-reverse;
+      }
+
+      .hexagon-1-co .text-square-co,
+      .hexagon-2-co .text-square-co,
+      .hexagon-3-co .text-square-co,
+      .hexagon-4-co .text-square-co,
+      .hexagon-5-co .text-square-co,
+      .hexagon-6-co .text-square-co {
+        margin-right: 10px;
+      }
+
+      .hexagon-7-co,
+      .hexagon-8-co,
+      .hexagon-9-co,
+      .hexagon-10-co,
+      .hexagon-11-co,
+      .hexagon-12-co {
+        flex-direction: row;
+      }
+
+      .hexagon-7-co .text-square-co,
+      .hexagon-8-co .text-square-co,
+      .hexagon-9-co .text-square-co,
+      .hexagon-10-co .text-square-co,
+      .hexagon-11-co .text-square-co,
+      .hexagon-12-co .text-square-co {
+        margin-left: 10px;
+      }
+
+      /* موقعیت‌دهی 12 شش‌ضلعی با فاصله کمتر */
+      .hexagon-1-co {
+        top: -8%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .hexagon-2-co {
+        top: 10%;
+        right: 15%;
+        transform: translateY(-50%);
+      }
+      .hexagon-3-co {
+        top: 28%;
+        right: 6%;
+        transform: translateY(-50%);
+      }
+      .hexagon-4-co {
+        top: 50%;
+        right: -8%;
+        transform: translateY(-50%);
+      }
+      .hexagon-5-co {
+        top: 72%;
+        right: 6%;
+        transform: translateY(-50%);
+      }
+      .hexagon-6-co {
+        top: 90%;
+        right: 15%;
+        transform: translateY(-50%);
+      }
+      .hexagon-7-co {
+        bottom: -8%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .hexagon-8-co {
+        top: 90%;
+        left: 15%;
+        transform: translateY(-50%);
+      }
+      .hexagon-9-co {
+        top: 72%;
+        left: 6%;
+        transform: translateY(-50%);
+      }
+      .hexagon-10-co {
+        top: 50%;
+        left: -8%;
+        transform: translateY(-50%);
+      }
+      .hexagon-11-co {
+        top: 28%;
+        left: 6%;
+        transform: translateY(-50%);
+      }
+      .hexagon-12-co {
+        top: 10%;
+        left: 15%;
+        transform: translateY(-50%);
+      }
+
+      /* رنگ‌های شیشه‌ای برای هر شش‌ضلعی */
+      .hexagon-1-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(52, 152, 219, 0.3),
+          rgba(41, 128, 185, 0.2)
+        );
+      }
+      .hexagon-2-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(46, 204, 113, 0.3),
+          rgba(39, 174, 96, 0.2)
+        );
+      }
+      .hexagon-3-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.3),
+          rgba(192, 57, 43, 0.2)
+        );
+      }
+      .hexagon-4-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(155, 89, 182, 0.3),
+          rgba(142, 68, 173, 0.2)
+        );
+      }
+      .hexagon-5-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 188, 156, 0.3),
+          rgba(22, 160, 133, 0.2)
+        );
+      }
+      .hexagon-6-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(241, 196, 15, 0.3),
+          rgba(243, 156, 18, 0.2)
+        );
+      }
+      .hexagon-7-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(52, 152, 219, 0.3),
+          rgba(41, 128, 185, 0.2)
+        );
+      }
+      .hexagon-8-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(46, 204, 113, 0.3),
+          rgba(39, 174, 96, 0.2)
+        );
+      }
+      .hexagon-9-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.3),
+          rgba(192, 57, 43, 0.2)
+        );
+      }
+      .hexagon-10-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(155, 89, 182, 0.3),
+          rgba(142, 68, 173, 0.2)
+        );
+      }
+      .hexagon-11-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 188, 156, 0.3),
+          rgba(22, 160, 133, 0.2)
+        );
+      }
+      .hexagon-12-co .small-hexagon-co {
+        background: linear-gradient(
+          135deg,
+          rgba(241, 196, 15, 0.3),
+          rgba(243, 156, 18, 0.2)
+        );
+      }
+
+      .small-hexagon-co:hover {
+        transform: scale(1.15);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 12px 40px rgba(255, 255, 255, 0.4),
+          inset 0 0 30px rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .small-hexagon-co:hover + .text-square-co {
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .logo-img-co {
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+        transition: all 0.3s ease;
+      }
+
+      .small-hexagon-co:hover .logo-img-co {
+        transform: scale(1.1);
+      }
+
+      @keyframes rotateCo {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes rotateReverseCo {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(-360deg);
+        }
+      }
+
+      .box-title-co {
+        font-size: 22px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .box-content-co {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .placeholder-text-co {
+        font-size: 18px;
+        opacity: 0.8;
+        margin-top: 20px;
+      }
+
+      /* استایل‌های ریسپانسیو */
+      @media (max-width: 1100px) {
+        .main-container-co {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .box-1-co,
+        .animation-section-co,
+        .box-2-co {
+          width: 100%;
+          min-height: 500px;
+        }
+
+        .animation-section-co {
+          min-height: 600px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-container-co {
+          gap: 15px;
+        }
+
+        .box-1-co,
+        .animation-section-co,
+        .box-2-co {
+          min-height: 450px;
+          padding: 20px;
+        }
+
+        .animation-section-co {
+          min-height: 500px;
+        }
+
+        .small-hexagon-co {
+          width: 65px;
+          height: 65px;
+        }
+
+        .logo-img-co {
+          width: 40px;
+          height: 40px;
+        }
+
+        .text-square-co {
+          width: 130px;
+          font-size: 11px;
+          padding: 8px 10px;
+          min-height: 45px;
+        }
+
+        .card-co {
+          padding: 18px;
+          margin-bottom: 12px;
+        }
+
+        .card-title-co {
+          font-size: 16px;
+          margin-bottom: 6px;
+        }
+
+        .card-subtitle-co {
+          font-size: 13px;
+          margin-bottom: 8px;
+        }
+
+        .card-content-co {
+          font-size: 12px;
+          line-height: 1.5;
+        }
+
+        .container-title-co {
+          font-size: 20px;
+          margin-bottom: 15px;
+        }
+
+        @keyframes zoomPulseCo {
+          0% {
+            transform: scale(1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          }
+          20% {
+            transform: scale(1.06);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+          }
+          40% {
+            transform: scale(1.04);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+          }
+          80% {
+            transform: scale(1.04);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+          }
+          100% {
+            transform: scale(1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 15px;
+        }
+
+        .main-container-co {
+          gap: 12px;
+        }
+
+        .box-1-co,
+        .animation-section-co,
+        .box-2-co {
+          min-height: auto;
+          padding: 15px;
+          border-radius: 15px;
+        }
+
+        .animation-section-co {
+          min-height: 500px;
+          padding: 15px 10px;
+        }
+
+        .container-co {
+          width: 100%;
+          height: 100%;
+        }
+
+        /* غیرفعال کردن انیمیشن‌های چرخشی و نمایش فقط 4 المان */
+        .orbit-co {
+          animation: none;
+          position: relative;
+          width: 100%;
+          height: auto;
+          border-radius: 15px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          padding: 0;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+        }
+
+        /* مخفی کردن المان‌های اضافی (فقط 4 المان اول نمایش داده شوند) */
+        .hexagon-wrapper-co:nth-child(n + 5) {
+          display: none;
+        }
+
+        /* تنظیمات برای 4 المان نمایشی در موبایل */
+        .hexagon-wrapper-co {
+          animation: none;
+          position: relative;
+          width: 100%;
+          height: 70px;
+          flex: 0 0 auto;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 1;
+          transform: none;
+          top: auto !important;
+          left: auto !important;
+          right: auto !important;
+          bottom: auto !important;
+        }
+
+        .hexagon-1-co,
+        .hexagon-2-co,
+        .hexagon-3-co,
+        .hexagon-4-co,
+        .hexagon-5-co,
+        .hexagon-6-co,
+        .hexagon-7-co,
+        .hexagon-8-co,
+        .hexagon-9-co,
+        .hexagon-10-co,
+        .hexagon-11-co,
+        .hexagon-12-co {
+          position: relative;
+          top: auto;
+          left: auto;
+          right: auto;
+          bottom: auto;
+          transform: none;
+          flex-direction: row;
+          margin: 0;
+          justify-content: center;
+        }
+
+        .hexagon-1-co .text-square-co,
+        .hexagon-2-co .text-square-co,
+        .hexagon-3-co .text-square-co,
+        .hexagon-4-co .text-square-co,
+        .hexagon-5-co .text-square-co,
+        .hexagon-6-co .text-square-co,
+        .hexagon-7-co .text-square-co,
+        .hexagon-8-co .text-square-co,
+        .hexagon-9-co .text-square-co,
+        .hexagon-10-co .text-square-co,
+        .hexagon-11-co .text-square-co,
+        .hexagon-12-co .text-square-co {
+          margin-right: 12px;
+          margin-left: 0;
+          margin-top: 0;
+          width: 140px;
+          min-height: 50px;
+          white-space: normal;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          line-height: 1.4;
+        }
+
+        .hexagon-7-co .text-square-co,
+        .hexagon-8-co .text-square-co,
+        .hexagon-9-co .text-square-co,
+        .hexagon-10-co .text-square-co,
+        .hexagon-11-co .text-square-co,
+        .hexagon-12-co .text-square-co {
+          margin-right: 0;
+          margin-left: 12px;
+        }
+
+        .small-hexagon-co {
+          width: 55px;
+          height: 55px;
+          flex-shrink: 0;
+        }
+
+        .logo-img-co {
+          width: 32px;
+          height: 32px;
+        }
+
+        .card-co {
+          padding: 15px;
+          margin-bottom: 10px;
+        }
+
+        .card-title-co {
+          font-size: 15px;
+          margin-bottom: 5px;
+        }
+
+        .card-subtitle-co {
+          font-size: 12px;
+          margin-bottom: 6px;
+        }
+
+        .card-content-co {
+          font-size: 11px;
+          line-height: 1.4;
+        }
+
+        .container-title-co {
+          font-size: 18px;
+          margin-bottom: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>طرح سه‌بخشی با انیمیشن شش‌ضلعی</h1>
+
+    <section class="main-container-co">
+      <!-- باکس اول (3/12) - سمت راست -->
+      <section class="box-1-co">
+        <div class="cards-container-co">
+          <div class="container-title-co">خدمات تخصصی ما</div>
+
+          <div class="card-co">
+            <div class="progress-bar-co"></div>
+            <div class="card-title-co">خدمات مشاوره تخصصی</div>
+            <div class="card-subtitle-co">
+              راهکارهای نوآورانه برای کسب‌وکارها
+            </div>
+            <div class="card-content-co">
+              ارائه خدمات مشاوره در زمینه‌های مختلف کسب‌وکار از جمله استراتژی،
+              بازاریابی و فناوری اطلاعات با تیمی از متخصصان مجرب.
+            </div>
+          </div>
+
+          <div class="card-co">
+            <div class="progress-bar-co"></div>
+            <div class="card-title-co">توسعه نرم‌افزار سفارشی</div>
+            <div class="card-subtitle-co">
+              طراحی و پیاده‌سازی سیستم‌های اختصاصی
+            </div>
+            <div class="card-content-co">
+              توسعه نرم‌افزارهای سفارشی متناسب با نیازهای خاص هر کسب‌وکار با
+              استفاده از آخرین تکنولوژی‌های روز دنیا.
+            </div>
+          </div>
+
+          <div class="card-co">
+            <div class="progress-bar-co"></div>
+            <div class="card-title-co">آموزش و توانمندسازی</div>
+            <div class="card-subtitle-co">
+              ارتقای مهارت‌های تخصصی نیروی انسانی
+            </div>
+            <div class="card-content-co">
+              برگزاری دوره‌های آموزشی تخصصی و کارگاه‌های عملی برای توسعه
+              مهارت‌های کارکنان و مدیران سازمان‌ها.
+            </div>
+          </div>
+
+          <div class="card-co">
+            <div class="progress-bar-co"></div>
+            <div class="card-title-co">تحلیل داده و هوش تجاری</div>
+            <div class="card-subtitle-co">تبدیل داده به تصمیم‌های هوشمند</div>
+            <div class="card-content-co">
+              ارائه خدمات تحلیل داده‌های سازمانی و طراحی داشبوردهای مدیریتی برای
+              تصمیم‌گیری مبتنی بر شواهد.
+            </div>
+          </div>
+
+          <div class="card-co">
+            <div class="progress-bar-co"></div>
+            <div class="card-title-co">مدیریت پروژه</div>
+            <div class="card-subtitle-co">اجرای موفق پروژه‌های پیچیده</div>
+            <div class="card-content-co">
+              مدیریت حرفه‌ای پروژه‌های سازمانی با استفاده از استانداردهای
+              بین‌المللی و تضمین موفقیت در اجرا.
+            </div>
+          </div>
+
+          <div class="card-co">
+            <div class="progress-bar-co"></div>
+            <div class="card-title-co">پشتیبانی و نگهداری</div>
+            <div class="card-subtitle-co">خدمات مستمر پس از اجرا</div>
+            <div class="card-content-co">
+              ارائه خدمات پشتیبانی فنی و نگهداری سیستم‌ها به صورت مستمر برای
+              اطمینان از عملکرد بهینه و بی‌وقفه.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- بخش انیمیشن (5/12) - وسط -->
+      <section class="animation-section-co">
+        <div class="container-co">
+          <div class="orbit-co" id="main-orbit-co">
+            <!-- همه 12 شش‌ضلعی موجود هستند -->
+            <div class="hexagon-wrapper-co hexagon-1-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company01.png"
+                  alt="Company 1"
+                  class="logo-img-co"
+                  id="logo1-co"
+                />
+              </div>
+              <div class="text-square-co" id="text1-co">
+                شرکت نرم‌افزاری آلفا
+              </div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-2-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company04.png"
+                  alt="Company 2"
+                  class="logo-img-co"
+                  id="logo2-co"
+                />
+              </div>
+              <div class="text-square-co" id="text2-co">
+                استارتاپ فناوری بتا
+              </div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-3-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company07.png"
+                  alt="Company 3"
+                  class="logo-img-co"
+                  id="logo3-co"
+                />
+              </div>
+              <div class="text-square-co" id="text3-co">هولدینگ گاما</div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-4-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company10.png"
+                  alt="Company 4"
+                  class="logo-img-co"
+                  id="logo4-co"
+                />
+              </div>
+              <div class="text-square-co" id="text4-co">گروه صنعتی دلتا</div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-5-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company13.png"
+                  alt="Company 5"
+                  class="logo-img-co"
+                  id="logo5-co"
+                />
+              </div>
+              <div class="text-square-co" id="text5-co">شرکت اپسیلون</div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-6-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company16.png"
+                  alt="Company 6"
+                  class="logo-img-co"
+                  id="logo6-co"
+                />
+              </div>
+              <div class="text-square-co" id="text6-co">موسسه زتا</div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-7-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company19.png"
+                  alt="Company 7"
+                  class="logo-img-co"
+                  id="logo7-co"
+                />
+              </div>
+              <div class="text-square-co" id="text7-co">گروه اتا</div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-8-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company22.png"
+                  alt="Company 8"
+                  class="logo-img-co"
+                  id="logo8-co"
+                />
+              </div>
+              <div class="text-square-co" id="text8-co">شرکت تتا</div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-9-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company25.png"
+                  alt="Company 9"
+                  class="logo-img-co"
+                  id="logo9-co"
+                />
+              </div>
+              <div class="text-square-co" id="text9-co">استارتاپ یوتا</div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-10-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company28.png"
+                  alt="Company 10"
+                  class="logo-img-co"
+                  id="logo10-co"
+                />
+              </div>
+              <div class="text-square-co" id="text10-co">گروه کاپا</div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-11-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company31.png"
+                  alt="Company 11"
+                  class="logo-img-co"
+                  id="logo11-co"
+                />
+              </div>
+              <div class="text-square-co" id="text11-co">شرکت لامبدا</div>
+            </div>
+
+            <div class="hexagon-wrapper-co hexagon-12-co">
+              <div class="small-hexagon-co">
+                <img
+                  src="images/cologos/company34.png"
+                  alt="Company 12"
+                  class="logo-img-co"
+                  id="logo12-co"
+                />
+              </div>
+              <div class="text-square-co" id="text12-co">هولدینگ مو</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- باکس دوم (4/12) - سمت چپ -->
+      <section class="box-2-co">
+        <h2 class="box-title-co">باکس دوم (4/12)</h2>
+        <div class="box-content-co">
+          <p class="placeholder-text-co">
+            محتوای باکس دوم در اینجا قرار می‌گیرد
+          </p>
+          <p>این باکس ۴ دوازدهم عرض صفحه را اشغال می‌کند</p>
+        </div>
+      </section>
+    </section>
+
+    <script>
+      // لیست کامل 36 لوگو و متن
+      const allLogosCo = [
+        { logo: "images/cologos/company01.png", text: "شرکت نرم‌افزاری آلفا" },
+        { logo: "images/cologos/company02.png", text: "استارتاپ فناوری آلفا" },
+        { logo: "images/cologos/company03.png", text: "گروه توسعه آلفا" },
+        { logo: "images/cologos/company04.png", text: "استارتاپ فناوری بتا" },
+        { logo: "images/cologos/company05.png", text: "شرکت نوآوری بتا" },
+        { logo: "images/cologos/company06.png", text: "گروه تحقیقاتی بتا" },
+        { logo: "images/cologos/company07.png", text: "هولدینگ گاما" },
+        {
+          logo: "images/cologos/company08.png",
+          text: "شرکت سرمایه‌گذاری گاما",
+        },
+        { logo: "images/cologos/company09.png", text: "گروه بین‌المللی گاما" },
+        { logo: "images/cologos/company10.png", text: "گروه صنعتی دلتا" },
+        { logo: "images/cologos/company11.png", text: "شرکت تولیدی دلتا" },
+        { logo: "images/cologos/company12.png", text: "کارخانجات دلتا" },
+        { logo: "images/cologos/company13.png", text: "شرکت فناوری اپسیلون" },
+        { logo: "images/cologos/company14.png", text: "موسسه خدمات اپسیلون" },
+        { logo: "images/cologos/company15.png", text: "گروه مشاوره اپسیلون" },
+        { logo: "images/cologos/company16.png", text: "موسسه زتا" },
+        { logo: "images/cologos/company17.png", text: "آکادمی زتا" },
+        { logo: "images/cologos/company18.png", text: "مرکز آموزش زتا" },
+        { logo: "images/cologos/company19.png", text: "گروه اتا" },
+        { logo: "images/cologos/company20.png", text: "شرکت فناوری اتا" },
+        { logo: "images/cologos/company21.png", text: "استارتاپ اتا" },
+        { logo: "images/cologos/company22.png", text: "شرکت تتا" },
+        { logo: "images/cologos/company23.png", text: "گروه مهندسی تتا" },
+        { logo: "images/cologos/company24.png", text: "موسسه تحقیقاتی تتا" },
+        { logo: "images/cologos/company25.png", text: "استارتاپ یوتا" },
+        { logo: "images/cologos/company26.png", text: "شرکت نوپای یوتا" },
+        { logo: "images/cologos/company27.png", text: "گروه یوتا" },
+        { logo: "images/cologos/company28.png", text: "گروه کاپا" },
+        { logo: "images/cologos/company29.png", text: "شرکت بین‌المللی کاپا" },
+        { logo: "images/cologos/company30.png", text: "گروه کاپا" },
+        { logo: "images/cologos/company31.png", text: "شرکت لامبدا" },
+        { logo: "images/cologos/company32.png", text: "موسسه تحقیقات لامبدا" },
+        { logo: "images/cologos/company33.png", text: "آزمایشگاه لامبدا" },
+        { logo: "images/cologos/company34.png", text: "هولدینگ مو" },
+        { logo: "images/cologos/company35.png", text: "شرکت سرمایه‌گذاری مو" },
+        { logo: "images/cologos/company36.png", text: "صندوق مو" },
+      ];
+
+      // تابع برای انتخاب تصادفی 12 لوگو از لیست 36 تایی (برای دسکتاپ)
+      function getRandomLogosForDesktopCo() {
+        const shuffled = [...allLogosCo];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled.slice(0, 12);
+      }
+
+      // تابع برای انتخاب تصادفی 4 لوگو از لیست 36 تایی (برای موبایل)
+      function getRandomLogosForMobileCo() {
+        const shuffled = [...allLogosCo];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled.slice(0, 4);
+      }
+
+      // تابع برای تغییر لوگوها و متن‌ها
+      function rotateLogosCo() {
+        if (window.innerWidth <= 480) {
+          // حالت موبایل - فقط 4 المان
+          const randomLogos = getRandomLogosForMobileCo();
+          for (let i = 0; i < 4; i++) {
+            const logoElement = document.getElementById(`logo${i + 1}-co`);
+            const textElement = document.getElementById(`text${i + 1}-co`);
+            const currentData = randomLogos[i];
+            logoElement.src = currentData.logo;
+            textElement.textContent = currentData.text;
+
+            logoElement.style.opacity = "0";
+            textElement.style.opacity = "0";
+            setTimeout(() => {
+              logoElement.style.opacity = "1";
+              textElement.style.opacity = "1";
+            }, 100);
+          }
+        } else {
+          // حالت دسکتاپ و تبلت - همه 12 المان
+          const randomLogos = getRandomLogosForDesktopCo();
+          for (let i = 0; i < 12; i++) {
+            const logoElement = document.getElementById(`logo${i + 1}-co`);
+            const textElement = document.getElementById(`text${i + 1}-co`);
+            const currentData = randomLogos[i];
+            logoElement.src = currentData.logo;
+            textElement.textContent = currentData.text;
+
+            logoElement.style.opacity = "0";
+            textElement.style.opacity = "0";
+            setTimeout(() => {
+              logoElement.style.opacity = "1";
+              textElement.style.opacity = "1";
+            }, 100);
+          }
+        }
+      }
+
+      // انیمیشن زوم چرخشی برای کارت‌ها
+      function startCardAnimationCo() {
+        const cards = document.querySelectorAll(".card-co");
+        let currentIndex = 0;
+
+        // حذف کلاس active از همه کارت‌ها
+        function resetCards() {
+          cards.forEach((card) => {
+            card.classList.remove("active-co");
+          });
+        }
+
+        // نمایش کارت بعدی
+        function showNextCard() {
+          resetCards();
+
+          // اضافه کردن کلاس active به کارت فعلی
+          cards[currentIndex].classList.add("active-co");
+
+          // افزایش ایندکس برای کارت بعدی
+          currentIndex = (currentIndex + 1) % cards.length;
+        }
+
+        // شروع انیمیشن
+        showNextCard();
+
+        // تنظیم تایمر برای تغییر هر 4 ثانیه
+        setInterval(showNextCard, 4000);
+      }
+
+      // تنظیم اندازه اولیه
+      document.addEventListener("DOMContentLoaded", function () {
+        // بارگذاری اولیه با لوگوهای تصادفی
+        rotateLogosCo();
+
+        // شروع انیمیشن کارت‌ها
+        startCardAnimationCo();
+
+        // تغییر خودکار لوگوها هر 4 ثانیه
+        setInterval(rotateLogosCo, 4000);
+      });
+
+      // اضافه کردن کلیک برای شش‌ضلعی‌ها
+      document.querySelectorAll(".small-hexagon-co").forEach((hexagon) => {
+        hexagon.addEventListener("click", function () {
+          this.style.transform = "scale(0.9)";
+          setTimeout(() => {
+            this.style.transform = "scale(1)";
+          }, 300);
+        });
+      });
+
+      // مدیریت ریسایز پنجره
+      window.addEventListener("resize", function () {
+        rotateLogosCo();
+      });
+    </script>
+  </body>
+</html>

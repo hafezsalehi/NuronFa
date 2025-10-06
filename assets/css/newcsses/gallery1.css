@@ -1,10 +1,17 @@
+@font-face {
+    font-family: "Vazir";
+    src: url(../../fonts/Vazir-Regular.ttf);
+}
+
 /* استایل‌های اصلی بخش پروژه‌ها - نسخه gallery1 */
 .project__section-gallery1 {
     position: relative;
+    width: 80%;
+
     /* padding-top: 00px; */
     /* padding-bottom: 330px; */
 
-    margin: 10px;
+    margin: 10px auto;
     /* background-color: rgb(217, 235, 214); */
 }
 
@@ -21,11 +28,11 @@
 }
 
 .pt-150-gallery1 {
-    padding-top: 00px;
+    padding-top: 150px;
 }
 
 .pt-lg-60-gallery1 {
-    padding-top: 00px;
+    padding-top: 60px;
 }
 
 .position-relative-gallery1 {
@@ -38,13 +45,15 @@
 }
 
 .section__title__main-gallery1 {
-    font-size: 65px;
-    font-weight: 500;
+    font-size: 80px;
+    font-weight: 900;
     text-transform: capitalize;
-    line-height: normal;
+    /* line-height: 100px; */
     position: relative;
     margin: 20px 30px;
-    font-family: iranyekan;
+    /* font-family: iranyekan; */
+    color: #ee0979;
+    font-family: 'Vazir';
 }
 
 .mb-30-gallery1 {
@@ -57,7 +66,7 @@
     font-size: 18px;
     text-transform: capitalize;
     line-height: normal;
-    margin-bottom: 30px;
+    margin: 10px;
 }
 
 /* استایل‌های دکمه */
@@ -419,8 +428,9 @@
 .col-lg-12-gallery1 {
     position: relative;
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 10px 10px 0 5px;
+    /* margin: 5px; */
+
     transition: all 0.4s ease;
 }
 

@@ -43,6 +43,8 @@
 /* آیتم های ویژگی */
 .circle1-extra-icon-text {
     position: relative;
+    margin: 5px;
+    padding: 5px;
     /* cursor: pointer; */
     transition: all 0.3s ease;
 }
@@ -104,7 +106,7 @@
 
 .circle1-extra-icon-text:hover .circle1-features-icon:after {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1.2);
 }
 
 .circle1-extra-icon-text:hover .circle1-features-icon i {
@@ -120,7 +122,7 @@
 
 /* متن ویژگی ها */
 .circle1-features-text {
-    padding-top: 25px;
+    padding: 5px;
     overflow: hidden;
 }
 
@@ -143,6 +145,7 @@
     max-width: 350px;
     margin: 0 auto;
     overflow: hidden;
+    font-size: clamp(1.5rem, 3vw, 2rem);
 }
 
 .circle1-text-left {
@@ -334,13 +337,13 @@
     }
 
     .circle1-extra-left-content.mobile-hover-active .circle1-features-icon {
-        transform: scale(1.1) !important;
+        transform: scale(1.2) !important;
         box-shadow: 0px 10px 40px -5px rgba(238, 9, 121, 0.8) !important;
     }
 
     .circle1-extra-left-content.mobile-hover-active .circle1-features-icon:after {
         opacity: 1 !important;
-        transform: scale(1) !important;
+        transform: scale(1.2) !important;
     }
 
     .circle1-extra-left-content.mobile-hover-active .circle1-features-icon i {

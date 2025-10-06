@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
     isShuffling = false;
     document.getElementById("pauseBtn").innerHTML =
       '<i class="fas fa-play"></i> شروع چرخش';
-    document.querySelector(".shuffle-indicator").style.display = "none";
+    // document.querySelector(".shuffle-indicator").style.display = "none";
   }
 
   // کنترل چرخش با دکمه
