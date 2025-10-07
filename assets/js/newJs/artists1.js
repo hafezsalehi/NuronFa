@@ -20,6 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
     return newArray;
   }
 
+  // تابع برای تغییر چینش باکس‌ها
+  function shuffleBoxPositions() {
+    const items = Array.from(document.querySelectorAll(".artist-item"));
+    if (items.length === 0) return;
+
+    const shuffledItems = shuffleArray(items);
+    shuffledItems.forEach((item, index) => {
+      item.style.order = index;
+    });
+
+    console.log("چینش باکس‌ها تغییر کرد!");
+  }
+
   // تابع برای دریافت یک تصویر تصادفی که قبلا استفاده نشده
   function getRandomUnusedImage(ratioClass) {
     const ratioData = artworksData[ratioClass];
@@ -162,6 +175,11 @@ document.addEventListener("DOMContentLoaded", function () {
         item.style.transform = "";
       }, 1200);
     });
+
+    // 30% شانس تغییر چینش باکس‌ها با هر چرخش تصاویر
+    if (Math.random() > 0.7) {
+      shuffleBoxPositions();
+    }
   }
 
   // شروع چرخش هر 4 ثانیه
@@ -192,12 +210,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // چرخش دستی با دکمه
-  document.getElementById("shuffleBtn").addEventListener("click", rotateImages);
+  // چرخش دستی با دکمه (هم تصاویر و هم چینش)
+  document.getElementById("shuffleBtn").addEventListener("click", function () {
+    rotateImages(); // تغییر تصاویر
+    shuffleBoxPositions(); // تغییر چینش باکس‌ها
+  });
 
   // شروع چرخش
   startShuffling();
 
-  // همچنین یک بار در ابتدا تصاویر را بچرخان
-  setTimeout(rotateImages, 100);
+  // همچنین یک بار در ابتدا تصاویر را بچرخان و چینش را تغییر دهید
+  setTimeout(() => {
+    rotateImages();
+    shuffleBoxPositions();
+  }, 100);
 });

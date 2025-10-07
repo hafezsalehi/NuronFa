@@ -58,7 +58,7 @@ function getRandomLogosForMobileCo() {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-  return shuffled.slice(0, 4);
+  return shuffled.slice(0, 6);
 }
 
 // تابع برای تغییر لوگوها و متن‌ها
@@ -66,7 +66,7 @@ function rotateLogosCo() {
   if (window.innerWidth <= 480) {
     // حالت موبایل - فقط 4 المان
     const randomLogos = getRandomLogosForMobileCo();
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 6; i++) {
       const logoElement = document.getElementById(`logo${i + 1}-co`);
       const textElement = document.getElementById(`text${i + 1}-co`);
       const currentData = randomLogos[i];

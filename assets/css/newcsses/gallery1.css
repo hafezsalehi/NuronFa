@@ -1,100 +1,91 @@
+/* فونت */
 @font-face {
-    font-family: "Vazir";
-    src: url(../../fonts/Vazir-Regular.ttf);
+    font-family: "iranyekan";
+    src: url(../../fonts/iranyekanwebboldfanum.ttf);
 }
 
-/* استایل‌های اصلی بخش پروژه‌ها - نسخه gallery1 */
-.project__section-gallery1 {
+
+/* .gapbeforegallery{
+    height: 20px;
+    background-color: rgb(39, 161, 17);
+    margin: 0;
+    
+  } */
+/* استایل اصلی */
+.project-gallery {
     position: relative;
     width: 80%;
-
-    /* padding-top: 00px; */
-    /* padding-bottom: 330px; */
-
     margin: 10px auto;
-    /* background-color: rgb(217, 235, 214); */
+    /* background-color: rgb(39, 161, 17); */
+    padding: 20px 0;
+    border: 10px solid rgba(39, 161, 17, 0.9);
+
 }
 
-.home__one__section__five-gallery1 {
-    position: relative;
+.gallery-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-.pb-70-gallery1 {
-    /* padding-bottom: 70px; */
+/* هدر گالری */
+.gallery-header {
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
 }
 
-.pb-lg-60-gallery1 {
-    /* padding-bottom: 60px; */
-}
-
-.pt-150-gallery1 {
-    padding-top: 150px;
-}
-
-.pt-lg-60-gallery1 {
-    padding-top: 60px;
-}
-
-.position-relative-gallery1 {
-    position: relative;
-}
-
-/* استایل‌های تایتل و توضیحات */
-.section__title-gallery1 {
-    /* margin-bottom: 30px; */
-}
-
-.section__title__main-gallery1 {
-    font-size: 80px;
-    font-weight: 900;
-    text-transform: capitalize;
-    /* line-height: 100px; */
-    position: relative;
-    margin: 20px 30px;
-    /* font-family: iranyekan; */
-    color: #ee0979;
-    font-family: 'Vazir';
-}
-
-.mb-30-gallery1 {
-    margin-bottom: 30px;
-}
-
-.section__description-gallery1 {
-    font-family: "Supreme", sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    text-transform: capitalize;
-    line-height: normal;
-    margin: 10px;
-}
-
-/* استایل‌های دکمه */
-.section__btn-gallery1 {
-    text-align: start;
-}
-
-.ht_btn-gallery1 {
-    overflow: hidden;
-    color: white;
-    background: #ff6600;
-    font-size: 16px;
-    font-family: iranyekan;
-    font-weight: 500;
-    line-height: normal;
-    padding: 18px 33px;
-    display: inline-block;
+.header-content {
+    flex: 1;
+    /* min-width: 300px; */
+    width: 100%;
     text-align: center;
+}
+
+.gallery-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: #ee0979;
+    margin-bottom: 20px;
     position: relative;
-    z-index: 2;
-    cursor: pointer;
+}
+
+.gallery-description {
+    /* font-family: 'iranyekan'; */
+    font-weight: bold;
+    font-size: 22px;
+    line-height: normal;
+    color: rgb(17, 4, 77);
+
+}
+
+.header-action {
+    flex-shrink: 0;
+}
+
+.gallery-btn {
+    /* display: inline-flex; */
+    align-items: center;
+    background: rgba(255, 102, 0, 0.8);
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 18px 33px;
     text-decoration: none;
     text-transform: uppercase;
-    vertical-align: middle;
+    overflow: hidden;
     transition: all 0.3s ease;
+    position: absolute;
+
+    top: 10px;
+    left: 30px;
+
+    z-index: 1000;
 }
 
-.ht_btn-gallery1::before {
+.gallery-btn::before {
     content: "";
     background: #01050c;
     position: absolute;
@@ -106,188 +97,153 @@
     transition: all 0.3s ease;
 }
 
-.ht_btn-gallery1:hover {
+.gallery-btn:hover {
     color: white;
     transform: translateY(-2px);
 }
 
-.ht_btn-gallery1:hover::before {
+.gallery-btn:hover::before {
     width: 100%;
 }
 
-/* استایل‌های کارت‌های پروژه */
-.pt-80-gallery1 {
-    padding-top: 80px;
+.gallery-btn img {
+    margin-right: 10px;
 }
 
-.pt-lg-40-gallery1 {
-    padding-top: 40px;
+/* گرید گالری */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
 }
 
-.service__main__content-gallery1 {
+.gallery-item {
     position: relative;
-    margin-bottom: 30px;
-    transition: all 0.4s ease;
-    transform: scale(1);
-}
-
-/* افکت hover برای نزدیک شدن عکس‌ها به هم */
-.row-gallery1:hover .service__main__content-gallery1 {
-    transform: scale(1.02);
-    transition: all 0.4s ease;
-}
-
-.row-gallery1:hover .service__main__content-gallery1:hover {
-    transform: scale(1.1);
-    z-index: 10;
-}
-
-/* افکت زمانی که ماوس روی سکشن است */
-.service__main__content-gallery1:hover .service__main__content-gallery1:nth-child(1) {
-    transform: translateX(10px) scale(1.1);
-}
-
-.service__main__content-gallery1:hover .service__main__content-gallery1:nth-child(2) {
-    transform: translateX(-5px) scale(1.1);
-}
-
-.service__main__content-gallery1:hover .service__main__content-gallery1:nth-child(3) {
-    transform: translateX(5px) scale(1.1);
-}
-
-.service__main__content-gallery1:hover .service__main__content-gallery1:nth-child(4) {
-    transform: translateX(-10px) scale(1.1);
-}
-
-.service__img-gallery1 {
     overflow: hidden;
     transition: all 0.4s ease;
 }
 
-.service__img-gallery1 img {
-    max-width: 100%;
+.gallery-item.large {
+    grid-column: span 2;
+}
+
+.item-image {
+    overflow: hidden;
+}
+
+.item-image img {
+    width: 100%;
     height: 400px;
     object-fit: cover;
-    width: 100%;
     transition: all 0.4s ease;
 }
 
-.service__main__content-gallery1:hover .service__img-gallery1 img {
-    transform: scale(1.1);
-}
-
-.service__content-gallery1 {
+.item-overlay {
     position: absolute;
-    padding: 30px 50px;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: rgba(255, 102, 0, 0.8);
-    transition: all 0.5s ease;
-    transform: scale(0);
-    opacity: 0;
-    overflow: hidden;
-    visibility: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+    transition: all 0.5s ease;
 }
 
-.service__main__content-gallery1:hover .service__content-gallery1 {
-    transform: scale(1);
-    opacity: 1;
-    visibility: visible;
-}
-
-/* استایل‌های آیکون‌ها */
-.service__link-gallery1 {
-    text-align: center;
+.overlay-actions {
     margin-bottom: 40px;
 }
 
-.icon__link-gallery1 {
-    display: inline-block;
-}
-
-.icon-gallery1 {
-    text-align: center;
-    line-height: 60px;
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 60px;
     height: 60px;
     background: white;
-    transition: all 0.3s ease;
-    display: inline-block;
     margin: 0 5px;
-    transform: scale(1);
+    transition: all 0.3s ease;
 }
 
-.icon-gallery1:hover {
+.action-btn:hover {
     background: #fef7f3;
     transform: scale(1.1);
 }
 
-.mb-20-gallery1 {
-    margin-bottom: 20px;
-}
-
-/* استایل‌های متن */
-.service__text-gallery1 {
+.overlay-content {
     text-align: center;
     transform: translateY(20px);
     transition: all 0.4s ease;
 }
 
-.service__main__content-gallery1:hover .service__text-gallery1 {
-    transform: translateY(0);
-}
-
-.service__text-gallery1 a {
+.overlay-content a {
     font-size: 30px;
     font-weight: 500;
     color: white;
-    transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-block;
-    transform: translateY(0);
+    transition: all 0.3s ease;
 }
 
-.service__text-gallery1 a:hover {
+.overlay-content a:hover {
     color: #fef7f3;
     transform: translateY(-2px);
 }
 
-.mt-30-gallery1 {
-    margin-top: 30px;
+.overlay-content p {
+    color: white;
+    margin-top: 20px;
+    /* font-family: "Supreme", sans-serif; */
 }
 
-/* استایل‌های شکل‌ها و پس‌زمینه */
-.shapes-gallery1 {
+/* افکت‌های هاور */
+.gallery-grid:hover .gallery-item {
+    transform: scale(1.02);
+}
+
+.gallery-item:hover {
+    transform: scale(1.1) !important;
+    z-index: 10;
+}
+
+.gallery-item:hover .item-image img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover .item-overlay {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.gallery-item:hover .overlay-content {
+    transform: translateY(0);
+}
+
+/* دکوریشن‌ها */
+.decoration {
     position: absolute;
     z-index: -1;
-    transition: all 0.4s ease;
 }
 
-.star__shape__04-gallery1 {
+.star {
     top: 8%;
     left: 5%;
-    animation: scale-up-one-gallery1 3s ease-in-out 0s infinite alternate-reverse both;
+    animation: scale-up 3s ease-in-out 0s infinite alternate-reverse both;
 }
 
-.project__one__bg__01-gallery1 {
+.background {
     top: -18%;
     right: 0;
-    z-index: -1;
     width: 100%;
 }
 
-.w-100-gallery1 {
-    width: 100%;
-}
-
-/* انیمیشن‌ها */
-@keyframes scale-up-one-gallery1 {
+@keyframes scale-up {
     0% {
         transform: scale(0) rotateY(0);
         opacity: 0;
@@ -304,347 +260,90 @@
     }
 }
 
-/* افکت ویژه برای گالری */
-.gallery-hover-effect-gallery1 {
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* استایل‌های ریسپانسیو */
+/* ریسپانسیو */
 @media (max-width: 1200px) {
-    .section__title__main-gallery1 {
-        font-size: 45px;
+    .gallery-title {
+        font-size: 35px;
     }
 
-    .pt-150-gallery1 {
-        padding-top: 100px;
+    .project-gallery {
+        padding: 40px 0;
     }
 
-    .pt-80-gallery1 {
-        padding-top: 60px;
-    }
-
-    .service__content-gallery1 {
-        padding: 20px 30px;
+    .gallery-header {
+        margin-bottom: 40px;
     }
 
     /* غیرفعال کردن افکت hover در موبایل */
-    .project__section-gallery1:hover .service__main__content-gallery1 {
+    .project-gallery:hover .gallery-item {
         transform: scale(1);
     }
 
-    .project__section-gallery1:hover .service__main__content-gallery1:hover {
+    .project-gallery:hover .gallery-item:hover {
         transform: scale(1.02);
     }
 }
 
-@media (max-width: 767.98px) {
-    .section__title__main-gallery1 {
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item.large {
+        grid-column: span 1;
+    }
+
+    .gallery-title {
         font-size: 35px;
     }
 
-    .service__content-gallery1 {
+    .gallery-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-action {
+        margin-top: 20px;
+    }
+
+    .item-overlay {
         padding: 15px;
     }
 
-    .service__text-gallery1 a {
+    .overlay-content a {
         font-size: 24px;
     }
 
-    .icon-gallery1 {
+    .action-btn {
         width: 50px;
         height: 50px;
-        line-height: 50px;
     }
 
     /* غیرفعال کردن کامل افکت hover در موبایل */
-    .project__section-gallery1:hover .service__main__content-gallery1 {
+    .project-gallery:hover .gallery-item {
         transform: none;
     }
 }
 
-@media (max-width: 575.98px) {
-    .section__title__main-gallery1 {
+@media (max-width: 576px) {
+    .project-gallery {
+        width: 95%;
+    }
+
+    .gallery-title {
         font-size: 28px;
     }
 
-    .section__description-gallery1 {
+    .gallery-description {
         font-size: 16px;
-        line-height: 30px;
     }
 
-    .ht_btn-gallery1 {
+    .gallery-btn {
         padding: 14px 25px;
         font-size: 14px;
     }
 
-    .service__img-gallery1 img {
+    .item-image img {
         height: 300px;
-    }
-}
-
-/* استایل‌های utility */
-.text-start-gallery1 {
-    text-align: right !important;
-}
-
-.text-xl-end-gallery1 {
-    text-align: left !important;
-}
-
-.text-center-gallery1 {
-    text-align: center !important;
-}
-
-.text-lg-end-gallery1 {
-    text-align: left !important;
-}
-
-.mb-lg-30-gallery1 {
-    margin-bottom: 30px;
-}
-
-.mb-40-gallery1 {
-    margin-bottom: 40px;
-}
-
-.align-items-center-gallery1 {
-    align-items: center !important;
-}
-
-.row-gallery1 {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-    transition: all 0.4s ease;
-}
-
-.col-xl-8-gallery1,
-.col-xl-4-gallery1,
-.col-xl-7-gallery1,
-.col-xl-5-gallery1,
-.col-xl-11-gallery1,
-.col-xl-10-gallery1,
-.col-lg-12-gallery1 {
-    position: relative;
-    width: 100%;
-    padding: 10px 10px 0 5px;
-    /* margin: 5px; */
-
-    transition: all 0.4s ease;
-}
-
-@media (min-width: 1200px) {
-    .col-xl-8-gallery1 {
-        flex: 0 0 66.666667%;
-        max-width: 66.666667%;
-    }
-
-    .col-xl-4-gallery1 {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-    }
-
-    .col-xl-7-gallery1 {
-        flex: 0 0 58.333333%;
-        max-width: 58.333333%;
-    }
-
-    .col-xl-5-gallery1 {
-        flex: 0 0 41.666667%;
-        max-width: 41.666667%;
-    }
-
-    .col-xl-11-gallery1 {
-        flex: 0 0 91.666667%;
-        max-width: 91.666667%;
-    }
-
-    .col-xl-10-gallery1 {
-        flex: 0 0 83.333333%;
-        max-width: 83.333333%;
-    }
-}
-
-.container-gallery1 {
-    height: 100%;
-    width: 100%;
-    /* padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto; */
-}
-
-@media (min-width: 1400px) {
-    .container-gallery1 {
-        max-width: 1320px;
-    }
-}
-
-
-
-
-/* mobile-hover.css - نسخه آپدیت شده */
-
-/* برای موبایل */
-@media (max-width: 768px) {
-
-    /* فعال کردن هاور برای کارت‌های سرویس */
-    .service-content.mobile-hover-active {
-        box-shadow: rgba(39, 79, 117, 0.2) 0 40px 90px -30px !important;
-        transform: translateY(-10px) !important;
-        border: 3px solid #e5e91e !important;
-        border-radius: 15px !important;
-    }
-
-    .service-content.mobile-hover-active .service-icon span:after {
-        transform: scale(2) !important;
-        filter: opacity(1) !important;
-    }
-
-    .service-content.mobile-hover-active .service-icon span i {
-        color: yellow !important;
-        transform: scale(1.2) !important;
-    }
-
-    .service-content.mobile-hover-active .service-title {
-        color: yellow !important;
-        transform: translateY(-5px) !important;
-    }
-
-    /* فعال کردن هاور برای دکمه */
-    .text0button1.mobile-hover-active {
-        box-shadow: 0 6px 22px 3px rgba(92, 35, 35, 0.12) !important;
-        background-position: right center !important;
-        transform: translateY(-2px) !important;
-    }
-
-    /* فعال کردن هاور برای سکشن circle1 */
-    .circle1-extra-left-content.mobile-hover-active {
-        transform: translateY(-5px) !important;
-    }
-
-    .circle1-extra-left-content.mobile-hover-active .circle1-features-icon {
-        transform: scale(1.1) !important;
-        box-shadow: 0px 10px 40px -5px rgba(238, 9, 121, 0.8) !important;
-    }
-
-    .circle1-extra-left-content.mobile-hover-active .circle1-features-icon:after {
-        opacity: 1 !important;
-        transform: scale(1) !important;
-    }
-
-    .circle1-extra-left-content.mobile-hover-active .circle1-features-icon i {
-        background: linear-gradient(to right, #fff 0%, #fff 100%) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        transform: scale(1.2) !important;
-    }
-
-    .circle1-extra-left-content.mobile-hover-active .circle1-features-text-title h3 {
-        color: #ee0979 !important;
-        transform: translateX(5px) !important;
-    }
-
-    .circle1-features-icon.mobile-hover-active {
-        transform: scale(1.15) !important;
-        box-shadow: 0px 15px 50px -5px rgba(238, 9, 121, 0.9) !important;
-    }
-
-    .circle1-features-icon.mobile-hover-active:after {
-        opacity: 1 !important;
-        transform: scale(1) !important;
-    }
-
-    .circle1-features-icon.mobile-hover-active i {
-        background: linear-gradient(to right, #fff 0%, #fff 100%) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-    }
-
-    /* فعال کردن هاور برای سکشن گالری */
-    .service__main__content-gallery1.mobile-hover-active {
-        transform: scale(1.05) !important;
-        z-index: 10 !important;
-        transition: all 0.4s ease !important;
-    }
-
-    .service__main__content-gallery1.mobile-hover-active .service__img-gallery1 img {
-        transform: scale(1.08) !important;
-        filter: brightness(1.1) !important;
-    }
-
-    .service__main__content-gallery1.mobile-hover-active .service__content-gallery1 {
-        transform: scale(1) !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        background: rgba(255, 102, 0, 0.95) !important;
-    }
-
-    .service__main__content-gallery1.mobile-hover-active .service__text-gallery1 {
-        transform: translateY(0) !important;
-        opacity: 1 !important;
-    }
-
-    .service__main__content-gallery1.mobile-hover-active .service__text-gallery1 a {
-        transform: translateY(0) !important;
-        color: white !important;
-        font-weight: 600 !important;
-    }
-
-    .service__main__content-gallery1.mobile-hover-active .icon-gallery1 {
-        transform: scale(1.1) !important;
-        background: rgba(255, 255, 255, 0.95) !important;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
-    }
-
-    /* فعال کردن هاور برای دکمه‌های گالری */
-    .ht_btn-gallery1.mobile-hover-active {
-        transform: translateY(-3px) !important;
-        box-shadow: 0 10px 25px rgba(255, 102, 0, 0.4) !important;
-    }
-
-    .ht_btn-gallery1.mobile-hover-active::before {
-        width: 100% !important;
-    }
-
-    /* افکت‌های ویژه برای گالری در موبایل */
-    .project__section-gallery1 .service__main__content-gallery1.mobile-hover-active:nth-child(1) {
-        transform: translateX(8px) scale(1.05) !important;
-    }
-
-    .project__section-gallery1 .service__main__content-gallery1.mobile-hover-active:nth-child(2) {
-        transform: translateX(-4px) scale(1.05) !important;
-    }
-
-    .project__section-gallery1 .service__main__content-gallery1.mobile-hover-active:nth-child(3) {
-        transform: translateX(4px) scale(1.05) !important;
-    }
-
-    .project__section-gallery1 .service__main__content-gallery1.mobile-hover-active:nth-child(4) {
-        transform: translateX(-8px) scale(1.05) !important;
-    }
-
-    /* دیباگ - می‌تونی حذفش کنی */
-    .mobile-hover-active {
-        position: relative;
-        transition: all 0.3s ease !important;
-    }
-
-    .mobile-hover-active::before {
-        content: "📱";
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background: #007bff;
-        color: white;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        font-size: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
     }
 }
