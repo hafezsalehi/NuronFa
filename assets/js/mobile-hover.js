@@ -1,6 +1,6 @@
 // mobile-hover.js - نسخه آپدیت شده
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("📱 Mobile Hover Activated");
+  // console.log("📱 Mobile Hover Activated");
 
   // سلکتورهای تمام سکشن‌هایی که می‌خواهیم هاور داشته باشند
   const hoverSelectors = [
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  console.log(`🎯 Found ${hoverElements.length} hover elements`);
+  // console.log(`🎯 Found ${hoverElements.length} hover elements`);
 
   function checkViewportHover() {
     const windowHeight = window.innerHeight;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    console.log(`🎯 ${activeCount} elements currently in viewport center`);
+    // console.log(`🎯 ${activeCount} elements currently in viewport center`);
   }
 
   // اجرای اولیه

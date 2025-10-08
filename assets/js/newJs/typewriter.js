@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  console.log("All elements found, starting animations...");
+  // console.log("All elements found, starting animations...");
 
   const text =
     "دنیای اطراف شما بوم نقاشی ماست. ما با قلم موی خلاقیت و رنگ‌های پایدار، دیوارهای بی‌روح را به تابلوهایی زنده تبدیل می‌کنیم. هر خط، هر طرح و هر رنگ، داستانی از زیبایی و نوآوری را روایت می‌کند. فضای زندگی و کار شما شایانه بهترین هاست، پس آن را به دست ما بسپارید.";
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createLayer1Circles() {
     if (!isAnimating) return;
 
-    console.log("Creating circles...");
+    // console.log("Creating circles...");
 
     for (let i = 0; i < 20; i++) {
       setTimeout(() => {
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function startAnimations() {
     if (isAnimating) return;
 
-    console.log("Starting animations...");
+    // console.log("Starting animations...");
     isAnimating = true;
 
     // شروع دایره‌ها
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function stopAnimations() {
-    console.log("Stopping animations...");
+    // console.log("Stopping animations...");
     isAnimating = false;
 
     if (animationInterval) {
@@ -120,10 +120,10 @@ document.addEventListener("DOMContentLoaded", function () {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log("Section in view - starting animations");
+          // console.log("Section in view - starting animations");
           startAnimations();
         } else {
-          console.log("Section out of view - stopping animations");
+          // console.log("Section out of view - stopping animations");
           stopAnimations();
         }
       });

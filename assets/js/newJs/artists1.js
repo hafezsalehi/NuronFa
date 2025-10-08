@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       item.style.order = index;
     });
 
-    console.log("چینش باکس‌ها تغییر کرد!");
+    // console.log("چینش باکس‌ها تغییر کرد!");
   }
 
   // تابع برای دریافت یک تصویر تصادفی که قبلا استفاده نشده
@@ -177,18 +177,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 30% شانس تغییر چینش باکس‌ها با هر چرخش تصاویر
-    if (Math.random() > 0.7) {
-      shuffleBoxPositions();
-    }
+    // if (Math.random() > 0.9) {
+    //   shuffleBoxPositions();
+    // }
   }
+  shuffleBoxPositions();
 
   // شروع چرخش هر 4 ثانیه
   function startShuffling() {
     if (shuffleInterval) clearInterval(shuffleInterval);
     shuffleInterval = setInterval(rotateImages, 4000);
     isShuffling = true;
-    document.getElementById("pauseBtn").innerHTML =
-      '<i class="fas fa-pause"></i> توقف چرخش';
+
     document.querySelector(".shuffle-indicator").style.display = "flex";
   }
 
@@ -198,30 +198,13 @@ document.addEventListener("DOMContentLoaded", function () {
     isShuffling = false;
     document.getElementById("pauseBtn").innerHTML =
       '<i class="fas fa-play"></i> شروع چرخش';
-    // document.querySelector(".shuffle-indicator").style.display = "none";
   }
-
-  // کنترل چرخش با دکمه
-  document.getElementById("pauseBtn").addEventListener("click", function () {
-    if (isShuffling) {
-      stopShuffling();
-    } else {
-      startShuffling();
-    }
-  });
-
-  // چرخش دستی با دکمه (هم تصاویر و هم چینش)
-  document.getElementById("shuffleBtn").addEventListener("click", function () {
-    rotateImages(); // تغییر تصاویر
-    shuffleBoxPositions(); // تغییر چینش باکس‌ها
-  });
 
   // شروع چرخش
   startShuffling();
 
   // همچنین یک بار در ابتدا تصاویر را بچرخان و چینش را تغییر دهید
-  setTimeout(() => {
-    rotateImages();
-    shuffleBoxPositions();
-  }, 100);
+
+  rotateImages();
+  shuffleBoxPositions();
 });
