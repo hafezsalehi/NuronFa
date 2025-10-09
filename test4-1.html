@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>اسلایدر با انیمیشن متن</title>
+    <title>اسلایدر با انیمیشن کامل متن و عکس</title>
     <style>
       * {
         margin: 0;
@@ -238,73 +238,12 @@
         }
       }
 
-      /* انیمیشن‌های متن */
-      .text-slide-in {
-        animation: textSlideIn 0.6s ease-out 0.3s both;
+      /* انیمیشن‌های ورود متن */
+      .center-text-enter {
+        animation: centerTextEnter 0.8s ease-out 0.4s both;
       }
 
-      @keyframes textSlideIn {
-        0% {
-          transform: translateY(100%);
-          opacity: 0;
-        }
-        100% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      .text-fade-in {
-        animation: textFadeIn 0.8s ease-out 0.4s both;
-      }
-
-      @keyframes textFadeIn {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .text-scale-in {
-        animation: textScaleIn 0.7s ease-out 0.5s both;
-      }
-
-      @keyframes textScaleIn {
-        0% {
-          opacity: 0;
-          transform: scale(0.8) translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-        }
-      }
-
-      .text-typing {
-        animation: textTyping 1s ease-out 0.6s both;
-      }
-
-      @keyframes textTyping {
-        0% {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      /* انیمیشن مخصوص متن تصویر وسطی */
-      .center-text-animation {
-        animation: centerTextAppear 1s ease-out 0.4s both;
-      }
-
-      @keyframes centerTextAppear {
+      @keyframes centerTextEnter {
         0% {
           opacity: 0;
           transform: translateY(50px) scale(0.9);
@@ -319,12 +258,11 @@
         }
       }
 
-      /* انیمیشن برای متن‌های کناری */
-      .side-text-animation {
-        animation: sideTextAppear 0.5s ease-out 0.2s both;
+      .side-text-enter {
+        animation: sideTextEnter 0.6s ease-out 0.3s both;
       }
 
-      @keyframes sideTextAppear {
+      @keyframes sideTextEnter {
         0% {
           opacity: 0;
           transform: translateX(30px);
@@ -332,6 +270,57 @@
         100% {
           opacity: 1;
           transform: translateX(0);
+        }
+      }
+
+      /* انیمیشن‌های خروج متن */
+      .center-text-exit {
+        animation: centerTextExit 0.6s ease-in both;
+      }
+
+      @keyframes centerTextExit {
+        0% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        40% {
+          opacity: 0.8;
+          transform: translateY(-10px) scale(1.02);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-50px) scale(0.9);
+        }
+      }
+
+      .side-text-exit {
+        animation: sideTextExit 0.5s ease-in both;
+      }
+
+      @keyframes sideTextExit {
+        0% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+      }
+
+      /* انیمیشن برای عنوان فعلی */
+      .title-change {
+        animation: titleChange 0.6s ease-out both;
+      }
+
+      @keyframes titleChange {
+        0% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
 
@@ -488,20 +477,28 @@
           if (isAnimating) return;
           isAnimating = true;
 
-          // حذف اولین اثر و اضافه کردن اثر بعدی
-          currentArtworks.shift();
-          let nextIndex = currentArtworks[currentArtworks.length - 1] + 1;
-          if (nextIndex >= artworks.length) nextIndex = 0;
-          currentArtworks.push(nextIndex);
-
-          // انیمیشن حرکت آثار
-          animateSlides("next");
+          // انیمیشن خروج متن‌ها
+          animateTextExit();
 
           setTimeout(() => {
-            updateSlider();
-            updateCurrentTitle();
-            isAnimating = false;
-          }, 800);
+            // حذف اولین اثر و اضافه کردن اثر بعدی
+            currentArtworks.shift();
+            let nextIndex = currentArtworks[currentArtworks.length - 1] + 1;
+            if (nextIndex >= artworks.length) nextIndex = 0;
+            currentArtworks.push(nextIndex);
+
+            // انیمیشن حرکت تصاویر
+            animateSlides("next");
+
+            setTimeout(() => {
+              updateSlider();
+              updateCurrentTitle();
+
+              setTimeout(() => {
+                isAnimating = false;
+              }, 400);
+            }, 400);
+          }, 300);
         }
 
         // حرکت به اسلاید قبلی
@@ -509,29 +506,50 @@
           if (isAnimating) return;
           isAnimating = true;
 
-          // حذف آخرین اثر و اضافه کردن اثر قبلی
-          currentArtworks.pop();
-          let prevIndex = currentArtworks[0] - 1;
-          if (prevIndex < 0) prevIndex = artworks.length - 1;
-          currentArtworks.unshift(prevIndex);
-
-          // انیمیشن حرکت آثار
-          animateSlides("prev");
+          // انیمیشن خروج متن‌ها
+          animateTextExit();
 
           setTimeout(() => {
-            updateSlider();
-            updateCurrentTitle();
-            isAnimating = false;
-          }, 800);
+            // حذف آخرین اثر و اضافه کردن اثر قبلی
+            currentArtworks.pop();
+            let prevIndex = currentArtworks[0] - 1;
+            if (prevIndex < 0) prevIndex = artworks.length - 1;
+            currentArtworks.unshift(prevIndex);
+
+            // انیمیشن حرکت تصاویر
+            animateSlides("prev");
+
+            setTimeout(() => {
+              updateSlider();
+              updateCurrentTitle();
+
+              setTimeout(() => {
+                isAnimating = false;
+              }, 400);
+            }, 400);
+          }, 300);
         }
 
-        // انیمیشن حرکت آثار
+        // انیمیشن خروج متن‌ها
+        function animateTextExit() {
+          const textElements = document.querySelectorAll(".image-text");
+
+          textElements.forEach((text, index) => {
+            text.classList.remove("center-text-enter", "side-text-enter");
+
+            if (index === 2) {
+              text.classList.add("center-text-exit");
+            } else {
+              text.classList.add("side-text-exit");
+            }
+          });
+        }
+
+        // انیمیشن حرکت تصاویر
         function animateSlides(direction) {
           const frameImages = document.querySelectorAll(".frame-image");
-          const frameContents = document.querySelectorAll(".frame-content");
 
-          frameContents.forEach((content, index) => {
-            const img = content.querySelector(".frame-image");
+          frameImages.forEach((img, index) => {
             // پاک کردن انیمیشن‌های قبلی
             img.classList.remove("image-moving", "image-entering");
 
@@ -605,14 +623,18 @@
                         </div>
                     `;
 
-            // اضافه کردن انیمیشن به متن‌ها
+            // اضافه کردن انیمیشن ورود به متن‌ها
             const textElement = frameContent.querySelector(".image-text");
             if (index === 2) {
               // انیمیشن مخصوص تصویر وسطی
-              textElement.classList.add("center-text-animation");
+              setTimeout(() => {
+                textElement.classList.add("center-text-enter");
+              }, 100);
             } else {
               // انیمیشن برای تصاویر کناری
-              textElement.classList.add("side-text-animation");
+              setTimeout(() => {
+                textElement.classList.add("side-text-enter");
+              }, 100);
             }
           });
         }
@@ -623,9 +645,9 @@
           currentCenterSpan.textContent = centerArtwork.title;
 
           // انیمیشن برای عنوان فعلی
-          currentCenterSpan.style.animation = "none";
+          currentCenterSpan.classList.remove("title-change");
           setTimeout(() => {
-            currentCenterSpan.style.animation = "textFadeIn 0.6s ease-out";
+            currentCenterSpan.classList.add("title-change");
           }, 10);
         }
 
