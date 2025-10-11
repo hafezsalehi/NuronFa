@@ -5,25 +5,26 @@
 }
 
 
-.gallery1-container{
+.gallery1-container {
     /* box-sizing: border-box; */
-        /* height: 600px; */
+    /* height: 600px; */
     margin-bottom: 30px;
-    overflow:visible;
+    overflow: visible;
 }
+
 /* استایل اصلی */
 .first-gallery {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 900px;
+    /* max-width: 900px; */
     margin: 20px auto;
     padding: 0 15px;
 }
 
 /* گرید گالری - دسکتاپ */
 
-.gallery1-container{
+.gallery1-container {
     display: flex;
     gap: 10px;
 }
@@ -55,10 +56,10 @@
 }
 
 .item-image-gallery1 img {
-    width: 100% ;
-    height: 100% ;
-    object-fit: cover ;
-    border-radius: 8px ;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
 }
@@ -101,8 +102,8 @@
 }
 
 .action-btn img {
-    width: 24px ;
-    height: 24px ;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -165,68 +166,65 @@
 /* حالت ریسپانسیو - تبلت */
 @media (max-width: 768px) {
 
-    .gallery1-container *{
-        display:block;
-        margin: 10px auto;
-    }
-    .action-btn  {
-        width: 35px ;
-        height: 35px ;
-    }
 
-    
+    .action-btn {
+        width: 35px;
+        height: 35px;
     }
 
 
-    /* ============ */
-    @media (max-width: 480px) {
-        .first-gallery {
+}
+
+
+/* ============ */
+@media (max-width: 480px) {
+    .first-gallery {
         /* gap: 10px;
         margin: 15px auto;
         padding: 0 10px; */
-        }
-        
-        .action-btn  {
-            width: 25px ;
-            height: 25px ;
-        }
+    }
+
+    .action-btn {
+        width: 25px;
+        height: 25px;
+    }
 
 
-        .gallery-row {
-            /* gap: 10px; */
-        }
-        
-        .image-container-gallery1 {
-            /* height: 150px; */
-        }
-        
-        .item-overlay {
-            /* padding: 15px; */
-        }
-        
-        .overlay-actions {
-            /* margin-bottom: 15px; */
-            /* gap: 8px; */
-        }
-        
+    .gallery-row {
+        /* gap: 10px; */
+    }
 
-        
-        .overlay-content a {
-            font-size: 18px;
-        }
-        
-        .overlay-content p {
-            font-size: 12px;
-            margin-top: 10px;
-        }
-        
-        /* در موبایل هاور افکت‌ها را غیرفعال می‌کنیم */
-        .image-container-gallery1:hover {
-            transform: none;
-            z-index: auto;
-        }
-        
-        .image-container-gallery1:hover .item-image img {
-            transform: none;
-        }
-        }
+    .image-container-gallery1 {
+        /* height: 150px; */
+    }
+
+    .item-overlay {
+        /* padding: 15px; */
+    }
+
+    .overlay-actions {
+        /* margin-bottom: 15px; */
+        /* gap: 8px; */
+    }
+
+
+
+    .overlay-content a {
+        font-size: 18px;
+    }
+
+    .overlay-content p {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    /* در موبایل هاور افکت‌ها را غیرفعال می‌کنیم */
+    .image-container-gallery1:hover {
+        transform: none;
+        z-index: auto;
+    }
+
+    .image-container-gallery1:hover .item-image img {
+        transform: none;
+    }
+}

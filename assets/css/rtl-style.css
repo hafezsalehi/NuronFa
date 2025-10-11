@@ -361,6 +361,14 @@ h6 a,
     .h5 {
         font-size: 16px;
     }
+
+    .banner-text {
+        background-color: rgba(59, 9, 124, 0.2);
+        backdrop-filter: blur(30px);
+
+        text-align: center;
+
+    }
 }
 
 h1,
@@ -3652,6 +3660,7 @@ ol ul {
     .ptb_md--0 {
         padding: 0 !important;
     }
+
     .ptb--60 {
         padding: 20px 0 !important;
     }
@@ -6207,14 +6216,14 @@ ol ul {
 @media only screen and (max-width: 1199px) {
     .padding-contorler-am-slide-right {
         padding-left: 30px;
-        padding-top: 50px;
+        /* padding-top: 50px; */
     }
 }
 
 @media only screen and (max-width: 767px) {
     .padding-contorler-am-slide-right {
         padding-left: 30px;
-        padding-top: 50px;
+        /* padding-top: 50px; */
     }
 }
 
@@ -16776,12 +16785,12 @@ figcaption {
 }
 
 .banner-top-rating .banner-badge-top {
-    margin: 0 40px;
+    margin: 10px 40px;
 }
 
 @media only screen and (max-width: 767px) {
     .banner-top-rating .banner-badge-top {
-        margin-top: 15px;
+        /* margin-top: 15px; */
     }
 }
 

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM Loaded - Initializing typing section...");
+  // console.log("DOM Loaded - Initializing typing section...");
 
   const typingSection = document.querySelector(".typing-section-type");
   const typingText = document.getElementById("typing-text-type");
@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // console.log("All elements found, starting animations...");
 
-  const text =
-    "دنیای اطراف شما بوم نقاشی ماست. ما با قلم موی خلاقیت و رنگ‌های پایدار، دیوارهای بی‌روح را به تابلوهایی زنده تبدیل می‌کنیم. هر خط، هر طرح و هر رنگ، داستانی از زیبایی و نوآوری را روایت می‌کند. فضای زندگی و کار شما شایانه بهترین هاست، پس آن را به دست ما بسپارید.";
+  const text = "دنیا پر از رنگهای زیباست. ما هم زیبا ببینیم و زیبا بیاندیشیم";
 
   const typingDuration = 2000;
   const typingSpeed = typingDuration / text.length;

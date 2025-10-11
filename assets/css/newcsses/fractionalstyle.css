@@ -108,7 +108,9 @@
     height: 500px;
     overflow: hidden;
     border-radius: 5px;
-    box-shadow: 0 10px 30px rgba(148, 11, 11, 0.5);
+    box-shadow: 10px 15px 20px rgba(27, 20, 20, 0.8),
+        -10px 15px 20px rgba(27, 20, 20, 0.8);
+
     margin: 30px auto;
     /* وسط‌چین کردن */
     /* opacity: 10; */

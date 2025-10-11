@@ -23,7 +23,7 @@
     padding: 0;
     width: 100%;
     isolation: isolate;
-    min-height: 100vh;
+    height: 80vh;
     overflow: hidden;
 }
 
@@ -172,7 +172,7 @@
 
 #typing-text-type {
     font-family: "Vazir", sans-serif;
-    min-height: 200px;
+    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,11 +181,11 @@
         4px 4px 8px rgba(0, 0, 0, 0.2);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: clamp(3rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 4vw + 1rem, 4rem);
     /* font-size: 30px; */
-    color: rgb(18, 241, 10);
-    line-height: clamp(4.5rem, 5vw, 6rem);
-    ;
+    color: rgb(255, 251, 21);
+    /* line-height: clamp(4.5rem, 5vw, 6rem); */
+
     text-align: center;
 }
 

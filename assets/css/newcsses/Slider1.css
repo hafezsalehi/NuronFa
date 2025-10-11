@@ -1,14 +1,16 @@
 .container-sldr {
     max-width: 1400px;
     width: 100%;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 20px;
 }
 
 .title-sldr {
     text-align: center;
     margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(19, 22, 163, 0.5);
+    padding: 10px;
+    line-height: 60px;
 }
 
 .slider-wrapper-sldr {
@@ -44,24 +46,25 @@
 
 /* تنظیم عرض‌ها - حالا 7 قاب داریم */
 .frame-sldr:nth-child(1) {
-    flex: 0.5;
+    flex: 0.2;
 }
 
 .frame-sldr:nth-child(2) {
-    flex: 1;
+    flex: .3;
 }
 
 .frame-sldr:nth-child(3) {
-    flex: 1;
+    flex: .5;
 }
 
 .frame-sldr:nth-child(4) {
-    flex: 8;
-    z-index: 3;
+    flex: 1;
+
 }
 
 .frame-sldr:nth-child(5) {
-    flex: 1;
+    flex: 8;
+    z-index: 3;
 }
 
 .frame-sldr:nth-child(6) {
@@ -69,7 +72,15 @@
 }
 
 .frame-sldr:nth-child(7) {
-    flex: 0.5;
+    flex: .5;
+}
+
+.frame-sldr:nth-child(8) {
+    flex: 0.3;
+}
+
+.frame-sldr:nth-child(9) {
+    flex: 0.2;
 }
 
 .frame-content-sldr {
@@ -102,30 +113,27 @@
 
 /* استایل برای قاب‌های خیلی باریک */
 .frame-sldr:nth-child(1) .image-text-sldr,
-.frame-sldr:nth-child(7) .image-text-sldr {
+.frame-sldr:nth-child(2) .image-text-sldr,
+.frame-sldr:nth-child(3) .image-text-sldr,
+.frame-sldr:nth-child(7) .image-text-sldr,
+.frame-sldr:nth-child(8) .image-text-sldr,
+.frame-sldr:nth-child(9) .image-text-sldr {
     display: none;
     /* مخفی کردن متن در قاب‌های خیلی باریک */
 }
 
-.frame-sldr:nth-child(2) .image-text-sldr,
-.frame-sldr:nth-child(3) .image-text-sldr,
-.frame-sldr:nth-child(5) .image-text-sldr,
-.frame-sldr:nth-child(6) .image-text-sldr {
-    padding: 6px;
-    font-size: 0.7rem;
-}
 
-.frame-sldr:nth-child(2) .image-text-sldr h3,
-.frame-sldr:nth-child(3) .image-text-sldr h3,
-.frame-sldr:nth-child(5) .image-text-sldr h3,
+
+
+
+.frame-sldr:nth-child(4) .image-text-sldr h3,
 .frame-sldr:nth-child(6) .image-text-sldr h3 {
     font-size: 0.8rem;
     margin-bottom: 2px;
 }
 
-.frame-sldr:nth-child(2) .image-text-sldr p,
-.frame-sldr:nth-child(3) .image-text-sldr p,
-.frame-sldr:nth-child(5) .image-text-sldr p,
+
+.frame-sldr:nth-child(4) .image-text-sldr p,
 .frame-sldr:nth-child(6) .image-text-sldr p {
     font-size: 0.6rem;
     opacity: 0.9;
@@ -135,24 +143,24 @@
     overflow: hidden;
 }
 
-.frame-sldr:nth-child(4) .image-text-sldr {
+.frame-sldr:nth-child(5) .image-text-sldr {
     padding: 20px;
 }
 
-.frame-sldr:nth-child(4) .image-text-sldr h3 {
+.frame-sldr:nth-child(5) .image-text-sldr h3 {
     font-size: 1.4rem;
     margin-bottom: 8px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-.frame-sldr:nth-child(4) .image-text-sldr p {
+.frame-sldr:nth-child(5) .image-text-sldr p {
     font-size: 1rem;
     opacity: 0.95;
     line-height: 1.4;
 }
 
 /* افکت برای تصویر وسطی */
-.frame-sldr:nth-child(4) img {
+.frame-sldr:nth-child(5) img {
     transform: scale(1.05);
 }
 
@@ -212,6 +220,7 @@
 }
 
 .description-sldr {
+    display: none;
     text-align: center;
     margin-top: 30px;
     background: rgba(255, 255, 255, 0.1);
@@ -228,6 +237,7 @@
 }
 
 .auto-play-sldr {
+    display: none;
     margin-top: 15px;
 }
 
@@ -475,7 +485,7 @@
     .container-sldr {
         padding: 10px;
         max-width: 100%;
-        height: 100vh;
+        height: 80vh;
         display: flex;
         flex-direction: column;
     }
@@ -517,7 +527,7 @@
     }
 
     /* قاب وسطی در موبایل */
-    .frame-sldr:nth-child(4) {
+    .frame-sldr:nth-child(5) {
         flex: 3 !important;
         opacity: 1;
         z-index: 3;
@@ -525,7 +535,13 @@
 
     /* قاب‌های کناری در موبایل */
     .frame-sldr:nth-child(3),
-    .frame-sldr:nth-child(5) {
+    .frame-sldr:nth-child(7) {
+        opacity: 0.6;
+        flex: 0.3 !important;
+    }
+
+    .frame-sldr:nth-child(4),
+    .frame-sldr:nth-child(6) {
         opacity: 0.6;
         flex: 0.8 !important;
     }
@@ -533,10 +549,10 @@
     /* قاب‌های دورتر مخفی شوند */
     .frame-sldr:nth-child(1),
     .frame-sldr:nth-child(2),
-    .frame-sldr:nth-child(6),
-    .frame-sldr:nth-child(7) {
+    .frame-sldr:nth-child(8),
+    .frame-sldr:nth-child(9) {
         opacity: 0.1;
-        flex: 0.3 !important;
+        flex: 0 !important;
     }
 
     /* دکمه‌های ناوبری در موبایل */
@@ -590,18 +606,18 @@
         padding: 12px !important;
     }
 
-    .frame-sldr:nth-child(4) .image-text-sldr h3 {
+    .frame-sldr:nth-child(5) .image-text-sldr h3 {
         font-size: 1.1rem;
         margin-bottom: 5px;
     }
 
-    .frame-sldr:nth-child(4) .image-text-sldr p {
+    .frame-sldr:nth-child(5) .image-text-sldr p {
         font-size: 0.85rem;
         line-height: 1.3;
     }
 
     /* مخفی کردن متن در قاب‌های غیرفعال */
-    .frame-sldr:not(:nth-child(4)) .image-text-sldr {
+    .frame-sldr:not(:nth-child(5)) .image-text-sldr {
         display: none;
     }
 
@@ -620,7 +636,7 @@
 @media (max-width: 480px) {
     .container-sldr {
         padding: 5px;
-        height: 100vh;
+        height: 50vh;
     }
 
     .title-sldr {
@@ -659,41 +675,43 @@
     /* حذف قالبهای کناری در موبایل */
 
     .frame-sldr:nth-child(1),
-    .frame-sldr:nth-child(7) {
+    .frame-sldr:nth-child(2),
+    .frame-sldr:nth-child(8),
+    .frame-sldr:nth-child(9) {
         display: none;
     }
 
     /* تنظیم مجدد قاب‌های باقیمانده */
-    .frame-sldr:nth-child(2) {
+    .frame-sldr:nth-child(3) {
         flex: 0.3 !important;
         opacity: 0.3;
     }
 
-    .frame-sldr:nth-child(3) {
+    .frame-sldr:nth-child(4) {
         flex: .7 !important;
         opacity: 0.6;
     }
 
-    .frame-sldr:nth-child(4) {
+    .frame-sldr:nth-child(5) {
         flex: 5 !important;
         opacity: 1;
     }
 
-    .frame-sldr:nth-child(5) {
+    .frame-sldr:nth-child(6) {
         flex: .7 !important;
         opacity: 0.6;
     }
 
-    .frame-sldr:nth-child(6) {
+    .frame-sldr:nth-child(7) {
         flex: 0.3 !important;
         opacity: 0.3;
     }
 
-    .frame-sldr:nth-child(4) .image-text-sldr h3 {
+    .frame-sldr:nth-child(5) .image-text-sldr h3 {
         font-size: 1rem;
     }
 
-    .frame-sldr:nth-child(4) .image-text-sldr p {
+    .frame-sldr:nth-child(5) .image-text-sldr p {
         font-size: 0.8rem;
     }
 }

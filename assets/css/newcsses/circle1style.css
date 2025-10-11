@@ -5,6 +5,7 @@
 
 /* بخش اصلی ویژگی های اضافی */
 .circle1-extra-features-section {
+    padding: 5px auto;
     /* overflow: hidden; */
     /* background-color: #2a0769; */
 }

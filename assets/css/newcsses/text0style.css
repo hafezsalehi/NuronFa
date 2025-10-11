@@ -5,18 +5,12 @@
 }
 
 .text0rtl {
-    /* direction: rtl; */
-    /* background-color: #0c033f; */
-    font-size: 14px;
-    /* color: #39c534; */
+
     width: 100%;
     position: relative;
     font-family: "Vazir";
-    /* font-weight: 400; */
-    /* letter-spacing: 0.5px; */
-
-    padding-left: 20px;
-    margin-left: 20px;
+    margin: auto;
+    align-content: center;
 
 }
 
@@ -29,8 +23,11 @@
 #text0section {
     padding-top: calc(40px + (100 - 40) * ((100vw - 320px) / (1920 - 320)));
     padding-bottom: calc(40px + (100 - 40) * ((100vw - 320px) / (1920 - 320)));
+    padding-right: 10px;
+    padding-left: 10px;
+    align-items: center;
     position: relative;
-    margin: 10px 10px;
+    /* margin: 10px 10px; */
 
 }
 
@@ -146,7 +143,7 @@
 
 .service-content-1 .sitemain-subtitle {
     color: #e5e91e;
-    font-size: calc(44px + (24 - 14) * ((100vw - 320px) / (1920 - 320)));
+    font-size: clamp(1.5rem, 6vw + 1rem, 5rem);
     /* font-size: 50px; */
     position: relative;
     margin-top: 50px;
@@ -179,9 +176,12 @@
 
 .service-block-content {
     padding-top: calc(25px + (68 - 25) * ((100vw - 320px) / (1920 - 320)));
+    margin: 0 auto;
 }
 
-
+.service-block1 {
+    margin: 10px auto;
+}
 
 .service-block2 {
     margin-top: -115px;
@@ -258,7 +258,7 @@
     box-shadow: rgba(214, 219, 223, 0.5) 0 40px 90px -30px;
     transform: translateY(-10px);
     border: 3px solid #e5e91e;
-    border-radius: 15px;
+    /* border-radius: 15px; */
 }
 
 .service-content:hover .service-icon span {
@@ -322,6 +322,33 @@
     .service-block1 .service-content.service-1 {
         margin-bottom: calc(20px + (30 - 20) * ((100vw - 320px) / (1920 - 320)));
     }
+
+    .service-content-1 .sitemain-subtitle {
+        color: #e5e91e;
+        text-align: center;
+        border-right: solid 4px #10b819;
+        border-left: solid 4px #10b819;
+        /* font-size: calc(44px + (24 - 14) * ((100vw - 320px) / (575 - 320))); */
+        /* font-size: 50px; */
+
+        margin-top: 10px;
+    }
+
+    #text0section {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        margin: 5px 5px;
+
+    }
+
+    .service-content-1 {
+        margin: 40px auto;
+        border-top: solid 4px #10b819;
+        padding: 0px 5px;
+
+
+    }
+
 }
 
 /* service section css end */
@@ -332,7 +359,7 @@
         box-shadow: rgba(237, 240, 241, 0.5) 0 40px 90px -30px;
         transform: translateY(-10px);
         border: 3px solid #e5e91e;
-        border-radius: 15px;
+        /* border-radius: 15px; */
 
     }
 
@@ -351,7 +378,7 @@
     .service-content.mobile-hover-active .service-title {
         color: yellow;
         transform: translateY(-5px);
-        border-radius: 15px;
+        /* border-radius: 15px; */
         font-size: 30px;
     }
 

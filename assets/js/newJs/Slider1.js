@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  let currentArtworksSldr = [0, 1, 2, 3, 4, 5, 6]; // حالا 7 اندیس داریم
+  let currentArtworksSldr = [0, 1, 2, 3, 4, 5, 6, 7, 8]; // حالا 7 اندیس داریم
   let autoSlideIntervalSldr;
   let isAnimatingSldr = false;
 
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initializeSliderSldr() {
     // ایجاد 7 قاب اولیه
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 9; i++) {
       createFrameSldr(i);
     }
     updateCurrentTitleSldr();
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createFrameSldr(index) {
     const frame = document.createElement("div");
     frame.className = "frame-sldr";
-    if (index === 0 || index === 6) {
+    if (index === 0 || index === 9) {
       frame.classList.add("thin-frame-sldr");
     }
     frame.setAttribute("data-position", index + 1);
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (index === 3) {
         // حالا تصویر وسطی در موقعیت 4 است (ایندکس 3)
         text.classList.add("center-text-exit-sldr");
-      } else if (index !== 0 && index !== 6) {
+      } else if (index !== 0 && index !== 8) {
         // متن‌های قاب‌های باریک مخفی هستند
         text.classList.add("side-text-exit-sldr");
       }
@@ -205,11 +205,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (direction === "next") {
         moveX = "100%";
         // تنظیم مقیاس برای هر قاب
-        if (index === 3) {
+        if (index === 4) {
           // قاب وسطی
           startScale = 1.05;
           endScale = 1;
-        } else if (index === 4) {
+        } else if (index === 3) {
           // قاب سمت راست وسطی
           startScale = 1;
           endScale = 1.05;
@@ -219,11 +219,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } else {
         moveX = "-100%";
-        if (index === 2) {
+        if (index === 3) {
           // قاب سمت چپ وسطی
           startScale = 1;
           endScale = 1.05;
-        } else if (index === 3) {
+        } else if (index === 4) {
           // قاب وسطی
           startScale = 1.05;
           endScale = 1;
@@ -261,17 +261,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // اضافه کردن انیمیشن به عکس‌ها
       const imageElement = frameContent.querySelector(".frame-image-sldr");
-      if (index === 3) {
+      if (index === 4) {
         imageElement.classList.add("center-image-enter-sldr");
-      } else if (index !== 0 && index !== 6) {
+      } else if (index !== 0 && index !== 8) {
         imageElement.classList.add("side-image-enter-sldr");
       }
 
       // اضافه کردن انیمیشن به متن‌ها
       const textElement = frameContent.querySelector(".image-text-sldr");
-      if (index === 3) {
+      if (index === 4) {
         textElement.classList.add("center-text-animation-sldr");
-      } else if (index !== 0 && index !== 6) {
+      } else if (index !== 0 && index !== 8) {
         textElement.classList.add("side-text-animation-sldr");
       }
     });
@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // به‌روزرسانی عنوان اثر فعلی
   function updateCurrentTitleSldr() {
-    const centerArtwork = artworksSldr[currentArtworksSldr[3]]; // موقعیت 4 (ایندکس 3)
+    const centerArtwork = artworksSldr[currentArtworksSldr[5]]; // موقعیت 4 (ایندکس 3)
     currentCenterSpanSldr.textContent = centerArtwork.title;
 
     currentCenterSpanSldr.style.animation = "none";
