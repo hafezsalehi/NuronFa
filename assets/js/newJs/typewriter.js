@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const size = minSize + Math.random() * (maxSize - minSize);
     const color = colors[Math.floor(Math.random() * colors.length)];
-    const left = Math.random() * 100;
-    const top = Math.random() * 100;
+    const left = Math.random() * 50 + 25;
+    const top = Math.random() * 50 + 25;
 
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;

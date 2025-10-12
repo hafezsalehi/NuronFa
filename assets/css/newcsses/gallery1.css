@@ -10,16 +10,22 @@
     /* height: 600px; */
     margin-bottom: 30px;
     overflow: visible;
+    width: 80%;
+    margin: 10px auto;
+    background: hsla(44, 100%, 50%, 0.4);
+    backdrop-filter: blur(40px);
+
 }
 
 /* استایل اصلی */
 .first-gallery {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    /* gap: 15px; */
     /* max-width: 900px; */
     margin: 20px auto;
     padding: 0 15px;
+
 }
 
 /* گرید گالری - دسکتاپ */
@@ -62,6 +68,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
+    margin: 1vi auto;
 }
 
 .item-overlay {
@@ -178,11 +185,7 @@
 
 /* ============ */
 @media (max-width: 480px) {
-    .first-gallery {
-        /* gap: 10px;
-        margin: 15px auto;
-        padding: 0 10px; */
-    }
+
 
     .action-btn {
         width: 25px;
@@ -191,6 +194,7 @@
 
 
     .gallery-row {
+        display: block;
         /* gap: 10px; */
     }
 
