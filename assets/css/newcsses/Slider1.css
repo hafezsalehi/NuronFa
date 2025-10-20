@@ -13,6 +13,13 @@
     line-height: 60px;
 }
 
+.container-sldr-span {
+    font-size: 5.5rem !important;
+    margin: 200px auto;
+    text-align: center;
+    align-items: center;
+}
+
 .slider-wrapper-sldr {
     position: relative;
     width: 100%;
@@ -495,6 +502,7 @@
         font-size: 1.2rem;
         padding: 0 10px;
     }
+
 
     .slider-wrapper-sldr {
         flex: 1;

@@ -24,7 +24,7 @@
     padding: 0 auto;
     width: 100%;
     isolation: isolate;
-    height: 80vh;
+    height: 400px;
     overflow: hidden;
     width: 90%;
     align-items: center;
@@ -151,11 +151,12 @@
 .typing-container-type {
     position: relative;
     z-index: 10;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: atuo 2rem;
+    margin: 10px auto;
     width: 100%;
 }
 
@@ -171,6 +172,8 @@
     text-align: center;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 10px auto;
+
 }
 
 #typing-text-type {
@@ -184,7 +187,7 @@
         4px 4px 8px rgba(0, 0, 0, 0.2);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: clamp(2rem, 4vw + 1rem, 4rem);
+    font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
     /* font-size: 30px; */
     color: rgb(255, 251, 21);
     /* line-height: clamp(4.5rem, 5vw, 6rem); */

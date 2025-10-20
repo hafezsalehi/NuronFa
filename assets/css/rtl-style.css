@@ -123,7 +123,7 @@
     --line-height-b1: 1.50;
     --line-height-b2: 1.6;
     --line-height-b3: 1.7;
-    --h1: 50px;
+    --h1: calc(1.375rem + 1.5vw);
     --h2: 36px;
     --h3: 32px;
     --h4: 26px;
@@ -235,8 +235,8 @@ h6,
 h1,
 .h1 {
     font-size: var(--h1);
-    line-height: 1.19;
-    font-weight: 700;
+    /* line-height: 1.19; */
+    font-weight: 900;
 }
 
 h2,
@@ -371,8 +371,8 @@ h6 a,
     }
 }
 
-h1,
-.h1,
+
+
 h2,
 .h2,
 h3,

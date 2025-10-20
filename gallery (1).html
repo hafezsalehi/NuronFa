@@ -1,0 +1,336 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>گالری سه‌بعدی نقاشی با انیمیشن‌های پیشرفته</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(180deg, #1a1a2e, #16213e);
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background-image 0.8s ease;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      filter: blur(20px);
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .gallery-room {
+      perspective: 600px;
+      width: 100%;
+      height: 60vh;
+      position: relative;
+      margin-top: 20px;
+      will-change: transform; /* بهینه‌سازی برای انیمیشن */
+    }
+
+    .room-container {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* easing سفارشی */
+      position: relative;
+    }
+
+    .wall {
+      position: absolute;
+      width: 300px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(50px) rotateY(0deg) translateZ(300px);
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: calc(var(--index) * 0.2s); /* تاخیر برای هر دیوار */
+      will-change: transform, opacity;
+    }
+
+    /* انیمیشن ورود اولیه */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateY(var(--rotate)) translateZ(300px);
+      }
+    }
+
+    .wall img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .wall:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.2); /* درخشش موقع هاور */
+    }
+
+    .wall:hover {
+      box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.3); /* افکت glow */
+    }
+
+    .wall:hover .overlay {
+      transform: translateY(0);
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: #fff;
+      padding: 20px;
+      transform: translateY(50px);
+      transition: transform 0.5s ease;
+    }
+
+    .overlay h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .overlay p {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* موقعیت دیوارها در نیم‌دایره 180 درجه */
+    .wall:nth-child(1) {
+      --rotate: 0deg;
+      --index: 1;
+    }
+
+    .wall:nth-child(2) {
+      --rotate: 45deg;
+      --index: 2;
+    }
+
+    .wall:nth-child(3) {
+      --rotate: 90deg;
+      --index: 3;
+    }
+
+    .wall:nth-child(4) {
+      --rotate: 135deg;
+      --index: 4;
+    }
+
+    /* بخش نمایش تصویر بزرگ‌شده */
+    .large-image-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px 0;
+      opacity: 0;
+      transform: translateY(50px) scale(0.8);
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      will-change: transform, opacity;
+    }
+
+    .large-image-container.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .large-image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      transition: filter 0.5s ease;
+    }
+
+    .large-image-container.active img {
+      filter: brightness(1.1); /* درخشش ظریف */
+    }
+
+    @media (max-width: 768px) {
+      .wall {
+        width: 200px;
+        height: 300px;
+      }
+
+      .room-container {
+        transform: scale(0.7);
+      }
+
+      .overlay h3 {
+        font-size: 16px;
+      }
+
+      .overlay p {
+        font-size: 12px;
+      }
+
+      .large-image-container {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="gallery-room">
+    <div class="room-container">
+      <div class="wall" data-bg="images/gallery1/project__one__04.jpg">
+        <img src="images/gallery1/project__one__04.jpg" alt="نقاشی منظره">
+        <div class="overlay">
+          <h3>نقاشی منظره</h3>
+          <p>یک اثر هنری با الهام از طبیعت...</p>
+        </div>
+      </div>
+      
+      <!-- دیوار 2 -->
+      <div class="wall" data-bg="images/gallery1/project__one__01.jpg">
+        <img src="images/gallery1/project__one__01.jpg" alt="نقاشی پرتره">
+        <div class="overlay">
+          <h3>نقاشی پرتره</h3>
+          <p>بیان احساسات عمیق انسانی...</p>
+        </div>
+      </div>
+      
+      <!-- دیوار 3 -->
+      <div class="wall" data-bg="images/gallery1/project__one__02.jpg">
+        <img src="images/gallery1/project__one__02.jpg" alt="نقاشی انتزاعی">
+        <div class="overlay">
+          <h3>نقاشی انتزاعی</h3>
+          <p>جهانی از رنگ‌ها و اشکال...</p>
+        </div>
+      </div>
+      
+      <!-- دیوار 4 -->
+      <div class="wall" data-bg="images/gallery1/project__one__03.jpg">
+        <img src="images/gallery1/project__one__03.jpg" alt="نقاشی طبیعت">
+        <div class="overlay">
+          <h3>نقاشی طبیعت</h3>
+          <p>زیبایی طبیعت در قاب...</p>
+        </div>
+      </div>
+      </div>
+  </section>
+
+  <!-- بخش نمایش تصویر بزرگ‌شده -->
+  <div class="large-image-container">
+    <img src="" alt="نقاشی بزرگ‌شده">
+  </div>
+
+  <script>
+    const room = document.querySelector('.room-container');
+    const walls = document.querySelectorAll('.wall');
+    const largeImageContainer = document.querySelector('.large-image-container');
+    const largeImage = largeImageContainer.querySelector('img');
+    let rotateY = 0;
+
+    // تنظیم پس‌زمینه بر اساس نقاشی وسط
+    const updateBackground = () => {
+      let minAngle = 180;
+      let activeWall = null;
+
+      walls.forEach((wall, index) => {
+        const wallAngle = index * 45;
+        const relativeAngle = Math.abs(rotateY - wallAngle);
+        if (relativeAngle < minAngle) {
+          minAngle = relativeAngle;
+          activeWall = wall;
+        }
+      });
+
+      if (activeWall) {
+        document.body.style.backgroundImage = `url(${activeWall.dataset.bg})`;
+      }
+    };
+
+    // چرخش با ماوس (حساسیت کمتر)
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX / window.innerWidth;
+      rotateY = mouseX * 90; // چرخش محدود به 90 درجه
+      room.style.transform = `rotateY(${rotateY}deg)`;
+      updateBackground();
+    });
+
+    // چرخش با تاچ برای موبایل
+    document.addEventListener('touchmove', (e) => {
+      const touchX = e.touches[0].clientX / window.innerWidth;
+      rotateY = touchX * 90;
+      room.style.transform = `rotateY(${rotateY}deg)`;
+      updateBackground();
+    });
+
+    // نمایش تصویر بزرگ‌شده در پایین
+    walls.forEach(wall => {
+      wall.addEventListener('click', () => {
+        largeImage.src = wall.querySelector('img').src.replace('w=400', 'w=800');
+        largeImage.alt = wall.querySelector('img').alt;
+        largeImageContainer.classList.add('active');
+      });
+    });
+
+    // به‌روزرسانی اولیه پس‌زمینه
+    updateBackground();
+  </script>
+</body>
+</html>
