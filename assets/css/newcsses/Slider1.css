@@ -1,8 +1,11 @@
 .container-sldr {
-    max-width: 1400px;
+    /* max-width: 1400px; */
     width: 100%;
     margin: 40px auto;
     padding: 20px;
+    align-items: center !important;
+    text-align: center !important;
+
 }
 
 .title-sldr {
@@ -14,10 +17,13 @@
 }
 
 .container-sldr-span {
-    font-size: 5.5rem !important;
-    margin: 200px auto;
-    text-align: center;
-    align-items: center;
+    font-size: 2.5rem !important;
+    margin: 20px auto;
+    color: rgb(77, 255, 32);
+
+
+    padding: auto;
+    overflow: hidden;
 }
 
 .slider-wrapper-sldr {

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>گالری سه‌بعدی نقاشی با انیمیشن‌های پیشرفته</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        user-select: none;
+      }
+
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        overflow: hidden;
+        position: relative;
+        transition: background 1s ease-in-out;
+      }
+
+      /* پس‌زمینه داینامیک با عکس اسلایدر */
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.15;
+        z-index: -1;
+        transition: opacity 1s ease-in-out, background-image 1s ease-in-out;
+        filter: blur(8px) brightness(0.8);
+      }
+
+      .gallery-container {
+        width: 95%;
+        max-width: 1400px;
+        display: flex;
+        gap: 30px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+      }
+
+      /* استایل برای بخش تامبنیل‌ها */
+      .thumbnails-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        height: 500px;
+        overflow-y: auto;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        max-width: 220px;
+      }
+
+      .thumbnail {
+        width: 100%;
+        height: 80px;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        border: 2px solid transparent;
+        position: relative;
+      }
+
+      .thumbnail::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 10px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.1)
+        );
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .thumbnail.active {
+        border-color: #ffcc00;
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(255, 204, 0, 0.5);
+      }
+
+      .thumbnail.active::before {
+        opacity: 1;
+      }
+
+      .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+      }
+
+      .thumbnail.active img {
+        transform: scale(1.1);
+      }
+
+      /* استایل جدید برای ستون اطلاعات */
+      .info-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        max-width: 280px;
+        height: 500px;
+        backdrop-filter: blur(15px);
+      }
+
+      .info-item {
+        background: linear-gradient(
+          135deg,
+          rgba(74, 107, 255, 0.2),
+          rgba(146, 73, 255, 0.2)
+        );
+        border-radius: 12px;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .info-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .info-title {
+        color: white;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .info-inner-box {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.15),
+          rgba(255, 255, 255, 0.1)
+        );
+        border-radius: 8px;
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 45px;
+      }
+
+      .info-content {
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      /* انیمیشن برای تغییر محتوا */
+      .info-content.fade-out {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      .info-content.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* استایل برای گالری اصلی */
+      .img-container {
+        flex: 3;
+        position: relative;
+        height: 500px;
+        perspective: 1200px;
+        transform-style: preserve-3d;
+      }
+
+      .box {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+        overflow: hidden;
+        border: 3px solid rgba(255, 255, 255, 0.6);
+        position: absolute;
+        top: 50%;
+        transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-origin: center;
+        cursor: pointer;
+        transform-style: preserve-3d;
+      }
+
+      /* اضافه کردن ضخامت به عکس‌ها */
+      .box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 22px;
+        transform: translateZ(-15px);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+
+      .box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 22px;
+      }
+
+      /* تنظیم موقعیت و عمق عکس‌ها */
+      .box:nth-of-type(1) {
+        z-index: 5;
+        opacity: 1;
+        right: 45%;
+        transform: translate(50%, -50%) rotateY(10deg) scale(1);
+        box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+      }
+
+      .box:nth-of-type(2) {
+        z-index: 4;
+        opacity: 0.8;
+        right: 50%;
+        transform: translate(50%, -50%) rotateY(10deg) translateZ(-50px)
+          scale(0.95);
+      }
+
+      .box:nth-of-type(3) {
+        z-index: 3;
+        opacity: 0.6;
+        right: 55%;
+        transform: translate(50%, -50%) rotateY(10deg) translateZ(-100px)
+          scale(0.9);
+      }
+
+      .box:nth-of-type(4) {
+        z-index: 2;
+        opacity: 0.4;
+        right: 60%;
+        transform: translate(50%, -50%) rotateY(10deg) translateZ(-150px)
+          scale(0.85);
+      }
+
+      .box:nth-of-type(5) {
+        z-index: 1;
+        opacity: 0.2;
+        right: 65%;
+        transform: translate(50%, -50%) rotateY(10deg) translateZ(-200px)
+          scale(0.8);
+      }
+
+      /* استایل برای کنترل پخش */
+      .control-section {
+        position: absolute;
+        bottom: -45px;
+        left: 380px;
+        z-index: 101;
+      }
+
+      .control-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 50px;
+        padding: 12px 30px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 60px;
+        height: 60px;
+        justify-content: center;
+      }
+
+      .control-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .control-btn:active {
+        transform: translateY(0);
+      }
+
+      .control-btn i {
+        font-size: 18px;
+      }
+
+      /* استایل برای ریسپانسیو بودن */
+      @media (max-width: 1200px) {
+        .gallery-container {
+          flex-direction: column;
+        }
+
+        .thumbnails-container {
+          flex-direction: row;
+          height: auto;
+          overflow-x: auto;
+          overflow-y: hidden;
+          max-width: 100%;
+        }
+
+        .info-column {
+          max-width: 100%;
+          flex-direction: row;
+          height: auto;
+          flex-wrap: wrap;
+        }
+
+        .info-item {
+          flex: 1;
+          min-width: 200px;
+        }
+
+        .thumbnail {
+          min-width: 100px;
+        }
+
+        .control-section {
+          position: relative;
+          bottom: auto;
+          left: auto;
+          margin-top: 20px;
+          align-self: center;
+        }
+      }
+
+      /* استایل برای عنوان */
+      .title {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 24px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        z-index: 10;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="title">گالری هنری سه‌بعدی</div>
+
+    <div class="gallery-container">
+      <!-- بخش تامبنیل‌ها -->
+      <div class="thumbnails-container">
+        <div class="thumbnail active" data-index="0">
+          <img
+            src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?w=740&t=st=1692712345~exp=1692712945~hmac=7c3d8d6d8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b"
+            alt="تصویر ۱"
+          />
+        </div>
+        <div class="thumbnail" data-index="1">
+          <img
+            src="https://img.freepik.com/free-photo/beautiful-view-greenery-bridge-forest-perfect-background_181624-17827.jpg?w=740&t=st=1692619142~exp=1692619742~hmac=cbfd96c2635889371b9d74ff41432f9944fadfef177e121f43cf9f2f94b2fd6a"
+            alt="تصویر ۲"
+          />
+        </div>
+        <div class="thumbnail" data-index="2">
+          <img
+            src="https://img.freepik.com/free-photo/seljalandsfoss-waterfall-during-sunset-beautiful-waterfall-iceland_335224-596.jpg?w=740&t=st=1692619874~exp=1692620474~hmac=c48ffd5f0d2418bb4600d98ac64f3f61a0ed9e2090751ac7fa32bff35687ee17"
+            alt="تصویر ۳"
+          />
+        </div>
+        <div class="thumbnail" data-index="3">
+          <img
+            src="https://img.freepik.com/free-photo/landscape-morning-fog-mountains-with-hot-air-balloons-sunrise_335224-794.jpg?w=740&t=st=1692619958~exp=1692620558~hmac=d2e0e7c3c55857d0bb617b4b5b4deb0c7c67c6677c1eaa8b4c73d50445ece5bf"
+            alt="تصویر ۴"
+          />
+        </div>
+        <div class="thumbnail" data-index="4">
+          <img
+            src="https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg?w=740&t=st=1692617800~exp=1692618400~hmac=da967fd7227c9ad38cd8a070b995acb5f4bb6c2185c6a20bd2e90c60e2abf6ab"
+            alt="تصویر ۵"
+          />
+        </div>
+      </div>
+
+      <!-- بخش گالری اصلی -->
+      <div class="img-container">
+        <div class="box">
+          <img
+            src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?w=740&t=st=1692712345~exp=1692712945~hmac=7c3d8d6d8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b"
+            alt="تصویر ۱"
+          />
+        </div>
+        <div class="box">
+          <img
+            src="https://img.freepik.com/free-photo/beautiful-view-greenery-bridge-forest-perfect-background_181624-17827.jpg?w=740&t=st=1692619142~exp=1692619742~hmac=cbfd96c2635889371b9d74ff41432f9944fadfef177e121f43cf9f2f94b2fd6a"
+            alt="تصویر ۲"
+          />
+        </div>
+        <div class="box">
+          <img
+            src="https://img.freepik.com/free-photo/seljalandsfoss-waterfall-during-sunset-beautiful-waterfall-iceland_335224-596.jpg?w=740&t=st=1692619874~exp=1692620474~hmac=c48ffd5f0d2418bb4600d98ac64f3f61a0ed9e2090751ac7fa32bff35687ee17"
+            alt="تصویر ۳"
+          />
+        </div>
+        <div class="box">
+          <img
+            src="https://img.freepik.com/free-photo/landscape-morning-fog-mountains-with-hot-air-balloons-sunrise_335224-794.jpg?w=740&t=st=1692619958~exp=1692620558~hmac=d2e0e7c3c55857d0bb617b4b5b4deb0c7c67c6677c1eaa8b4c73d50445ece5bf"
+            alt="تصویر ۴"
+          />
+        </div>
+        <div class="box">
+          <img
+            src="https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg?w=740&t=st=1692617800~exp=1692618400~hmac=da967fd7227c9ad38cd8a070b995acb5f4bb6c2185c6a20bd2e90c60e2abf6ab"
+            alt="تصویر ۵"
+          />
+        </div>
+
+        <!-- کنترل پخش -->
+        <div class="control-section">
+          <button class="control-btn" id="toggle-btn">
+            <i class="fas fa-pause"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ستون اطلاعات جدید -->
+      <div class="info-column">
+        <div class="info-item">
+          <div class="info-title">
+            <i class="fas fa-palette"></i>
+            نام اثر
+          </div>
+          <div class="info-inner-box">
+            <div class="info-content" id="title-content">دریاچه کوهستانی</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-title">
+            <i class="fas fa-user"></i>
+            خالق اثر
+          </div>
+          <div class="info-inner-box">
+            <div class="info-content" id="artist-content">علی رضایی</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-title">
+            <i class="fas fa-map-marker-alt"></i>
+            موقعیت
+          </div>
+          <div class="info-inner-box">
+            <div class="info-content" id="location-content">تهران، ایران</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-title">
+            <i class="fas fa-calendar-alt"></i>
+            سال خلق
+          </div>
+          <div class="info-inner-box">
+            <div class="info-content" id="year-content">2023</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-title">
+            <i class="fas fa-comment"></i>
+            پیام
+          </div>
+          <div class="info-inner-box">
+            <div class="info-content" id="message-content">حفاظت از طبیعت</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // فایل JSON با اطلاعات کامل نقاشی‌ها
+      const galleryData = {
+        images: [
+          {
+            id: 1,
+            title: "دریاچه کوهستانی",
+            artist: "علی رضایی",
+            city: "تهران",
+            country: "ایران",
+            year: "2023",
+            message: "حفاظت از طبیعت",
+            imageUrl:
+              "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg",
+          },
+          {
+            id: 2,
+            title: "پل جنگلی",
+            artist: "سارا محمدی",
+            city: "اصفهان",
+            country: "ایران",
+            year: "2022",
+            message: "آلودگی هوا",
+            imageUrl:
+              "https://img.freepik.com/free-photo/beautiful-view-greenery-bridge-forest-perfect-background_181624-17827.jpg",
+          },
+          {
+            id: 3,
+            title: "آبشار ایسلندی",
+            artist: "لوکاس یوهانسن",
+            city: "ریکیاویک",
+            country: "ایسلند",
+            year: "2023",
+            message: "کمبود آب",
+            imageUrl:
+              "https://img.freepik.com/free-photo/seljalandsfoss-waterfall-during-sunset-beautiful-waterfall-iceland_335224-596.jpg",
+          },
+          {
+            id: 4,
+            title: "کوهستان در مه",
+            artist: "امیلی چن",
+            city: "شانگهای",
+            country: "چین",
+            year: "2024",
+            message: "تغییرات اقلیمی",
+            imageUrl:
+              "https://img.freepik.com/free-photo/landscape-morning-fog-mountains-with-hot-air-balloons-sunrise_335224-794.jpg",
+          },
+          {
+            id: 5,
+            title: "تنهایی در غروب",
+            artist: "کارلوس رویز",
+            city: "مادرید",
+            country: "اسپانیا",
+            year: "2022",
+            message: "انقراض گونه‌ها",
+            imageUrl:
+              "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg",
+          },
+        ],
+      };
+
+      let imgContainer = document.querySelector(".img-container");
+      let thumbnails = document.querySelectorAll(".thumbnail");
+      let boxes = document.querySelectorAll(".box");
+      let currentIndex = 0;
+      let isAnimating = false;
+      let slideInterval;
+      let isPlaying = true;
+
+      // عناصر اطلاعات
+      const titleContent = document.getElementById("title-content");
+      const artistContent = document.getElementById("artist-content");
+      const locationContent = document.getElementById("location-content");
+      const yearContent = document.getElementById("year-content");
+      const messageContent = document.getElementById("message-content");
+
+      // کنترل پخش
+      const toggleBtn = document.getElementById("toggle-btn");
+      const toggleIcon = toggleBtn.querySelector("i");
+
+      // تابع برای تغییر پس‌زمینه body
+      function updateBackground(imageUrl) {
+        document.body.style.background = `linear-gradient(135deg, rgba(26, 42, 108, 0.7), rgba(178, 31, 31, 0.7), rgba(253, 187, 45, 0.7)), url('${imageUrl}')`;
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        document.body.style.backgroundAttachment = "fixed";
+      }
+
+      // تابع برای انیمیشن تغییر محتوا
+      function animateContentChange(element, newValue) {
+        // افزودن کلاس fade-out
+        element.classList.add("fade-out");
+
+        setTimeout(() => {
+          // تغییر محتوا
+          element.textContent = newValue;
+          // حذف fade-out و افزودن fade-in
+          element.classList.remove("fade-out");
+          element.classList.add("fade-in");
+
+          setTimeout(() => {
+            // حذف fade-in بعد از اتمام انیمیشن
+            element.classList.remove("fade-in");
+          }, 500);
+        }, 250);
+      }
+
+      // تابع برای به‌روزرسانی اطلاعات از JSON
+      function updateInfo(index) {
+        const imageData = galleryData.images[index];
+
+        // تغییر پس‌زمینه
+        updateBackground(imageData.imageUrl);
+
+        // انیمیشن تغییر برای همه عناصر
+        animateContentChange(titleContent, imageData.title);
+        animateContentChange(artistContent, imageData.artist);
+        animateContentChange(
+          locationContent,
+          `${imageData.city}, ${imageData.country}`
+        );
+        animateContentChange(yearContent, imageData.year);
+        animateContentChange(messageContent, imageData.message);
+      }
+
+      // تابع برای به‌روزرسانی تامبنیل فعال
+      function updateActiveThumbnail(index) {
+        thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+        thumbnails[index].classList.add("active");
+      }
+
+      // تابع برای تغییر اسلاید
+      function changeSlide() {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        // محاسبه ایندکس بعدی
+        const nextIndex = (currentIndex + 1) % galleryData.images.length;
+
+        // به‌روزرسانی تامبنیل و اطلاعات
+        updateActiveThumbnail(nextIndex);
+        updateInfo(nextIndex);
+
+        // دریافت تمام باکس‌ها
+        const allBoxes = Array.from(imgContainer.querySelectorAll(".box"));
+
+        // محاسبه موقعیت‌های جدید برای همه باکس‌ها
+        allBoxes.forEach((box, index) => {
+          // محاسبه موقعیت جدید بر اساس ایندکس فعلی در DOM
+          let newPosition = (index - 1 + allBoxes.length) % allBoxes.length;
+
+          // اعمال انیمیشن به همه باکس‌ها به طور همزمان
+          switch (newPosition) {
+            case 0:
+              box.style.zIndex = "5";
+              box.style.opacity = "1";
+              box.style.right = "45%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) scale(1)";
+              break;
+            case 1:
+              box.style.zIndex = "4";
+              box.style.opacity = "0.8";
+              box.style.right = "50%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) translateZ(-50px) scale(0.95)";
+              break;
+            case 2:
+              box.style.zIndex = "3";
+              box.style.opacity = "0.6";
+              box.style.right = "55%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) translateZ(-100px) scale(0.9)";
+              break;
+            case 3:
+              box.style.zIndex = "2";
+              box.style.opacity = "0.4";
+              box.style.right = "60%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) translateZ(-150px) scale(0.85)";
+              break;
+            case 4:
+              box.style.zIndex = "1";
+              box.style.opacity = "0.2";
+              box.style.right = "65%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) translateZ(-200px) scale(0.8)";
+              break;
+          }
+        });
+
+        // بعد از اتمام انیمیشن، ترتیب DOM را به روز می‌کنیم
+        setTimeout(() => {
+          // جابجایی عناصر در DOM
+          let first = imgContainer.firstElementChild;
+          if (first) {
+            imgContainer.appendChild(first);
+          }
+
+          // به‌روزرسانی ایندکس فعلی
+          currentIndex = nextIndex;
+
+          isAnimating = false;
+        }, 500);
+      }
+
+      // تابع برای تنظیم مستقیم اسلاید
+      function setSlide(index) {
+        if (isAnimating) return;
+
+        // محاسبه اختلاف بین ایندکس فعلی و ایندکس مورد نظر
+        let diff = index - currentIndex;
+
+        // اگر همان اسلاید فعلی باشد، کاری نکن
+        if (diff === 0) return;
+
+        isAnimating = true;
+
+        // به‌روزرسانی تامبنیل و اطلاعات
+        updateActiveThumbnail(index);
+        updateInfo(index);
+
+        // انتقال مستقیم به اسلاید مورد نظر
+        const allBoxes = Array.from(imgContainer.querySelectorAll(".box"));
+
+        // محاسبه موقعیت‌های جدید برای همه باکس‌ها
+        allBoxes.forEach((box, i) => {
+          // محاسبه موقعیت جدید
+          let newPosition = (i - diff + allBoxes.length) % allBoxes.length;
+
+          // اعمال انیمیشن به همه باکس‌ها به طور همزمان
+          switch (newPosition) {
+            case 0:
+              box.style.zIndex = "5";
+              box.style.opacity = "1";
+              box.style.right = "45%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) scale(1)";
+              break;
+            case 1:
+              box.style.zIndex = "4";
+              box.style.opacity = "0.8";
+              box.style.right = "50%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) translateZ(-50px) scale(0.95)";
+              break;
+            case 2:
+              box.style.zIndex = "3";
+              box.style.opacity = "0.6";
+              box.style.right = "55%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) translateZ(-100px) scale(0.9)";
+              break;
+            case 3:
+              box.style.zIndex = "2";
+              box.style.opacity = "0.4";
+              box.style.right = "60%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) translateZ(-150px) scale(0.85)";
+              break;
+            case 4:
+              box.style.zIndex = "1";
+              box.style.opacity = "0.2";
+              box.style.right = "65%";
+              box.style.transform =
+                "translate(50%, -50%) rotateY(10deg) translateZ(-200px) scale(0.8)";
+              break;
+          }
+        });
+
+        // بعد از اتمام انیمیشن، ترتیب DOM را به روز می‌کنیم
+        setTimeout(() => {
+          // جابجایی عناصر در DOM به تعداد مورد نیاز
+          for (let i = 0; i < diff; i++) {
+            let first = imgContainer.firstElementChild;
+            if (first) {
+              imgContainer.appendChild(first);
+            }
+          }
+
+          currentIndex = index;
+          isAnimating = false;
+        }, 500);
+      }
+
+      // اضافه کردن رویداد کلیک برای تامبنیل‌ها
+      thumbnails.forEach((thumb, index) => {
+        thumb.addEventListener("click", () => {
+          // تنظیم مستقیم اسلاید به ایندکس کلیک شده
+          setSlide(index);
+        });
+      });
+
+      // تابع شروع پخش خودکار
+      function startSlideshow() {
+        slideInterval = setInterval(changeSlide, 3000);
+        isPlaying = true;
+        toggleIcon.className = "fas fa-pause";
+      }
+
+      // تابع توقف پخش خودکار
+      function stopSlideshow() {
+        clearInterval(slideInterval);
+        isPlaying = false;
+        toggleIcon.className = "fas fa-play";
+      }
+
+      // تابع تغییر وضعیت پخش
+      function toggleSlideshow() {
+        if (isPlaying) {
+          stopSlideshow();
+        } else {
+          startSlideshow();
+        }
+      }
+
+      // اضافه کردن رویداد برای دکمه کنترل
+      toggleBtn.addEventListener("click", toggleSlideshow);
+
+      // مقداردهی اولیه
+      updateActiveThumbnail(0);
+      updateInfo(0);
+      startSlideshow();
+
+      // اضافه کردن رویداد کلیک برای باکس‌ها
+      boxes.forEach((box) => {
+        box.addEventListener("click", function () {
+          // ایجاد overlay برای نمایش بزرگ شده عکس
+          const overlay = document.createElement("div");
+          overlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.9);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 1000;
+                    cursor: pointer;
+                `;
+
+          // ایجاد تصویر بزرگ شده
+          const enlargedImg = document.createElement("img");
+          enlargedImg.src = this.querySelector("img").src;
+          enlargedImg.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    object-fit: contain;
+                    border-radius: 15px;
+                    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+                `;
+
+          // اضافه کردن به صفحه
+          overlay.appendChild(enlargedImg);
+          document.body.appendChild(overlay);
+
+          // بستن با کلیک روی overlay
+          overlay.addEventListener("click", () => {
+            document.body.removeChild(overlay);
+          });
+
+          // بستن با کلید ESC
+          const closeOnEsc = (e) => {
+            if (e.key === "Escape") {
+              document.body.removeChild(overlay);
+              document.removeEventListener("keydown", closeOnEsc);
+            }
+          };
+          document.addEventListener("keydown", closeOnEsc);
+        });
+      });
+    </script>
+  </body>
+</html>
