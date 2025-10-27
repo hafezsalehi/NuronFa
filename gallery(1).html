@@ -48,7 +48,7 @@
         max-width: 1400px;
         display: flex;
         gap: 30px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(219, 17, 17, 0.1);
         backdrop-filter: blur(10px);
         border-radius: 20px;
         padding: 25px;
@@ -606,12 +606,7 @@
       const toggleIcon = toggleBtn.querySelector("i");
 
       // تابع برای تغییر پس‌زمینه body
-      function updateBackground(imageUrl) {
-        document.body.style.background = `linear-gradient(135deg, rgba(26, 42, 108, 0.7), rgba(178, 31, 31, 0.7), rgba(253, 187, 45, 0.7)), url('${imageUrl}')`;
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "center";
-        document.body.style.backgroundAttachment = "fixed";
-      }
+
 
       // تابع برای انیمیشن تغییر محتوا
       function animateContentChange(element, newValue) {
@@ -637,7 +632,6 @@
         const imageData = galleryData.images[index];
 
         // تغییر پس‌زمینه
-        updateBackground(imageData.imageUrl);
 
         // انیمیشن تغییر برای همه عناصر
         animateContentChange(titleContent, imageData.title);
