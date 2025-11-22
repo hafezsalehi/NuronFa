@@ -1,712 +1,438 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>۱۲ شش‌ضلعی با ۳۶ لوگو</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گالری هنری - نمایش افقی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        /* background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); */
-        background-color: rgb(10, 4, 65);
-
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
-        color: white;
-        padding: 20px;
-        overflow: hidden;
-      }
-
-      .container {
-        position: relative;
-        width: 90vmin;
-        height: 90vmin;
-        min-height: 600px;
-        min-width: 600px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .orbit {
-        position: absolute;
-        width: 45%;
-        height: 45%;
-        border-radius: 50%;
-        animation: rotate 40s linear infinite;
-      }
-
-      .hexagon-wrapper {
-        position: absolute;
-        width: 20%;
-        height: 20%;
-        animation: rotateReverse 40s linear infinite;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .small-hexagon {
-        width: 75px;
-        height: 75px;
-        clip-path: polygon(
-          50% 0%,
-          100% 25%,
-          100% 75%,
-          50% 100%,
-          0% 75%,
-          0% 25%
-        );
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.2),
-          rgba(255, 255, 255, 0.1)
-        );
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-          inset 0 0 20px rgba(255, 255, 255, 0.2);
-        transition: all 0.4s ease;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        z-index: 3;
-        flex-shrink: 0;
-      }
-
-      .text-square {
-        background: rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 5px 5px;
-        font-size: 1.7vmin;
-        text-align: center;
-        line-height: 1.3;
-        opacity: 0.9;
-        transition: all 0.3s ease;
-        flex-shrink: 0;
-        /* max-width: 140px; */
-        /* min-width: 100px; */
-        white-space: wrap;
-      }
-
-      /* موقعیت‌دهی و جهت‌دهی مربع‌های متن */
-      .hexagon-1,
-      .hexagon-2,
-      .hexagon-3,
-      .hexagon-4,
-      .hexagon-5,
-      .hexagon-6 {
-        flex-direction: row-reverse;
-      }
-
-      .hexagon-1 .text-square,
-      .hexagon-2 .text-square,
-      .hexagon-3 .text-square,
-      .hexagon-4 .text-square,
-      .hexagon-5 .text-square,
-      .hexagon-6 .text-square {
-        margin-right: 10px;
-      }
-
-      .hexagon-7,
-      .hexagon-8,
-      .hexagon-9,
-      .hexagon-10,
-      .hexagon-11,
-      .hexagon-12 {
-        flex-direction: row;
-      }
-
-      .hexagon-7 .text-square,
-      .hexagon-8 .text-square,
-      .hexagon-9 .text-square,
-      .hexagon-10 .text-square,
-      .hexagon-11 .text-square,
-      .hexagon-12 .text-square {
-        margin-left: 10px;
-      }
-
-      /* موقعیت‌دهی 12 شش‌ضلعی */
-      .hexagon-1 {
-        top: -8%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .hexagon-2 {
-        top: 10%;
-        right: 15%;
-        transform: translateY(-50%);
-      }
-      .hexagon-3 {
-        top: 28%;
-        right: 6%;
-        transform: translateY(-50%);
-      }
-      .hexagon-4 {
-        top: 50%;
-        right: -8%;
-        transform: translateY(-50%);
-      }
-      .hexagon-5 {
-        top: 72%;
-        right: 6%;
-        transform: translateY(-50%);
-      }
-      .hexagon-6 {
-        top: 90%;
-        right: 15%;
-        transform: translateY(-50%);
-      }
-      .hexagon-7 {
-        bottom: -8%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .hexagon-8 {
-        top: 90%;
-        left: 15%;
-        transform: translateY(-50%);
-      }
-      .hexagon-9 {
-        top: 72%;
-        left: 6%;
-        transform: translateY(-50%);
-      }
-      .hexagon-10 {
-        top: 50%;
-        left: -8%;
-        transform: translateY(-50%);
-      }
-      .hexagon-11 {
-        top: 28%;
-        left: 6%;
-        transform: translateY(-50%);
-      }
-      .hexagon-12 {
-        top: 10%;
-        left: 15%;
-        transform: translateY(-50%);
-      }
-
-      /* رنگ‌های شیشه‌ای برای هر شش‌ضلعی */
-      .hexagon-1 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(52, 152, 219, 0.3),
-          rgba(41, 128, 185, 0.2)
-        );
-      }
-      .hexagon-2 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(46, 204, 113, 0.3),
-          rgba(39, 174, 96, 0.2)
-        );
-      }
-      .hexagon-3 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(231, 76, 60, 0.3),
-          rgba(192, 57, 43, 0.2)
-        );
-      }
-      .hexagon-4 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(155, 89, 182, 0.3),
-          rgba(142, 68, 173, 0.2)
-        );
-      }
-      .hexagon-5 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(26, 188, 156, 0.3),
-          rgba(22, 160, 133, 0.2)
-        );
-      }
-      .hexagon-6 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(241, 196, 15, 0.3),
-          rgba(243, 156, 18, 0.2)
-        );
-      }
-      .hexagon-7 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(52, 152, 219, 0.3),
-          rgba(41, 128, 185, 0.2)
-        );
-      }
-      .hexagon-8 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(46, 204, 113, 0.3),
-          rgba(39, 174, 96, 0.2)
-        );
-      }
-      .hexagon-9 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(231, 76, 60, 0.3),
-          rgba(192, 57, 43, 0.2)
-        );
-      }
-      .hexagon-10 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(155, 89, 182, 0.3),
-          rgba(142, 68, 173, 0.2)
-        );
-      }
-      .hexagon-11 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(26, 188, 156, 0.3),
-          rgba(22, 160, 133, 0.2)
-        );
-      }
-      .hexagon-12 .small-hexagon {
-        background: linear-gradient(
-          135deg,
-          rgba(241, 196, 15, 0.3),
-          rgba(243, 156, 18, 0.2)
-        );
-      }
-
-      .small-hexagon:hover {
-        transform: scale(1.15);
-        backdrop-filter: blur(15px);
-        box-shadow: 0 12px 40px rgba(255, 255, 255, 0.4),
-          inset 0 0 30px rgba(255, 255, 255, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-      }
-
-      .small-hexagon:hover + .text-square {
-        background: rgba(0, 0, 0, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-      }
-
-      .logo-img {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-        transition: all 0.3s ease;
-      }
-
-      .small-hexagon:hover .logo-img {
-        transform: scale(1.1);
-      }
-
-      @keyframes rotate {
-        0% {
-          transform: rotate(0deg);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        100% {
-          transform: rotate(360deg);
+        
+        body {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 197, 61, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(120, 119, 198, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
+                linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            filter: saturate(1.1);
         }
-      }
-
-      @keyframes rotateReverse {
-        0% {
-          transform: rotate(0deg);
+        
+        .horizontal-gallery-box {
+            background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.15),
+                0 4px 10px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            width: 100%;
+            max-width: 900px;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 160px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-        100% {
-          transform: rotate(-360deg);
+        
+        .horizontal-gallery-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b 0%, #6a11cb 50%, #2575fc 100%);
+            box-shadow: 0 2px 8px rgba(106, 17, 203, 0.4);
         }
-      }
-
-      @media (max-width: 768px) {
-        .container {
-          width: 95vmin;
-          height: 95vmin;
-          min-height: 500px;
-          min-width: 500px;
+        
+        .horizontal-gallery-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
-
-        .small-hexagon {
-          width: 75px;
-          height: 75px;
+        
+        .horizontal-gallery-box:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.2),
+                0 8px 20px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            filter: brightness(1.05) saturate(1.2);
         }
-
-        .logo-img {
-          width: 45px;
-          height: 45px;
+        
+        .horizontal-gallery-box:hover::after {
+            opacity: 1;
         }
-
-        .text-square {
-          font-size: 1.3vmin;
-          max-width: 120px;
-          min-width: 90px;
-          padding: 8px 10px;
+        
+        .gallery-basic-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            flex: 1;
+            z-index: 2;
         }
-      }
+        
+        .gallery-title {
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #2c3e50, #6a11cb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .horizontal-gallery-box:hover .gallery-title {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        
+        .gallery-details {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .detail-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .detail-icon {
+            color: #6a11cb;
+            font-size: 18px;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+            transition: all 0.3s ease;
+        }
+        
+        .detail-item:hover .detail-icon {
+            color: #2575fc;
+            transform: scale(1.1);
+        }
+        
+        .detail-text {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .paintings-count {
+            font-weight: 700;
+            color: #2575fc;
+            text-shadow: 0 1px 2px rgba(37, 117, 252, 0.2);
+        }
+        
+        .theme-tag {
+            background: linear-gradient(135deg, #e8f4fd, #d1e7ff);
+            color: #3498db;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 3px 6px rgba(52, 152, 219, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .detail-item:hover .theme-tag {
+            background: linear-gradient(135deg, #d1e7ff, #b3d9ff);
+            transform: scale(1.05);
+        }
+        
+        .price-section {
+            background: 
+                linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(245, 87, 108, 0.9) 100%),
+                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+            border-radius: 16px;
+            padding: 18px 22px;
+            text-align: center;
+            color: white;
+            box-shadow: 
+                0 8px 20px rgba(245, 87, 108, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            min-width: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+        }
+        
+        .price-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .price-section:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 12px 25px rgba(245, 87, 108, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            filter: brightness(1.1) saturate(1.2);
+        }
+        
+        .price-section:hover::before {
+            opacity: 1;
+        }
+        
+        .price-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+        
+        #priceDisplayFl {
+            font-size: 20px;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+        
+        .price-loading-fl {
+            opacity: 0.8;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .price-updated-fl {
+            animation: priceUpdate 0.7s ease;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        @keyframes priceUpdate {
+            0% { transform: scale(1); color: white; }
+            50% { transform: scale(1.1); color: #ffeb3b; }
+            100% { transform: scale(1); color: white; }
+        }
+        
+        .refresh-btn {
+            background: 
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.9));
+            color: #f5576c;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+        }
+        
+        .refresh-btn:hover {
+            background: 
+                linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(240, 242, 245, 1));
+            color: #e53e3e;
+            transform: translateY(-3px);
+            box-shadow: 
+                0 6px 12px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            filter: brightness(1.05);
+        }
+        
+        .refresh-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 
+                0 3px 6px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .refresh-btn i {
+            font-size: 14px;
+            transition: transform 0.5s ease;
+        }
+        
+        .refresh-btn:hover i {
+            transform: rotate(180deg);
+        }
+        
+        @media (max-width: 768px) {
+            .horizontal-gallery-box {
+                flex-direction: column;
+                height: auto;
+                padding: 25px;
+            }
+            
+            .gallery-basic-info {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .gallery-details {
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+            }
+            
+            .price-section {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-title {
+                font-size: 22px;
+            }
+            
+            .detail-text {
+                font-size: 14px;
+            }
+            
+            .price-section {
+                padding: 15px 18px;
+            }
+            
+            #priceDisplayFl {
+                font-size: 18px;
+            }
+            
+            .gallery-details {
+                gap: 10px;
+            }
+            
+            .detail-item {
+                padding: 6px 12px;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <section class="container">
-      <div class="orbit">
-        <!-- شش‌ضلعی 1 تا 12 -->
-        <div class="hexagon-wrapper hexagon-1">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company01.png"
-              alt="Company 1"
-              class="logo-img"
-              id="logo1"
-            />
-          </div>
-          <div class="text-square" id="text1">شرکت نرم‌افزاری آلفا</div>
+</head>
+<body>
+    <div class="horizontal-gallery-box">
+        <div class="gallery-basic-info">
+            <h2 class="gallery-title">نگارستان هنر نو</h2>
+            <div class="gallery-details">
+                <div class="detail-item">
+                    <i class="fas fa-palette detail-icon"></i>
+                    <span class="detail-text paintings-count">۴۲ اثر</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-tag detail-icon"></i>
+                    <span class="detail-text theme-tag">هنر معاصر</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt detail-icon"></i>
+                    <span class="detail-text">تهران، خیابان هنر</span>
+                </div>
+            </div>
         </div>
-
-        <div class="hexagon-wrapper hexagon-2">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company04.png"
-              alt="Company 2"
-              class="logo-img"
-              id="logo2"
-            />
-          </div>
-          <div class="text-square" id="text2">استارتاپ فناوری بتا</div>
+        
+        <div class="price-section">
+            <div class="price-title">قیمت بیت‌کوین</div>
+            <div id="priceDisplayFl">در حال بارگذاری...</div>
+            <button class="refresh-btn" onclick="fetchPriceFl()">
+                <i class="fas fa-sync-alt"></i>
+                بروزرسانی
+            </button>
         </div>
-
-        <div class="hexagon-wrapper hexagon-3">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company07.png"
-              alt="Company 3"
-              class="logo-img"
-              id="logo3"
-            />
-          </div>
-          <div class="text-square" id="text3">هولدینگ گاما</div>
-        </div>
-
-        <div class="hexagon-wrapper hexagon-4">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company10.png"
-              alt="Company 4"
-              class="logo-img"
-              id="logo4"
-            />
-          </div>
-          <div class="text-square" id="text4">گروه صنعتی دلتا</div>
-        </div>
-
-        <div class="hexagon-wrapper hexagon-5">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company13.png"
-              alt="Company 5"
-              class="logo-img"
-              id="logo5"
-            />
-          </div>
-          <div class="text-square" id="text5">شرکت اپسیلون</div>
-        </div>
-
-        <div class="hexagon-wrapper hexagon-6">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company16.png"
-              alt="Company 6"
-              class="logo-img"
-              id="logo6"
-            />
-          </div>
-          <div class="text-square" id="text6">موسسه زتا</div>
-        </div>
-
-        <div class="hexagon-wrapper hexagon-7">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company19.png"
-              alt="Company 7"
-              class="logo-img"
-              id="logo7"
-            />
-          </div>
-          <div class="text-square" id="text7">گروه اتا</div>
-        </div>
-
-        <div class="hexagon-wrapper hexagon-8">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company22.png"
-              alt="Company 8"
-              class="logo-img"
-              id="logo8"
-            />
-          </div>
-          <div class="text-square" id="text8">شرکت تتا</div>
-        </div>
-
-        <div class="hexagon-wrapper hexagon-9">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company25.png"
-              alt="Company 9"
-              class="logo-img"
-              id="logo9"
-            />
-          </div>
-          <div class="text-square" id="text9">استارتاپ یوتا</div>
-        </div>
-
-        <div class="hexagon-wrapper hexagon-10">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company28.png"
-              alt="Company 10"
-              class="logo-img"
-              id="logo10"
-            />
-          </div>
-          <div class="text-square" id="text10">گروه کاپا</div>
-        </div>
-
-        <div class="hexagon-wrapper hexagon-11">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company31.png"
-              alt="Company 11"
-              class="logo-img"
-              id="logo11"
-            />
-          </div>
-          <div class="text-square" id="text11">شرکت لامبدا</div>
-        </div>
-
-        <div class="hexagon-wrapper hexagon-12">
-          <div class="small-hexagon">
-            <img
-              src="images/cologos/company34.png"
-              alt="Company 12"
-              class="logo-img"
-              id="logo12"
-            />
-          </div>
-          <div class="text-square" id="text12">هولدینگ مو</div>
-        </div>
-      </div>
-    </section>
+    </div>
 
     <script>
-      // آرایه‌های ۳۶ لوگو و متن
-      const allLogos = [
-        // گروه ۱: شرکت‌های نرم‌افزاری
-        [
-          {
-            logo: "images/cologos/company01.png",
-            text: "شرکت نرم‌افزاری آلفا",
-          },
-          {
-            logo: "images/cologos/company02.png",
-            text: "استارتاپ فناوری آلفا",
-          },
-          { logo: "images/cologos/company03.png", text: "گروه توسعه آلفا" },
-        ],
-        // گروه ۲: استارتاپ‌ها
-        [
-          { logo: "images/cologos/company04.png", text: "استارتاپ فناوری بتا" },
-          { logo: "images/cologos/company05.png", text: "شرکت نوآوری بتا" },
-          { logo: "images/cologos/company06.png", text: "گروه تحقیقاتی بتا" },
-        ],
-        // گروه ۳: هولدینگ‌ها
-        [
-          { logo: "images/cologos/company07.png", text: "هولدینگ گاما" },
-          {
-            logo: "images/cologos/company08.png",
-            text: "شرکت سرمایه‌گذاری گاما",
-          },
-          {
-            logo: "images/cologos/company09.png",
-            text: "گروه بین‌المللی گاما",
-          },
-        ],
-        // گروه ۴: صنعتی
-        [
-          { logo: "images/cologos/company10.png", text: "گروه صنعتی دلتا" },
-          { logo: "images/cologos/company11.png", text: "شرکت تولیدی دلتا" },
-          { logo: "images/cologos/company12.png", text: "کارخانجات دلتا" },
-        ],
-        // گروه ۵: خدمات
-        [
-          {
-            logo: "images/cologos/company13.png",
-            text: "شرکت رکت فناوریرکت فناوریاپسیلون",
-          },
-          { logo: "images/cologos/company14.png", text: "موسسه خدمات اپسیلون" },
-          {
-            logo: "images/cologos/company15.png",
-            text: "گروه مشاورهرکت فناوری اپسیلون",
-          },
-        ],
-        // گروه ۶: آموزشی
-        [
-          {
-            logo: "images/cologos/company16.png",
-            text: "موسسهرکت فناوریرکت فناوری زتا",
-          },
-          { logo: "images/cologos/company17.png", text: "آکادمی زتا" },
-          {
-            logo: "images/cologos/company18.png",
-            text: "مرکز آموزش رکت فناوریزتا",
-          },
-        ],
-        // گروه ۷: فناوری
-        [
-          { logo: "images/cologos/company19.png", text: " اتا" },
-          {
-            logo: "images/cologos/company20.png",
-            text: "شرکت فناوری رکت فناوریاتا",
-          },
-          {
-            logo: "images/cologos/company21.png",
-            text: "استارتاپرکت فناوریرکت فناوری اتا",
-          },
-        ],
-        // گروه ۸: مهندسی
-        [
-          {
-            logo: "images/cologos/company22.png",
-            text: "شرکرکت فناوریرکت فناوریت تتا",
-          },
-          { logo: "images/cologos/company23.png", text: "گروه مهندسی تتا" },
-          {
-            logo: "images/cologos/company24.png",
-            text: "موسسه تحقیقاتی رکت فناوریتتا",
-          },
-        ],
-        // گروه ۹: استارتاپ‌های جدید
-        [
-          { logo: "images/cologos/company25.png", text: " یوتا" },
-          {
-            logo: "images/cologos/company26.png",
-            text: "شرکت نوپای رکت فناوریرکت فناورییوتا",
-          },
-          {
-            logo: "images/cologos/company27.png",
-            text: "گروه رکت فناوریرکت فناورییوتا",
-          },
-        ],
-        // گروه ۱۰: بین‌المللی
-        [
-          {
-            logo: "images/cologos/company28.png",
-            text: "گروه رکت فناوریرکت فناوریرکت فناوریکاپا",
-          },
-          {
-            logo: "images/cologos/company29.png",
-            text: "شرکت بین‌المللی رکت فناوریکاپا",
-          },
-          { logo: "images/cologos/company30.png", text: " کاپا" },
-        ],
-        // گروه ۱۱: تحقیقاتی
-        [
-          { logo: "images/cologos/company31.png", text: " لادا" },
-          {
-            logo: "images/cologos/company32.png",
-            text: "موسسه تحقیقات لامبدا",
-          },
-          { logo: "images/cologos/company33.png", text: "آزمایشگاه لامبدا" },
-        ],
-        // گروه ۱۲: سرمایه‌گذاری
-        [
-          { logo: "images/cologos/company34.png", text: "هولدینگ مو" },
-          {
-            logo: "images/cologos/company35.png",
-            text: "شرکت سرمایه‌گذاری مو",
-          },
-          { logo: "images/cologos/company36.png", text: "صندوق " },
-        ],
-      ];
-
-      // شمارنده برای هر شش‌ضلعی
-      let counters = Array(12).fill(0);
-
-      // تابع برای تغییر لوگوها و متن‌ها
-      function rotateLogos() {
-        for (let i = 0; i < 12; i++) {
-          counters[i] = (counters[i] + 1) % 3;
-          const logoElement = document.getElementById(`logo${i + 1}`);
-          const textElement = document.getElementById(`text${i + 1}`);
-
-          // تغییر لوگو و متن
-          const currentData = allLogos[i][counters[i]];
-          logoElement.src = currentData.logo;
-          textElement.textContent = currentData.text;
-
-          // تنظیم اندازه مستطیل متن بر اساس طول متن
-          adjustTextSquareSize(textElement);
-
-          // افکت fade ساده
-          logoElement.style.opacity = "0";
-          textElement.style.opacity = "0";
-          setTimeout(() => {
-            logoElement.style.opacity = "1";
-            textElement.style.opacity = "1";
-          }, 100);
+        async function fetchPriceFl() {
+            const priceDisplayFl = document.getElementById("priceDisplayFl");
+            priceDisplayFl.classList.add("price-loading-fl");
+            
+            try {
+                const response = await fetch(
+                    "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+                    {
+                        headers: {
+                            Accept: "application/json",
+                        },
+                    }
+                );
+                
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                
+                const data = await response.json();
+                const price = data.bitcoin.usd;
+                priceDisplayFl.textContent = `BTC: $${price.toLocaleString()}`;
+                priceDisplayFl.classList.remove("price-loading-fl");
+                priceDisplayFl.classList.add("price-updated-fl");
+                
+                setTimeout(() => priceDisplayFl.classList.remove("price-updated-fl"), 700);
+            } catch (error) {
+                priceDisplayFl.textContent = "خطا در بارگذاری";
+                console.error("Error fetching price:", error);
+            }
         }
-      }
-
-      // تابع برای تنظیم اندازه مستطیل متن
-      function adjustTextSquareSize(textElement) {
-        const textLength = textElement.textContent.length;
-        let width;
-
-        if (textLength <= 10) {
-          width = 100;
-        } else if (textLength <= 15) {
-          width = 120;
-        } else if (textLength <= 20) {
-          width = 140;
-        } else {
-          width = 160;
-        }
-
-        textElement.style.width = width + "px";
-      }
-
-      // تنظیم اندازه اولیه برای همه مستطیل‌ها
-      document.addEventListener("DOMContentLoaded", function () {
-        for (let i = 1; i <= 12; i++) {
-          const textElement = document.getElementById(`text${i}`);
-          adjustTextSquareSize(textElement);
-        }
-      });
-
-      // شروع تایمر برای تغییر لوگوها و متن‌ها هر 4 ثانیه
-      setInterval(rotateLogos, 4000);
-
-      // اضافه کردن کلیک برای شش‌ضلعی‌ها
-      document.querySelectorAll(".small-hexagon").forEach((hexagon) => {
-        hexagon.addEventListener("click", function () {
-          this.style.transform = "scale(0.9)";
-          setTimeout(() => {
-            this.style.transform = "scale(1)";
-          }, 300);
-        });
-      });
+        
+        // بارگذاری قیمت هنگام لود صفحه
+        document.addEventListener('DOMContentLoaded', fetchPriceFl);
     </script>
-  </body>
+</body>
 </html>

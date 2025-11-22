@@ -54,6 +54,7 @@
         padding: 25px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         margin-bottom: 20px;
+        min-height: 80vh;
       }
 
       /* استایل برای بخش تامبنیل‌ها */
@@ -99,7 +100,7 @@
         );
         z-index: 1;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.1s ease;
       }
 
       .thumbnail.active {
@@ -112,6 +113,36 @@
         opacity: 1;
       }
 
+      /* انیمیشن جدید برای تامبنیل فعال */
+      .thumbnail.active::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #ffcc00, #ff9900, #ffcc00);
+        z-index: 2;
+        opacity: 0;
+        animation: border-glow 0.5s ease-in-out;
+      }
+
+      @keyframes border-glow {
+        0% {
+          opacity: 0;
+          clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        }
+        50% {
+          opacity: 1;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        100% {
+          opacity: 0;
+          clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        }
+      }
+
       .thumbnail img {
         width: 100%;
         height: 100%;
@@ -120,7 +151,7 @@
       }
 
       .thumbnail.active img {
-        transform: scale(1.1);
+        transform: scale(1.3);
       }
 
       /* استایل جدید برای ستون اطلاعات */
@@ -140,11 +171,13 @@
       }
 
       .info-item {
-        background: linear-gradient(
+        /* background: linear-gradient(
           135deg,
           rgba(74, 107, 255, 0.2),
           rgba(146, 73, 255, 0.2)
-        );
+        ); */
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+
         border-radius: 12px;
         padding: 15px;
         border: 1px solid rgba(255, 255, 255, 0.15);
@@ -156,11 +189,38 @@
         justify-content: center;
         position: relative;
         overflow: hidden;
+        cursor: pointer;
+        opacity: 1;
       }
 
+      /* افکت hover برای باکس‌های اطلاعات */
       .info-item:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 6px 20px rgba(241, 245, 1, 0.2);
+        background: linear-gradient(
+          135deg,
+          rgba(74, 107, 255, 0.3),
+          rgba(156, 17, 110, 0.3)
+        );
+      }
+      .info-item:hover .info-title {
+        color: #b21f1f;
+      }
+
+      .info-item:hover::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.05)
+        );
+        z-index: 0;
+        border-radius: 12px;
       }
 
       .info-title {
@@ -172,6 +232,8 @@
         align-items: center;
         justify-content: center;
         gap: 6px;
+        position: relative;
+        z-index: 1;
       }
 
       .info-inner-box {
@@ -188,13 +250,15 @@
         justify-content: center;
         text-align: center;
         height: 45px;
+        position: relative;
+        z-index: 1;
       }
 
       .info-content {
-        color: white;
+        color: rgb(39, 2, 2);
         font-size: 14px;
         font-weight: 600;
-        line-height: 1.4;
+        line-height: 1;
         transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
 
@@ -443,7 +507,6 @@
         color: #ffcc00;
         text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
       }
-      /* استایل برای ریسپانسیو بودن */
 
       /* استایل برای عنوان */
       .title {
@@ -456,9 +519,11 @@
         z-index: 10;
       }
 
-      /* استایل برای حالت موبایل (تا 768px) */
+      /* -------------------- */
+      /* -------------------- */
 
-      /* استایل برای حالت موبایل (تا 768px) */
+      /* -------------------- */
+
       /* استایل برای حالت موبایل (تا 768px) */
       @media (max-width: 768px) {
         .gallery-container {
@@ -467,6 +532,7 @@
           padding: 5px;
           margin: 0;
           box-sizing: border-box;
+          gap: 10px;
         }
 
         /* تامبنیل‌ها: 5 تامبنیل کنار هم با عرض 15% */
@@ -474,19 +540,20 @@
           display: flex;
           flex-direction: row;
           height: auto;
-          overflow-x: hidden; /* بدون اسکرول */
+          overflow-x: hidden;
           overflow-y: hidden;
           max-width: 100%;
           padding: 5px 2px;
           gap: 2px;
           justify-content: space-between;
           align-items: center;
-          flex-wrap: nowrap; /* جلوگیری از شکستن خط */
+          flex-wrap: nowrap;
+          order: 1;
         }
 
         .thumbnail {
-          flex: 0 0 15%; /* عرض دقیق 15% برای هر تامبنیل */
-          height: 35px; /* ارتفاع کوچکتر برای فشردگی */
+          flex: 0 0 18%;
+          height: 35px;
           margin: 0;
           border-radius: 6px;
           border: 1px solid rgba(255, 255, 255, 0.2);
@@ -501,9 +568,10 @@
 
         /* اسلایدر: حفظ ارتفاع */
         .img-container {
-          height: 160vh; /* حفظ ارتفاع دو برابر */
+          /* height: 40vh; */
           width: 100%;
           margin: 0;
+          order: 2;
         }
 
         .box {
@@ -516,20 +584,21 @@
         .info-column {
           display: flex;
           flex-direction: row;
-          height: auto;
-          overflow-x: hidden; /* بدون اسکرول */
+          height: 1px;
+          overflow-x: hidden;
           overflow-y: hidden;
           max-width: 100%;
           padding: 5px 2px;
           gap: 2px;
           justify-content: space-between;
           align-items: center;
-          flex-wrap: nowrap; /* جلوگیری از شکستن خط */
+          flex-wrap: nowrap;
+          order: 3;
         }
 
         .info-item {
-          flex: 0 0 15%; /* عرض دقیق 15% برای هر آیتم */
-          height: 40px; /* ارتفاع کوچکتر */
+          flex: 0 0 18%;
+          height: 80%;
           margin: 0;
           padding: 3px;
           border-radius: 6px;
@@ -540,14 +609,14 @@
         }
 
         .info-title {
-          font-size: 7px; /* فونت خیلی کوچک برای جا شدن */
-          margin-bottom: 2px;
+          font-size: 7px;
+          margin-bottom: 5px;
           text-align: center;
           line-height: 1;
         }
 
         .info-inner-box {
-          height: 20px; /* کاهش ارتفاع باکس داخلی */
+          height: 60%;
           padding: 3px;
           width: 100%;
           display: flex;
@@ -556,22 +625,24 @@
         }
 
         .info-content {
-          font-size: 8px; /* فونت خیلی کوچک */
+          font-size: 8px;
           line-height: 1;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis; /* کوتاه کردن متن طولانی */
+          /* white-space: nowrap; */
+          /* overflow: hidden; */
+          text-overflow: ellipsis;
           text-align: center;
+          text-wrap: wrap;
         }
 
         /* تنظیم دکمه کنترل */
         .control-section {
           position: relative;
-          bottom: auto;
-          left: auto;
+          bottom: 38px;
+          left: 0px;
           margin: 8px auto;
           display: flex;
           justify-content: center;
+          order: 4;
         }
 
         .control-btn {
@@ -592,7 +663,94 @@
         }
       }
 
-      /* استایل برای حالت موبایل (تا 768px) */
+      /* استایل برای overlay نمایش جزئیات */
+      .detail-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        cursor: pointer;
+        /* opacity: .5; */
+        animation: fadeIn 0.3s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .detail-content {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 80%;
+        max-height: 80%;
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        position: relative;
+        transform: scale(0.9);
+        animation: scaleIn 0.3s ease forwards;
+      }
+
+      @keyframes scaleIn {
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .detail-header {
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 15px;
+      }
+
+      .detail-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .detail-artist {
+        font-size: 18px;
+        color: #ffcc00;
+      }
+
+      .detail-body {
+        color: white;
+        line-height: 1.8;
+        font-size: 16px;
+      }
+
+      .detail-close {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .detail-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
     </style>
     <link
       rel="stylesheet"
@@ -680,7 +838,7 @@
 
       <!-- ستون اطلاعات جدید -->
       <div class="info-column">
-        <div class="info-item">
+        <div class="info-item" data-type="title">
           <div class="info-title">
             <i class="fas fa-palette"></i>
             نام اثر
@@ -690,7 +848,7 @@
           </div>
         </div>
 
-        <div class="info-item">
+        <div class="info-item" data-type="artist">
           <div class="info-title">
             <i class="fas fa-user"></i>
             خالق اثر
@@ -700,7 +858,7 @@
           </div>
         </div>
 
-        <div class="info-item">
+        <div class="info-item" data-type="location">
           <div class="info-title">
             <i class="fas fa-map-marker-alt"></i>
             موقعیت
@@ -710,7 +868,7 @@
           </div>
         </div>
 
-        <div class="info-item">
+        <div class="info-item" data-type="year">
           <div class="info-title">
             <i class="fas fa-calendar-alt"></i>
             سال خلق
@@ -720,7 +878,7 @@
           </div>
         </div>
 
-        <div class="info-item">
+        <div class="info-item" data-type="message">
           <div class="info-title">
             <i class="fas fa-comment"></i>
             پیام
@@ -733,7 +891,7 @@
     </div>
     <script src="assets/data/galleries/gallery001.js"></script>
     <script>
-      // فایل JSON با اطلاعات کامل نقاشی‌ها
+      // داده‌های نمونه برای گالری
 
       let imgContainer = document.querySelector(".img-container");
       let thumbnails = document.querySelectorAll(".thumbnail");
@@ -754,25 +912,57 @@
       const toggleBtn = document.getElementById("toggle-btn");
       const toggleIcon = toggleBtn.querySelector("i");
 
-      console.log("📊 تعداد تصاویر در galleryData:", galleryData.images.length);
-
       // تابع برای به‌روزرسانی اطلاعات از JSON
       function updateInfo(index) {
         const imageData = galleryData.images[index];
-        console.log(
-          `🔄 به‌روزرسانی اطلاعات - ایندکس: ${index}, عنوان: ${imageData.title}`
-        );
 
-        titleContent.textContent = imageData.title;
-        artistContent.textContent = imageData.artist;
-        locationContent.textContent = `${imageData.city}, ${imageData.country}`;
-        yearContent.textContent = imageData.year;
-        messageContent.textContent = imageData.message;
+        // انیمیشن fade out برای محتوا
+        [
+          titleContent,
+          artistContent,
+          locationContent,
+          yearContent,
+          messageContent,
+        ].forEach((el) => {
+          el.classList.add("fade-out");
+        });
+
+        // پس از اتمام fade out، محتوا را تغییر داده و fade in کنیم
+        setTimeout(() => {
+          titleContent.textContent = imageData.title;
+          artistContent.textContent = imageData.artist;
+          locationContent.textContent = `${imageData.city}, ${imageData.country}`;
+          yearContent.textContent = imageData.year;
+          messageContent.textContent = imageData.message;
+
+          [
+            titleContent,
+            artistContent,
+            locationContent,
+            yearContent,
+            messageContent,
+          ].forEach((el) => {
+            el.classList.remove("fade-out");
+            el.classList.add("fade-in");
+          });
+
+          // حذف کلاس fade-in پس از اتمام انیمیشن
+          setTimeout(() => {
+            [
+              titleContent,
+              artistContent,
+              locationContent,
+              yearContent,
+              messageContent,
+            ].forEach((el) => {
+              el.classList.remove("fade-in");
+            });
+          }, 500);
+        }, 250);
       }
 
       // تابع برای به‌روزرسانی تامبنیل فعال
       function updateActiveThumbnail(index) {
-        console.log(`📌 به‌روزرسانی تامبنیل فعال - ایندکس: ${index}`);
         thumbnails.forEach((thumb, i) => {
           thumb.classList.toggle("active", i === index);
         });
@@ -781,9 +971,6 @@
       // تابع برای تنظیم موقعیت باکس‌ها بر اساس ایندکس فعلی
       function updateBoxPositions() {
         const allBoxes = Array.from(imgContainer.querySelectorAll(".box"));
-        console.log(
-          `🎯 به‌روزرسانی موقعیت باکس‌ها برای ایندکس: ${currentIndex}`
-        );
 
         allBoxes.forEach((box, domIndex) => {
           // محاسبه موقعیت بصری بر اساس موقعیت در DOM و ایندکس فعلی
@@ -827,8 +1014,6 @@
                 "translate(50%, -50%) rotateY(10deg) translateZ(-200px) scale(0.8)";
               break;
           }
-
-          console.log(`  باکس ${domIndex} -> موقعیت بصری: ${visualPosition}`);
         });
       }
 
@@ -838,8 +1023,6 @@
 
         isAnimating = true;
         const nextIndex = (currentIndex + 1) % galleryData.images.length;
-
-        console.log(`\n🎬 تغییر اسلاید خودکار: ${currentIndex} → ${nextIndex}`);
 
         // به‌روزرسانی تامبنیل و اطلاعات
         updateActiveThumbnail(nextIndex);
@@ -858,10 +1041,7 @@
 
       // تابع برای تنظیم مستقیم اسلاید (کلیک روی تامبنیل)
       function setSlide(index) {
-        console.log(`\n🖱️ کلیک روی تامبنیل ${index}`);
-
         if (index === currentIndex) {
-          console.log("⚠️ همان اسلاید فعلی");
           return;
         }
 
@@ -870,8 +1050,6 @@
 
         // انیمیشن توجه‌دهنده برای دکمه پلی
         playButtonAnimation();
-
-        console.log(`🎯 رفتن مستقیم به اسلاید ${index}`);
 
         // به‌روزرسانی تامبنیل و اطلاعات
         updateActiveThumbnail(index);
@@ -882,8 +1060,6 @@
 
         // به‌روزرسانی موقعیت‌های بصری
         updateBoxPositions();
-
-        console.log(`✅ تنظیم مستقیم کامل - ایندکس جدید: ${currentIndex}`);
       }
 
       // تابع جدید برای انیمیشن دکمه پلی
@@ -912,10 +1088,9 @@
           }, 1000);
         }, 50);
       }
+
       // تابع شروع پخش خودکار
       function startSlideshow() {
-        console.log("▶️ شروع پخش خودکار از ایندکس: " + currentIndex);
-
         // پاک کردن اینتروال قبلی
         if (slideInterval) {
           clearInterval(slideInterval);
@@ -935,10 +1110,9 @@
         isPlaying = true;
         toggleIcon.className = "fas fa-pause";
       }
+
       // تابع توقف پخش خودکار
       function stopSlideshow() {
-        console.log("⏸️ توقف پخش خودکار");
-
         if (slideInterval) {
           clearInterval(slideInterval);
           slideInterval = null;
@@ -950,13 +1124,82 @@
 
       // تابع تغییر وضعیت پخش
       function toggleSlideshow() {
-        console.log(`\n🔘 تغییر وضعیت پخش`);
-
         if (isPlaying) {
           stopSlideshow();
         } else {
           startSlideshow();
         }
+      }
+
+      // تابع نمایش جزئیات کامل
+      function showDetails(index) {
+        // توقف اسلایدشو
+        stopSlideshow();
+
+        const imageData = galleryData.images[index];
+
+        // ایجاد overlay
+        const overlay = document.createElement("div");
+        overlay.className = "detail-overlay";
+
+        // محتوای جزئیات
+        const detailContent = document.createElement("div");
+        detailContent.className = "detail-content";
+
+        // دکمه بستن
+        const closeBtn = document.createElement("button");
+        closeBtn.className = "detail-close";
+        closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+
+        // هدر جزئیات
+        const detailHeader = document.createElement("div");
+        detailHeader.className = "detail-header";
+
+        const detailTitle = document.createElement("h2");
+        detailTitle.className = "detail-title";
+        detailTitle.textContent = imageData.title;
+
+        const detailArtist = document.createElement("p");
+        detailArtist.className = "detail-artist";
+        detailArtist.textContent = `اثر: ${imageData.artist} (${imageData.year})`;
+
+        detailHeader.appendChild(detailTitle);
+        detailHeader.appendChild(detailArtist);
+
+        // بدنه جزئیات
+        const detailBody = document.createElement("div");
+        detailBody.className = "detail-body";
+        detailBody.innerHTML = `
+                <p><strong>موقعیت:</strong> ${imageData.city}, ${imageData.country}</p>
+                <p><strong>پیام اثر:</strong> ${imageData.message}</p>
+                <p style="margin-top: 15px;">${imageData.description}</p>
+            `;
+
+        // مونتاژ محتوا
+        detailContent.appendChild(closeBtn);
+        detailContent.appendChild(detailHeader);
+        detailContent.appendChild(detailBody);
+        overlay.appendChild(detailContent);
+
+        // اضافه کردن به صفحه
+        document.body.appendChild(overlay);
+
+        // رویداد بستن
+        const closeOverlay = () => {
+          document.body.removeChild(overlay);
+          document.removeEventListener("keydown", handleEsc);
+        };
+
+        closeBtn.addEventListener("click", closeOverlay);
+
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeOverlay();
+        });
+
+        const handleEsc = (e) => {
+          if (e.key === "Escape") closeOverlay();
+        };
+        document.addEventListener("keydown", handleEsc);
       }
 
       // اضافه کردن رویداد کلیک برای تامبنیل‌ها
@@ -969,45 +1212,34 @@
       // اضافه کردن رویداد برای دکمه کنترل
       toggleBtn.addEventListener("click", toggleSlideshow);
 
-      // مقداردهی اولیه
-      console.log("🚀 مقداردهی اولیه گالری");
-      updateActiveThumbnail(0);
-      updateInfo(0);
-
-      // تنظیم موقعیت اولیه
-      setTimeout(() => {
-        updateBoxPositions();
-        startSlideshow();
-      }, 100);
-
-      // اضافه کردن رویداد کلیک برای باکس‌ها
+      // اضافه کردن رویداد کلیک برای باکس‌های اصلی
       boxes.forEach((box) => {
         box.addEventListener("click", function () {
           // ایجاد overlay برای نمایش بزرگ شده عکس
           const overlay = document.createElement("div");
           overlay.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-        `;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.9);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 1000;
+                    cursor: pointer;
+                `;
 
           const enlargedImg = document.createElement("img");
           enlargedImg.src = this.querySelector("img").src;
           enlargedImg.style.cssText = `
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-        `;
+                    max-width: 90%;
+                    max-height: 90%;
+                    object-fit: contain;
+                    border-radius: 15px;
+                    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+                `;
 
           overlay.appendChild(enlargedImg);
           document.body.appendChild(overlay);
@@ -1025,6 +1257,24 @@
           document.addEventListener("keydown", closeOnEsc);
         });
       });
+
+      document.querySelectorAll(".info-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          // اضافه کردن این خط برای اجرای انیمیشن دکمه پلی
+          playButtonAnimation();
+          showDetails(currentIndex);
+        });
+      });
+
+      // مقداردهی اولیه
+      updateActiveThumbnail(0);
+      updateInfo(0);
+
+      // تنظیم موقعیت اولیه
+      setTimeout(() => {
+        updateBoxPositions();
+        startSlideshow();
+      }, 100);
     </script>
   </body>
 </html>

@@ -1,60 +1,54 @@
-// فایل JSON با اطلاعات کامل نقاشی‌ها
 const galleryData = {
   images: [
     {
-      id: 1,
       title: "دریاچه کوهستانی",
       artist: "علی رضایی",
       city: "تهران",
       country: "ایران",
       year: "2023",
       message: "حفاظت از طبیعت",
-      imageUrl:
-        "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg",
+      description:
+        "این نقاشی زیبا از یک دریاچه کوهستانی در فصل بهار خلق شده است. رنگ‌های زنده و ترکیب هنرمندانه نور و سایه، عمق و زیبایی خاصی به اثر بخشیده است. هنرمند با استفاده از تکنیک رنگ روغن بر روی بوم کتان، توانسته است آرامش و صلح حاکم بر طبیعت بکر را به تصویر بکشد.",
     },
     {
-      id: 2,
-      title: "پل جنگلی",
-      artist: "سارا محمدی",
+      title: "طلوع خورشید",
+      artist: "مریم محمدی",
       city: "اصفهان",
       country: "ایران",
       year: "2022",
-      message: "آلودگی هوا",
-      imageUrl:
-        "https://img.freepik.com/free-photo/beautiful-view-greenery-bridge-forest-perfect-background_181624-17827.jpg",
+      message: "امید و آغاز جدید",
+      description:
+        "نقاشی طلوع خورشید نمادی از امید و آغاز جدید است. هنرمند با مهارت خاصی توانسته لحظه طلوع آفتاب را بر فراز کوه‌ها به تصویر بکشد. استفاده از رنگ‌های گرم و سرد در کنار هم، تضاد زیبایی ایجاد کرده که بیننده را مجذوب خود می‌کند.",
     },
     {
-      id: 3,
-      title: "آبشار ایسلندی",
-      artist: "لوکاس یوهانسن",
-      city: "ریکیاویک",
-      country: "ایسلند",
-      year: "2023",
-      message: "کمبود آب",
-      imageUrl:
-        "https://img.freepik.com/free-photo/seljalandsfoss-waterfall-during-sunset-beautiful-waterfall-iceland_335224-596.jpg",
+      title: "شب پرستاره",
+      artist: "رضا حسینی",
+      city: "شیراز",
+      country: "ایران",
+      year: "2021",
+      message: "رازهای کیهان",
+      description:
+        "این اثر با الهام از نقاشی‌های ون گوگ خلق شده و آسمان شب پرستاره را به نمایش می‌گذارد. حرکت مارپیچی ستارگان و کهکشان‌ها در این نقاشی، بیننده را به سفری در عمق کیهان می‌برد. تکنیک ضربه‌قلموی مشخص هنرمند، انرژی و پویایی خاصی به اثر بخشیده است.",
     },
     {
-      id: 4,
-      title: "کوهستان در مه",
-      artist: "امیلی چن",
-      city: "شانگهای",
-      country: "چین",
-      year: "2024",
-      message: "تغییرات اقلیمی",
-      imageUrl:
-        "https://img.freepik.com/free-photo/landscape-morning-fog-mountains-with-hot-air-balloons-sunrise_335224-794.jpg",
+      title: "باغ بهشت",
+      artist: "فاطمه کریمی",
+      city: "تبریز",
+      country: "ایران",
+      year: "2020",
+      message: "زیبایی خلقت",
+      description:
+        "باغ بهشت با گل‌های رنگارنگ و درختان سرسبز، بهشت روی زمین را به تصویر می‌کشد. هنرمند با دقت فراوان جزئیات هر گل و برگ را کار کرده و ترکیب رنگ‌های زنده، شادابی و نشاط را به بیننده انتقال می‌دهد. این اثر نمادی از زیبایی‌های خلقت و نعمت‌های الهی است.",
     },
     {
-      id: 5,
-      title: "تنهایی در غروب",
-      artist: "کارلوس رویز",
-      city: "مادرید",
-      country: "اسپانیا",
-      year: "2022",
-      message: "انقراض گونه‌ها",
-      imageUrl:
-        "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg",
+      title: "کوهستان برفی",
+      artist: "محمد جوادی",
+      city: "مشهد",
+      country: "ایران",
+      year: "2019",
+      message: "صلح و سکون",
+      description:
+        "این نقاشی منظره‌ای از کوهستان پوشیده از برف را نمایش می‌دهد که آرامش و سکون خاصی دارد. استفاده از سایه‌های آبی و سفید، سرمای کوهستان را به خوبی منتقل می‌کند. هنرمند با مهارت توانسته بافت برف و یخ را به گونه‌ای واقع‌گرایانه به تصویر بکشد که بیننده سرمای کوهستان را حس کند.",
     },
   ],
 };
