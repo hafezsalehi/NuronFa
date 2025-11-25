@@ -41,6 +41,8 @@ const allLogosCo = [
   { logo: "images/cologos/company36.png", text: "صندوق مو" },
 ];
 
+// ===========================
+
 // تابع برای انتخاب تصادفی 12 لوگو از لیست 36 تایی (برای دسکتاپ)
 function getRandomLogosForDesktopCo() {
   const shuffled = [...allLogosCo];

@@ -1,3 +1,59 @@
+// ==========debogg==============
+// اضافه کردن به اسکریپت موجود
+// تنظیمات پیشرفته‌تر برای محدوده بزرگتر
+let lastScrollY = window.scrollY;
+let isInGallery = false;
+
+function checkScrollPosition() {
+  const gallerySection = document.querySelector(".gallery1");
+  const floatingBox = document.querySelector(".floating-box-fl");
+
+  if (!gallerySection || !floatingBox) return;
+
+  const galleryRect = gallerySection.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  // **تعریف محدوده بزرگتر - 1.5 برابر ارتفاع صفحه از بالا و پایین**
+  const expandedTopThreshold = -windowHeight * 0.2; // 50% بالاتر از گالری
+  const expandedBottomThreshold = windowHeight * 1.2; // 50% پایین‌تر از گالری
+
+  // چک کردن آیا در محدوده گسترده‌شده گالری هستیم؟
+  isInGallery =
+    galleryRect.top < expandedBottomThreshold &&
+    galleryRect.bottom > expandedTopThreshold;
+
+  // غیرفعال کردن انیمیشن در محدوده گسترده‌شده
+  if (isInGallery) {
+    floatingBox.style.animation = "fadeInRotateFl 1.2s ease-out forwards";
+    floatingBox.classList.add("no-float-animation");
+  } else {
+    floatingBox.style.animation =
+      "fadeInRotateFl 1.2s ease-out forwards, floatFl 3s infinite ease-in-out";
+    floatingBox.classList.remove("no-float-animation");
+  }
+
+  lastScrollY = window.scrollY;
+}
+
+// throttle اسکرول
+let scrollTimeout;
+window.addEventListener("scroll", () => {
+  if (!scrollTimeout) {
+    scrollTimeout = setTimeout(() => {
+      checkScrollPosition();
+      scrollTimeout = null;
+    }, 50);
+  }
+});
+
+// همچنین موقعیت resize رو هم چک کن
+window.addEventListener("resize", checkScrollPosition);
+
+// اجرای اولیه
+checkScrollPosition();
+
+// =========================
+
 const floatingBoxFl = document.getElementById("floatingBoxFl");
 const minimizeButtonFl = document.querySelector(".minimize-button-fl");
 let isMinimizedFl = window.innerWidth <= 600;
@@ -141,33 +197,3 @@ function scrollToSectionFl() {
 }
 
 // دریافت قیمت بیت‌کوین
-async function fetchPriceFl() {
-  const priceDisplayFl = document.getElementById("priceDisplayFl");
-  priceDisplayFl.classList.add("price-loading-fl");
-  try {
-    const response = await fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
-      {
-        headers: {
-          Accept: "application/json",
-        },
-      }
-    );
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const data = await response.json();
-    const price = data.bitcoin.usd;
-    priceDisplayFl.textContent = `قیمت: WLR: $${price.toLocaleString()}`;
-    priceDisplayFl.classList.remove("price-loading-fl");
-    priceDisplayFl.classList.add("price-updated-fl");
-    setTimeout(() => priceDisplayFl.classList.remove("price-updated-fl"), 500);
-  } catch (error) {
-    priceDisplayFl.textContent = "خطا در بارگذاری قیمت";
-    console.error("Error fetching price:", error);
-  }
-}
-
-// بارگذاری اولیه و به‌روزرسانی هر 30 ثانیه
-fetchPriceFl();
-setInterval(fetchPriceFl, 30000);

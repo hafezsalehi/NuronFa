@@ -10,20 +10,19 @@
 
 .title-sldr {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(19, 22, 163, 0.5);
     padding: 10px;
-    line-height: 60px;
+    line-height: 30px;
 }
 
 .container-sldr-span {
-    font-size: 2.5rem !important;
-    margin: 20px auto;
+    font-size: clamp(16px, 3vw, 28px) !important;
+    /* margin: 20px auto !important; */
     color: rgb(77, 255, 32);
-
-
-    padding: auto;
     overflow: hidden;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .slider-wrapper-sldr {
@@ -650,11 +649,11 @@
 @media (max-width: 480px) {
     .container-sldr {
         padding: 5px;
-        height: 50vh;
+        height: 65vh;
     }
 
     .title-sldr {
-        font-size: 1.1rem;
+        font-size: 3vh;
         margin-bottom: 10px;
     }
 

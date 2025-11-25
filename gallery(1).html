@@ -5,45 +5,303 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>گالری سه‌بعدی نقاشی با انیمیشن‌های پیشرفته</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        user-select: none;
+
+
+      /* gallery title style Start */
+
+      /* === باکس اصلی === */
+      .horizontal-gallery-box {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        width: 100%;
+        max-width: 960px;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 215, 0, 0.25);
+        transform: scale(0.97);
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+        margin: 0 auto;
       }
 
-      body {
-        height: 100vh;
-        background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(40px) scale(0.95);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* === مهر طلایی با ضربه === */
+      .gallery-ribbon {
+        position: absolute;
+        top: 30px;
+        left: -55px;
+        transform: rotate(-45deg);
+        z-index: 5;
+        opacity: 0;
+        animation: stampIn 1.4s ease-out forwards 0.8s;
+        transform-origin: center;
+      }
+
+      @keyframes stampIn {
+        0% {
+          opacity: 0;
+          transform: rotate(-45deg) scale(0.6) translateY(-50px);
+          filter: blur(3px);
+        }
+
+        60% {
+          opacity: 1;
+          transform: rotate(-45deg) scale(1.15) translateY(6px);
+          filter: blur(0);
+        }
+
+        80% {
+          transform: rotate(-45deg) scale(0.92) translateY(0);
+        }
+
+        100% {
+          opacity: 1;
+          transform: rotate(-45deg) scale(1);
+        }
+      }
+
+      .ribbon-inner {
+        background: linear-gradient(135deg, #ffcc00, #ff9900);
+        color: #111;
+        padding: 10px 60px;
+        font-weight: 900;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 2px dashed rgba(255, 255, 255, 0.6);
+        position: relative;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(255, 200, 0, 0.5);
+        font-family: "Playfair Display", serif;
+        letter-spacing: 1px;
+      }
+
+      .ribbon-inner::after {
+        content: "★";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+      }
+
+      /* === عنوان === */
+      .gallery-title {
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        color: #ffd700;
+        margin-bottom: 20px;
+        font-weight: 700;
+        opacity: 0;
+        animation: fadeUp 1s ease forwards 0.4s;
+        text-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* === جزئیات === */
+      .gallery-details {
+        display: flex;
+        gap: 18px;
+        opacity: 0;
+        animation: fadeUp 1s ease forwards 0.7s;
+        flex-wrap: wrap;
+      }
+
+      .detail-item {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 10px 18px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid rgba(255, 215, 0, 0.25);
+        transition: all 0.4s ease;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-width: 150px;
+      }
+
+      .detail-item:hover {
+        transform: translateY(-6px) scale(1.05);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .detail-item:hover .detail-icon {
+        color: #111;
+        background: #ffd700;
+        transform: rotate(360deg);
+        box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+      }
+
+      .detail-item:hover .detail-label {
+        color: #ffd700;
+      }
+
+      .detail-icon {
+        color: #ffd700;
+        font-size: 18px;
+        transition: 0.6s;
+        border-radius: 50%;
+        padding: 6px;
+      }
+
+      .detail-label {
+        font-size: 13px;
+        color: #aaa;
+        transition: 0.4s;
+      }
+
+      .detail-value {
+        font-size: 14px;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .theme-tag {
+        background: rgba(255, 215, 0, 0.25);
+        color: #ffd700;
+        padding: 3px 10px;
+        border-radius: 10px;
+      }
+
+      /* === قیمت === */
+      .price-section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        padding: 20px;
-        overflow: hidden;
-        position: relative;
-        transition: background 1s ease-in-out;
+        gap: 10px;
+        min-width: 220px;
+        opacity: 0;
+        animation: fadeUp 1s ease forwards 1s;
       }
+
+      .price-title {
+        font-size: 15px;
+        color: #ccc;
+      }
+
+      #priceDisplayFl {
+        font-size: 20px;
+        color: #fff;
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      }
+
+      .refresh-btn {
+        background: linear-gradient(135deg, #ffd700, #ffb400);
+        color: #111;
+        border: none;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: 0.4s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .refresh-btn:hover {
+        transform: rotate(180deg) scale(1.1);
+        background: linear-gradient(135deg, #ffea00, #ffc700);
+      }
+
+      /* === ریسپانسیو === */
+      @media (max-width: 768px) {
+        .horizontal-gallery-box {
+          flex-direction: column;
+          gap: 24px;
+          padding: 28px;
+        }
+
+        .gallery-details {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .detail-item {
+          flex-direction: row;
+          min-width: 100%;
+          justify-content: center;
+        }
+
+        .price-section {
+          flex-direction: row;
+          justify-content: center;
+          gap: 12px;
+        }
+      }
+
+      /* gallery title style End */
+      /* ----------------------- */
+
+      /* gallery1  style Start */
+
+      /* .gallery1 {
+    width: 100%;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: background 1s ease-in-out;
+    min-height: 100vh;
+} */
 
       /* پس‌زمینه داینامیک با عکس اسلایدر */
-      body::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        opacity: 0.15;
-        z-index: -1;
-        transition: opacity 1s ease-in-out, background-image 1s ease-in-out;
-        filter: blur(8px) brightness(0.8);
-      }
 
-      .gallery-container {
+      /* .gallery1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    z-index: -1;
+    transition: opacity 1s ease-in-out, background-image 1s ease-in-out;
+    filter: blur(8px) brightness(0.8);
+} */
+
+      .gallery-container-gl {
         width: 95%;
         max-width: 1400px;
         display: flex;
@@ -51,47 +309,37 @@
         background: rgba(219, 17, 17, 0.1);
         backdrop-filter: blur(10px);
         border-radius: 20px;
-        padding: 25px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        margin-bottom: 20px;
-      }
-
-      /* استایل برای بخش تامبنیل‌ها */
-      .thumbnails-container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        height: 500px;
-        overflow-y: auto;
         padding: 15px;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 15px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        max-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        margin: auto;
+        min-height: 80vh;
+        position: relative;
+        z-index: 1;
+        align-items: center;
+        vertical-align: middle;
       }
 
-      .thumbnail {
+      .thumbnail-gl {
         width: 100%;
-        height: 80px;
+        height: 90px;
         border-radius: 12px;
         overflow: hidden;
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-        border: 2px solid transparent;
+        border: 5px solid transparent;
         position: relative;
+        margin: 15px auto;
       }
 
-      .thumbnail::before {
+      .thumbnail-gl::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        border-radius: 10px;
+        border-radius: 50px;
         background: linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.3),
@@ -99,37 +347,69 @@
         );
         z-index: 1;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.1s ease;
       }
 
-      .thumbnail.active {
+      .thumbnail-gl.active-gl {
         border-color: #ffcc00;
         transform: scale(1.05);
         box-shadow: 0 5px 15px rgba(255, 204, 0, 0.5);
       }
 
-      .thumbnail.active::before {
+      .thumbnail-gl.active-gl::before {
         opacity: 1;
       }
 
-      .thumbnail img {
+      /* انیمیشن جدید برای تامبنیل فعال */
+      .thumbnail-gl.active-gl::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #ffcc00, #ff9900, #ffcc00);
+        z-index: 2;
+        opacity: 0;
+        animation: border-glow-gl 0.5s ease-in-out;
+      }
+
+      @keyframes border-glow-gl {
+        0% {
+          opacity: 0;
+          clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        }
+
+        50% {
+          opacity: 1;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        100% {
+          opacity: 0;
+          clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        }
+      }
+
+      .thumbnail-gl img {
         width: 100%;
         height: 100%;
         object-fit: contain;
         transition: transform 0.3s ease;
       }
 
-      .thumbnail.active img {
-        transform: scale(1.1);
+      .thumbnail-gl.active-gl img {
+        transform: scale(1.3);
       }
 
       /* استایل جدید برای ستون اطلاعات */
-      .info-column {
-        flex: 1;
+      .info-column-gl {
+        flex: 0.6;
         display: flex;
         flex-direction: column;
         gap: 15px;
-        padding: 15px;
+        padding: 5px;
         background: rgba(255, 255, 255, 0.15);
         border-radius: 15px;
         border: 2px solid rgba(255, 255, 255, 0.3);
@@ -137,16 +417,14 @@
         max-width: 280px;
         height: 500px;
         backdrop-filter: blur(15px);
+        vertical-align: auto;
+        /* width: 100px; */
       }
 
-      .info-item {
-        background: linear-gradient(
-          135deg,
-          rgba(74, 107, 255, 0.2),
-          rgba(146, 73, 255, 0.2)
-        );
+      .info-item-gl {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f);
         border-radius: 12px;
-        padding: 15px;
+        padding: 5px;
         border: 1px solid rgba(255, 255, 255, 0.15);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         transition: all 0.3s ease;
@@ -156,14 +434,43 @@
         justify-content: center;
         position: relative;
         overflow: hidden;
+        cursor: pointer;
+        opacity: 1;
+        /* width: 20px; */
       }
 
-      .info-item:hover {
+      /* افکت hover برای باکس‌های اطلاعات */
+      .info-item-gl:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 6px 20px rgba(241, 245, 1, 0.2);
+        background: linear-gradient(
+          135deg,
+          rgba(74, 107, 255, 0.3),
+          rgba(156, 17, 110, 0.3)
+        );
       }
 
-      .info-title {
+      .info-item-gl:hover .info-title-gl {
+        color: #b21f1f;
+      }
+
+      .info-item-gl:hover::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.05)
+        );
+        z-index: 0;
+        border-radius: 12px;
+      }
+
+      .info-title-gl {
         color: white;
         font-size: 13px;
         font-weight: 600;
@@ -172,9 +479,11 @@
         align-items: center;
         justify-content: center;
         gap: 6px;
+        position: relative;
+        z-index: 1;
       }
 
-      .info-inner-box {
+      .info-inner-box-gl {
         background: linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.15),
@@ -188,29 +497,31 @@
         justify-content: center;
         text-align: center;
         height: 45px;
+        position: relative;
+        z-index: 1;
       }
 
-      .info-content {
-        color: white;
+      .info-content-gl {
+        color: rgb(39, 2, 2);
         font-size: 14px;
         font-weight: 600;
-        line-height: 1.4;
+        line-height: 1;
         transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
 
       /* انیمیشن برای تغییر محتوا */
-      .info-content.fade-out {
+      .info-content-gl.fade-out-gl {
         opacity: 0;
         transform: translateY(-10px);
       }
 
-      .info-content.fade-in {
+      .info-content-gl.fade-in-gl {
         opacity: 1;
         transform: translateY(0);
       }
 
       /* استایل برای گالری اصلی */
-      .img-container {
+      .img-container-gl {
         flex: 3;
         position: relative;
         height: 500px;
@@ -218,7 +529,7 @@
         transform-style: preserve-3d;
       }
 
-      .box {
+      .box-gl {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3),
           inset 0 1px 0 rgba(255, 255, 255, 0.2);
         width: 100%;
@@ -235,7 +546,7 @@
       }
 
       /* اضافه کردن ضخامت به عکس‌ها */
-      .box::before {
+      .box-gl::before {
         content: "";
         position: absolute;
         top: 0;
@@ -249,7 +560,7 @@
         z-index: -1;
       }
 
-      .box img {
+      .box-gl img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -257,7 +568,7 @@
       }
 
       /* تنظیم موقعیت و عمق عکس‌ها */
-      .box:nth-of-type(1) {
+      .box-gl:nth-of-type(1) {
         z-index: 5;
         opacity: 1;
         right: 45%;
@@ -265,7 +576,7 @@
         box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
       }
 
-      .box:nth-of-type(2) {
+      .box-gl:nth-of-type(2) {
         z-index: 4;
         opacity: 0.8;
         right: 50%;
@@ -273,7 +584,7 @@
           scale(0.95);
       }
 
-      .box:nth-of-type(3) {
+      .box-gl:nth-of-type(3) {
         z-index: 3;
         opacity: 0.6;
         right: 55%;
@@ -281,7 +592,7 @@
           scale(0.9);
       }
 
-      .box:nth-of-type(4) {
+      .box-gl:nth-of-type(4) {
         z-index: 2;
         opacity: 0.4;
         right: 60%;
@@ -289,7 +600,7 @@
           scale(0.85);
       }
 
-      .box:nth-of-type(5) {
+      .box-gl:nth-of-type(5) {
         z-index: 1;
         opacity: 0.2;
         right: 65%;
@@ -298,14 +609,15 @@
       }
 
       /* استایل برای کنترل پخش */
-      .control-section {
+      .control-section-gl {
         position: absolute;
         bottom: -45px;
         left: 380px;
         z-index: 101;
       }
 
-      .control-btn {
+      /* استایل برای انیمیشن دکمه پلی */
+      .control-btn-gl {
         background: rgba(255, 255, 255, 0.2);
         border: none;
         border-radius: 50px;
@@ -321,63 +633,140 @@
         width: 60px;
         height: 60px;
         justify-content: center;
+        position: relative;
+        overflow: hidden;
       }
 
-      .control-btn:hover {
+      .control-btn-gl::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.1)
+        );
+        border-radius: 50px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .control-btn-gl:hover::before {
+        opacity: 1;
+      }
+
+      .control-btn-gl:hover {
         background: rgba(255, 255, 255, 0.3);
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       }
 
-      .control-btn:active {
+      .control-btn-gl:active {
         transform: translateY(0);
       }
 
-      .control-btn i {
+      .control-btn-gl i {
         font-size: 18px;
+        transition: all 0.3s ease;
       }
 
-      /* استایل برای ریسپانسیو بودن */
-      @media (max-width: 1200px) {
-        .gallery-container {
-          flex-direction: column;
+      /* انیمیشن‌های دکمه پلی */
+      .control-btn-gl.pulse-animation-gl {
+        animation: pulseEffect-gl 0.6s ease-in-out;
+      }
+
+      .control-btn-gl.scale-animation-gl {
+        animation: scaleBounce-gl 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .control-btn-gl.attention-animation-gl {
+        animation: attentionPulse-gl 1s ease-in-out;
+      }
+
+      @keyframes pulseEffect-gl {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
         }
 
-        .thumbnails-container {
-          flex-direction: row;
-          height: auto;
-          overflow-x: auto;
-          overflow-y: hidden;
-          max-width: 100%;
+        70% {
+          box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
         }
 
-        .info-column {
-          max-width: 100%;
-          flex-direction: row;
-          height: auto;
-          flex-wrap: wrap;
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        }
+      }
+
+      @keyframes scaleBounce-gl {
+        0% {
+          transform: scale(1);
         }
 
-        .info-item {
-          flex: 1;
-          min-width: 200px;
+        25% {
+          transform: scale(1.3);
         }
 
-        .thumbnail {
-          min-width: 100px;
+        50% {
+          transform: scale(0.9);
         }
 
-        .control-section {
-          position: relative;
-          bottom: auto;
-          left: auto;
-          margin-top: 20px;
-          align-self: center;
+        75% {
+          transform: scale(1.1);
         }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes attentionPulse-gl {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+          background: rgba(255, 255, 255, 0.2);
+        }
+
+        25% {
+          transform: scale(1.4);
+          opacity: 0.8;
+          background: rgba(255, 204, 0, 0.6);
+        }
+
+        50% {
+          transform: scale(0.9);
+          opacity: 1;
+          background: rgba(255, 255, 255, 0.3);
+        }
+
+        75% {
+          transform: scale(1.2);
+          opacity: 0.9;
+          background: rgba(255, 204, 0, 0.4);
+        }
+
+        100% {
+          transform: scale(1);
+          opacity: 1;
+          background: rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      /* استایل برای وقتی که اسلایدشو متوقف شده */
+      .control-btn-gl.stopped-gl {
+        background: rgba(255, 204, 0, 0.3);
+        border: 2px solid rgba(255, 204, 0, 0.6);
+      }
+
+      .control-btn-gl.stopped-gl i {
+        color: #ffcc00;
+        text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
       }
 
       /* استایل برای عنوان */
-      .title {
+      .title-gl {
         position: absolute;
         top: 20px;
         right: 20px;
@@ -386,410 +775,810 @@
         text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         z-index: 10;
       }
+
+      /* استایل برای حالت موبایل (تا 768px) */
+      @media (max-width: 768px) {
+        .gallery-container-gl {
+          flex-direction: column;
+          width: 100%;
+          padding: 5px;
+          margin: 0;
+          box-sizing: border-box;
+          gap: 10px;
+          height: 90vh;
+        }
+
+        /* تامبنیل‌ها: 5 تامبنیل کنار هم با عرض 15% */
+        .thumbnails-container-gl {
+          display: flex;
+          flex-direction: row;
+          height: auto;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          max-width: 100%;
+          padding: 5px 2px;
+          gap: 2px;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: nowrap;
+          order: 1;
+        }
+
+        .thumbnail-gl {
+          width: 100%;
+          height: 100%;
+          border-radius: 12px;
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+          border: 2px solid transparent;
+          position: relative;
+          margin: 0 1px;
+        }
+
+        .thumbnail-gl img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 6px;
+        }
+
+        /* اسلایدر: حفظ ارتفاع */
+        .img-container-gl {
+          width: 90%;
+          margin: 0;
+          order: 2;
+          height: 500px;
+        }
+        .img-container-gl img {
+          /* height: 80vh; */
+        }
+
+        .box-gl {
+          height: 100%;
+          width: 100%;
+          /* border-radius: 15px; */
+        }
+
+        /* توضیحات: 5 آیتم کنار هم با عرض 15% */
+        .info-column-gl {
+          display: flex;
+          flex-direction: row;
+          height: 1px;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          max-width: 100%;
+          padding: 5px 2px;
+          gap: 2px;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: nowrap;
+          order: 3;
+        }
+
+        .info-item-gl {
+          flex: 0 0 18%;
+          height: 90%;
+          margin: 0;
+          padding: 3px;
+          border-radius: 6px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .info-title-gl {
+          font-size: 7px;
+          margin-bottom: 5px;
+          text-align: center;
+          line-height: 1;
+        }
+
+        .info-inner-box-gl {
+          height: 60%;
+          padding: 3px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .info-content-gl {
+          font-size: 8px;
+          line-height: 1;
+          text-overflow: ellipsis;
+          text-align: center;
+          text-wrap: wrap;
+        }
+
+        /* تنظیم دکمه کنترل */
+        .control-section-gl {
+          position: relative;
+          bottom: 38px;
+          left: 0px;
+          margin: 8px auto;
+          display: flex;
+          justify-content: center;
+          order: 4;
+        }
+
+        .control-btn-gl {
+          width: 35px;
+          height: 35px;
+          padding: 5px;
+        }
+
+        .control-btn-gl i {
+          font-size: 10px;
+        }
+
+        /* تنظیم عنوان */
+        .title-gl {
+          font-size: 12px;
+          top: 5px;
+          right: 5px;
+        }
+      }
+
+      /* استایل برای overlay نمایش جزئیات */
+      .detail-overlay-gl {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        cursor: pointer;
+        animation: fadeIn-gl 0.3s ease forwards;
+      }
+
+      @keyframes fadeIn-gl {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .detail-content-gl {
+        background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 80%;
+        max-height: 80%;
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        position: relative;
+        transform: scale(0.9);
+        animation: scaleIn-gl 0.3s ease forwards;
+      }
+
+      @keyframes scaleIn-gl {
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .detail-header-gl {
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 15px;
+      }
+
+      .detail-title-gl {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .detail-artist-gl {
+        font-size: 18px;
+        color: #ffcc00;
+      }
+
+      .detail-body-gl {
+        color: white;
+        line-height: 1.8;
+        font-size: 16px;
+      }
+
+      .detail-close-gl {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .detail-close-gl:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      /* gallery1  style End */
     </style>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
   </head>
   <body>
-    <div class="title">گالری هنری سه‌بعدی</div>
 
-    <div class="gallery-container">
-      <!-- بخش تامبنیل‌ها -->
-      <div class="thumbnails-container">
-        <div class="thumbnail active" data-index="0">
-          <img
-            src="images/galleries/gallery001/gallery001-p1.jpg"
-            alt="تصویر ۱"
-          />
-        </div>
-        <div class="thumbnail" data-index="1">
-          <img
-            src="images/galleries/gallery001/gallery001-p2.jpg"
-            alt="تصویر ۲"
-          />
-        </div>
-        <div class="thumbnail" data-index="2">
-          <img
-            src="images/galleries/gallery001/gallery001-p3.jpg"
-            alt="تصویر ۳"
-          />
-        </div>
-        <div class="thumbnail" data-index="3">
-          <img
-            src="images/galleries/gallery001/gallery001-p4.jpg"
-            alt="تصویر ۴"
-          />
-        </div>
-        <div class="thumbnail" data-index="4">
-          <img
-            src="images/galleries/gallery001/gallery001-p5.jpg"
-            alt="تصویر ۵"
-          />
+    <div class="horizontal-gallery-box" id="target-section-fl"></div>
+      <div class="gallery-ribbon">
+        <div class="ribbon-inner">اولین گالری در والری</div>
+      </div>
+
+      <div class="gallery-basic-info">
+        <h2 class="gallery-title">نگارستان هنر نو</h2>
+
+        <div class="gallery-details">
+          <div class="detail-item">
+            <i class="fas fa-palette detail-icon"></i>
+            <span class="detail-label">تعداد نقاشی:</span>
+            <span class="detail-value">۴۲ اثر</span>
+          </div>
+
+          <div class="detail-item">
+            <i class="fas fa-tag detail-icon"></i>
+            <span class="detail-label">موضوع:</span>
+            <span class="detail-value theme-tag">هنر معاصر</span>
+          </div>
+
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt detail-icon"></i>
+            <span class="detail-label">مکان:</span>
+            <span class="detail-value">تهران</span>
+          </div>
         </div>
       </div>
 
-      <!-- بخش گالری اصلی -->
-      <div class="img-container">
-        <div class="box">
-          <img
-            src="images/galleries/gallery001/gallery001-p1.jpg"
-            alt="تصویر ۱"
-          />
-        </div>
-        <div class="box">
-          <img
-            src="images/galleries/gallery001/gallery001-p2.jpg"
-            alt="تصویر ۲"
-          />
-        </div>
-        <div class="box">
-          <img
-            src="images/galleries/gallery001/gallery001-p3.jpg"
-            alt="تصویر ۳"
-          />
-        </div>
-        <div class="box">
-          <img
-            src="images/galleries/gallery001/gallery001-p4.jpg"
-            alt="تصویر ۴"
-          />
-        </div>
-        <div class="box">
-          <img
-            src="images/galleries/gallery001/gallery001-p5.jpg"
-            alt="تصویر ۵"
-          />
-        </div>
-
-        <!-- کنترل پخش -->
-        <div class="control-section">
-          <button class="control-btn" id="toggle-btn">
-            <i class="fas fa-pause"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- ستون اطلاعات جدید -->
-      <div class="info-column">
-        <div class="info-item">
-          <div class="info-title">
-            <i class="fas fa-palette"></i>
-            نام اثر
-          </div>
-          <div class="info-inner-box">
-            <div class="info-content" id="title-content">دریاچه کوهستانی</div>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <div class="info-title">
-            <i class="fas fa-user"></i>
-            خالق اثر
-          </div>
-          <div class="info-inner-box">
-            <div class="info-content" id="artist-content">علی رضایی</div>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <div class="info-title">
-            <i class="fas fa-map-marker-alt"></i>
-            موقعیت
-          </div>
-          <div class="info-inner-box">
-            <div class="info-content" id="location-content">تهران، ایران</div>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <div class="info-title">
-            <i class="fas fa-calendar-alt"></i>
-            سال خلق
-          </div>
-          <div class="info-inner-box">
-            <div class="info-content" id="year-content">2023</div>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <div class="info-title">
-            <i class="fas fa-comment"></i>
-            پیام
-          </div>
-          <div class="info-inner-box">
-            <div class="info-content" id="message-content">حفاظت از طبیعت</div>
-          </div>
-        </div>
+      <div class="price-section">
+        <span class="price-title">قیمت بیت‌کوین:</span>
+        <div id="priceDisplaygt">در حال بارگذاری...</div>
+        <button class="refresh-btn" onclick="fetchPriceFl()">
+          <i class="fas fa-sync-alt"></i>
+        </button>
       </div>
     </div>
+
+    <!-- Gallery Title  End -->
+
+    <section class="gallery1">
+      <!-- <div class="title-gl">گالری هنری سه‌بعدی</div> -->
+
+      <div class="gallery-container-gl">
+        <!-- بخش تامبنیل‌ها -->
+        <div class="thumbnails-container-gl">
+          <div class="thumbnail-gl active-gl" data-index="0">
+            <img
+              src="images/galleries/gallery001/gallery001-p1.jpg"
+              alt="تصویر ۱"
+            />
+          </div>
+          <div class="thumbnail-gl" data-index="1">
+            <img
+              src="images/galleries/gallery001/gallery001-p2.jpg"
+              alt="تصویر ۲"
+            />
+          </div>
+          <div class="thumbnail-gl" data-index="2">
+            <img
+              src="images/galleries/gallery001/gallery001-p3.jpg"
+              alt="تصویر ۳"
+            />
+          </div>
+          <div class="thumbnail-gl" data-index="3">
+            <img
+              src="images/galleries/gallery001/gallery001-p4.jpg"
+              alt="تصویر ۴"
+            />
+          </div>
+          <div class="thumbnail-gl" data-index="4">
+            <img
+              src="images/galleries/gallery001/gallery001-p5.jpg"
+              alt="تصویر ۵"
+            />
+          </div>
+        </div>
+
+        <!-- بخش گالری اصلی -->
+        <div class="img-container-gl">
+          <div class="box-gl">
+            <img
+              src="images/galleries/gallery001/gallery001-p1.jpg"
+              alt="تصویر ۱"
+            />
+          </div>
+          <div class="box-gl">
+            <img
+              src="images/galleries/gallery001/gallery001-p2.jpg"
+              alt="تصویر ۲"
+            />
+          </div>
+          <div class="box-gl">
+            <img
+              src="images/galleries/gallery001/gallery001-p3.jpg"
+              alt="تصویر ۳"
+            />
+          </div>
+          <div class="box-gl">
+            <img
+              src="images/galleries/gallery001/gallery001-p4.jpg"
+              alt="تصویر ۴"
+            />
+          </div>
+          <div class="box-gl">
+            <img
+              src="images/galleries/gallery001/gallery001-p5.jpg"
+              alt="تصویر ۵"
+            />
+          </div>
+
+          <!-- کنترل پخش -->
+          <div class="control-section-gl">
+            <button class="control-btn-gl" id="toggle-btn-gl">
+              <i class="fas fa-pause"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ستون اطلاعات جدید -->
+        <div class="info-column-gl">
+          <div class="info-item-gl" data-type="title">
+            <div class="info-title-gl">
+              <i class="fas fa-palette"></i>
+              نام اثر
+            </div>
+            <div class="info-inner-box-gl">
+              <div class="info-content-gl" id="title-content-gl">
+                دریاچه کوهستانی
+              </div>
+            </div>
+          </div>
+
+          <div class="info-item-gl" data-type="artist">
+            <div class="info-title-gl">
+              <i class="fas fa-user"></i>
+              خالق اثر
+            </div>
+            <div class="info-inner-box-gl">
+              <div class="info-content-gl" id="artist-content-gl">
+                علی رضایی
+              </div>
+            </div>
+          </div>
+
+          <div class="info-item-gl" data-type="location">
+            <div class="info-title-gl">
+              <i class="fas fa-map-marker-alt"></i>
+              موقعیت
+            </div>
+            <div class="info-inner-box-gl">
+              <div class="info-content-gl" id="location-content-gl">
+                تهران، ایران
+              </div>
+            </div>
+          </div>
+
+          <div class="info-item-gl" data-type="year">
+            <div class="info-title-gl">
+              <i class="fas fa-calendar-alt"></i>
+              سال خلق
+            </div>
+            <div class="info-inner-box-gl">
+              <div class="info-content-gl" id="year-content-gl">2023</div>
+            </div>
+          </div>
+
+          <div class="info-item-gl" data-type="message">
+            <div class="info-title-gl">
+              <i class="fas fa-comment"></i>
+              پیام
+            </div>
+            <div class="info-inner-box-gl">
+              <div class="info-content-gl" id="message-content-gl">
+                حفاظت از طبیعت
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
     <script src="assets/data/galleries/gallery001.js"></script>
     <script>
-      // فایل JSON با اطلاعات کامل نقاشی‌ها
+     async function fetchPriceFl() {
+  const pdfb = document.getElementById("priceDisplayFl");
+  const pdgt = document.getElementById("priceDisplaygt");
+  pdfb.textContent = "در حال بارگذاری...";
+  pdfb.style.opacity = "0.7";
+  pdgt.style.opacity = "0.7";
 
-      let imgContainer = document.querySelector(".img-container");
-      let thumbnails = document.querySelectorAll(".thumbnail");
-      let boxes = document.querySelectorAll(".box");
-      let currentIndex = 0;
-      let isAnimating = false;
-      let slideInterval;
-      let isPlaying = true;
-
-      // عناصر اطلاعات
-      const titleContent = document.getElementById("title-content");
-      const artistContent = document.getElementById("artist-content");
-      const locationContent = document.getElementById("location-content");
-      const yearContent = document.getElementById("year-content");
-      const messageContent = document.getElementById("message-content");
-
-      // کنترل پخش
-      const toggleBtn = document.getElementById("toggle-btn");
-      const toggleIcon = toggleBtn.querySelector("i");
-
-      // تابع برای تغییر پس‌زمینه body
-
-      // تابع برای انیمیشن تغییر محتوا
-      function animateContentChange(element, newValue) {
-        // افزودن کلاس fade-out
-        element.classList.add("fade-out");
-
-        setTimeout(() => {
-          // تغییر محتوا
-          element.textContent = newValue;
-          // حذف fade-out و افزودن fade-in
-          element.classList.remove("fade-out");
-          element.classList.add("fade-in");
-
-          setTimeout(() => {
-            // حذف fade-in بعد از اتمام انیمیشن
-            element.classList.remove("fade-in");
-          }, 500);
-        }, 250);
+  try {
+    const res = await fetch(
+      "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+    );
+    const data = await res.json();
+    const targetValue = data.bitcoin.usd;
+    const duration = 1000;
+    const steps = 60;
+    const stepValue = targetValue / steps;
+    let current = 0;
+    const counter = setInterval(() => {
+      current += stepValue;
+      if (current >= targetValue) {
+        clearInterval(counter);
+        current = targetValue;
+        pdfb.style.opacity = "1";
+        pdgt.style.opacity = "1";
       }
+      pdfb.textContent = `$${Math.floor(current).toLocaleString()}`;
+      pdgt.textContent = `$${Math.floor(current).toLocaleString()}`;
+    }, duration / steps);
+  } catch {
+    pdfb.textContent = "خطا";
+    pdgt.textContent = "خطا";
+    pdfb.style.opacity = "1";
+  }
+}
 
-      // تابع برای به‌روزرسانی اطلاعات از JSON
-      function updateInfo(index) {
-        const imageData = galleryData.images[index];
+document.addEventListener("DOMContentLoaded", fetchPriceFl);
 
-        // تغییر پس‌زمینه
+// بارگذاری اولیه و به‌روزرسانی هر 30 ثانیه
+fetchPriceFl();
+setInterval(fetchPriceFl, 30000);
 
-        // انیمیشن تغییر برای همه عناصر
-        animateContentChange(titleContent, imageData.title);
-        animateContentChange(artistContent, imageData.artist);
-        animateContentChange(
-          locationContent,
-          `${imageData.city}, ${imageData.country}`
-        );
-        animateContentChange(yearContent, imageData.year);
-        animateContentChange(messageContent, imageData.message);
-      }
+// -------------------------------
+// ==============================
 
-      // تابع برای به‌روزرسانی تامبنیل فعال
-      function updateActiveThumbnail(index) {
-        thumbnails.forEach((thumb) => thumb.classList.remove("active"));
-        thumbnails[index].classList.add("active");
-      }
+// داده‌های نمونه برای گالری
 
-      // تابع برای تغییر اسلاید
-      function changeSlide() {
-        if (isAnimating) return;
-        isAnimating = true;
+// متغیرهای اصلی
+const gallerySection = document.querySelector(".gallery1");
 
-        // محاسبه ایندکس بعدی
-        const nextIndex = (currentIndex + 1) % galleryData.images.length;
+let imgContainerGl = document.querySelector(".img-container-gl");
+let thumbnailsGl = document.querySelectorAll(".thumbnail-gl");
+let boxesGl = document.querySelectorAll(".box-gl");
+let currentIndexGl = 0;
+let isAnimatingGl = false;
+let slideIntervalGl;
+let isPlayingGl = true;
 
-        // به‌روزرسانی تامبنیل و اطلاعات
-        updateActiveThumbnail(nextIndex);
-        updateInfo(nextIndex);
+// عناصر اطلاعات
+const titleContentGl = document.getElementById("title-content-gl");
+const artistContentGl = document.getElementById("artist-content-gl");
+const locationContentGl = document.getElementById("location-content-gl");
+const yearContentGl = document.getElementById("year-content-gl");
+const messageContentGl = document.getElementById("message-content-gl");
 
-        // دریافت تمام باکس‌ها
-        const allBoxes = Array.from(imgContainer.querySelectorAll(".box"));
+// کنترل پخش
+const toggleBtnGl = document.getElementById("toggle-btn-gl");
+const toggleIconGl = toggleBtnGl.querySelector("i");
 
-        // محاسبه موقعیت‌های جدید برای همه باکس‌ها
-        allBoxes.forEach((box, index) => {
-          // محاسبه موقعیت جدید بر اساس ایندکس فعلی در DOM
-          let newPosition = (index - 1 + allBoxes.length) % allBoxes.length;
+// تابع برای به‌روزرسانی اطلاعات از JSON
+function updateInfoGl(index) {
+  const imageData = galleryDataGl.images[index];
 
-          // اعمال انیمیشن به همه باکس‌ها به طور همزمان
-          switch (newPosition) {
-            case 0:
-              box.style.zIndex = "5";
-              box.style.opacity = "1";
-              box.style.right = "45%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) scale(1)";
-              break;
-            case 1:
-              box.style.zIndex = "4";
-              box.style.opacity = "0.8";
-              box.style.right = "50%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) translateZ(-50px) scale(0.95)";
-              break;
-            case 2:
-              box.style.zIndex = "3";
-              box.style.opacity = "0.6";
-              box.style.right = "55%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) translateZ(-100px) scale(0.9)";
-              break;
-            case 3:
-              box.style.zIndex = "2";
-              box.style.opacity = "0.4";
-              box.style.right = "60%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) translateZ(-150px) scale(0.85)";
-              break;
-            case 4:
-              box.style.zIndex = "1";
-              box.style.opacity = "0.2";
-              box.style.right = "65%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) translateZ(-200px) scale(0.8)";
-              break;
-          }
-        });
+  // انیمیشن fade out برای محتوا
+  [
+    titleContentGl,
+    artistContentGl,
+    locationContentGl,
+    yearContentGl,
+    messageContentGl,
+  ].forEach((el) => {
+    el.classList.add("fade-out-gl");
+  });
 
-        // بعد از اتمام انیمیشن، ترتیب DOM را به روز می‌کنیم
-        setTimeout(() => {
-          // جابجایی عناصر در DOM
-          let first = imgContainer.firstElementChild;
-          if (first) {
-            imgContainer.appendChild(first);
-          }
+  // پس از اتمام fade out، محتوا را تغییر داده و fade in کنیم
+  setTimeout(() => {
+    titleContentGl.textContent = imageData.title;
+    artistContentGl.textContent = imageData.artist;
+    locationContentGl.textContent = `${imageData.city}, ${imageData.country}`;
+    yearContentGl.textContent = imageData.year;
+    messageContentGl.textContent = imageData.message;
 
-          // به‌روزرسانی ایندکس فعلی
-          currentIndex = nextIndex;
+    [
+      titleContentGl,
+      artistContentGl,
+      locationContentGl,
+      yearContentGl,
+      messageContentGl,
+    ].forEach((el) => {
+      el.classList.remove("fade-out-gl");
+      el.classList.add("fade-in-gl");
+    });
 
-          isAnimating = false;
-        }, 500);
-      }
-
-      // تابع برای تنظیم مستقیم اسلاید
-      function setSlide(index) {
-        if (isAnimating) return;
-
-        // محاسبه اختلاف بین ایندکس فعلی و ایندکس مورد نظر
-        let diff = index - currentIndex;
-
-        // اگر همان اسلاید فعلی باشد، کاری نکن
-        if (diff === 0) return;
-
-        isAnimating = true;
-
-        // به‌روزرسانی تامبنیل و اطلاعات
-        updateActiveThumbnail(index);
-        updateInfo(index);
-
-        // انتقال مستقیم به اسلاید مورد نظر
-        const allBoxes = Array.from(imgContainer.querySelectorAll(".box"));
-
-        // محاسبه موقعیت‌های جدید برای همه باکس‌ها
-        allBoxes.forEach((box, i) => {
-          // محاسبه موقعیت جدید
-          let newPosition = (i - diff + allBoxes.length) % allBoxes.length;
-
-          // اعمال انیمیشن به همه باکس‌ها به طور همزمان
-          switch (newPosition) {
-            case 0:
-              box.style.zIndex = "5";
-              box.style.opacity = "1";
-              box.style.right = "45%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) scale(1)";
-              break;
-            case 1:
-              box.style.zIndex = "4";
-              box.style.opacity = "0.8";
-              box.style.right = "50%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) translateZ(-50px) scale(0.95)";
-              break;
-            case 2:
-              box.style.zIndex = "3";
-              box.style.opacity = "0.6";
-              box.style.right = "55%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) translateZ(-100px) scale(0.9)";
-              break;
-            case 3:
-              box.style.zIndex = "2";
-              box.style.opacity = "0.4";
-              box.style.right = "60%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) translateZ(-150px) scale(0.85)";
-              break;
-            case 4:
-              box.style.zIndex = "1";
-              box.style.opacity = "0.2";
-              box.style.right = "65%";
-              box.style.transform =
-                "translate(50%, -50%) rotateY(10deg) translateZ(-200px) scale(0.8)";
-              break;
-          }
-        });
-
-        // بعد از اتمام انیمیشن، ترتیب DOM را به روز می‌کنیم
-        setTimeout(() => {
-          // جابجایی عناصر در DOM به تعداد مورد نیاز
-          for (let i = 0; i < diff; i++) {
-            let first = imgContainer.firstElementChild;
-            if (first) {
-              imgContainer.appendChild(first);
-            }
-          }
-
-          currentIndex = index;
-          isAnimating = false;
-        }, 500);
-      }
-
-      // اضافه کردن رویداد کلیک برای تامبنیل‌ها
-      thumbnails.forEach((thumb, index) => {
-        thumb.addEventListener("click", () => {
-          // تنظیم مستقیم اسلاید به ایندکس کلیک شده
-          setSlide(index);
-        });
+    // حذف کلاس fade-in پس از اتمام انیمیشن
+    setTimeout(() => {
+      [
+        titleContentGl,
+        artistContentGl,
+        locationContentGl,
+        yearContentGl,
+        messageContentGl,
+      ].forEach((el) => {
+        el.classList.remove("fade-in-gl");
       });
+    }, 500);
+  }, 250);
+}
 
-      // تابع شروع پخش خودکار
-      function startSlideshow() {
-        slideInterval = setInterval(changeSlide, 3000);
-        isPlaying = true;
-        toggleIcon.className = "fas fa-pause";
-      }
+// تابع برای به‌روزرسانی تامبنیل فعال
+function updateActiveThumbnailGl(index) {
+  thumbnailsGl.forEach((thumb, i) => {
+    thumb.classList.toggle("active-gl", i === index);
+  });
+}
 
-      // تابع توقف پخش خودکار
-      function stopSlideshow() {
-        clearInterval(slideInterval);
-        isPlaying = false;
-        toggleIcon.className = "fas fa-play";
-      }
+// تابع برای تنظیم موقعیت باکس‌ها بر اساس ایندکس فعلی
+function updateBoxPositionsGl() {
+  const allBoxes = Array.from(imgContainerGl.querySelectorAll(".box-gl"));
 
-      // تابع تغییر وضعیت پخش
-      function toggleSlideshow() {
-        if (isPlaying) {
-          stopSlideshow();
-        } else {
-          startSlideshow();
-        }
-      }
+  allBoxes.forEach((box, domIndex) => {
+    // محاسبه موقعیت بصری بر اساس موقعیت در DOM و ایندکس فعلی
+    let visualPosition =
+      (domIndex - currentIndexGl + allBoxes.length) % allBoxes.length;
 
-      // اضافه کردن رویداد برای دکمه کنترل
-      toggleBtn.addEventListener("click", toggleSlideshow);
+    switch (visualPosition) {
+      case 0: // موقعیت اصلی (مرکز)
+        box.style.zIndex = "5";
+        box.style.opacity = "1";
+        box.style.right = "45%";
+        box.style.transform = "translate(50%, -50%) rotateY(10deg) scale(1)";
+        break;
+      case 1: // موقعیت اول (کمی عقب)
+        box.style.zIndex = "4";
+        box.style.opacity = "0.8";
+        box.style.right = "50%";
+        box.style.transform =
+          "translate(50%, -50%) rotateY(10deg) translateZ(-50px) scale(0.95)";
+        break;
+      case 2: // موقعیت دوم (عقب‌تر)
+        box.style.zIndex = "3";
+        box.style.opacity = "0.6";
+        box.style.right = "55%";
+        box.style.transform =
+          "translate(50%, -50%) rotateY(10deg) translateZ(-100px) scale(0.9)";
+        break;
+      case 3: // موقعیت سوم (عقب‌تر)
+        box.style.zIndex = "2";
+        box.style.opacity = "0.4";
+        box.style.right = "60%";
+        box.style.transform =
+          "translate(50%, -50%) rotateY(10deg) translateZ(-150px) scale(0.85)";
+        break;
+      case 4: // موقعیت چهارم (آخرین)
+        box.style.zIndex = "1";
+        box.style.opacity = "0.2";
+        box.style.right = "65%";
+        box.style.transform =
+          "translate(50%, -50%) rotateY(10deg) translateZ(-200px) scale(0.8)";
+        break;
+    }
+  });
+}
 
-      // مقداردهی اولیه
-      updateActiveThumbnail(0);
-      updateInfo(0);
-      startSlideshow();
+// تابع برای تغییر اسلاید به صورت خودکار
+function changeSlideGl() {
+  if (isAnimatingGl) return;
 
-      // اضافه کردن رویداد کلیک برای باکس‌ها
-      boxes.forEach((box) => {
-        box.addEventListener("click", function () {
-          // ایجاد overlay برای نمایش بزرگ شده عکس
-          const overlay = document.createElement("div");
-          overlay.style.cssText = `
+  isAnimatingGl = true;
+  const nextIndex = (currentIndexGl + 1) % galleryDataGl.images.length;
+
+  // به‌روزرسانی تامبنیل و اطلاعات
+  updateActiveThumbnailGl(nextIndex);
+  updateInfoGl(nextIndex);
+
+  // فقط ایندکس را به روز کن (دیگر DOM را جابجا نکن)
+  currentIndexGl = nextIndex;
+
+  // به‌روزرسانی موقعیت‌های بصری
+  updateBoxPositionsGl();
+
+  setTimeout(() => {
+    isAnimatingGl = false;
+  }, 500);
+}
+
+// تابع برای تنظیم مستقیم اسلاید (کلیک روی تامبنیل)
+function setSlideGl(index) {
+  if (index === currentIndexGl) {
+    return;
+  }
+
+  // توقف کامل اسلایدشو
+  stopSlideshowGl();
+
+  // انیمیشن توجه‌دهنده برای دکمه پلی
+  playButtonAnimationGl();
+
+  // به‌روزرسانی تامبنیل و اطلاعات
+  updateActiveThumbnailGl(index);
+  updateInfoGl(index);
+
+  // فقط ایندکس را تغییر بده
+  currentIndexGl = index;
+
+  // به‌روزرسانی موقعیت‌های بصری
+  updateBoxPositionsGl();
+}
+
+// تابع جدید برای انیمیشن دکمه پلی
+function playButtonAnimationGl() {
+  const controlBtn = document.getElementById("toggle-btn-gl");
+
+  // حذف کلاس‌های انیمیشن قبلی
+  controlBtn.classList.remove(
+    "pulse-animation-gl",
+    "scale-animation-gl",
+    "attention-animation-gl",
+    "stopped-gl"
+  );
+
+  // کمی تأخیر برای شروع روان انیمیشن
+  setTimeout(() => {
+    // اضافه کردن کلاس متوقف شده
+    controlBtn.classList.add("stopped-gl");
+
+    // اضافه کردن انیمیشن توجه‌دهنده
+    controlBtn.classList.add("attention-animation-gl");
+
+    // حذف انیمیشن بعد از اتمام
+    setTimeout(() => {
+      controlBtn.classList.remove("attention-animation-gl");
+    }, 1000);
+  }, 50);
+}
+
+// تابع شروع پخش خودکار
+function startSlideshowGl() {
+  // پاک کردن اینتروال قبلی
+  if (slideIntervalGl) {
+    clearInterval(slideIntervalGl);
+  }
+
+  // حذف استایل متوقف شده از دکمه
+  const controlBtn = document.getElementById("toggle-btn-gl");
+  controlBtn.classList.remove("stopped-gl");
+
+  // انیمیشن پالس برای شروع
+  controlBtn.classList.add("pulse-animation-gl");
+  setTimeout(() => {
+    controlBtn.classList.remove("pulse-animation-gl");
+  }, 600);
+
+  slideIntervalGl = setInterval(changeSlideGl, 3000);
+  isPlayingGl = true;
+  toggleIconGl.className = "fas fa-pause";
+}
+
+// تابع توقف پخش خودکار
+function stopSlideshowGl() {
+  if (slideIntervalGl) {
+    clearInterval(slideIntervalGl);
+    slideIntervalGl = null;
+  }
+
+  isPlayingGl = false;
+  toggleIconGl.className = "fas fa-play";
+}
+
+// تابع تغییر وضعیت پخش
+function toggleSlideshowGl() {
+  if (isPlayingGl) {
+    stopSlideshowGl();
+  } else {
+    startSlideshowGl();
+  }
+}
+
+// تابع نمایش جزئیات کامل
+function showDetailsGl(index) {
+  // توقف اسلایدشو
+  stopSlideshowGl();
+
+  const imageData = galleryDataGl.images[index];
+
+  // ایجاد overlay
+  const overlay = document.createElement("div");
+  overlay.className = "detail-overlay-gl";
+
+  // محتوای جزئیات
+  const detailContent = document.createElement("div");
+  detailContent.className = "detail-content-gl";
+
+  // دکمه بستن
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "detail-close-gl";
+  closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+
+  // هدر جزئیات
+  const detailHeader = document.createElement("div");
+  detailHeader.className = "detail-header-gl";
+
+  const detailTitle = document.createElement("h2");
+  detailTitle.className = "detail-title-gl";
+  detailTitle.textContent = imageData.title;
+
+  const detailArtist = document.createElement("p");
+  detailArtist.className = "detail-artist-gl";
+  detailArtist.textContent = `اثر: ${imageData.artist} (${imageData.year})`;
+
+  detailHeader.appendChild(detailTitle);
+  detailHeader.appendChild(detailArtist);
+
+  // بدنه جزئیات
+  const detailBody = document.createElement("div");
+  detailBody.className = "detail-body-gl";
+  detailBody.innerHTML = `
+                <p><strong>موقعیت:</strong> ${imageData.city}, ${imageData.country}</p>
+                <p><strong>پیام اثر:</strong> ${imageData.message}</p>
+                <p style="margin-top: 15px;">${imageData.description}</p>
+            `;
+
+  // مونتاژ محتوا
+  detailContent.appendChild(closeBtn);
+  detailContent.appendChild(detailHeader);
+  detailContent.appendChild(detailBody);
+  overlay.appendChild(detailContent);
+
+  // اضافه کردن به صفحه
+  document.body.appendChild(overlay);
+
+  // رویداد بستن
+  const closeOverlay = () => {
+    document.body.removeChild(overlay);
+    document.removeEventListener("keydown", handleEsc);
+  };
+
+  closeBtn.addEventListener("click", closeOverlay);
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeOverlay();
+  });
+
+  const handleEsc = (e) => {
+    if (e.key === "Escape") closeOverlay();
+  };
+  document.addEventListener("keydown", handleEsc);
+}
+
+// اضافه کردن رویداد کلیک برای تامبنیل‌ها
+thumbnailsGl.forEach((thumb, index) => {
+  thumb.addEventListener("click", () => {
+    setSlideGl(index);
+  });
+});
+
+// اضافه کردن رویداد برای دکمه کنترل
+toggleBtnGl.addEventListener("click", toggleSlideshowGl);
+
+// اضافه کردن رویداد کلیک برای باکس‌های اصلی
+boxesGl.forEach((box) => {
+  box.addEventListener("click", function () {
+    // ایجاد overlay برای نمایش بزرگ شده عکس
+    const overlay = document.createElement("div");
+    overlay.style.cssText = `
                     position: fixed;
                     top: 0;
                     left: 0;
@@ -803,10 +1592,9 @@
                     cursor: pointer;
                 `;
 
-          // ایجاد تصویر بزرگ شده
-          const enlargedImg = document.createElement("img");
-          enlargedImg.src = this.querySelector("img").src;
-          enlargedImg.style.cssText = `
+    const enlargedImg = document.createElement("img");
+    enlargedImg.src = this.querySelector("img").src;
+    enlargedImg.style.cssText = `
                     max-width: 90%;
                     max-height: 90%;
                     object-fit: contain;
@@ -814,25 +1602,41 @@
                     box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
                 `;
 
-          // اضافه کردن به صفحه
-          overlay.appendChild(enlargedImg);
-          document.body.appendChild(overlay);
+    overlay.appendChild(enlargedImg);
+    document.body.appendChild(overlay);
 
-          // بستن با کلیک روی overlay
-          overlay.addEventListener("click", () => {
-            document.body.removeChild(overlay);
-          });
+    overlay.addEventListener("click", () => {
+      document.body.removeChild(overlay);
+    });
 
-          // بستن با کلید ESC
-          const closeOnEsc = (e) => {
-            if (e.key === "Escape") {
-              document.body.removeChild(overlay);
-              document.removeEventListener("keydown", closeOnEsc);
-            }
-          };
-          document.addEventListener("keydown", closeOnEsc);
-        });
-      });
+    const closeOnEsc = (e) => {
+      if (e.key === "Escape") {
+        document.body.removeChild(overlay);
+        document.removeEventListener("keydown", closeOnEsc);
+      }
+    };
+    document.addEventListener("keydown", closeOnEsc);
+  });
+});
+
+document.querySelectorAll(".info-item-gl").forEach((item) => {
+  item.addEventListener("click", () => {
+    // اضافه کردن این خط برای اجرای انیمیشن دکمه پلی
+    playButtonAnimationGl();
+    showDetailsGl(currentIndexGl);
+  });
+});
+
+// مقداردهی اولیه
+updateActiveThumbnailGl(0);
+updateInfoGl(0);
+
+// تنظیم موقعیت اولیه
+setTimeout(() => {
+  updateBoxPositionsGl();
+  startSlideshowGl();
+}, 100);
+
     </script>
   </body>
 </html>

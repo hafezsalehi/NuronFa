@@ -1,438 +1,370 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گالری هنری - نمایش افقی</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نگارستان هنر نو</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background: radial-gradient(circle at top left, #1e1e3f, #111);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding: 20px;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://source.unsplash.com/random/1920x1080/?art,texture")
+          center/cover no-repeat;
+        opacity: 0.07;
+        filter: blur(5px);
+        z-index: -1;
+      }
+
+      /* === باکس اصلی === */
+      .horizontal-gallery-box {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        width: 100%;
+        max-width: 960px;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 215, 0, 0.25);
+        transform: scale(0.97);
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(40px) scale(0.95);
         }
-        
-        body {
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(255, 197, 61, 0.2) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(120, 119, 198, 0.2) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
-                linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            filter: saturate(1.1);
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
         }
-        
+      }
+
+      /* === مهر طلایی با ضربه === */
+      .gallery-ribbon {
+        position: absolute;
+        top: 30px;
+        left: -55px;
+        transform: rotate(-45deg);
+        z-index: 5;
+        opacity: 0;
+        animation: stampIn 1.4s ease-out forwards 0.8s;
+        transform-origin: center;
+      }
+
+      @keyframes stampIn {
+        0% {
+          opacity: 0;
+          transform: rotate(-45deg) scale(0.6) translateY(-50px);
+          filter: blur(3px);
+        }
+        60% {
+          opacity: 1;
+          transform: rotate(-45deg) scale(1.15) translateY(6px);
+          filter: blur(0);
+        }
+        80% {
+          transform: rotate(-45deg) scale(0.92) translateY(0);
+        }
+        100% {
+          opacity: 1;
+          transform: rotate(-45deg) scale(1);
+        }
+      }
+
+      .ribbon-inner {
+        background: linear-gradient(135deg, #ffcc00, #ff9900);
+        color: #111;
+        padding: 10px 60px;
+        font-weight: 900;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 2px dashed rgba(255, 255, 255, 0.6);
+        position: relative;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(255, 200, 0, 0.5);
+        font-family: "Playfair Display", serif;
+        letter-spacing: 1px;
+      }
+
+      .ribbon-inner::after {
+        content: "★";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+      }
+
+      /* === عنوان === */
+      .gallery-title {
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        color: #ffd700;
+        margin-bottom: 20px;
+        font-weight: 700;
+        opacity: 0;
+        animation: fadeUp 1s ease forwards 0.4s;
+        text-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* === جزئیات === */
+      .gallery-details {
+        display: flex;
+        gap: 18px;
+        opacity: 0;
+        animation: fadeUp 1s ease forwards 0.7s;
+        flex-wrap: wrap;
+      }
+
+      .detail-item {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 10px 18px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid rgba(255, 215, 0, 0.25);
+        transition: all 0.4s ease;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-width: 150px;
+      }
+
+      .detail-item:hover {
+        transform: translateY(-6px) scale(1.05);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .detail-item:hover .detail-icon {
+        color: #111;
+        background: #ffd700;
+        transform: rotate(360deg);
+        box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+      }
+
+      .detail-item:hover .detail-label {
+        color: #ffd700;
+      }
+
+      .detail-icon {
+        color: #ffd700;
+        font-size: 18px;
+        transition: 0.6s;
+        border-radius: 50%;
+        padding: 6px;
+      }
+
+      .detail-label {
+        font-size: 13px;
+        color: #aaa;
+        transition: 0.4s;
+      }
+
+      .detail-value {
+        font-size: 14px;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .theme-tag {
+        background: rgba(255, 215, 0, 0.25);
+        color: #ffd700;
+        padding: 3px 10px;
+        border-radius: 10px;
+      }
+
+      /* === قیمت === */
+      .price-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        min-width: 220px;
+        opacity: 0;
+        animation: fadeUp 1s ease forwards 1s;
+      }
+
+      .price-title {
+        font-size: 15px;
+        color: #ccc;
+      }
+
+      #priceDisplayFl {
+        font-size: 20px;
+        color: #fff;
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      }
+
+      .refresh-btn {
+        background: linear-gradient(135deg, #ffd700, #ffb400);
+        color: #111;
+        border: none;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: 0.4s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .refresh-btn:hover {
+        transform: rotate(180deg) scale(1.1);
+        background: linear-gradient(135deg, #ffea00, #ffc700);
+      }
+
+      /* === ریسپانسیو === */
+      @media (max-width: 768px) {
         .horizontal-gallery-box {
-            background: 
-                linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
-            border-radius: 20px;
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.15),
-                0 4px 10px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            width: 100%;
-            max-width: 900px;
-            padding: 25px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            height: 160px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+          flex-direction: column;
+          gap: 24px;
+          padding: 28px;
         }
-        
-        .horizontal-gallery-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #ff6b6b 0%, #6a11cb 50%, #2575fc 100%);
-            box-shadow: 0 2px 8px rgba(106, 17, 203, 0.4);
-        }
-        
-        .horizontal-gallery-box::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .horizontal-gallery-box:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.2),
-                0 8px 20px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            filter: brightness(1.05) saturate(1.2);
-        }
-        
-        .horizontal-gallery-box:hover::after {
-            opacity: 1;
-        }
-        
-        .gallery-basic-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-            flex: 1;
-            z-index: 2;
-        }
-        
-        .gallery-title {
-            font-size: 26px;
-            color: #2c3e50;
-            margin-bottom: 12px;
-            font-weight: 800;
-            background: linear-gradient(90deg, #2c3e50, #6a11cb);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .horizontal-gallery-box:hover .gallery-title {
-            background: linear-gradient(90deg, #6a11cb, #2575fc);
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        
+
         .gallery-details {
-            display: flex;
-            gap: 30px;
+          flex-direction: column;
+          align-items: center;
         }
-        
+
         .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 15px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5px);
+          min-width: 100%;
+          justify-content: center;
         }
-        
-        .detail-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            background: rgba(255, 255, 255, 0.9);
-        }
-        
-        .detail-icon {
-            color: #6a11cb;
-            font-size: 18px;
-            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
-            transition: all 0.3s ease;
-        }
-        
-        .detail-item:hover .detail-icon {
-            color: #2575fc;
-            transform: scale(1.1);
-        }
-        
-        .detail-text {
-            font-size: 16px;
-            color: #2c3e50;
-            font-weight: 600;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .paintings-count {
-            font-weight: 700;
-            color: #2575fc;
-            text-shadow: 0 1px 2px rgba(37, 117, 252, 0.2);
-        }
-        
-        .theme-tag {
-            background: linear-gradient(135deg, #e8f4fd, #d1e7ff);
-            color: #3498db;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 3px 6px rgba(52, 152, 219, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            transition: all 0.3s ease;
-        }
-        
-        .detail-item:hover .theme-tag {
-            background: linear-gradient(135deg, #d1e7ff, #b3d9ff);
-            transform: scale(1.05);
-        }
-        
+
         .price-section {
-            background: 
-                linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(245, 87, 108, 0.9) 100%),
-                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
-            border-radius: 16px;
-            padding: 18px 22px;
-            text-align: center;
-            color: white;
-            box-shadow: 
-                0 8px 20px rgba(245, 87, 108, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
-            min-width: 240px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            z-index: 2;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(5px);
-            transition: all 0.4s ease;
+          flex-direction: row;
+          justify-content: center;
+          gap: 12px;
         }
-        
-        .price-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .price-section:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 
-                0 12px 25px rgba(245, 87, 108, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
-            filter: brightness(1.1) saturate(1.2);
-        }
-        
-        .price-section:hover::before {
-            opacity: 1;
-        }
-        
-        .price-title {
-            font-size: 16px;
-            margin-bottom: 10px;
-            font-weight: 600;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-            letter-spacing: 0.5px;
-        }
-        
-        #priceDisplayFl {
-            font-size: 20px;
-            font-weight: 800;
-            transition: all 0.3s ease;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            letter-spacing: 0.5px;
-        }
-        
-        .price-loading-fl {
-            opacity: 0.8;
-            animation: pulse 1.5s infinite;
-        }
-        
-        .price-updated-fl {
-            animation: priceUpdate 0.7s ease;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
-        }
-        
-        @keyframes priceUpdate {
-            0% { transform: scale(1); color: white; }
-            50% { transform: scale(1.1); color: #ffeb3b; }
-            100% { transform: scale(1); color: white; }
-        }
-        
-        .refresh-btn {
-            background: 
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.9));
-            color: #f5576c;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 4px 8px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(5px);
-        }
-        
-        .refresh-btn:hover {
-            background: 
-                linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(240, 242, 245, 1));
-            color: #e53e3e;
-            transform: translateY(-3px);
-            box-shadow: 
-                0 6px 12px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            filter: brightness(1.05);
-        }
-        
-        .refresh-btn:active {
-            transform: translateY(-1px);
-            box-shadow: 
-                0 3px 6px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-        
-        .refresh-btn i {
-            font-size: 14px;
-            transition: transform 0.5s ease;
-        }
-        
-        .refresh-btn:hover i {
-            transform: rotate(180deg);
-        }
-        
-        @media (max-width: 768px) {
-            .horizontal-gallery-box {
-                flex-direction: column;
-                height: auto;
-                padding: 25px;
-            }
-            
-            .gallery-basic-info {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            
-            .gallery-details {
-                flex-wrap: wrap;
-                gap: 15px;
-                justify-content: center;
-            }
-            
-            .price-section {
-                width: 100%;
-                min-width: auto;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .gallery-title {
-                font-size: 22px;
-            }
-            
-            .detail-text {
-                font-size: 14px;
-            }
-            
-            .price-section {
-                padding: 15px 18px;
-            }
-            
-            #priceDisplayFl {
-                font-size: 18px;
-            }
-            
-            .gallery-details {
-                gap: 10px;
-            }
-            
-            .detail-item {
-                padding: 6px 12px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="horizontal-gallery-box">
-        <div class="gallery-basic-info">
-            <h2 class="gallery-title">نگارستان هنر نو</h2>
-            <div class="gallery-details">
-                <div class="detail-item">
-                    <i class="fas fa-palette detail-icon"></i>
-                    <span class="detail-text paintings-count">۴۲ اثر</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fas fa-tag detail-icon"></i>
-                    <span class="detail-text theme-tag">هنر معاصر</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fas fa-map-marker-alt detail-icon"></i>
-                    <span class="detail-text">تهران، خیابان هنر</span>
-                </div>
-            </div>
+      <div class="gallery-ribbon">
+        <div class="ribbon-inner">اولین گالری در والری</div>
+      </div>
+
+      <div class="gallery-basic-info">
+        <h2 class="gallery-title">نگارستان هنر نو</h2>
+
+        <div class="gallery-details">
+          <div class="detail-item">
+            <i class="fas fa-palette detail-icon"></i>
+            <span class="detail-label">تعداد نقاشی:</span>
+            <span class="detail-value">۴۲ اثر</span>
+          </div>
+
+          <div class="detail-item">
+            <i class="fas fa-tag detail-icon"></i>
+            <span class="detail-label">موضوع:</span>
+            <span class="detail-value theme-tag">هنر معاصر</span>
+          </div>
+
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt detail-icon"></i>
+            <span class="detail-label">مکان:</span>
+            <span class="detail-value">تهران</span>
+          </div>
         </div>
-        
-        <div class="price-section">
-            <div class="price-title">قیمت بیت‌کوین</div>
-            <div id="priceDisplayFl">در حال بارگذاری...</div>
-            <button class="refresh-btn" onclick="fetchPriceFl()">
-                <i class="fas fa-sync-alt"></i>
-                بروزرسانی
-            </button>
-        </div>
+      </div>
+
+      <div class="price-section">
+        <span class="price-title">قیمت بیت‌کوین:</span>
+        <span id="priceDisplayFl">در حال بارگذاری...</span>
+        <button class="refresh-btn" onclick="fetchPriceFl()">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
     </div>
 
     <script>
-        async function fetchPriceFl() {
-            const priceDisplayFl = document.getElementById("priceDisplayFl");
-            priceDisplayFl.classList.add("price-loading-fl");
-            
-            try {
-                const response = await fetch(
-                    "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
-                    {
-                        headers: {
-                            Accept: "application/json",
-                        },
-                    }
-                );
-                
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                
-                const data = await response.json();
-                const price = data.bitcoin.usd;
-                priceDisplayFl.textContent = `BTC: $${price.toLocaleString()}`;
-                priceDisplayFl.classList.remove("price-loading-fl");
-                priceDisplayFl.classList.add("price-updated-fl");
-                
-                setTimeout(() => priceDisplayFl.classList.remove("price-updated-fl"), 700);
-            } catch (error) {
-                priceDisplayFl.textContent = "خطا در بارگذاری";
-                console.error("Error fetching price:", error);
+      async function fetchPriceFl() {
+        const el = document.getElementById("priceDisplayFl");
+        el.textContent = "در حال بارگذاری...";
+        el.style.opacity = "0.7";
+
+        try {
+          const res = await fetch(
+            "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+          );
+          const data = await res.json();
+          const targetValue = data.bitcoin.usd;
+          const duration = 1000;
+          const steps = 60;
+          const stepValue = targetValue / steps;
+          let current = 0;
+          const counter = setInterval(() => {
+            current += stepValue;
+            if (current >= targetValue) {
+              clearInterval(counter);
+              current = targetValue;
+              el.style.opacity = "1";
             }
+            el.textContent = `$${Math.floor(current).toLocaleString()}`;
+          }, duration / steps);
+        } catch {
+          el.textContent = "خطا";
+          el.style.opacity = "1";
         }
-        
-        // بارگذاری قیمت هنگام لود صفحه
-        document.addEventListener('DOMContentLoaded', fetchPriceFl);
+      }
+
+      document.addEventListener("DOMContentLoaded", fetchPriceFl);
     </script>
-</body>
+  </body>
 </html>
