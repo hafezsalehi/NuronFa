@@ -133,7 +133,7 @@
 
 .circle1-features-text-title h3 {
     font-size: 26px;
-    color: #040404;
+    color: #0ee60e;
     margin: 0;
     transition: all 0.3s ease;
 }
@@ -158,6 +158,10 @@
 }
 
 /* تصویر مرکزی - سایز بزرگتر و سایه */
+.mid-image {
+    align-content: center;
+}
+
 .circle1-extra-pic {
     text-align: center;
     position: relative;

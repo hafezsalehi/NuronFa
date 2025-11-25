@@ -1,0 +1,24 @@
+.banner-text {
+    /* position: absolute; */
+}
+
+.banner-top-rating {
+    position: relative;
+    top: 50px;
+    z-index: -10;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url(../../../images/header-title.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 150px;
+    align-items: center;
+    margin: 20px;
+}
+
+.main-title {
+    line-height: 70px;
+    margin-bottom: 0 !important;
+    font-size: 100px !important;
+    color: rgba(168, 173, 177, 0.9);
+}

@@ -12784,6 +12784,8 @@ body.sal-disabled [data-sal|=flip] {
 
 .haeder-default .header-right ul {
     margin: 0;
+    display: flex;
+    gap: 5px;
 }
 
 .haeder-default .menu-list {
@@ -16751,7 +16753,8 @@ figcaption {
 }
 
 .title.large-height {
-    line-height: 50px;
+    line-height: 70px;
+    margin-bottom: 60px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -16772,11 +16775,7 @@ figcaption {
     }
 }
 
-.banner-top-rating {
-    display: flex;
-    margin: 0 -40px;
-    margin-bottom: 25px;
-}
+
 
 @media only screen and (max-width: 767px) {
     .banner-top-rating {
@@ -19540,35 +19539,35 @@ button .small-image {
 /*--------------------------
     Copyright Area
 ----------------------------*/
-.copy-right-one {
+    {
     border-top: 1px solid var(--color-border);
 }
 
-.copy-right-one .copyright-left {
+.copyright-left {
     display: flex;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .copy-right-one .copyright-left {
+    .copyright-left {
         justify-content: center;
         margin-bottom: 15px;
     }
 }
 
 @media only screen and (max-width: 767px) {
-    .copy-right-one .copyright-left {
+    .copyright-left {
         display: block;
         text-align: center;
     }
 }
 
-.copy-right-one .copyright-left span {
+.copyright-left span {
     font-size: 16px;
     font-weight: 400;
     color: var(--color-body);
 }
 
-.copy-right-one .copyright-left .privacy {
+.copyright-left .privacy {
     display: flex;
     list-style: none;
     margin: 0;
@@ -19578,28 +19577,28 @@ button .small-image {
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .copy-right-one .copyright-left .privacy {
+    .copyright-left .privacy {
         padding-right: 7px;
         margin-right: 7px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .copy-right-one .copyright-left .privacy {
+    .copyright-left .privacy {
         padding-right: 7px;
         margin-right: 7px;
     }
 }
 
 @media only screen and (max-width: 767px) {
-    .copy-right-one .copyright-left .privacy {
+    .copyright-left .privacy {
         padding-right: 0;
         justify-content: center;
         margin: 10px 0;
     }
 }
 
-.copy-right-one .copyright-left .privacy::before {
+.copyright-left .privacy::before {
     position: absolute;
     content: "";
     right: 0;
@@ -19611,24 +19610,24 @@ button .small-image {
 }
 
 @media only screen and (max-width: 767px) {
-    .copy-right-one .copyright-left .privacy::before {
+    .copyright-left .privacy::before {
         display: none;
     }
 }
 
-.copy-right-one .copyright-left .privacy li {
+.copyright-left .privacy li {
     margin: 0;
     padding: 0 12px;
 }
 
-.copy-right-one .copyright-left .privacy li a {
+.copyright-left .privacy li a {
     position: relative;
     color: var(--color-body);
     font-size: 16px;
     font-weight: 400;
 }
 
-.copy-right-one .copyright-left .privacy li a::after {
+.copyright-left .privacy li a::after {
     position: absolute;
     content: "";
     right: auto;
@@ -19640,21 +19639,21 @@ button .small-image {
     left: 0;
 }
 
-.copy-right-one .copyright-left .privacy li a:hover {
+.copyright-left .privacy li a:hover {
     color: var(--color-primary) !important;
 }
 
-.copy-right-one .copyright-left .privacy li a:hover::after {
+.copyright-left .privacy li a:hover::after {
     width: 100%;
     right: 0;
     left: auto;
 }
 
-.copy-right-one .copyright-left .privacy li+li {
+.copyright-left .privacy li+li {
     position: relative;
 }
 
-.copy-right-one .copyright-left .privacy li+li::before {
+.copyright-left .privacy li+li::before {
     position: absolute;
     content: "";
     height: 3px;
@@ -19666,14 +19665,14 @@ button .small-image {
     border-radius: 50%;
 }
 
-.copy-right-one .copyright-right {
+.copyright-right {
     margin: 0;
     display: flex;
     justify-content: flex-end;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .copy-right-one .copyright-right {
+    .copyright-right {
         margin: 0;
         padding: 0;
         justify-content: center;
@@ -19681,25 +19680,25 @@ button .small-image {
 }
 
 @media only screen and (max-width: 767px) {
-    .copy-right-one .copyright-right {
+    e .copyright-right {
         margin: 0;
         padding: 0;
         justify-content: center;
     }
 }
 
-.copy-right-one .copyright-right .social-copyright {
+.copyright-right .social-copyright {
     list-style: none;
     display: flex;
     margin: 0 -5px;
     padding: 0;
 }
 
-.copy-right-one .copyright-right .social-copyright li {
+.copyright-right .social-copyright li {
     margin: 0 5px;
 }
 
-.copy-right-one .copyright-right .social-copyright li a {
+.copyright-right .social-copyright li a {
     color: var(--color-body);
     transition: 0.4s;
     background: var(--background-color-4);
@@ -19711,17 +19710,17 @@ button .small-image {
     border-radius: 100%;
 }
 
-.copy-right-one .copyright-right .social-copyright li a svg {
+.copyright-right .social-copyright li a svg {
     width: 16px;
     transition: 0.4s;
 }
 
-.copy-right-one .copyright-right .social-copyright li a:hover {
+.copyright-right .social-copyright li a:hover {
     color: var(--color-white) !important;
     background: var(--color-primary) !important;
 }
 
-.copy-right-one .copyright-right .social-copyright li a:hover svg {
+.copyright-right .social-copyright li a:hover svg {
     color: var(--color-white);
 }
 
@@ -25352,9 +25351,9 @@ body.active-light-mode {
 .active-light-mode .rn-icon-list.user-account .rn-dropdown .rn-product-inner ul.product-list .single-product-list span,
 .active-light-mode .rn-icon-list.user-account .rn-dropdown .list-inner li a,
 .active-light-mode .widget-content-wrapper .input-group input,
-.active-light-mode .copy-right-one .copyright-left span,
-.active-light-mode .copy-right-one .copyright-left .privacy li a,
-.active-light-mode .copy-right-one .copyright-right .social-copyright li a,
+.active-light-mode .copyright-left span,
+.active-light-mode .copyright-left .privacy li a,
+.active-light-mode .copyright-right .social-copyright li a,
 .active-light-mode .left-header-style .mainmenu-nav .mainmenu li a svg,
 .active-light-mode .rn-top-bar-area .input-group input,
 .active-light-mode .rn-service-one .inner .content .read-more-button i,
@@ -25530,7 +25529,7 @@ body.active-light-mode {
 .active-light-mode .banner-one-slick button.slide-arrow,
 .active-light-mode .left-header-style .mainmenu-nav .mainmenu li a svg,
 .active-light-mode .report-form-box textarea,
-.active-light-mode .copy-right-one .copyright-right .social-copyright li a,
+.active-light-mode .copyright-right .social-copyright li a,
 .active-light-mode button.slide-arrow,
 .active-light-mode .upload-variant-wrapper,
 .active-light-mode nav.pagination-wrapper .pagination,
@@ -25637,7 +25636,7 @@ body.active-light-mode {
 .active-light-mode select,
 .active-light-mode textarea,
 .active-light-mode .social-share-default li a .icon,
-.active-light-mode .copy-right-one,
+.active-light-mode,
 .active-light-mode .nice-select .option+.option,
 .active-light-mode .product-share-wrapper .profile-share a img,
 .active-light-mode .upload-area label,
@@ -25689,7 +25688,7 @@ body.active-light-mode {
     background: #ebeef0;
 }
 
-.active-light-mode .copy-right-one .copyright-left .privacy::before {
+.active-light-mode .copyright-left .privacy::before {
     background: var(--color-border-white);
 }
 

@@ -290,12 +290,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // شروع پخش خودکار
   function startAutoSlideSldr() {
+    stopAutoSlideSldr(); // اول تایمر قبلی را متوقف کن
     autoSlideIntervalSldr = setInterval(nextSlideSldr, 6000);
   }
 
   // توقف پخش خودکار
   function stopAutoSlideSldr() {
-    clearInterval(autoSlideIntervalSldr);
+    if (autoSlideIntervalSldr) {
+      clearInterval(autoSlideIntervalSldr);
+      autoSlideIntervalSldr = null;
+    }
   }
 
   // رویدادهای کلیک

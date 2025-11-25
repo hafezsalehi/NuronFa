@@ -1,3 +1,36 @@
+// دریافت قیمت بیت‌کوین با نمایش WLR
+async function fetchPriceFl() {
+  const priceDisplayFl = document.getElementById("priceDisplayfl");
+  const priceDisplayGl = document.getElementById("priceDisplaygl");
+  priceDisplayFl.classList.add("price-loading-fl");
+
+  try {
+    const response = await fetch(
+      "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    console.log("presss Ok.");
+    const data = await response.json();
+    const price = data.bitcoin.usd;
+    priceDisplayFl.textContent = `LBLU: ${price.toLocaleString()}$`;
+    priceDisplayGl.textContent = `LBLU: ${price.toLocaleString()}$`;
+    priceDisplayFl.classList.remove("price-loading-fl");
+    priceDisplayFl.classList.add("price-updated-fl");
+    setTimeout(() => priceDisplayFl.classList.remove("price-updated-fl"), 500);
+  } catch (error) {
+    priceDisplayFl.textContent = "خطا در بارگذاری قیمت";
+    console.error("Error fetching price:", error);
+  }
+}
+document.onload(fetchPriceFl());
+
 // ==========debogg==============
 // اضافه کردن به اسکریپت موجود
 // تنظیمات پیشرفته‌تر برای محدوده بزرگتر

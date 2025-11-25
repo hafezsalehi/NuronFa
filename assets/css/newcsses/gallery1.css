@@ -1,5 +1,6 @@
 /* gallery title style Start */
 
+
 /* === باکس اصلی === */
 .horizontal-gallery-box {
     background: rgba(255, 255, 255, 0.1);
@@ -132,13 +133,13 @@
     gap: 18px;
     opacity: 0;
     animation: fadeUp 1s ease forwards 0.7s;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     margin-top: 10px;
 }
 
 .detail-item {
     background: rgba(255, 255, 255, 0.08);
-    padding: 10px 18px;
+    padding: 5px;
     border-radius: 12px;
     text-align: center;
     border: 1px solid rgba(255, 215, 0, 0.25);
@@ -147,7 +148,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 2px;
     min-width: 150px;
 }
 
@@ -402,6 +403,13 @@
 /* ____________________________________________________
    GALLERY MAIN CONTAINER
    ____________________________________________________ */
+.gallery1 {
+    background-color: #052696;
+    margin: 50px 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
 .gallery-container-gl {
     width: 85%;
     max-width: 1500px;
@@ -473,11 +481,13 @@
 
 .info-item-gl {
     background: rgba(255, 255, 255, 0.08);
-    padding: 12px;
+    padding: 5px 12px;
     border-radius: 14px;
     cursor: pointer;
     transition: .25s ease;
     border: 1px solid rgba(255, 255, 255, 0.15);
+    margin: auto 5px;
+
 }
 
 .info-item-gl:hover {
@@ -488,7 +498,7 @@
 .info-title-gl {
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 6px;
+    /* margin-bottom: 6px; */
     opacity: .8;
 }
 
@@ -524,6 +534,7 @@
     height: 500px;
     perspective: 1400px;
     overflow: visible;
+    cursor: pointer;
 }
 
 .box-gl {
@@ -699,8 +710,9 @@
 
     /* کل گالری کانتینر */
     .gallery-container-gl {
-        padding: 15px;
-        gap: 15px;
+        padding: 5px;
+        gap: 5px;
+        width: 90%;
     }
 
     /* تامبنیل‌ها در یک ردیف و بدون اسکرول */
@@ -734,9 +746,9 @@
 
     .img-container-gl {
         width: 100%;
-        height: 300px !important;
+        /* height: 300px !important; */
         order: 1;
-        flex: 4;
+        flex: 2;
     }
 
     /* باکس‌های توضیحات در پایین اسلایدر به صورت ردیفی */
@@ -746,12 +758,12 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        padding: 2px;
+        /* padding: 2px; */
         /* gap: 8px; */
         height: auto;
         overflow: hidden;
         /* غیرفعال کردن اسکرول */
-        flex: .8;
+        flex: .5;
         justify-content: space-between;
         /* توزیع مساوی فضا */
     }
@@ -764,27 +776,36 @@
         /* max-width: calc(25% - 8px); */
         /* حداکثر عرض برای 4 آیتم در ردیف */
         height: 70px;
-        padding: 2px;
+        padding: 1px;
         border-radius: 2px;
         text-align: center;
         box-sizing: border-box;
+        margin: 1px;
         /* padding در اندازه محاسبه شود */
+        align-content: center;
+        border-radius: 5px;
     }
 
     .info-item-gl i {
         display: none;
+
     }
 
     .info-inner-box-gl {
-        padding: 2px;
+        padding: 1px;
+        border-radius: 1px;
     }
 
     .info-title-gl {
         font-size: 10px;
+        border-radius: 1px;
+        padding: 2px 0;
     }
 
     .info-content-gl {
         font-size: 10px;
+        text-align: center;
+        margin: 3px 0;
     }
 
     /* دکمه کنترل موقعیت */
