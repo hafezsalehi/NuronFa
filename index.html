@@ -149,9 +149,9 @@
 
             <h1 class="theme-color main-title">والری <br /><br /></h1>
             <h1 class="title large-height theme-color">
-              هنر را به توان بلاکچین می رساند <br />
-              تا جهانی، ماندگار <br />
-              و هر روز ارزشمندتر شود
+              هنر، به توان بلاکچین، <br />
+              هر روز ارزشمندتر <br />
+              جهانی، ماندگار
             </h1>
             <p
               class="slide-disc"
@@ -224,13 +224,20 @@
         </button>
         <h3 class="box-title-fl">اولین کریپتوگالری نقاشی دیواری</h3>
       </div>
-      <div class="middle-section-fl">
-        <h4>گالری "زندگی زیبا"</h4>
+      <div
+        onclick="scrollToSectionFl()"
+        ontouchstart="scrollToSectionFl()"
+        onclick="toggleMinimizeFl()"
+        class="middle-section-fl"
+      >
+        <h4>گالری "آبی گمشده "</h4>
         <div class="bottom-divider-fl"></div>
         <div class="images-grid-fl">
           <div
             class="image-item-fl"
-            onclick="scrollToSectionFl()"
+            onclick="scrollToSectionFl(event)"
+            ontouchstart="scrollToSectionFl(event)"
+            onclick="toggleMinimizeFl()"
             style="--i: 1"
           >
             <img
@@ -240,7 +247,9 @@
           </div>
           <div
             class="image-item-fl"
-            onclick="scrollToSectionFl()"
+            onclick="scrollToSectionFl(event)"
+            ontouchstart="scrollToSectionFl(event)"
+            onclick="toggleMinimizeFl()"
             style="--i: 2"
           >
             <img
@@ -250,7 +259,8 @@
           </div>
           <div
             class="image-item-fl"
-            onclick="scrollToSectionFl()"
+            onclick="scrollToSectionFl(event)"
+            ontouchstart="scrollToSectionFl(event)"
             style="--i: 3"
           >
             <img
@@ -260,7 +270,7 @@
           </div>
           <div
             class="image-item-fl"
-            onclick="scrollToSectionFl()"
+            onclick="scrollToSectionFl(event)"
             style="--i: 4"
           >
             <img
@@ -270,65 +280,68 @@
           </div>
           <div
             class="image-item-fl"
-            onclick="scrollToSectionFl()"
-            style="--i: 4"
+            onclick="scrollToSectionFl(event)"
+            style="--i: 5"
           >
             <img
               src="images/galleries/gallery001/gallery001-p5-s.jpg"
-              alt="قلب آرام"
+              alt="نقاشی ۵"
             />
           </div>
           <div
             class="image-item-fl"
-            onclick="scrollToSectionFl()"
-            style="--i: 4"
+            onclick="scrollToSectionFl(event)"
+            style="--i: 6"
           >
             <img
               src="images/galleries/gallery001/gallery001-p6-s.jpg"
-              alt="قلب آرام"
+              alt="نقاشی ۶"
             />
           </div>
           <div
             class="image-item-fl"
-            onclick="scrollToSectionFl()"
-            style="--i: 4"
+            onclick="scrollToSectionFl(event)"
+            style="--i: 7"
           >
             <img
               src="images/galleries/gallery001/gallery001-p7-s.jpg"
-              alt="قلب آرام"
+              alt="نقاشی ۷"
             />
           </div>
           <div
             class="image-item-fl"
-            onclick="scrollToSectionFl()"
-            style="--i: 4"
+            onclick="scrollToSectionFl(event)"
+            style="--i: 8"
           >
             <img
               src="images/galleries/gallery001/gallery001-p8-s.jpg"
-              alt="قلب آرام"
+              alt="نقاشی ۸"
             />
           </div>
           <div
             class="image-item-fl"
-            onclick="scrollToSectionFl()"
-            style="--i: 4"
+            onclick="scrollToSectionFl(event)"
+            style="--i: 9"
           >
             <img
               src="images/galleries/gallery001/gallery001-p9-s.jpg"
-              alt="قلب آرام"
+              alt="نقاشی ۹"
             />
           </div>
         </div>
       </div>
-      <div class="price-display-fl" id="priceDisplayfl">
+      <div
+        class="price-display-fl"
+        id="priceDisplayfl"
+        onclick="scrollToSectionFl(event)"
+      >
         در حال بارگذاری قیمت...
       </div>
-      <div class="buttons-container-fl">
-        <button class="buy-button-fl" onclick="scrollToSectionFl()">
-          جزئیات و خرید
-        </button>
+      <div class="buttons-container-fl" onclick="scrollToSectionFl(event)">
+        <button class="buy-button-fl">جزئیات و خرید</button>
       </div>
     </div>
+
     <!-- Floating Box End  -->
     <!-- ----------------------------------------------------------------------------------------- -->
     <!-- New Text0 area  -->
@@ -477,9 +490,7 @@
           <span class="circle1-title-text pink text-uppercase"
             >با ما منحصر به فرد باشید</span
           >
-          <h1 class="circle1-title deep-black circle1-pb40">
-            ویژگی های انحصاری والری
-          </h1>
+          <h1 class="circle1-title deep-black">ویژگی های انحصاری والری</h1>
         </div>
         <div class="circle1-extra-features-content">
           <div class="row">

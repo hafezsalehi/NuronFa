@@ -19214,8 +19214,8 @@ button .small-image {
 
 .rn-footer-one .footer-left .rn-footer-describe {
     font-size: 18px;
-    margin-top: 20px;
-    padding: 0 0 0 30px;
+    margin-top: 5px;
+    padding: 10px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {

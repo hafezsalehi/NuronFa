@@ -262,14 +262,14 @@
     /* انیمیشن در حالت توقف */
 }
 
-.container-co:hover .orbit-co {
+.orbit-co:hover {
     animation-play-state: running;
     /* اجرای انیمیشن هنگام هاور */
 
 }
 
 
-.container-co:hover .hexagon-wrapper-co {
+.orbit-co:hover .hexagon-wrapper-co {
     animation-play-state: running;
     /* اجرای انیمیشن هنگام هاور */
 }

@@ -12,15 +12,12 @@
     color: white;
 }
 
-.middle-footer {}
+
 
 .rn-footer-one {
     padding: 50px 10px;
 }
 
-.rn-footer-one {
-    /* background-image: url(../../../images/footer-background1.webp) !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important; */
-
+.rn-footer-describe {
+    margin-bottom: 0 !important;
 }

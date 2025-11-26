@@ -189,7 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
     shuffleInterval = setInterval(rotateImages, 4000);
     isShuffling = true;
 
-    document.querySelector(".shuffle-indicator").style.display = "flex";
+    const shuffleIndicator = document.querySelector(".shuffle-indicator");
+    if (shuffleIndicator) {
+      shuffleIndicator.style.display = "flex";
+    }
   }
 
   // توقف چرخش

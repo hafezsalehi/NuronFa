@@ -23,19 +23,23 @@
   transition-duration: 1.2s, 1.2s, 0.4s, 0.4s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
-  /* بهینه‌سازی جدید */
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
   will-change: transform;
   isolation: isolate;
-  /* ایجاد context جداگانه */
+}
+
+
+.floating-box-fl.hidden-fl {
+  display: none !important;
 }
 
 .floating-box-fl.minimized-fl {
   opacity: 0.9;
   padding: 10px;
   overflow: hidden;
+  max-height: 80px !important;
 }
 
 .floating-box-fl.minimized-fl .middle-section-fl,
@@ -44,14 +48,16 @@
   display: none;
 }
 
-.floating-box-fl.minimized-fl .scroll-button-fl {
-  display: inline-block;
-  width: 60px;
-  height: 30px;
-  font-size: 12px;
-  padding: 0;
-  margin: 0 5px;
-  animation: slideUpFl 0.4s ease-out forwards;
+.floating-box-fl:hover:not(.dragging-fl) {
+  transform: scale(1.13);
+  box-shadow: 0 0 20px rgba(255, 255, 255, .5);
+}
+
+.floating-box-fl.dragging-fl {
+  cursor: grabbing !important;
+  animation: none !important;
+  z-index: 1001;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 @keyframes fadeInRotateFl {
@@ -60,10 +66,6 @@
     transform: scale(0.7) translateY(-60px) rotate(-5deg);
   }
 
-  /* 60% {
-      opacity: 0.7;
-      transform: scale(1.05) translateY(10px) rotate(2deg);
-    } */
   100% {
     opacity: 1;
     transform: scale(1) translateY(0) rotate(0);
@@ -82,45 +84,16 @@
   }
 }
 
-.floating-box-fl:hover {
-  /* غیرفعال کردن rotate در هاور برای جلوگیری از تداخل با درگ */
-  transform: scale(1.13);
-  box-shadow: 0 0 20px rgba(255, 255, 255, .5);
-}
-
-@keyframes slideUpFl {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.floating-box-fl:not(.minimized-fl) .scroll-button-fl {
-  animation: slideDownFl 0.4s ease-out forwards;
-}
-
-@keyframes slideDownFl {
-  0% {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
 .control-bar-fl {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 5px;
+  pointer-events: none;
+}
+
+.control-bar-fl * {
+  pointer-events: auto;
 }
 
 .box-title-fl {
@@ -130,7 +103,6 @@
   flex-grow: 1;
   text-align: center;
   font-size: 16px;
-  /* کاهش فونت برای دسکتاپ */
 }
 
 .minimize-button-fl,
@@ -144,6 +116,8 @@
   cursor: pointer;
   transition: background 0.3s ease;
   color: black;
+  z-index: 1002;
+  position: relative;
 }
 
 .minimize-button-fl:hover,
@@ -161,6 +135,8 @@
   cursor: pointer;
   transition: background 0.3s ease;
   line-height: 12px;
+  z-index: 1002;
+  position: relative;
 }
 
 .scroll-button-fl:hover {
@@ -212,6 +188,11 @@
   flex-grow: 1;
   margin: 5px 0;
   transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.middle-section-fl * {
+  pointer-events: auto;
 }
 
 .middle-section-fl h4 {
@@ -280,6 +261,11 @@
   gap: 10px;
   margin-top: 12px;
   transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.buttons-container-fl * {
+  pointer-events: auto;
 }
 
 .buy-button-fl {
@@ -298,6 +284,7 @@
   -webkit-backdrop-filter: blur(12px);
   background: linear-gradient(135deg, #390452, #a834d6);
   opacity: 0.8;
+  z-index: 1002;
 }
 
 .buy-button-fl:hover {
@@ -322,15 +309,6 @@
 .buy-button-fl:hover::after {
   width: 250px;
   height: 250px;
-}
-
-.floating-box-fl.dragging-fl {
-  cursor: grabbing;
-  animation: none;
-}
-
-.floating-box-fl.hidden-fl {
-  display: none;
 }
 
 @media (max-width: 600px) {
@@ -362,10 +340,6 @@
     width: 25px;
     height: 25px;
     font-size: 12px;
-  }
-
-  .floating-box-fl.minimized-fl .scroll-button-fl {
-    font-size: 8px;
   }
 
   .image-item-fl img {

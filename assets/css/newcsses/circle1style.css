@@ -16,18 +16,18 @@
 }
 
 .circle1-section-title.text-center {
+    margin-top: 50px;
     padding-bottom: 20px;
 }
 
 .circle1-title-text.pink.text-uppercase {
     color: #f11965;
     text-transform: uppercase;
-    line-height: 100px;
+    line-height:50px;
 }
 
 .circle1-title.deep-black {
-    color: #af8909;
-    padding-bottom: 40px;
+    color: #e5e91e;
 }
 
 /* محتوای ویژگی ها */

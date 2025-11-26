@@ -180,14 +180,12 @@
   // ----- slide change (auto) -----
   function changeSlideGl() {
     if (isAnimatingGl) {
-      console.log("⏳ Skipping - animation in progress");
       return;
     }
 
     isAnimatingGl = true;
     const next = (currentIndexGl + 1) % boxesGl.length;
 
-    console.log(`🔄 Changing slide from ${currentIndexGl} to ${next}`);
 
     // آپدیت اطلاعات و موقعیت همزمان
     updateInfoGl(next);
@@ -199,7 +197,6 @@
     clearTimeout(animationTimeoutGl);
     animationTimeoutGl = setTimeout(() => {
       isAnimatingGl = false;
-      console.log("✅ Animation completed");
     }, 600);
   }
   // ----- setSlide from thumbnail -----
@@ -219,7 +216,6 @@
       playButtonAnimationGl();
     }
 
-    console.log(`🎯 Setting slide to index: ${index}`);
 
     // آپدیت همزمان
     updateActiveThumbnailGl(index);
@@ -230,7 +226,6 @@
     clearTimeout(animationTimeoutGl);
     animationTimeoutGl = setTimeout(() => {
       isAnimatingGl = false;
-      console.log("✅ Manual slide change completed");
     }, 600);
   }
 
@@ -251,7 +246,6 @@
 
   // ----- slideshow controls -----
   function startSlideshowGl() {
-    console.log("▶️ Starting slideshow");
 
     // پاک کردن اینتروال قبلی
     if (slideIntervalGl) {
@@ -263,8 +257,6 @@
     slideIntervalGl = setInterval(() => {
       if (!isAnimatingGl) {
         changeSlideGl();
-      } else {
-        console.log("⏸️ Slideshow paused - waiting for animation to complete");
       }
     }, 3000); // 3 ثانیه
 
@@ -274,7 +266,6 @@
   }
 
   function stopSlideshowGl() {
-    console.log("⏸️ Stopping slideshow");
 
     if (slideIntervalGl) {
       clearInterval(slideIntervalGl);
@@ -309,13 +300,11 @@
 
   // ----- show details overlay -----
   function showDetailsGl(index) {
-    console.log("🎯 showDetailsGl called with index:", index);
 
     stopSlideshowGl();
     playButtonAnimationGl();
 
     const data = getImageData(index);
-    console.log("📋 Data for details:", data);
 
     const overlay = document.createElement("div");
     overlay.className = "detail-overlay-gl";
@@ -385,7 +374,6 @@
     document.addEventListener("keydown", onEsc);
     openOverlay(overlay);
 
-    console.log("✅ Details overlay opened");
   }
 
   // show enlarged image overlay
@@ -457,19 +445,14 @@
         // جلوگیری از bubble شدن
         e.stopPropagation();
 
-        console.log("📖 Info column clicked!");
 
         // پیدا کردن نزدیک‌ترین info-item
         const item = e.target.closest(".info-item-gl");
         if (!item) {
-          console.log("❌ No info-item found");
           return;
         }
 
-        console.log(
-          "✅ Info item found, showing details for index:",
-          currentIndexGl
-        );
+
 
         // نمایش جزئیات
         showDetailsGl(currentIndexGl);
@@ -503,12 +486,10 @@
   function init() {
     // جلوگیری از اجرای دوباره
     if (window.gallery1Initialized) {
-      console.log("Gallery already initialized, skipping...");
       return;
     }
     window.gallery1Initialized = true;
 
-    console.log("🎬 Initializing gallery...");
 
     gallerySection = document.querySelector(".gallery1");
     imgContainerGl = document.querySelector(".img-container-gl");
@@ -516,9 +497,7 @@
     thumbnailsGl = Array.from(document.querySelectorAll(".thumbnail-gl"));
     boxesGl = Array.from(document.querySelectorAll(".box-gl"));
 
-    console.log(
-      `📊 Found ${boxesGl.length} boxes and ${thumbnailsGl.length} thumbnails`
-    );
+
 
     // حالت اولیه
     updateActiveThumbnailGl(0);
@@ -538,7 +517,6 @@
       }
     });
 
-    console.log("✅ Gallery initialized successfully");
   }
 
   // DOM ready
