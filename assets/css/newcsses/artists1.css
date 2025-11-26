@@ -28,6 +28,10 @@
     height: auto;
 }
 
+.about-wrapper h2 {
+    color: yellow !important;
+}
+
 /* ----------------------------- */
 /* گرید برای عکس‌های هنرمندان */
 .artists-grid {

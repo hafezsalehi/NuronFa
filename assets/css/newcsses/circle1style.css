@@ -23,11 +23,12 @@
 .circle1-title-text.pink.text-uppercase {
     color: #f11965;
     text-transform: uppercase;
-    line-height:50px;
+    line-height: 50px;
 }
 
 .circle1-title.deep-black {
     color: #e5e91e;
+    font-size: 50px;
 }
 
 /* محتوای ویژگی ها */
@@ -290,6 +291,10 @@
     .circle1-extra-pic {
         height: 300px;
         margin: 30px 0;
+    }
+
+    .circle1-title.deep-black {
+        font-size: 30px;
     }
 
     .circle1-feature-image {

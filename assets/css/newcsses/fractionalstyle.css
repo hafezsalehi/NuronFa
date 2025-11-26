@@ -46,7 +46,7 @@
     background-clip: text;
     /* color: transparent; */
     font-family: "Vazir";
-    color: #031330;
+    color: yellow;
     text-shadow:
         0 0 20px #644925,
         0 0 30px #3e0b9b,
@@ -267,7 +267,7 @@
     }
 
     .fractional h1 {
-        font-size: 2rem;
+        font-size: 3rem;
     }
 
     .owner-popup-frac {

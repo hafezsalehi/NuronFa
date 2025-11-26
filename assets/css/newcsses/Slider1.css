@@ -9,6 +9,7 @@
 }
 
 .title-sldr {
+    color: #e5e91e;
     text-align: center;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(19, 22, 163, 0.5);
@@ -19,7 +20,7 @@
 .container-sldr-span {
     font-size: clamp(16px, 3vw, 28px) !important;
     /* margin: 20px auto !important; */
-    color: rgb(77, 255, 32);
+    color: rgb(255, 255, 255);
     overflow: hidden;
     display: block;
     margin-bottom: 20px;

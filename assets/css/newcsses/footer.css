@@ -21,3 +21,8 @@
 .rn-footer-describe {
     margin-bottom: 0 !important;
 }
+
+.widget-bottom .copyright-right ul {
+    align-items: center;
+    margin: auto;
+}

@@ -12,6 +12,12 @@
 
 }
 
+.descriotion-co {
+    color: white;
+    line-height: 30px;
+    margin: 5px 10px;
+}
+
 /* استایل‌های باکس اول (مستطیل‌های انیمیشنی) */
 .box-1-co {
     flex: 5;
@@ -168,12 +174,16 @@
     font-weight: bold;
     text-align: center;
     padding: 50px 0;
-    color: white;
     text-shadow: 2px 4px 4px rgba(20, 196, 14, 0.6);
     padding-bottom: 15px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     /* width: 100%; */
     box-shadow: #45b7d1;
+}
+
+.container-title-co h3 {
+    color: yellow !important;
+
 }
 
 /* بخش انیمیشن شش‌ضلعی */
